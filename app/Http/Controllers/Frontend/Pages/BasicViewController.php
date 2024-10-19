@@ -272,17 +272,17 @@ class BasicViewController extends Controller
         return ViewHelper::checkViewForApi($this->data, 'frontend.courses.course-category', 'Category Not Found');
     }
 
-    public function courseDetails ($slug)
+    /*public function courseDetails ($slug)
     {
 
         $course = Course::where('slug', $slug)->first();
-        if(!$course){
+
+        if(empty($course)){
             return response()->view('errors.404', [], 404);
-        }
-        if (!empty($course))
-        {
+        }else {
             $courseEnrollStatus = ViewHelper::checkIfCourseIsEnrolled($course);
         }
+        dd($this->$courseEnrollStatus);
         if ($courseEnrollStatus == 'true')
         {
             return redirect()->route('front.student.course-contents', ['course_id' => $course->id, 'slug' => $course->slug]);
@@ -304,7 +304,7 @@ class BasicViewController extends Controller
                 $this->comments = ContactMessage::where(['status' => 1, 'type' => 'course', 'parent_model_id' => $this->course->id, 'is_seen' => 1])->get();
                 $this->seos= Seo::where(['status' => 1, 'seo_for' => 'course', 'parent_model_id' => $this->course->id])->get();
             }
-            // dd($this->seos);
+
             $this->data = [
                 'course' => $this->course,
                 'courseEnrollStatus' => $courseEnrollStatus,
@@ -313,8 +313,44 @@ class BasicViewController extends Controller
             ];
             return ViewHelper::checkViewForApi($this->data, 'frontend.courses.details', 'Course Not Found');
         }
+
         return 'Something went wrong';
+    }*/
+
+    public function courseDetails($slug)
+    {
+        $course = Course::where('slug', $slug)->select('id', 'slug')->first();
+        if (!$course) {
+            return response()->view('errors.404', [], 404);
+        }
+        $courseEnrollStatus = ViewHelper::checkIfCourseIsEnrolled($course);
+
+        if ($courseEnrollStatus === 'true') {
+            return redirect()->route('front.student.course-contents', ['course_id' => $course->id, 'slug' => $course->slug]);
+        }
+        $this->course = Course::where('slug', $slug)
+            ->with([
+                'teachers:id,user_id,subject,first_name,last_name,description,image,teacher_intro_video,github',
+                'courseRoutines' => function ($courseRoutines) {
+                    $courseRoutines->whereStatus(1)->get();
+                }
+            ])->first();
+
+        if ($this->course) {
+            $this->comments = ContactMessage::where(['status' => 1, 'type' => 'course', 'parent_model_id' => $this->course->id, 'is_seen' => 1])->get();
+            $this->seos = Seo::where(['status' => 1, 'seo_for' => 'course', 'parent_model_id' => $this->course->id])->get();
+        }
+//dd($this->comments);
+        $this->data = [
+            'course' => $this->course,
+            'courseEnrollStatus' => $courseEnrollStatus,
+            'comments' => $this->comments,
+            'seos' => $this->seos
+        ];
+
+        return view('frontend.courses.details', $this->data);
     }
+
 
     public function checkout (Request $request, $type = 'course',  $slug = null)
     {
