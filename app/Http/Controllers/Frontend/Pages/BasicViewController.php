@@ -222,7 +222,8 @@ class BasicViewController extends Controller
 
         $this->examCategories = BatchExamCategory::where(['status' => 1, 'parent_id' => 0])->get();
 
-        $allBatchExams = BatchExam::where(['status' => 1, 'is_master_exam' => 0, 'is_paid' => 1])->select('id', 'title', 'banner', 'slug')->get();
+        // $allBatchExams = BatchExam::where(['status' => 1, 'is_master_exam' => 0, 'is_paid' => 1])->get();
+        $allBatchExams = BatchExam::where(['status' => 1, 'is_master_exam' => 0, 'is_paid' => 1])->select('id', 'title', 'banner', 'slug','price','discount_type','discount_amount','admission_last_date')->get();
 
         $this->data = [
             'examCategories'     => $this->examCategories,
