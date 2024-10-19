@@ -88,7 +88,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/subscription-details/{id}/{slug?}', [ExamSubscriptionPackageController::class, 'details'])->name('subscription-details');
 
         Route::get('/blog', [FrontendViewController::class, 'allBLogs'])->name('all-blogs');
-        Route::get('/category-blogs/{id}/{slug?}', [FrontendViewController::class, 'categoryBlogs'])->name('category-blogs');
+        Route::get('/category-blogs/{slug}', [FrontendViewController::class, 'categoryBlogs'])->name('category-blogs');
         Route::get('/blog-details/{slug?}', [FrontendViewController::class, 'blogDetails'])->name('blog-details');
         Route::get('/product', [FrontendViewController::class, 'allProducts'])->name('all-products');
 

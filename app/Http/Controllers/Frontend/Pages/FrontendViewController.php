@@ -31,7 +31,7 @@ class FrontendViewController extends Controller
     public function allProducts ()
     {
 
-        $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_start_date', 'discount_end_date', 'slug')->latest()->paginate(8);
+        $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_type', 'discount_start_date', 'discount_end_date', 'slug')->latest()->paginate(8);
 
         foreach ($this->products as $product)
         {
@@ -272,57 +272,63 @@ class FrontendViewController extends Controller
     public function allBLogs ()
     {
         $this->blogCategories = BlogCategory::whereStatus(1)->orderBy('order', 'ASC')->select('id', 'name', 'parent_id', 'image', 'slug')->get();
-        $this->blogs = Blog::whereStatus(1)->with(['blogCategory' => function($blogCategory){
-            $blogCategory->select('id', 'name', 'slug')->get();
-        }])->paginate(9);
-        if (str()->contains(url()->current(), '/api/'))
-        {
-            foreach ($this->blogCategories as $blogCategory)
-            {
-                $blogCategory->image = asset($blogCategory->image);
-            }
-            foreach ($this->blogs as $blog)
-            {
-                $blog->image = asset($blog->image);
-            }
-        }
+
+        $this_month_blogs = Blog::with('user')
+            ->whereStatus(1)
+            ->where('is_featured', 1)
+            ->whereMonth('created_at', date('m'))
+            ->whereYear('created_at', date('Y'))
+            ->with(['blogCategory' => function($blogCategory) {
+                $blogCategory->select('id', 'name', 'slug');
+            }])->take(2) // Limit to 2 blogs
+            ->get();
+            $this->blogs = Blog::with('user')->whereStatus(1)->where('is_featured', 1)->with(['blogCategory' => function($blogCategory){
+                $blogCategory->select('id', 'name', 'slug')->get();
+            }])->take(3)->get();
+
         $this->data = [
             'blogCategories'    => $this->blogCategories,
+            'this_month_blogs'  => $this_month_blogs,
             'blogs'             => $this->blogs,
         ];
-        return ViewHelper::checkViewForApi($this->data, 'frontend.blogs.blog');
+        return view('frontend.blogs.blog', $this->data);
     }
 
-    public function categoryBlogs ($id, $slug = null)
+    public function categoryBlogs ($slug = null)
     {
-        $this->blogs = BlogCategory::whereSlug($slug)->first()->blogs()->paginate(9);
-        $this->blogCategory = BlogCategory::whereSlug($slug)->select('id', 'parent_id', 'name', 'slug')->first();
+
+        $this->blogs = BlogCategory::with('blogs')->whereSlug($slug)->first();
         $this->data = [
             'blogs'    => $this->blogs,
-            'blogCategory'  => $this->blogCategory
         ];
         return ViewHelper::checkViewForApi($this->data, 'frontend.blogs.category-blogs');
     }
 
     public function blogDetails ($slug)
     {
+        $this->blogCategories = BlogCategory::whereStatus(1)->orderBy('order', 'ASC')->select('id', 'name', 'parent_id', 'image', 'slug')->get();
         $this->blog = Blog::where('slug',$slug)->first();
-        // dd($this->blog);
+
         if (isset($this->blog))
         {
+            $this->blog->increment('hit_count');
             $this->comments = ContactMessage::where(['status' => 1, 'type' => 'blog', 'parent_model_id' => $this->blog->id, 'is_seen' => 1])->get();
             $this->seos= Seo::where(['status' => 1, 'seo_for' => 'blog', 'parent_model_id' => $this->blog->id])->get();
         }
 
         // dd($this->seos);
+        Blog::with('blogCategory')->whereStatus(1)->latest()->select('id', 'title', 'image', 'slug', 'created_at')->take(6)->get();
+        $this->blogs = Blog::with('user')->whereStatus(1)->with(['blogCategory' => function($blogCategory){
+                $blogCategory->select('id', 'name', 'slug')->get();
+            }])->latest()->take(5)->get();
 
         $this->blog->image = asset($this->blog->image);
         $this->data = [
             'blog'    => $this->blog,
-            'recentBlogs'   => Blog::whereStatus(1)->latest()->select('id', 'title', 'image', 'slug', 'created_at')->take(6)->get(),
+            'recentBlogs'   => $this->blogs,
             'comments'      => $this->comments,
-
             'seos'          => $this->seos,
+            'blogCategories'          => $this->blogCategories,
 
         ];
 
