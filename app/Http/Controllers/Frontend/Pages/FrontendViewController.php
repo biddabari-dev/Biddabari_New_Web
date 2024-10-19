@@ -30,12 +30,9 @@ class FrontendViewController extends Controller
     protected $seos = [];
     public function allProducts ()
     {
-        if (str()->contains(url()->current(), '/api/'))
-        {
-            $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_start_date', 'discount_end_date', 'slug')->get();
-        } else {
-            $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_start_date', 'discount_end_date', 'slug')->latest()->paginate(8);
-        }
+
+        $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_start_date', 'discount_end_date', 'slug')->latest()->paginate(8);
+
         foreach ($this->products as $product)
         {
             if (!empty($product->discount_start_date) && !empty($product->discount_end_date))
@@ -47,10 +44,6 @@ class FrontendViewController extends Controller
             } else {
                 $product->has_discount_validity = 'false';
             }
-            $product->image = asset($product->image);
-//            $product->pdf = asset($product->pdf);
-//            $product->featured_image = asset($product->featured_image);
-            $product->order_status = ViewHelper::checkIfProductIsPurchased($product);
         }
         $this->data = [
             'products'  => $this->products
