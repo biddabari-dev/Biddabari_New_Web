@@ -65,6 +65,12 @@ class BlogCategory extends Model
         return $this->hasMany(Blog::class);
     }
 
+    public function blogCount($size_id = null)
+    {
+        $qty = Blog::where('blog_category_id', $this->id);
+        return $qty->count('id');
+    }
+
     public function siteSeos()
     {
         return $this->hasMany(SiteSeo::class, 'parent_model_id');

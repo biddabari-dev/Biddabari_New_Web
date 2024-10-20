@@ -3290,8 +3290,7 @@ img {
 }
 
 #Blog_feature .blog-feature-area h4 span {
-  background-color: #aa076b;
-  color: white;
+  color: #aa076b;
   padding: 2px;
   border-radius: 5px;
 }
@@ -3393,10 +3392,9 @@ img {
 }
 
 #Blog_feature .blog-popular-posted-area h4 span {
-  background-color: #aa076b;
-  color: white;
-  padding: 2px;
-  border-radius: 5px;
+    color: #aa076b;
+    padding: 2px;
+    border-radius: 5px;
 }
 
 #Blog_feature .blog-popular-posted-area .popular-posted-area .blog-feature-content .blog-category h6 span {
@@ -3479,7 +3477,7 @@ img {
 #Recently_posted .blog-recently-posted-area h2 span {
   background-color: #aa076b;
   color: white;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 5px;
 }
 

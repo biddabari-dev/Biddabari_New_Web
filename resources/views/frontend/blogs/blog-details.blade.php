@@ -7,196 +7,270 @@
 @section('meta-keywords')@foreach($seos as $seo){{ $seo->meta_keywords ?? ''}}@endforeach
 @endsection
 
-@section('meta-title')@foreach($seos as $seo){{ $seo->slug ?? ''}}@endforeach
-@endsection
-
 @section('title')@foreach($seos as $seo){{ $seo->meta_tags ?? ''}}@endforeach
 @endsection
-
 
 @section('meta-url'){{ url()->current() }}@endsection
 @section('og-url'){{ url()->current() }}@endsection
 
-
-
-
 @section('body')
-    <div class="blog-details-area pt-100 pb-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <div class="blog-details-content pr-20">
-                        <h1 class="text-center f-s-36 ">{{ $blog->title }}</h1>
-                        <div class="blog-preview-img text-center">
-                            @if(!empty($blog->video_url))
+    <main>
 
-                                <div class="video-container" >
-                                    <div class="video-foreground">
-                                        <iframe style="width: 100%;" height="500" src="https://www.youtube.com/embed/{{ $blog->video_url }}?rel=0&amp;modestbranding=1" title="blog video title" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
-                                    </div>
+        <section class="background-res-why background-ats"
+            style="background-image: url('{{ asset('frontend') }}/assets/images/blog/blog-bg-1.png')">
+
+            <section id="Blog_details">
+                <div class="container">
+                    <div class="row py-5">
+                        <div class="blog-details-area">
+                            <div class="blog-details-top-content">
+                                <div class="publish-date">
+                                    <p>আপডেট: <br> <span>{{ date('d F Y',strtotime($blog->created_at)) }}</span></p>
                                 </div>
-                                @else
-                            <img src="{{ asset($blog->image) }}" alt="Blog Details" class="img-fluid" style="max-height: 400px">
-                                @endif
-                        </div>
-                        <ul class="tag-list">
-                            <li><i class="ri-calendar-todo-fill"></i> {{ $blog->created_at->format('M d, Y') }}</li>
-                            <li><i class="ri-price-tag-3-fill"></i> {{ $blog->blogCategory->name }}</li>
-                        </ul>
-                        <p>{!! $blog->body !!}</p>
-
-                        <div class="comments-form">
-                            <div class="contact-form">
-                                <h4>Leave a Reply</h4>
-                                <form id="" action="{{ route('front.new-comment') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="type" value="blog">
-                                    <input type="hidden" name="parent_model_id" value="{{ $blog->id }}">
-                                    <input type="hidden" name="name" value="{{ auth()->check() ? auth()->user()->name : '' }}">
-                                    <input type="hidden" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}">
-                                    <input type="hidden" name="mobile" value="{{ auth()->check() ? auth()->user()->mobile : '' }}">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <textarea name="message" class="form-control" id="" cols="30" rows="3" required placeholder="Comment..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12">
-                                            <button type="submit" @if(!auth()->check()) onclick="event.preventDefault(); toastr.error('Please Login First');" @endif class="default-btn">
-                                                Submit
-                                            </button>
-                                        </div>
+                                <div class="blog-details-title">
+                                    <h2>{{ $blog->title }}</h2>
+                                </div>
+                                <div class="someText">
+                                    <p>{{ $blog->sub_title }}</p>
+                                </div>
+                                <div class="blog-details-social-icon d-flex">
+                                    <div class="icon">
+                                        <a href=""><i class="fa-brands fa-square-facebook"></i></a>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        {{--dynamic data--}}
-                        @foreach($comments as $comment)
-                            <div class="py-2">
-                                <div class="d-flex flex-row w-100">
-                                    <div class="d-flex flex-column">
-                                        <div class="com-img-box">
-                                            @if(isset($comment->user->profile_photo_path))
-                                                <img src="{{ asset( $comment->user->profile_photo_path ) }}" alt="user-image" class="comment-user-icard-bodymage">
-                                            @else
-                                                <img src="https://www.vhv.rs/dpng/d/509-5096993_login-icon-vector-png-clipart-png-download-user.png" alt="user-image" class="comment-user-image">
-                                            @endif
-                                        </div>
+                                    <div class="icon">
+                                        </a><a href=""><i class="fa-brands fa-twitter"></i></a>
                                     </div>
-
-                                    <div class="d-flex flex-column bg-light ml-2 w-100 px-2">
-                                        <p class="mb-0 f-s-20 ">{{ $comment->user->name }}</p>
-                                        <p class="text-justify ps-3">{{ $comment->message }}</p>
+                                    <div class="icon">
+                                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                    </div>
+                                    <div class="icon">
+                                        <a href=""><i class="fa-brands fa-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-
-
+                            <div class="blog-slider-area py-4">
+                                <div class="blog-slide">
+                                    <div class="blog-slide-images">
+                                        <a href="">
+                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-slid-img.jpg" alt="" srcset="">
+                                            {{-- <img src="{{ asset(isset($blog->image) ? $blog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $blog->title }}" srcset=""> --}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="blog-slide-content">
+                                    <p>{!! $blog->body !!}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header py-0" style="background-color: #F18345;">
-                            <h3 class="text-center text-white f-s-38 mb-0">Latest Blogs</h3>
-                        </div>
-                        @forelse($recentBlogs as $recentBlog)
-                            <div class="card-body py-2 border-bottom">
-                                <a href="{{ route('front.blog-details', ['id' => $recentBlog->id, 'slug' => $recentBlog->slug]) }}">
-                                    <div class="row">
-                                        <div class="col-md-4 px-0">
-                                            <img src="{{ !empty($recentBlog->image) ? asset($recentBlog->image) : asset('/frontend/logo/biddabari-card-logo.jpg') }}" alt="" class="img-fluid" style="height: 100px"/>
+            </section>
+
+            <section id="LeaveA_reply">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="blog-leaveAreply_area">
+                                <div class="leave-reply-title">
+                                    <h4>Leave A Reply</h4>
+                                    <p>Allready have an account ? Sign in to leave a reply</p>
+                                </div>
+                                <div class="leaveA-reply-form">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="fullName" class="form-label">Full Name</label>
+                                                    <input type="text" class="form-control icon-input" id="fullName"
+                                                        placeholder="Enter your full name"
+                                                        aria-describedby="nameHelp">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Email</label>
+                                                    <input type="email" class="form-control icon-input" id="email"
+                                                        placeholder="Enter your email" aria-describedby="emailHelp">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <div>
-                                                <span class="text-muted">{{ showDateFormatTwo($recentBlog->created_at) }}</span>
-                                                <p class="f-s-20 p-0">{{ \Illuminate\Support\Str::words($recentBlog->title, 8,'...') }}</p>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Save my name and
+                                                email
+                                                in
+                                                this browser for a next time comment.</label>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="comment" class="form-label">Comment</label>
+                                            <textarea type="text" class="form-control icon-input" id="comment"
+                                                placeholder="Space for your comments" rows="3"
+                                                aria-describedby="commentHelp"></textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn_warning">Submit</button>
+                                    </form>
+                                </div>
+                                <div class="comments-area py-4">
+                                    <div class="comment-title py-4">
+                                        <h4>Comments</h4>
+                                    </div>
+                                    <div class="comment mb-4">
+                                        <div class="comment-author-img d-flex">
+                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                            <div class="name">
+                                                <h6>MM Miss Boss <span>User</span></h6>
+                                                <p>07.04.1999</p>
+                                            </div>
+                                        </div>
+                                        <p>Hi Everyone, <br> Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.
+                                            Esse
+                                            minima accusantium, sed ad odit iusto alias dolorum magnam fuga
+                                            reiciendis
+                                            aut
+                                            similique deserunt. Doloribus dolorem velit illum sit architecto quia
+                                            numquam
+                                            corrupti, neque nemo aperiam. Ipsa ex sint magnam delectus.</p>
+                                    </div>
+                                    <div class="comment mb-4">
+                                        <div class="comment-author-img d-flex">
+                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                            <div class="name">
+                                                <h6>MM Miss Boss <span>User</span></h6>
+                                                <p>07.04.1999</p>
+                                            </div>
+                                        </div>
+                                        <p>Hi Everyone, <br> Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.
+                                            Esse
+                                            minima accusantium, sed ad odit iusto alias dolorum magnam fuga
+                                            reiciendis
+                                            aut
+                                            similique deserunt. Doloribus dolorem velit illum sit architecto quia
+                                            numquam
+                                            corrupti, neque nemo aperiam. Ipsa ex sint magnam delectus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <div class="top-cat-area">
+                                <div class="top-cat-title py-4">
+                                    <h4><span>Top</span> Categories</h4>
+                                </div>
+                                @foreach($blogCategories as $topCategory)
+                                <div class="categories-hints d-flex justify-content-between">
+                                    <p>{{ $topCategory->name }}</p>
+                                    <p>{{ $topCategory->blogCount() }}</p>
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="tag-search-area py-4">
+                                <div class="teg-search-title">
+                                    <h4><span>Search</span> With Tags</h4>
+                                </div>
+                                <div class="tag-area">
+                                    <div class="tags pt-4">
+                                        @foreach($blogCategories as $category)
+                                        <a href="{{ route('front.category-blogs', $category->slug) }}" class="btn btn-outline-success tag_btn">{{ $category->name }}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="Blog_feature">
+                <div class="container">
+                    <div class="row py-5">
+                        <div class="blog-details-latest-title">
+                            <h4><span>Latest</span> Blogs</h4>
+                        </div>
+                        <div class="col-md-6 mb-3 pe-lg-5">
+                            <div class="blog-feature-area ">
+                                @foreach($recentBlogs as $key=>$recentblog)
+                                    @if($key < 2)
+                                    <div class="feature-this-month-area mb-3">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-5">
+                                                <div class="blog-feature-img">
+                                                <a href="{{ route('front.blog-details', ['slug' => $recentblog->slug]) }}"> <img src="{{ asset(isset($recentblog->image) ? $recentblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $recentblog->title }}" srcset=""></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-7">
+                                                <div class="blog-feature-content">
+                                                    <div class="blog-category mt-2">
+                                                        <h6><span>{{ $recentblog->blogCategory->name }}</span></h6>
+                                                    </div>
+                                                    <div class="blog-feature-title">
+                                                        <h3>{{ $recentblog->title }}</h3>
+                                                    </div>
+                                                    <div class="blog-datetimeby d-flex">
+                                                        <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                                        <p> {{ $recentblog->user->name }} |</p>
+                                                        <p><i class="fa-regular fa-calendar-days"></i> {{ date('d F Y',strtotime($recentblog->created_at)) }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="someText">
+                                                        <p>{{ $recentblog->sub_title }}</p>
+                                                    </div>
+                                                    <div class="blog-read-button">
+                                                        <a href="{{ route('front.blog-details', ['slug' => $recentblog->slug]) }}" type="button"
+                                                            class="btn btn_warning">View Details</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                    @endif
+                                @endforeach
                             </div>
-                        @empty
-                            <div class="card-body">
-                                <p><a href="javascript:void(0)">No Blogs Published Yet.</a></p>
+                        </div>
+                        <div class="col-md-6 ps-lg-5">
+                            <div class="blog-popular-posted-area">
+                                @foreach($recentBlogs as $key=>$recentblog)
+                                    @if($key >= 0)
+                                    <div class="popular-posted-area mb-4">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-3">
+                                                <div class="blog-feature-img">
+                                                    <img src="{{ asset(isset($recentblog->image) ? $recentblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $recentblog->title }}" srcset="">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-9">
+                                                <div class="blog-feature-content">
+                                                    <div class="blog-category mt-2">
+                                                        <h6><span>Travel</span></h6>
+                                                    </div>
+                                                    <div class="blog-feature-title">
+                                                        <h3>{{ $recentblog->title }}</h3>
+                                                    </div>
+                                                    <div class="someText">
+                                                        <p>{{ $recentblog->sub_title }}</p>
+                                                    </div>
+                                                    <div class="blog-datetimeby d-flex">
+                                                        <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                                        <p> {{ $recentblog->user->name }} |</p>
+                                                        <p><i class="fa-regular fa-calendar-days"></i> {{ date('d F Y',strtotime($recentblog->created_at)) }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                @endforeach
                             </div>
-                        @endforelse
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </section>
 
+        </section>
 
+    </main>
 @endsection
 
-@push('style')
-    <style>
-        /*review section*/
-        .no-pad p {
-            margin-bottom: 2px!important;
-        }
-        .comment-user-image {
-            border-radius: 60%;
-            width: 40px;
-            height: 40px;
-        }
-        .com-img-box {
-            /*height: 78px;*/
-            width: 56px;
-        }
-        .main-comment p {
-            margin-bottom: 2px!important;
-        }
-        .sub-replay p {
-            margin-bottom: 2px !important;
-        }
-        .bb-1px {
-            border-bottom: 1px solid black;
-        }
-    </style>
-    <style>
-        .video-container{
-            width:100%;
-            height:500px;
-            overflow:hidden;
-            position:relative;
-        }
-        .video-container iframe{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .video-container iframe{
-            position: absolute;
-            top: -60px;
-            left: 0;
-            width: 100%;
-            /*height: calc(50% + 100px);*/
-            height: 500px;
-        }
-        .video-foreground{
-            pointer-events:auto;
-        }
-
-    </style>
-@endpush
-@push('script')
-    <script src="{{ asset('/') }}frontend/assets/js/page-js/product-comments.js"></script>
-    <script>
-        function equalheight() {
-            var maxHeight = 0;
-            $('.card-body').each(function (index) {
-                if ($(this).height() > maxHeight)
-                    maxHeight = $(this).height();
-            });
-            $('.card-body').height(maxHeight);
-        }
-        $(document).ready(function () {
-            equalheight();
-        });
-    </script>
-@endpush

@@ -30,15 +30,26 @@
             <div class="all-book-area">
                 <div class="row all-exam-area">
                     @foreach($products as $product)
+                        @php
+                            $discountAmount = $product->discount_type == 1  ? $product->discount_amount : ($product->price * $product->discount_amount) / 100;
+                            $discountPrice = $product->price - (isset($discountAmount) ? $discountAmount : 0);
+                        @endphp
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="book-area">
                             <div class="book-image">
-                                <img src="{{ asset(isset($product->image) ? $product->image : 'frontend/assets/images/book-page/book.png') }}" alt="{{ $product->title }}" srcset="" />
+                                <a href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}"> <img src="{{ asset(isset($product->image) ? $product->image : 'frontend/assets/images/book-page/book.png') }}" alt="{{ $product->title }}" srcset="" /> </a>
                             </div>
                             <div class="book-content ms-3">
                                 <div class="book-title pt-3">
+                                    @if($product->stock_amount > 0)
+                                        @php $stock = true; @endphp
                                     <h6>In Stock</h6>
-                                    <h2 class="fw-bold">{{ $product->title }} </h2>
+                                    @else
+                                        @php $stock = false; @endphp
+                                    <h6 class="text-warning"> Out of Stock</h6>
+                                    @endif
+
+                                    <h2 class="fw-bold"><a class="text-black" href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}">{{ $product->title }} </a></h2>
                                 </div>
                                 <div class="row button-and-price pb-2">
                                     <div class="col">
@@ -51,17 +62,19 @@
                                         </div>
                                         <div class="book-price">
                                             <div class="book-total-price text-muted">
-                                                <s class="text-muted"> ট 580</s>
+                                                <s class="text-muted"> ৳ {{$product->price ?? 0 }}</s>
                                             </div>
-                                            <div class="book-discount-price">ট 520</div>
+                                            <div class="book-discount-price">৳ {{ $discountAmount ? $discountAmount : $product->price }}</div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="book-button">
-                                            <button class="book-details"> <a href="book-details.html">View
+                                            <button class="book-details"> <a href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}">View
                                                     Details</a> </button><br>
                                             <button class="custom-btn btn-12">
-                                                <span>Click!</span><span>Buy Now</span>
+                                                <a href="{{ route('front.view-cart',[$product->id]) }}" >
+                                                    <span>ক্লিক করুন!</span><span>বইটি কিনুন</span>
+                                                </a>
                                             </button>
                                         </div>
                                     </div>
@@ -69,6 +82,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
