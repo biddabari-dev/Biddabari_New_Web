@@ -33,6 +33,7 @@ use App\Models\Frontend\CourseOrder\CourseOrder;
 use App\Models\Seo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
 class BasicViewController extends Controller
@@ -319,6 +320,7 @@ class BasicViewController extends Controller
         if (!$course) {
             return response()->view('errors.404', [], 404);
         }
+
         $courseEnrollStatus = ViewHelper::checkIfCourseIsEnrolled($course);
 
         if ($courseEnrollStatus === 'true') {
@@ -336,13 +338,30 @@ class BasicViewController extends Controller
             $this->comments = ContactMessage::where(['status' => 1, 'type' => 'course', 'parent_model_id' => $this->course->id, 'is_seen' => 1])->get();
             $this->seos = Seo::where(['status' => 1, 'seo_for' => 'course', 'parent_model_id' => $this->course->id])->get();
         }
-//dd($this->comments);
+
+        if (!empty($this->course->discount_start_date) && !empty($this->course->discount_end_date))
+        {
+            if (Carbon::now()->between(dateTimeFormatYmdHi($this->course->discount_start_date), dateTimeFormatYmdHi($this->course->discount_end_date)))
+            {
+                $this->course->has_discount_validity = 'true';
+            } else {
+                $this->course->has_discount_validity = 'false';
+            }
+        } else {
+
+            $this->course->has_discount_validity = 'false';
+        }
+
+        $totalStudentEnrollments = DB::table('course_student')->where('course_id', $course->id)->count('student_id');
+
         $this->data = [
             'course' => $this->course,
             'courseEnrollStatus' => $courseEnrollStatus,
             'comments' => $this->comments,
-            'seos' => $this->seos
+            'seos' => $this->seos,
+            'totalStudentEnrollments' => $totalStudentEnrollments
         ];
+
 
         return view('frontend.courses.details', $this->data);
     }

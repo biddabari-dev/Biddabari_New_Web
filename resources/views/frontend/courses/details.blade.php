@@ -62,343 +62,187 @@
                         </div>
 
                         <div class="course-description-area">
+
                             <div class="course-description-tab-button">
                                 <ul class="nav nav-pills nav-fill gap-2 mb-4" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="overview-tab" data-bs-toggle="pill"
-                                           href="#overview" role="tab" aria-controls="overview"
-                                           aria-selected="true">Overview</a>
+                                        <a class="nav-link active" id="overview-tab" data-bs-toggle="pill" href="#overview" role="tab"
+                                           aria-controls="overview" aria-selected="true">Overview</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="instructor-tab" data-bs-toggle="pill"
-                                           href="#instructor" role="tab" aria-controls="instructor-class"
-                                           aria-selected="false">Instructor</a>
+                                        <a class="nav-link" id="instructor-tab" data-bs-toggle="pill" href="#instructor" role="tab"
+                                           aria-controls="instructor-class" aria-selected="false">Instructor</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="routine-tab" data-bs-toggle="pill" href="#routine"
-                                           role="tab" aria-controls="routine-class"
-                                           aria-selected="false">Routine</a>
+                                        <a class="nav-link" id="routine-tab" data-bs-toggle="pill" href="#routine" role="tab"
+                                           aria-controls="routine-class" aria-selected="false">Routine</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="review-tab" data-bs-toggle="pill" href="#review"
-                                           role="tab" aria-controls="review-class" aria-selected="false">Review</a>
+                                        <a class="nav-link" id="review-tab" data-bs-toggle="pill" href="#review" role="tab"
+                                           aria-controls="review-class" aria-selected="false">Review</a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="overview" role="tabpanel"
-                                     aria-labelledby="overview-tab">
+
+                            <div class="tab-content" id="pills-tabContent-overview">
+                                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                                     <div class="overview-area">
                                         <div class="overview-title">
-                                            <h4>Description</h4>
+                                             <h4>Description :</h4>
                                         </div>
+                                        <br>
                                         <div class="overview-content">
                                             <p>{!! $course->description !!}</p>
                                         </div>
-                                       {{-- <div class="learn-this-course mb-4">
-                                            <div class="learn-course-title">
-                                                <h4>What you will learn in this course</h4>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="learn-course-text">
-                                                        <div class="text d-flex">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                elit.
-                                                                dolorem repellendus. Incidunt totam Lorem ipsum
-                                                                dolor
-                                                                sit amet. </p>
-                                                        </div>
-                                                        <div class="text d-flex">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                elit.
-                                                                Vero,
-                                                                dolorem </p>
-                                                        </div>
-                                                        <div class="text d-flex">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                elit.
-                                                                Vero,
-                                                                dolorem repellendus. </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="learn-course-text">
-                                                        <div class="text d-flex">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                elit.
-                                                                Vero,
-                                                                dolorem repellendus. Incidunt totam Lorem ipsum
-                                                                dolor
-                                                                sit. </p>
-                                                        </div>
-                                                        <div class="text d-flex">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                elit.
-                                                                Vero,
-                                                                dolorem repellendus</p>
-                                                        </div>
-                                                        <div class="text d-flex">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                elit.
-                                                                Vero,
-                                                                dolorem repellendus. Incidunt totam </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>--}}
+                                        {{-- <div class="learn-this-course mb-4">
+                                             <div class="learn-course-title">
+                                                 <h4>What you will learn in this course</h4>
+                                             </div>
+                                             <div class="row">
+                                                 <div class="col-md-6">
+                                                     <div class="learn-course-text">
+                                                         <div class="text d-flex">
+                                                             <i class="fa-solid fa-circle-check"></i>
+                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                                                                 elit.
+                                                                 dolorem repellendus. Incidunt totam Lorem ipsum
+                                                                 dolor
+                                                                 sit amet. </p>
+                                                         </div>
+                                                         <div class="text d-flex">
+                                                             <i class="fa-solid fa-circle-check"></i>
+                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                                                                 elit.
+                                                                 Vero,
+                                                                 dolorem </p>
+                                                         </div>
+                                                         <div class="text d-flex">
+                                                             <i class="fa-solid fa-circle-check"></i>
+                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                                                                 elit.
+                                                                 Vero,
+                                                                 dolorem repellendus. </p>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                     <div class="learn-course-text">
+                                                         <div class="text d-flex">
+                                                             <i class="fa-solid fa-circle-check"></i>
+                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                                                                 elit.
+                                                                 Vero,
+                                                                 dolorem repellendus. Incidunt totam Lorem ipsum
+                                                                 dolor
+                                                                 sit. </p>
+                                                         </div>
+                                                         <div class="text d-flex">
+                                                             <i class="fa-solid fa-circle-check"></i>
+                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                                                                 elit.
+                                                                 Vero,
+                                                                 dolorem repellendus</p>
+                                                         </div>
+                                                         <div class="text d-flex">
+                                                             <i class="fa-solid fa-circle-check"></i>
+                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                                                                 elit.
+                                                                 Vero,
+                                                                 dolorem repellendus. Incidunt totam </p>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>--}}
 
+                                        <!-- Course Curriculum Section -->
                                         <div class="course-curriculum-area mb-4">
                                             <div class="course-curriculum-title py-4">
-                                                <h4>কোর্সের পরিপূর্ণ কারিকুলাম</h4>
+                                                <h4>কোর্সের পরিপূর্ণ কারিকুলাম :</h4>
                                             </div>
                                             <div class="main-accordian">
                                                 <div class="accordion" id="accordionPanelsStayOpenExample">
                                                     <div class="accordion-item">
                                                         <h4 class="accordion-header">
-                                                            <button class="accordion-button" type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#panelsStayOpen-collapseOne"
-                                                                    aria-expanded="true"
-                                                                    aria-controls="panelsStayOpen-collapseOne">
+                                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                                                 Modern JavaScript Programming
                                                             </button>
                                                         </h4>
-                                                        <div id="panelsStayOpen-collapseOne"
-                                                             class="accordion-collapse collapse show">
+                                                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                                             <div class="accordion-body">
                                                                 <div class="sub-accordian">
-                                                                    <div class="accordion accordion-flush"
-                                                                         id="accordionFlushExample">
+                                                                    <div class="accordion accordion-flush" id="accordionFlushExampleOne">
                                                                         <div class="accordion-item">
                                                                             <h5 class="accordion-header">
-                                                                                <button
-                                                                                    class="accordion-button collapsed"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="collapse"
-                                                                                    data-bs-target="#flush-collapseOne"
-                                                                                    aria-expanded="false"
-                                                                                    aria-controls="flush-collapseOne">
+                                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
                                                                                     Getting Started With JavaScript
                                                                                 </button>
                                                                             </h5>
-                                                                            <div id="flush-collapseOne"
-                                                                                 class="accordion-collapse collapse"
-                                                                                 data-bs-parent="#accordionFlushExample">
+                                                                            <!-- By default open section -->
+                                                                            <div id="flush-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExampleOne">
                                                                                 <div class="accordion-body">
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
+                                                                                    <div class="accordion-body-content d-flex justify-content-between mb-2">
                                                                                         <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
+                                                                                            <i class="fa-solid fa-circle-play"></i>
+                                                                                            <p>Introduction & Course Overview</p>
                                                                                         </div>
                                                                                         <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
+                                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.example.com/path-to-video">
+                                                                                                <p><i class="fa-solid fa-play"></i> ফ্রি ভিডিও</p>
                                                                                             </a>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
+                                                                                    <div class="accordion-body-content d-flex justify-content-between mb-2">
                                                                                         <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
+                                                                                            <i class="fa-solid fa-circle-play"></i>
+                                                                                            <p>JavaScript Basics</p>
                                                                                         </div>
                                                                                         <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
+                                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.example.com/path-to-video2">
+                                                                                                <p><i class="fa-solid fa-play"></i> ফ্রি ভিডিও</p>
                                                                                             </a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="panelsStayOpen-collapseOne"
-                                                             class="accordion-collapse collapse show">
-                                                            <div class="accordion-body">
-                                                                <div class="sub-accordian">
-                                                                    <div class="accordion accordion-flush"
-                                                                         id="accordionFlushExample">
+
+                                                                        <!-- Closed by default -->
                                                                         <div class="accordion-item">
                                                                             <h5 class="accordion-header">
-                                                                                <button
-                                                                                    class="accordion-button collapsed"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="collapse"
-                                                                                    data-bs-target="#flush-collapseOne"
-                                                                                    aria-expanded="false"
-                                                                                    aria-controls="flush-collapseOne">
-                                                                                    Getting Started With JavaScript
+                                                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                                                                    Advanced JavaScript Concepts
                                                                                 </button>
                                                                             </h5>
-                                                                            <div id="flush-collapseOne"
-                                                                                 class="accordion-collapse collapse"
-                                                                                 data-bs-parent="#accordionFlushExample">
+                                                                            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExampleOne">
                                                                                 <div class="accordion-body">
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
+                                                                                    <div class="accordion-body-content d-flex justify-content-between mb-2">
                                                                                         <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
+                                                                                            <i class="fa-solid fa-circle-play"></i>
+                                                                                            <p>Closures & Scope</p>
                                                                                         </div>
                                                                                         <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
+                                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.example.com/path-to-video3">
+                                                                                                <p><i class="fa-solid fa-play"></i> ফ্রি ভিডিও</p>
                                                                                             </a>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
+                                                                                    <div class="accordion-body-content d-flex justify-content-between mb-2">
                                                                                         <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
+                                                                                            <i class="fa-solid fa-circle-play"></i>
+                                                                                            <p>Lock video</p>
                                                                                         </div>
                                                                                         <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
+                                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.example.com/path-to-video3">
+                                                                                                <p><i class="fa-solid fa-lock"></i></p>
                                                                                             </a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="panelsStayOpen-collapseOne"
-                                                             class="accordion-collapse collapse show">
-                                                            <div class="accordion-body">
-                                                                <div class="sub-accordian">
-                                                                    <div class="accordion accordion-flush"
-                                                                         id="accordionFlushExample">
-                                                                        <div class="accordion-item">
-                                                                            <h5 class="accordion-header">
-                                                                                <button
-                                                                                    class="accordion-button collapsed"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="collapse"
-                                                                                    data-bs-target="#flush-collapseOne"
-                                                                                    aria-expanded="false"
-                                                                                    aria-controls="flush-collapseOne">
-                                                                                    Getting Started With JavaScript
-                                                                                </button>
-                                                                            </h5>
-                                                                            <div id="flush-collapseOne"
-                                                                                 class="accordion-collapse collapse"
-                                                                                 data-bs-parent="#accordionFlushExample">
-                                                                                <div class="accordion-body">
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course
-                                                                                                Overview</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="">
-                                                                                                <p><i
-                                                                                                        class="fa-solid fa-play"></i>
-                                                                                                    ফ্রি ভিডিও</p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+
+                                                                        <!-- More accordion items can be added similarly -->
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -407,6 +251,26 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                    <!-- Modal for Video Playback -->
+                                        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="videoModalLabel">Video Playback</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body p-0">
+                                                        <div class="ratio ratio-16x9">
+                                                            <iframe src="https://www.youtube.com/embed/BpAKmf498Oc?si=hQqgB7uyE0Y9cK3C"
+                                                                    title="YouTube video" allowfullscreen></iframe>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
 
                                         {{--<div class="who-this-course-area mb-4">
                                             <div class="title py-3">
@@ -468,13 +332,13 @@
 
                                         <div class="course-routine-area mb-4">
                                             <div class="title py-3">
-                                                <h4>Course Routine</h4>
+                                                <h4>Course Routine :</h4>
                                             </div>
                                             <div class="course-routine-form">
                                                 <table class="table table-borderless">
                                                     <thead>
                                                     <tr>
-                                                        <th scope="col">#SL</th>
+                                                        <th scope="col">SL</th>
                                                         <th scope="col">Topic</th>
                                                         <th scope="col">Date</th>
                                                         <th scope="col">Day</th>
@@ -482,76 +346,64 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @if (isset($course->courseRoutines))
-                                                            @php
-                                                                $i = 0;
-                                                            @endphp
-                                                            @foreach ($course->courseRoutines as $courseRoutine)
-                                                                @if ($courseEnrollStatus == 'true')
-                                                                    @if ($courseRoutine->is_fack == 0)
-                                                                        <tr>
-                                                                            <td>{{ ++$i }}</td>
-                                                                            <td>{{ $courseRoutine->content_name }}
-                                                                            </td>
-                                                                            <td>{{ showDate($courseRoutine->date_time) }}
-                                                                            </td>
-                                                                            <td>{{ $courseRoutine->day }}</td>
-                                                                            <td>{{ showTime($courseRoutine->date_time) }}
-                                                                            </td>
-                                                                        </tr>
-                                                                    @endif
-                                                                @else
-                                                                    @if ($courseRoutine->is_fack == 1)
-                                                                        <tr>
-                                                                            <td>{{ ++$i }}</td>
-                                                                            <td>{{ $courseRoutine->content_name }}
-                                                                            </td>
-                                                                            <td>{{ showDate($courseRoutine->date_time) }}
-                                                                            </td>
-                                                                            <td>{{ $courseRoutine->day }}</td>
-                                                                            <td>{{ showTime($courseRoutine->date_time) }}
-                                                                            </td>
-                                                                        </tr>
-                                                                    @endif
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
+                                                    @if (isset($course->courseRoutines))
+                                                        @php $i = 0; @endphp
+                                                        @foreach ($course->courseRoutines as $courseRoutine)
+                                                            @if ($courseEnrollStatus == 'true' && $courseRoutine->is_fack == 0)
+                                                                <tr>
+                                                                    <td style="width: 5%;">{{ ++$i }}</td>
+                                                                    <td style="width: 45%;">{{ $courseRoutine->content_name }}</td>
+                                                                    <td style="width: 20%;"><p>{{ \Carbon\Carbon::parse($courseRoutine->date_time)->format('j F, Y') }}</p></td>
+                                                                    <td style="width: 15%;">{{ $courseRoutine->day }}</td>
+                                                                    <td style="width: 15%;">{{ showTime($courseRoutine->date_time) }}</td>
+                                                                </tr>
+                                                            @elseif($courseEnrollStatus == 'false' && $courseRoutine->is_fack == 1)
+                                                                <tr>
+                                                                    <td style="width: 5%;">{{ ++$i }}</td>
+                                                                    <td style="width: 45%;">{{ $courseRoutine->content_name }}</td>
+                                                                    <td style="width: 20%;">{{ \Carbon\Carbon::parse($courseRoutine->date_time)->format('j F, Y') }}</td>
+                                                                    <td style="width: 15%;">{{ $courseRoutine->day }}</td>
+                                                                    <td style="width: 15%;">{{ showTime($courseRoutine->date_time) }}</td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
 
                                         <div class="course-instructor-area mb-4">
-                                             <div class="instructor-title py-3">
-                                                <h4>Course Instructor ({{ count($course->teachers) }})</h4>
+                                            <div class="instructor-title py-3">
+                                                <h4>Course Instructor ({{ count($course->teachers) }}) :</h4>
                                             </div>
                                             @foreach ($course->teachers as $teacher)
-                                             <div class="instructor-area mb-3">
-                                                <div class="instructor-img d-flex">
-                                                    <a href="{{ route('front.instructor-details', ['id' => $teacher->id, 'slug' => str_replace(' ', '-', $teacher->name)]) }}">
-                                                        <img src="{{ !empty($teacher->image) ? asset($teacher->image) : asset('frontend/man.png') }}" alt="instructor"/>
-                                                    </a>
-                                                    <div class="instructor-text">
-                                                        <h6>
-                                                            {{ isset($teacher->first_name) ? $teacher->first_name . ' ' . $teacher->last_name : $teacher->user->name }}
-                                                        </h6>
-                                                        <p>{{ $teacher->subject ?? '' }}</p>
-                                                        <div class="instructor-rating mb-2">
-                                                            <i class="fas fa-star"></i>
-                                                            <span>4.9 Course rating</span>
-                                                            <i class="fa-solid fa-people-group"></i>
-                                                            <span>Students</span>
-                                                            <i class="fa-solid fa-circle-play"></i>
-                                                            <span>Courses</span>
+                                                <div class="instructor-area mb-3">
+                                                    <div class="instructor-img d-flex">
+                                                        <a href="{{ route('front.instructor-details', ['id' => $teacher->id, 'slug' => str_replace(' ', '-', $teacher->name)]) }}">
+                                                            <img src="{{ !empty($teacher->image) ? asset($teacher->image) : asset('frontend/man.png') }}" alt="instructor"/>
+                                                        </a>
+                                                        <div class="instructor-text">
+                                                            <h6>
+                                                                {{ isset($teacher->first_name) ? $teacher->first_name . ' ' . $teacher->last_name : $teacher->user->name }}
+                                                            </h6>
+                                                            <p>{{ $teacher->subject ?? '' }}</p>
+                                                            <div class="instructor-rating mb-2">
+                                                                <i class="fas fa-star"></i>
+                                                                <span>4.9 Course rating</span>
+                                                                <i class="fa-solid fa-people-group"></i>
+                                                                <span>Students</span>
+                                                                <i class="fa-solid fa-circle-play"></i>
+                                                                <span>Courses</span>
+                                                            </div>
+                                                            <p>{!! Str::limit($teacher->description, 90) !!}</p>
                                                         </div>
-                                                        <p>{!! Str::limit($teacher->description, 90) !!}</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                           @endforeach
+                                            @endforeach
                                         </div>
 
-                                        <div class="course-rating-area mb-4">
+                                        {{--<div class="course-rating-area mb-4">
                                             <div class="title py-4">
                                                 <h4>Course Rating</h4>
                                             </div>
@@ -650,14 +502,14 @@
                                                 </div>
 
                                             </div>
-                                        </div>
+                                        </div>--}}
 
                                         <div class="student-feedback-area mb-4">
                                             <div class="feedback-top d-flex justify-content-between py-5">
                                                 <div class="title">
-                                                    <h4>Student Feedback</h4>
+                                                    <h4>Student Feedback :</h4>
                                                 </div>
-                                                <div class="dropdown-rating">
+                                                {{--<div class="dropdown-rating">
                                                     <div class="dropdown">
                                                         <button class="dropdown-toggle" type="button"
                                                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -669,27 +521,27 @@
                                                             <li><a class="dropdown-item" href="#">3</a></li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div>--}}
                                             </div>
                                             @foreach ($comments as $comment)
-                                              <div class="feedback-area mb-3">
-                                                <div class="feedback-author-img d-flex">
-                                                    <img src="{{ $comment->user && !empty($comment->user->profile_photo_path) ? asset($comment->user->profile_photo_path) : asset('frontend/man.png') }}" alt="Student" />
-                                                    <div class="feedback-text">
-                                                        <h6>{{ isset($comment->user_id) ? $comment->user->name : 'Guest' }}
-                                                            <span>{{ $comment->created_at->diffForHumans() }}</span>
-                                                        </h6>
-                                                        <div class="feedback-rating mb-2">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="far fa-star"></i>
+                                                <div class="feedback-area mb-3">
+                                                    <div class="feedback-author-img d-flex">
+                                                        <img src="{{ $comment->user && !empty($comment->user->profile_photo_path) ? asset($comment->user->profile_photo_path) : asset('frontend/man.png') }}" alt="Student" />
+                                                        <div class="feedback-text">
+                                                            <h6>{{ isset($comment->user_id) ? $comment->user->name : 'Guest' }}
+                                                                <span>{{ $comment->created_at->diffForHumans() }}</span>
+                                                            </h6>
+                                                            <div class="feedback-rating mb-2">
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="far fa-star"></i>
+                                                            </div>
+                                                            <p>{!! Str::limit($comment->message, 90) !!}</p>
                                                         </div>
-                                                        <p>{!! Str::limit($comment->message, 90) !!}</p>
                                                     </div>
                                                 </div>
-                                            </div>
                                             @endforeach
                                         </div>
 
@@ -706,7 +558,7 @@
                                                     <input type="hidden" name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}">
                                                     <input type="hidden" name="mobile" value="{{ auth()->check() ? auth()->user()->mobile : '' }}">
                                                     <div class="mb-3">
-                                                        <textarea type="text" name="message" class="form-control" id="" rows="4" aria-describedby="emailHelp"></textarea>
+                                                        <textarea type="text" name="message" class="form-control" id="" rows="4" aria-describedby="emailHelp" placeholder="Write here..." required></textarea>
                                                     </div>
                                                     <button type="submit" class="btn_warning">Submit</button>
                                                 </form>
@@ -715,44 +567,200 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="tab-content" id="pills-tabContent-instructor">
+                                <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
+                                    <div class="overview-area">
+                                        <div class="course-instructor-area mb-4">
+                                            <div class="instructor-title py-3">
+                                                <h4>Course Instructor ({{ count($course->teachers) }})</h4>
+                                            </div>
+                                            @foreach ($course->teachers as $teacher)
+                                                <div class="instructor-area mb-3">
+                                                    <div class="instructor-img d-flex">
+                                                        <a href="{{ route('front.instructor-details', ['id' => $teacher->id, 'slug' => str_replace(' ', '-', $teacher->name)]) }}">
+                                                            <img src="{{ !empty($teacher->image) ? asset($teacher->image) : asset('frontend/man.png') }}" alt="instructor"/>
+                                                        </a>
+                                                        <div class="instructor-text">
+                                                            <h6>{{ isset($teacher->first_name) ? $teacher->first_name . ' ' . $teacher->last_name : $teacher->user->name }}</h6>
+                                                            <p>{{ $teacher->subject ?? '' }}</p>
+                                                            <div class="instructor-rating mb-2">
+                                                                <i class="fas fa-star"></i>
+                                                                <span>4.9 Course rating</span>
+                                                                <i class="fa-solid fa-people-group"></i>
+                                                                <span>Students</span>
+                                                                <i class="fa-solid fa-circle-play"></i>
+                                                                <span>Courses</span>
+                                                            </div>
+                                                            <p>{!! Str::limit($teacher->description, 90) !!}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-content" id="pills-tabContent-routine">
+                                <div class="tab-pane fade" id="routine" role="tabpanel" aria-labelledby="routine-tab">
+                                    <div class="overview-area">
+                                        <div class="course-routine-area mb-4">
+                                            <div class="title py-3">
+                                                <h4>Course Routine</h4>
+                                            </div>
+                                            <div class="course-routine-form">
+                                                <table class="table table-borderless">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">SL</th>
+                                                        <th scope="col">Topic</th>
+                                                        <th scope="col">Date</th>
+                                                        <th scope="col">Day</th>
+                                                        <th scope="col">Time</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @if (isset($course->courseRoutines))
+                                                        @php $i = 0; @endphp
+                                                        @foreach ($course->courseRoutines as $courseRoutine)
+                                                            @if ($courseEnrollStatus == 'true' && $courseRoutine->is_fack == 0)
+                                                                <tr>
+                                                                    <td style="width: 5%;">{{ ++$i }}</td>
+                                                                    <td style="width: 45%;">{{ $courseRoutine->content_name }}</td>
+                                                                    <td style="width: 20%;"><p>{{ \Carbon\Carbon::parse($courseRoutine->date_time)->format('j F, Y') }}</p></td>
+                                                                    <td style="width: 15%;">{{ $courseRoutine->day }}</td>
+                                                                    <td style="width: 15%;">{{ showTime($courseRoutine->date_time) }}</td>
+                                                                </tr>
+                                                            @elseif($courseEnrollStatus == 'false' && $courseRoutine->is_fack == 1)
+                                                                <tr>
+                                                                    <td style="width: 5%;">{{ ++$i }}</td>
+                                                                    <td style="width: 45%;">{{ $courseRoutine->content_name }}</td>
+                                                                    <td style="width: 20%;">{{ \Carbon\Carbon::parse($courseRoutine->date_time)->format('j F, Y') }}</td>
+                                                                    <td style="width: 15%;">{{ $courseRoutine->day }}</td>
+                                                                    <td style="width: 15%;">{{ showTime($courseRoutine->date_time) }}</td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-content" id="pills-tabContent-review">
+                                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                    <div class="overview-area">
+                                        <div class="student-feedback-area mb-4">
+                                            <div class="feedback-top d-flex justify-content-between py-5">
+                                                <div class="title">
+                                                    <h4>Student Feedback</h4>
+                                                </div>
+                                            </div>
+                                            @foreach ($comments as $comment)
+                                                <div class="feedback-area mb-3">
+                                                    <div class="feedback-author-img d-flex">
+                                                        <img src="{{ $comment->user && !empty($comment->user->profile_photo_path) ? asset($comment->user->profile_photo_path) : asset('frontend/man.png') }}" alt="Student" />
+                                                        <div class="feedback-text">
+                                                            <h6>{{ isset($comment->user_id) ? $comment->user->name : 'Guest' }}<span>{{ $comment->created_at->diffForHumans() }}</span></h6>
+                                                            <div class="feedback-rating mb-2">
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="far fa-star"></i>
+                                                            </div>
+                                                            <p>{!! Str::limit($comment->message, 90) !!}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
                     </div>
 
                     <div class="col-md-5 col-lg-4">
                         <div class="course-cart-area">
-                            <div class="course-price d-flex justify-content-between">
-                                <h4>Tk 1499 <s>3000</s>
-                                </h4>
-                                <div class="discount">
-                                    <p>50% off</p>
+                            @php
+                                if ($course->has_discount_validity == 'true') {
+                                    $discountPrice = $course->price - $course->discount_amount;
+                                    $parcent = ($course->discount_amount / $course->price) * 100;
+                                } else {
+                                 $regular_price = $course->price;
+                                }
+                            @endphp
+
+                            {{--<div class="book-price">
+                                <div class="book-total-price">
+                                    @if ($course->has_discount_validity == 'true')
+                                        <h2>৳ {{ number_format($discountPrice) }}
+                                            <s class="text-muted">৳ {{ number_format($product->price) }}</s>
+                                            <span>({{ round($parcent) }}% Discount)</span>
+                                        </h2>
+                                    @else
+                                        <h2>৳ {{ number_format($regular_price) }}</h2>
+                                    @endif
                                 </div>
+                            </div>--}}
+
+
+
+
+                            <div class="course-price d-flex justify-content-between">
+                                @if ($course->has_discount_validity == 'true')
+                                    <h4>৳ {{ number_format($discountPrice) }} <s>৳ {{ number_format($course->price) }}</s></h4>
+                                    <div class="discount">
+                                        <p>{{ round($parcent) }}% off</p>
+                                    </div>
+                                @else
+                                    <h4>৳ {{ number_format($regular_price) }}</h4>
+                                @endif
                             </div>
-                            <div class="left-days ">
-                                <p><i class="fa-regular fa-clock"></i> 2 days left at this price ! </p>
+                            @php
+                                $admissionLastDate = \Carbon\Carbon::parse($course->admission_last_date);
+                                $now = \Carbon\Carbon::now();
+                                $daysLeft = $now->diffInDays($admissionLastDate);
+                            @endphp
+
+                            <div class="left-days">
+                                @if ($daysLeft > 0)
+                                    <p><i class="fa-regular fa-clock"></i> {{ $daysLeft }} day{{ $daysLeft > 1 ? 's' : '' }} left at this price!</p>
+                                @else
+                                    <p><i class="fa-regular fa-clock"></i> Admission deadline has passed.</p>
+                                @endif
                             </div>
+
                             <div class="course-short-description">
                                 <div class="description-column d-flex justify-content-between">
                                     <p><i class="fa-regular fa-clock"></i> Course Duration</p>
-                                    <p>6 Month</p>
+                                    <p>{{ $course->duration_in_month ?? 0 }} Month</p>
                                 </div>
                                 <div class="description-column d-flex justify-content-between">
-                                    <p><i class="fa-solid fa-signal"></i> Course Level</p>
-                                    <p>Beginner to Advance</p>
+                                    <p><i class="fa-solid fa-video"></i> Total Lecture</p>
+                                    <p>{{ $course->total_class ?? '' }}</p>
                                 </div>
                                 <div class="description-column d-flex justify-content-between">
                                     <p><i class="fa-solid fa-people-group"></i> Student Enroll</p>
-                                    <p>155,4500</p>
+                                    <p>{{ $totalStudentEnrollments }}</p>
                                 </div>
                                 <div class="description-column d-flex justify-content-between">
-                                    <p><i class="fa-solid fa-language"></i> Language</p>
-                                    <p>Manarin</p>
+                                    <p><i class="fa-solid fa-print"></i> Total Exam</p>
+                                    <p>{{ $course->total_exam ?? '' }}</p>
                                 </div>
                                 <div class="description-column d-flex justify-content-between">
-                                    <p><i class="fa-solid fa-earth-europe"></i> Subtitle Language</p>
-                                    <p>English</p>
+                                    <p><i class="fa-solid fa-person-walking-arrow-right"></i> Live class</p>
+                                    <p>{{ $course->total_live ?? '' }}</p>
                                 </div>
                             </div>
-                            <div class="coupon-code-area">
+                            {{--<div class="coupon-code-area">
                                 <div class="title">
                                     <h5>Apply Promo Code</h5>
                                 </div>
@@ -760,7 +768,7 @@
                                     <input type="text" class="promo-input" placeholder="Apply Promo Code">
                                     <button class="promo-button">Apply</button>
                                 </div>
-                            </div>
+                            </div>--}}
                             <div class="course-purchase-button">
                                 <h6>কোর্সটি কিনুন </h6>
                                 <p><span class="fw-bold">Note : </span>all course have 30-days money-back guarantee
@@ -779,6 +787,7 @@
                                 <p><i class="fa-regular fa-file"></i> English subtitles</p>
                                 <p><i class="fa-solid fa-globe"></i> 100% online course</p>
                             </div>
+                            <br>
                             <div class="cart-contact">
                                 <h5>কোর্সটি সম্পর্কে বিস্তারিত জানতে
                                     কল করুন </h5>
@@ -789,12 +798,85 @@
                 </div>
             </div>
         </section>
+
+        <section id="App_store" class="background-res background-ats py-5"
+                 style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="style-2phone-image">
+                            <img src="{{ asset('frontend') }}/assets/images/exam-page/2-mobile.png" class="img-fluid" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="download-text">
+                            <h5>ডাউনলোড করুন</h5>
+                            <h2>বিদ্যাবাড়ি App</h2>
+                        </div>
+                        <div class="rattingandflowers-area">
+                            <div class="row">
+                                <div class="col-md-4 learner-count">
+                                    <h2>50+</h2>
+                                    <p>WorldWide Learners</p>
+                                </div>
+                                <div class="col-md-4 review-count">
+                                    <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>
+                                    <p>Positive<br> Reviews</p>
+                                </div>
+                                <div class="col-md-4 courses-count">
+                                    <h2>180+</h2>
+                                    <p>Skill based Courses</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="download-hint">
+                            <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
+                                শেখা শুরু করুন আজ থেকেই</p>
+                        </div>
+                        <div class="download-store-path">
+                            <div class="app-store">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/app-store.png"
+                                         alt="App Store" srcset=""></a>
+                            </div>
+                            <div class="play-store">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/google-play.png"
+                                         alt="Google Play Store" srcset=""></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
     </main>
 @endsection
 
 @push('style')
-
+{{--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+--}}
 @endpush
 @push('script')
+   <script>
+        // Set the video URL when modal is opened
+        const videoModal = document.getElementById('videoModal');
+        videoModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const videoUrl = button.getAttribute('data-video');
+            const videoFrame = videoModal.querySelector('#videoFrame');
+            videoFrame.src = videoUrl;
+        });
 
+        // Remove the video URL when modal is closed
+        videoModal.addEventListener('hide.bs.modal', function () {
+            const videoFrame = videoModal.querySelector('#videoFrame');
+            videoFrame.src = '';
+        });
+    </script>
+{{--
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+--}}
 @endpush
