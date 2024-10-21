@@ -351,14 +351,31 @@ class BasicViewController extends Controller
 
             $this->course->has_discount_validity = 'false';
         }
-
         $totalStudentEnrollments = DB::table('course_student')->where('course_id', $course->id)->count('student_id');
 
+        $courseSec = Course::whereId($course->id)
+            ->select('id', 'title', 'slug', 'status')
+            ->with(['courseSections' => function($courseSections){
+               $courseSections->whereStatus(1)
+                   ->where('available_at', '<=', currentDateTimeYmdHi())
+                   ->orderBy('order', 'ASC')
+                   ->select('id', 'course_id', 'title', 'available_at', 'is_paid')
+                   ->with(['courseSectionContents' => function($courseSectionContents){
+                      $courseSectionContents->where('available_at_timestamp', '<=', strtotime(currentDateTimeYmdHi()))
+                          ->where('content_type', 'video')
+                          ->whereStatus(1)
+                          ->orderBy('order', 'ASC')
+                          ->get();
+            }]);
+        }])->first();
+
+        //dd($this->course);
         $this->data = [
             'course' => $this->course,
             'courseEnrollStatus' => $courseEnrollStatus,
             'comments' => $this->comments,
             'seos' => $this->seos,
+            'courseSec' => $courseSec,
             'totalStudentEnrollments' => $totalStudentEnrollments
         ];
 

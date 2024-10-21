@@ -165,84 +165,79 @@
                                                     <div class="accordion-item">
                                                         <h4 class="accordion-header">
                                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                                                Modern JavaScript Programming
+                                                                {!! $courseSec->title !!}
                                                             </button>
                                                         </h4>
                                                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                                             <div class="accordion-body">
                                                                 <div class="sub-accordian">
                                                                     <div class="accordion accordion-flush" id="accordionFlushExampleOne">
-                                                                        <div class="accordion-item">
-                                                                            <h5 class="accordion-header">
-                                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
-                                                                                    Getting Started With JavaScript
-                                                                                </button>
-                                                                            </h5>
-                                                                            <!-- By default open section -->
-                                                                            <div id="flush-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExampleOne">
-                                                                                <div class="accordion-body">
-                                                                                    <div class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Introduction & Course Overview</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.example.com/path-to-video">
-                                                                                                <p><i class="fa-solid fa-play"></i> ফ্রি ভিডিও</p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i class="fa-solid fa-circle-play"></i>
-                                                                                            <p>JavaScript Basics</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.example.com/path-to-video2">
-                                                                                                <p><i class="fa-solid fa-play"></i> ফ্রি ভিডিও</p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        @if (!empty($courseSec->courseSections))
+                                                                            @php
+                                                                                $isFirst = true;
+                                                                            @endphp
 
-                                                                        <!-- Closed by default -->
-                                                                        <div class="accordion-item">
-                                                                            <h5 class="accordion-header">
-                                                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                                                                    Advanced JavaScript Concepts
-                                                                                </button>
-                                                                            </h5>
-                                                                            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExampleOne">
-                                                                                <div class="accordion-body">
-                                                                                    <div class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Closures & Scope</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.example.com/path-to-video3">
-                                                                                                <p><i class="fa-solid fa-play"></i> ফ্রি ভিডিও</p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="accordion-body-content d-flex justify-content-between mb-2">
-                                                                                        <div class="text d-flex">
-                                                                                            <i class="fa-solid fa-circle-play"></i>
-                                                                                            <p>Lock video</p>
-                                                                                        </div>
-                                                                                        <div class="v-button">
-                                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.example.com/path-to-video3">
-                                                                                                <p><i class="fa-solid fa-lock"></i></p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                            @forelse($courseSec->courseSections as $index => $courseSection)
+                                                                                @php
+                                                                                    $videoContents = $courseSection->courseSectionContents->filter(function($content) {
+                                                                                        return $content->content_type === 'video';
+                                                                                    });
+                                                                                @endphp
 
-                                                                        <!-- More accordion items can be added similarly -->
+                                                                                    @if ($videoContents->isNotEmpty())
+                                                                                        <div class="accordion-item">
+                                                                                            <h5 class="accordion-header">
+                                                                                                <button class="accordion-button {{ $isFirst ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $index }}" aria-expanded="{{ $isFirst ? 'true' : 'false' }}" aria-controls="flush-collapse{{ $index }}">
+                                                                                                    {{ $courseSection->title ?? 'Course Section Title' }}
+                                                                                                </button>
+                                                                                            </h5>
+
+                                                                                            <div id="flush-collapse{{ $index }}" class="accordion-collapse collapse {{ $isFirst ? 'show' : '' }}" data-bs-parent="#accordionFlushExampleOne">
+                                                                                                <div class="accordion-body">
+                                                                                                    @foreach ($videoContents as $courseSectionContent)
+                                                                                                        <div class="accordion-body-content d-flex justify-content-between mb-2">
+                                                                                                            <div class="text d-flex">
+                                                                                                                <i class="fa-solid fa-circle-play"></i>
+                                                                                                                <p>{{ $courseSectionContent->title ?? 'No title' }}</p>
+                                                                                                            </div>
+
+                                                                                                        @if($courseSectionContent->is_paid == 0)
+                                                                                                            @php
+                                                                                                                $url = $courseSectionContent->video_link ?? '';
+                                                                                                                $videoId = '';
+                                                                                                                if ($url) {
+                                                                                                                    $urlComponents = parse_url($url);
+                                                                                                                    if (isset($urlComponents['query'])) {
+                                                                                                                        parse_str($urlComponents['query'], $query);
+                                                                                                                        $videoId = $query['v'] ?? '';
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            @endphp
+                                                                                                            <div class="v-button">
+                                                                                                                <a href="#" class="open-video-modal" data-video-id="{{ $videoId }}" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                                                                                                    <p><i class="fa-solid fa-play"></i> ফ্রি ভিডিও</p>
+                                                                                                                </a>
+                                                                                                            </div>
+                                                                                                            @else
+                                                                                                            <div class="v-button">
+                                                                                                                <p><i class="fa-solid fa-lock"></i></p>
+                                                                                                            </div>
+                                                                                                            @endif
+                                                                                                        </div>
+                                                                                                    @endforeach
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        @php
+                                                                                            $isFirst = false;
+                                                                                        @endphp
+                                                                                    @endif
+                                                                                @empty
+                                                                                    <p>No course sections available.</p>
+                                                                                @endforelse
+                                                                            @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -252,8 +247,7 @@
                                             </div>
                                         </div>
 
-
-                                    <!-- Modal for Video Playback -->
+                                         <!-- Modal for Video Playback -->
                                         <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                                 <div class="modal-content">
@@ -263,14 +257,12 @@
                                                     </div>
                                                     <div class="modal-body p-0">
                                                         <div class="ratio ratio-16x9">
-                                                            <iframe src="https://www.youtube.com/embed/BpAKmf498Oc?si=hQqgB7uyE0Y9cK3C"
-                                                                    title="YouTube video" allowfullscreen></iframe>
+                                                            <iframe id="videoFrame" src="" allowfullscreen allowtransparency></iframe>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         {{--<div class="who-this-course-area mb-4">
                                             <div class="title py-3">
@@ -689,7 +681,7 @@
 
                     <div class="col-md-5 col-lg-4">
                         <div class="course-cart-area">
-                            @php
+                          {{--  @php
                                 if ($course->has_discount_validity == 'true') {
                                     $discountPrice = $course->price - $course->discount_amount;
                                     $parcent = ($course->discount_amount / $course->price) * 100;
@@ -697,23 +689,6 @@
                                  $regular_price = $course->price;
                                 }
                             @endphp
-
-                            {{--<div class="book-price">
-                                <div class="book-total-price">
-                                    @if ($course->has_discount_validity == 'true')
-                                        <h2>৳ {{ number_format($discountPrice) }}
-                                            <s class="text-muted">৳ {{ number_format($product->price) }}</s>
-                                            <span>({{ round($parcent) }}% Discount)</span>
-                                        </h2>
-                                    @else
-                                        <h2>৳ {{ number_format($regular_price) }}</h2>
-                                    @endif
-                                </div>
-                            </div>--}}
-
-
-
-
                             <div class="course-price d-flex justify-content-between">
                                 @if ($course->has_discount_validity == 'true')
                                     <h4>৳ {{ number_format($discountPrice) }} <s>৳ {{ number_format($course->price) }}</s></h4>
@@ -723,7 +698,29 @@
                                 @else
                                     <h4>৳ {{ number_format($regular_price) }}</h4>
                                 @endif
+                            </div>--}}
+                            @php
+                                $discountPrice = 0;
+                                $parcent = 0;
+                                if ($course->has_discount_validity == 'true' && $course->price > 0) {
+                                    $discountPrice = $course->price - $course->discount_amount;
+                                    $parcent = ($course->discount_amount / $course->price) * 100;
+                                } else {
+                                    $regular_price = $course->price;
+                                }
+                            @endphp
+
+                            <div class="course-price d-flex justify-content-between">
+                                @if ($course->has_discount_validity == 'true' && $course->price > 0)
+                                    <h4>৳ {{ number_format($discountPrice) }} <s>৳ {{ number_format($course->price) }}</s></h4>
+                                    <div class="discount">
+                                        <p>{{ round($parcent) }}% off</p>
+                                    </div>
+                                @else
+                                    <h4>৳ {{ number_format($regular_price ?? 0) }}</h4>
+                                @endif
                             </div>
+
                             @php
                                 $admissionLastDate = \Carbon\Carbon::parse($course->admission_last_date);
                                 $now = \Carbon\Carbon::now();
@@ -770,7 +767,45 @@
                                 </div>
                             </div>--}}
                             <div class="course-purchase-button">
-                                <h6>কোর্সটি কিনুন </h6>
+
+                                @if ($course->is_paid == 1)
+                                    @if ($courseEnrollStatus == 'false')
+                                        @php
+                                            $date = date('Y-m-d H:i');
+                                        @endphp
+                                        @if ($course->admission_last_date > $date)
+                                            <a href="{{ route('front.checkout', ['type' => 'course', 'slug' => $course->slug, 'rc' => $_GET['rc'] ?? '']) }}"
+                                               class="default-btn bg-default-color mt-4"><h6>কোর্সটি কিনুন </h6></a>
+                                        @else
+                                            <a class="default-btn bg-default-color btn-block mt-4"><h6>ভর্তির সময় শেষ</h6></a>
+                                        @endif
+
+                                        <ul class="social-link">
+                                        </ul>
+                                    @elseif($courseEnrollStatus == 'pending')
+                                        <a href="javascript:void(0)" class="default-btn bg-default-color mt-2"><h4>Your Order is Pending</h4></a>
+                                    @endif
+                                @else
+                                    @if ($courseEnrollStatus == 'false')
+                                        @if (auth()->check())
+                                            <a href="" data-course-id="{{ $course->id }}"
+                                               onclick="event.preventDefault(); document.getElementById('freeCourseOrderForm').submit()"
+                                               class="default-btn bg-default-color order-free-course"> <h4>কোর্সটি করুন</h4> </a>
+                                        @else
+                                            <a href="{{ route('login') }}" data-course-id="{{ $course->id }}"
+                                               class="default-btn bg-default-color order-free-course"> <h4>কোর্সটি করুন</h4> </a>
+                                        @endif
+                                        <form
+                                            action="{{ route('front.place-free-course-order', ['course_id' => $course->id]) }}"
+                                            method="post" id="freeCourseOrderForm">
+                                            @csrf
+
+                                            <input type="hidden" name="ordered_for" value="course">
+                                        </form>
+                                    @endif
+                                @endif
+
+                                {{--<h6>কোর্সটি কিনুন </h6>--}}
                                 <p><span class="fw-bold">Note : </span>all course have 30-days money-back guarantee
                                 </p>
                             </div>
@@ -789,9 +824,8 @@
                             </div>
                             <br>
                             <div class="cart-contact">
-                                <h5>কোর্সটি সম্পর্কে বিস্তারিত জানতে
-                                    কল করুন </h5>
-                                <h4><i class="fa-solid fa-phone"></i> +8801896060800-15</h4>
+                                <h5>কোর্সটি সম্পর্কে বিস্তারিত জানতে কল করুন </h5>
+                                <h4 style="text-align: center"><i class="fa-solid fa-phone"></i> 09644433300</h4>
                             </div>
                         </div>
                     </div>
@@ -855,28 +889,27 @@
 @endsection
 
 @push('style')
-{{--
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
---}}
 @endpush
 @push('script')
-   <script>
-        // Set the video URL when modal is opened
-        const videoModal = document.getElementById('videoModal');
-        videoModal.addEventListener('show.bs.modal', function (event) {
-            const button = event.relatedTarget;
-            const videoUrl = button.getAttribute('data-video');
-            const videoFrame = videoModal.querySelector('#videoFrame');
-            videoFrame.src = videoUrl;
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var videoModal = document.getElementById('videoModal');
+        var videoFrame = document.getElementById('videoFrame');
+
+        document.querySelectorAll('.open-video-modal').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var videoId = this.getAttribute('data-video-id');
+                if (videoId) {
+                    videoFrame.src = 'https://www.youtube.com/embed/' + videoId + '?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1';
+                }
+            });
         });
 
-        // Remove the video URL when modal is closed
-        videoModal.addEventListener('hide.bs.modal', function () {
-            const videoFrame = videoModal.querySelector('#videoFrame');
+        videoModal.addEventListener('hidden.bs.modal', function () {
             videoFrame.src = '';
         });
-    </script>
-{{--
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
---}}
+    });
+</script>
+
 @endpush
