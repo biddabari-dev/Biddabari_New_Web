@@ -1,17 +1,12 @@
 @extends('frontend.master')
 
 
-@section('meta-description')@foreach($seos as $seo){{ $seo->meta_description ?? ''}}@endforeach
-@endsection
+@section('meta-description') {{ $seo->meta_description ?? ''}}@endsection
 
-@section('meta-keywords')@foreach($seos as $seo){{ $seo->meta_keywords ?? ''}}@endforeach
-@endsection
+@section('meta-keywords'){{ $seo->meta_keywords ?? ''}}@endsection
 
-@section('title')@foreach($seos as $seo){{ $seo->meta_tags ?? ''}}@endforeach
-@endsection
+@section('title'){{ $seo->meta_tags ?? ''}}@endsection
 
-@section('meta-url'){{ url()->current() }}@endsection
-@section('og-url'){{ url()->current() }}@endsection
 
 @section('body')
     <main>
@@ -76,21 +71,24 @@
                                     <p>Allready have an account ? Sign in to leave a reply</p>
                                 </div>
                                 <div class="leaveA-reply-form">
-                                    <form>
+                                    <form id="" action="{{ route('front.new-comment') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="type" value="blog">
+                                        <input type="hidden" name="parent_model_id" value="{{ $blog->id }}">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="fullName" class="form-label">Full Name</label>
-                                                    <input type="text" class="form-control icon-input" id="fullName"
+                                                    <input type="text" class="form-control icon-input" name="name" value="{{ auth()->check() ? auth()->user()->name : '' }}"
                                                         placeholder="Enter your full name"
                                                         aria-describedby="nameHelp">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="email" class="form-label">Email</label>
-                                                    <input type="email" class="form-control icon-input" id="email"
-                                                        placeholder="Enter your email" aria-describedby="emailHelp">
+                                                    <label for="email" class="form-label">Mobile</label>
+                                                    <input type="number" name="mobile" value="{{ auth()->check() ? auth()->user()->mobile : '' }}" class="form-control icon-input"
+                                                        placeholder="Enter your Mobile No." aria-describedby="emailHelp">
                                                 </div>
                                             </div>
                                         </div>
@@ -103,7 +101,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="comment" class="form-label">Comment</label>
-                                            <textarea type="text" class="form-control icon-input" id="comment"
+                                            <textarea type="text" class="form-control icon-input" name="message"
                                                 placeholder="Space for your comments" rows="3"
                                                 aria-describedby="commentHelp"></textarea>
                                         </div>
@@ -111,47 +109,25 @@
                                         <button type="submit" class="btn btn_warning">Submit</button>
                                     </form>
                                 </div>
+                                @if(!empty($comments))
                                 <div class="comments-area py-4">
                                     <div class="comment-title py-4">
                                         <h4>Comments</h4>
                                     </div>
+                                    @foreach($comments as $comment)
                                     <div class="comment mb-4">
                                         <div class="comment-author-img d-flex">
-                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                            <img src="{{ asset('frontend') }}/man.png" alt="" srcset="">
                                             <div class="name">
-                                                <h6>MM Miss Boss <span>User</span></h6>
-                                                <p>07.04.1999</p>
+                                                <h6>{{ $comment->name }} </h6>
+                                                <p>{{ date('d.m.Y',strtotime($comment->created_at)) }}</p>
                                             </div>
                                         </div>
-                                        <p>Hi Everyone, <br> Lorem ipsum dolor sit amet consectetur adipisicing
-                                            elit.
-                                            Esse
-                                            minima accusantium, sed ad odit iusto alias dolorum magnam fuga
-                                            reiciendis
-                                            aut
-                                            similique deserunt. Doloribus dolorem velit illum sit architecto quia
-                                            numquam
-                                            corrupti, neque nemo aperiam. Ipsa ex sint magnam delectus.</p>
+                                        <p>{{ $comment->message }}</p>
                                     </div>
-                                    <div class="comment mb-4">
-                                        <div class="comment-author-img d-flex">
-                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
-                                            <div class="name">
-                                                <h6>MM Miss Boss <span>User</span></h6>
-                                                <p>07.04.1999</p>
-                                            </div>
-                                        </div>
-                                        <p>Hi Everyone, <br> Lorem ipsum dolor sit amet consectetur adipisicing
-                                            elit.
-                                            Esse
-                                            minima accusantium, sed ad odit iusto alias dolorum magnam fuga
-                                            reiciendis
-                                            aut
-                                            similique deserunt. Doloribus dolorem velit illum sit architecto quia
-                                            numquam
-                                            corrupti, neque nemo aperiam. Ipsa ex sint magnam delectus.</p>
-                                    </div>
+                                    @endforeach
                                 </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-2"></div>

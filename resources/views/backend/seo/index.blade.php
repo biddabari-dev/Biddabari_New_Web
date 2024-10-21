@@ -237,7 +237,7 @@
                 $('#custom_page_link_div').addClass('d-none').attr('data-active', '');
                 $('#parent_model_div').removeClass('d-none').attr('data-active', '');
                 $.ajax({
-                    url:base_url+"select_seofor/"+$seofor,
+                    url: "/select_seofor/"+$seofor,
                     method:'GET',
                     datatype:'json',
                     success:function (data){

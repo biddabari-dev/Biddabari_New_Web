@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="title-area text-center">
-                    <h2 class="fw-bold">আমাদের <span class="">ব্লগ সমূহ 11</span> </h2>
+                    <h2 class="fw-bold">আমাদের <span class="">ব্লগ সমূহ</span> </h2>
                     <p class="text-muted">
                         প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
                         চ্চতায়। আপনার জন্য <br />প্রয়োজনীয় সব ক্যাটাগরিই রয়েছে এখানে।
@@ -22,7 +22,7 @@
                 <div class="col-md-6 mb-3 pe-lg-5">
                     <div class="blog-feature-area ">
                         <h4><span>Feature</span> This month</h4>
-                        @foreach($blogs as $blog)
+                        @foreach($recentBlogs as $blog)
                         <div class="feature-this-month-area mb-3">
                             <div class="row">
                                 <div class="col-12 col-lg-5">
@@ -63,87 +63,35 @@
                 <div class="col-md-6 ps-lg-5">
                     <div class="blog-popular-posted-area">
                         <h4><span>Popular</span> Posted</h4>
+                        @foreach($popular_blogs as $popularblog)
                         <div class="popular-posted-area mb-4">
                             <div class="row">
                                 <div class="col-12 col-lg-3">
                                     <div class="blog-feature-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/blog/blog-img.jpg" alt="" srcset="">
+                                        <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}"><img src="{{ asset(isset($popularblog->image) ? $popularblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $popularblog->title }}" srcset=""></a>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-9">
                                     <div class="blog-feature-content">
                                         <div class="blog-category mt-2">
-                                            <h6><span>Travel</span></h6>
+                                            <h6><span>{{ $popularblog->blogCategory->name }}</span></h6>
                                         </div>
                                         <div class="blog-feature-title">
-                                            <h3>সব চাকরির বাংলা বিষয়ের প্রস্তু...</h3>
+                                            <h3><a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}" class="text-black">{{ $popularblog->title }} </a></h3>
                                         </div>
                                         <div class="someText">
-                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                                            <p>{{ $popularblog->sub_title }}</p>
                                         </div>
                                         <div class="blog-datetimeby d-flex">
-                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
-                                            <p> Mizanur |</p>
-                                            <p><i class="fa-regular fa-clock"></i> 7 min. to read</p>
+                                            <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}"> <img src="" alt="" srcset=""></a>
+                                            <p> {{ $popularblog->user->name }} |</p>
+                                            <p><i class="fa-regular fa-calendar-days"></i>{{ date('d F Y',strtotime($popularblog->created_at)) }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="popular-posted-area mb-4">
-                            <div class="row">
-                                <div class="col-12 col-lg-3">
-                                    <div class="blog-feature-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/blog/blog-img.jpg" alt="" srcset="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-9">
-                                    <div class="blog-feature-content">
-                                        <div class="blog-category mt-2">
-                                            <h6><span>Travel</span></h6>
-                                        </div>
-                                        <div class="blog-feature-title">
-                                            <h3>সব চাকরির বাংলা বিষয়ের প্রস্তু...</h3>
-                                        </div>
-                                        <div class="someText">
-                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                        </div>
-                                        <div class="blog-datetimeby d-flex">
-                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
-                                            <p> Mizanur |</p>
-                                            <p><i class="fa-regular fa-clock"></i> 7 min. to read</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="popular-posted-area mb-4">
-                            <div class="row">
-                                <div class="col-12 col-lg-3">
-                                    <div class="blog-feature-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/blog/blog-img.jpg" alt="" srcset="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-9">
-                                    <div class="blog-feature-content">
-                                        <div class="blog-category mt-2">
-                                            <h6><span>Travel</span></h6>
-                                        </div>
-                                        <div class="blog-feature-title">
-                                            <h3>সব চাকরির বাংলা বিষয়ের প্রস্তু...</h3>
-                                        </div>
-                                        <div class="someText">
-                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                        </div>
-                                        <div class="blog-datetimeby d-flex">
-                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
-                                            <p> Mizanur |</p>
-                                            <p><i class="fa-regular fa-clock"></i> 7 min. to read</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

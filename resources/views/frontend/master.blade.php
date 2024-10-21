@@ -10,12 +10,12 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <meta property="description" content="@yield('meta-description')" />
         <meta property="keywords" content="@yield('meta-keywords')" />
-        <link rel="canonical" href="@yield('meta-url')" />
+        {{-- <link rel="canonical" href="@yield('meta-url')" /> --}}
+        <link rel="canonical" href="{{ request()->url() }}" />
         <!-- for facebook -->
-        <meta property="og:url" content="https://biddabari.com" />
+        <meta property="og:url" content="{{ request()->url() }}" />
         <meta property="og:description" content="" />
-        <meta property="og:image"
-            content="https://biddabari-bucket.obs.as-south-208.rcloud.reddotdigitalit.com/backend/{{ asset('frontend') }}/assets/uploaded-files/additional-features-management/site-settings/logo-1717397688866.png" />
+        <meta property="og:image" content="@yield('og-image')" />
         <meta property="og:image:width" content="200" />
         <meta property="og:image:height" content="286" />
         <meta name="facebook-domain-verification" content="g7t7phde3zn27hgjb1iaxlm67f8hdv" />
@@ -34,8 +34,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
         <!-- Add the slick-theme.css if you want default styling -->
-        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css" />
-        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css" />
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css"/>
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css"/>
         @stack('style')
     </head>
 
@@ -51,6 +51,38 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{{ asset('frontend') }}/assets/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".variable-width").slick({
+                    dots: true,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 3, // Show 3 full slides
+                    slidesToScroll: 1, // Scroll one slide at a time
+                    centerMode: false, // Remove centering
+                    arrows: true, // Enable next/previous arrows
+                    autoplay: true, // Enable auto slide
+                    autoplaySpeed: 2000, // Set speed for auto slide (2 seconds)
+
+                    responsive: [
+                        {
+                            breakpoint: 1024, // Adjust settings for screens less than 1024px
+                            settings: {
+                                slidesToShow: 2, // Show 2 slides
+                                slidesToScroll: 1,
+                            },
+                        },
+                        {
+                            breakpoint: 768, // Adjust settings for screens less than 768px
+                            settings: {
+                                slidesToShow: 1, // Show 1 slide
+                                slidesToScroll: 1,
+                            },
+                        },
+                    ],
+                });
+            });
+        </script>
         <!-- slick slide cdn -->
         <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
         <!-- Toastr Css -->

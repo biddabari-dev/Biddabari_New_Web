@@ -1,22 +1,10 @@
 @extends('frontend.master')
 
-@section('meta-description')
-    @foreach($seos as $seo){{ $seo->meta_description ?? ''}}@endforeach
-@endsection
+@section('title'){{ $seo->meta_keywords ?? $course->title}}@endsection
 
-@section('meta-keywords')
-    @foreach($seos as $seo){{ $seo->meta_keywords ?? ''}}@endforeach
-@endsection
+@section('meta-description')@section('meta-description'){{ $seo->meta_description ?? Str::limit(strip_tags($course->description), 155) }}@endsection
 
-{{--@section('meta-title')
-    @foreach($seos as $seo){{ $seo->slug ?? ''}}@endforeach
-@endsection--}}
-
-@section('title')
-    @foreach($seos as $seo){{ $seo->meta_tags ?? ''}}@endforeach
-@endsection
-
-@section('meta-url'){{ request()->url() }}@endsection
+@section('og-image'){{ $course->banner ? asset($course->banner) : '' }}@endsection
 
 @section('body')
     <main>

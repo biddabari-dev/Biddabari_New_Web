@@ -336,9 +336,10 @@ class BasicViewController extends Controller
 
         if ($this->course) {
             $this->comments = ContactMessage::where(['status' => 1, 'type' => 'course', 'parent_model_id' => $this->course->id, 'is_seen' => 1])->get();
-            $this->seos = Seo::where(['status' => 1, 'seo_for' => 'course', 'parent_model_id' => $this->course->id])->get();
+            $this->seos = Seo::where(['status' => 1, 'seo_for' => 'course', 'parent_model_id' => $this->course->id])->first();
         }
 
+<<<<<<< Updated upstream
         if (!empty($this->course->discount_start_date) && !empty($this->course->discount_end_date))
         {
             if (Carbon::now()->between(dateTimeFormatYmdHi($this->course->discount_start_date), dateTimeFormatYmdHi($this->course->discount_end_date)))
@@ -370,6 +371,8 @@ class BasicViewController extends Controller
         }])->first();
 
         //dd($this->course);
+=======
+>>>>>>> Stashed changes
         $this->data = [
             'course' => $this->course,
             'courseEnrollStatus' => $courseEnrollStatus,
@@ -475,18 +478,14 @@ class BasicViewController extends Controller
     }
 
 
-    public function allNotices ()
+    public function allNotices (Request $request)
     {
-        $this->notices = Notice::whereStatus(1)->whereType('normal')->latest()->select('id', 'notice_category_id','title', 'image', 'type', 'body', 'created_at', 'updated_at')->take(6)->get();
-        foreach ($this->notices as $notice)
-        {
-            $notice->image = asset($notice->image);
-        }
+        $this->notices = Notice::whereStatus(1)->whereType('normal')->latest()->select('id', 'notice_category_id','title', 'image', 'type', 'body', 'created_at', 'updated_at')->take(3)->get();
+
         $this->data = [
             'notices'    => $this->notices,
-//            'singleNotice'  => isset($_GET['notice-id']) ? Notice::find($_GET['notice-id']) : ''
         ];
-        return ViewHelper::checkViewForApi($this->data, 'frontend.notice.notice');
+        return view('frontend.notice.notice', $this->data);
     }
 
     public function noticeDetails($id, $slug = null)
