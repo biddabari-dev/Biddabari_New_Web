@@ -187,7 +187,7 @@ class BasicViewController extends Controller
         // Fetch the featured courses directly without looping, using only necessary fields
         $courses = Course::where('status', 1)
             ->where('is_featured', 1)
-            ->select('id', 'title', 'sub_title', 'price', 'banner', 'total_video', 'total_audio', 'total_pdf', 'total_exam', 'total_note', 'total_zip', 'total_live', 'total_link', 'total_file', 'total_written_exam', 'slug', 'discount_type', 'discount_amount', 'starting_date_time', 'admission_last_date', 'alt_text', 'banner_title')
+            ->select('id', 'title', 'sub_title', 'price', 'banner', 'total_video', 'total_audio', 'total_pdf', 'total_exam', 'total_note', 'total_zip', 'total_live', 'total_link', 'total_file', 'total_written_exam', 'slug', 'discount_type', 'discount_amount', 'starting_date_time', 'admission_last_date', 'alt_text', 'banner_title', 'discount_start_date', 'discount_end_date')
             ->orderBy('id','DESC')
             ->paginate(12);
 
@@ -269,50 +269,6 @@ class BasicViewController extends Controller
         return ViewHelper::checkViewForApi($this->data, 'frontend.courses.course-category', 'Category Not Found');
     }
 
-    /*public function courseDetails ($slug)
-    {
-
-        $course = Course::where('slug', $slug)->first();
-
-        if(empty($course)){
-            return response()->view('errors.404', [], 404);
-        }else {
-            $courseEnrollStatus = ViewHelper::checkIfCourseIsEnrolled($course);
-        }
-        dd($this->$courseEnrollStatus);
-        if ($courseEnrollStatus == 'true')
-        {
-            return redirect()->route('front.student.course-contents', ['course_id' => $course->id, 'slug' => $course->slug]);
-        } else {
-            $this->course = Course::where('slug', $slug)->with([
-                'teachers'   => function($teachers) {
-                    $teachers->select('id', 'user_id', 'subject', 'first_name', 'last_name', 'description', 'image','teacher_intro_video','github')->with(['user' => function($user){
-                    }])->get();
-                },
-                // 'courseSections' => function($courseSections) {
-                //     $courseSections->whereStatus(1)->with('courseSectionContents')->get()->except(['created_at', 'updated_at']);
-                // },
-                'courseRoutines'    => function($courseRoutines) {
-                    $courseRoutines->whereStatus(1)->get();
-                }
-            ])->first();
-            if (isset($this->course))
-            {
-                $this->comments = ContactMessage::where(['status' => 1, 'type' => 'course', 'parent_model_id' => $this->course->id, 'is_seen' => 1])->get();
-                $this->seos= Seo::where(['status' => 1, 'seo_for' => 'course', 'parent_model_id' => $this->course->id])->get();
-            }
-
-            $this->data = [
-                'course' => $this->course,
-                'courseEnrollStatus' => $courseEnrollStatus,
-                'comments'  => $this->comments,
-                'seos'  => $this->seos
-            ];
-            return ViewHelper::checkViewForApi($this->data, 'frontend.courses.details', 'Course Not Found');
-        }
-
-        return 'Something went wrong';
-    }*/
 
     public function courseDetails($slug)
     {
@@ -368,7 +324,6 @@ class BasicViewController extends Controller
                           ->get();
             }]);
         }])->first();
-
         //dd($this->course);
         $this->data = [
             'course' => $this->course,

@@ -92,7 +92,7 @@ Biddabari - All Course
                                             <i class="fas fa-star"></i>
                                             <i class="far fa-star"></i>
                                         </div>
-                                        <div class="package-exam-price">
+                                        {{--<div class="package-exam-price">
                                             @php
                                                 $discountAmount = $course->discount_type == 1  ? $course->discount_amount : ($course->price * $course->discount_amount) / 100;
                                                 $discountPrice = $course->price - (isset($discountAmount) ? $discountAmount : 0);
@@ -101,7 +101,33 @@ Biddabari - All Course
                                                 <s class="text-muted">৳ {{$course->price ?? 0 }}</s>
                                             </div>
                                             <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
+                                        </div>--}}
+
+                                        @php
+                                            $currentDate = \Carbon\Carbon::now();
+                                            $discountStartDate = \Carbon\Carbon::parse($course->discount_start_date);
+                                            $discountEndDate = \Carbon\Carbon::parse($course->discount_end_date);
+                                            $isDiscountActive = $currentDate->between($discountStartDate, $discountEndDate);
+                                            $discountAmount = ($isDiscountActive && $course->discount_type == 1)
+                                                                ? $course->discount_amount
+                                                                : (($isDiscountActive && $course->discount_type == 2)
+                                                                    ? ($course->price * $course->discount_amount) / 100
+                                                                    : 0);
+                                            $discountPrice = $course->price - $discountAmount;
+                                        @endphp
+
+                                        <div class="package-exam-price">
+
+                                            @if($isDiscountActive)
+                                                <div class="package-exam-total-price text-muted">
+                                                    <s class="text-muted">৳ {{ $course->price ?? 0 }}</s>
+                                                </div>
+                                                <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
+                                            @else
+                                                <div class="package-exam-discount-price">৳ {{ $course->price }}</div>
+                                            @endif
                                         </div>
+
                                     </div>
                                     <div class="col">
                                         <div class="package-exam-button">
