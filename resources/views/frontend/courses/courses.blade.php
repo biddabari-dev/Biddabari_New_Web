@@ -77,7 +77,7 @@ Biddabari - All Course
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="exam-package-area">
                             <div class="package-exam-image">
-                                <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img src="{{ asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $course->alt_text }}"/></a>
+                                <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img src="{{ static_asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $course->alt_text }}"/></a>
                             </div>
                             <div class="package-exam-content ms-3">
                                 <div class="package-exam-title pt-3">

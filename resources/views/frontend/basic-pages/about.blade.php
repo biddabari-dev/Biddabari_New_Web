@@ -228,7 +228,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="our-team-card">
                             <div class="our-team-image">
-                                <img src="{{ asset(file_exists_obs($ourTeam->image) ? $ourTeam->image : 'https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg' ) }}" alt="" srcset="">
+                                <img src="{{ static_asset($ourTeam->image ? $ourTeam->image : 'https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg' ) }}" alt="" srcset="" width="60%">
                             </div>
                             <div class="our-team-content">
                                 <h3>{{ $ourTeam->name ?? 'Name' }}</h3>

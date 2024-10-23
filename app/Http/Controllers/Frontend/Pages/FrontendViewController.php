@@ -390,9 +390,8 @@ class FrontendViewController extends Controller
                 'mobile'  => ['required', 'regex:/^(?:\+88|88)?(01[3-9]\d{8})$/'],
                 'message'  => 'required',
             ]);
-
             try {
-                ContactMessage::createOrUpdateContactMessage($request);
+                $data = ContactMessage::createOrUpdateContactMessage($request);
                 return back()->with('success', 'Thanks for your message.');
             } catch (\Exception $exception)
             {

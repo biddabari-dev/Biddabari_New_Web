@@ -93,7 +93,7 @@
                                         <div class="exam-package-area">
                                             <div class="package-exam-image">
                                                 <a href="{{ route('front.course-details', ['slug' => $item->slug]) }}">
-                                                    <img src="{{ asset($item->banner ? $item->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}"
+                                                    <img src="{{ static_asset($item->banner ? $item->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}"
                                                         alt="{{ $item->title }}" srcset="" />
                                                 </a>
                                             </div>
@@ -400,7 +400,7 @@
                                 <div class="exam-package-area">
                                     <div class="package-exam-image">
                                         <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img
-                                                src="{{ asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}"
+                                                src="{{ static_asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}"
                                                 alt="{{ $course->alt_text }}" /></a>
                                     </div>
                                     <div class="package-exam-content ms-3">

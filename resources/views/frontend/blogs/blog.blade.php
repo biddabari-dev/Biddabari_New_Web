@@ -27,7 +27,7 @@
                             <div class="row">
                                 <div class="col-12 col-lg-5">
                                     <div class="blog-feature-img">
-                                       <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}"> <img src="{{ asset(isset($blog->image) ? $blog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $blog->title }}" srcset=""></a>
+                                       <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}"> <img src="{{ static_asset(isset($blog->image) ? $blog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $blog->title }}" srcset=""></a>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-7">
@@ -39,7 +39,7 @@
                                             <h3>{{ $blog->title }}</h3>
                                         </div>
                                         <div class="blog-datetimeby d-flex">
-                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                            <img src="{{ static_asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
                                             <p> {{ $blog->user->name }} |</p>
                                             <p><i class="fa-regular fa-calendar-days"></i> {{ date('d F Y',strtotime($blog->created_at)) }}
                                             </p>
@@ -68,7 +68,7 @@
                             <div class="row">
                                 <div class="col-12 col-lg-3">
                                     <div class="blog-feature-img">
-                                        <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}"><img src="{{ asset(isset($popularblog->image) ? $popularblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $popularblog->title }}" srcset=""></a>
+                                        <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}"><img src="{{ static_asset(isset($popularblog->image) ? $popularblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $popularblog->title }}" srcset=""></a>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-9">
@@ -112,7 +112,7 @@
                                 <h3>৪৭ তম বিসিএস প্রস্তুতি</h3>
                             </div>
                             <div class="blog-datetimeby">
-                                <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                <img src="{{ static_asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
                                 <p> Mizanur</p>
                                 <span>|</span>
                                 <p><i class="fa-regular fa-calendar-days"></i> 07 April 199</p>
@@ -158,7 +158,7 @@
                                 <h3>৪৭ তম বিসিএস প্রস্তুতি</h3>
                             </div>
                             <div class="blog-datetimeby">
-                                <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                <img src="{{ static_asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
                                 <p> Mizanur</p>
                                 <span>|</span>
                                 <p><i class="fa-regular fa-calendar-days"></i> 07 April 199</p>

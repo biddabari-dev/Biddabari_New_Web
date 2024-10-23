@@ -82,7 +82,7 @@
                             </div>
                             <div class="notice-image">
                                 @if (isset($notice->image))
-                                    <img src="{{ asset($notice->image) }}" alt="{{ $notice->title }}" srcset="">
+                                    <img src="{{ static_asset($notice->image) }}" alt="{{ $notice->title }}" srcset="">
                                 @endif
                             </div>
                         </div>

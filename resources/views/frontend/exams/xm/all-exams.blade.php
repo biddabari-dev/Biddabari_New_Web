@@ -56,7 +56,7 @@
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="exam-package-area">
                             <div class="package-exam-image">
-                                <a href="{{ route('front.course-details', ['slug' => $exam->slug]) }}"><img src="{{ asset($exam->banner ? $exam->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $exam->alt_text }}"/></a>
+                                <a href="{{ route('front.course-details', ['slug' => $exam->slug]) }}"><img src="{{ static_asset($exam->banner ? $exam->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $exam->alt_text }}"/></a>
                             </div>
                             <div class="package-exam-content ms-3">
                                 <div class="package-exam-title pt-3">

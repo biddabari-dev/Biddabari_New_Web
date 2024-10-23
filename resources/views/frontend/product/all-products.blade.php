@@ -37,7 +37,7 @@
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="book-area">
                             <div class="book-image">
-                                <a href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}"> <img src="{{ asset(isset($product->image) ? $product->image : 'frontend/assets/images/book-page/book.png') }}" alt="{{ $product->title }}" srcset="" /> </a>
+                                <a href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}"> <img src="{{ static_asset(isset($product->image) ? $product->image : 'frontend/assets/images/book-page/book.png') }}" alt="{{ $product->title }}" srcset="" /> </a>
                             </div>
                             <div class="book-content ms-3">
                                 <div class="book-title pt-3">

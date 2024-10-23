@@ -339,7 +339,6 @@ class BasicViewController extends Controller
             $this->seos = Seo::where(['status' => 1, 'seo_for' => 'course', 'parent_model_id' => $this->course->id])->first();
         }
 
-<<<<<<< Updated upstream
         if (!empty($this->course->discount_start_date) && !empty($this->course->discount_end_date))
         {
             if (Carbon::now()->between(dateTimeFormatYmdHi($this->course->discount_start_date), dateTimeFormatYmdHi($this->course->discount_end_date)))
@@ -371,8 +370,6 @@ class BasicViewController extends Controller
         }])->first();
 
         //dd($this->course);
-=======
->>>>>>> Stashed changes
         $this->data = [
             'course' => $this->course,
             'courseEnrollStatus' => $courseEnrollStatus,

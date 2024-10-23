@@ -42,7 +42,7 @@ Biddabari - All Course
                             <div class="categories-item card">
                                 <a href="{{ route('front.free.course', ['slug' => $courseCategory->slug]) }}">
                                     <img loading="lazy"
-                                        src="{{ asset(isset($courseCategory->second_image) ? $courseCategory->second_image : 'https://biddabari-bucket.obs.as-south-208.rcloud.reddotdigitalit.com/backend/assets/uploaded-files/course/course-second-image/3-1726898624723923002583872.jpg') }}"
+                                        src="{{ static_asset($courseCategory->second_image ? $courseCategory->second_image : 'backend/assets/uploaded-files/course/course-second-image/3-1726898624723923002583872.jpg') }}"
                                         alt="Categories" class="w-100 border-0">
                                 </a>
                                 <div class="content p-2 pt-3">
