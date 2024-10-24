@@ -191,11 +191,6 @@ class BasicViewController extends Controller
             ->orderBy('id','DESC')
             ->paginate(12);
 
-        // Check if the featured courses are enrolled
-        // $courses->each(function ($course) {
-        //     $course->order_status = ViewHelper::checkIfCourseIsEnrolled($course);
-        // });
-        // Prepare the data for the view
         $this->data = [
             'courseCategories' => $this->courseCategories,
             'courses' => $courses
@@ -211,11 +206,11 @@ class BasicViewController extends Controller
 
     public function showAllExams ()
     {
-        $masterExam = BatchExam::whereIsMasterExam(1)->with('batchExamSubscriptions')->first();
-        if (isset($masterExam))
-        {
-            $masterExam->purchase_status = ViewHelper::checkUserBatchExamIsEnrollment(ViewHelper::loggedUser(), $masterExam);
-        }
+        // $masterExam = BatchExam::whereIsMasterExam(1)->with('batchExamSubscriptions')->first();
+        // if (isset($masterExam))
+        // {
+        //     $masterExam->purchase_status = ViewHelper::checkUserBatchExamIsEnrollment(ViewHelper::loggedUser(), $masterExam);
+        // }
 
         $this->examCategories = BatchExamCategory::where(['status' => 1, 'parent_id' => 0])->get();
 
@@ -224,7 +219,7 @@ class BasicViewController extends Controller
 
         $this->data = [
             'examCategories'     => $this->examCategories,
-            'masterExam'    => $masterExam,
+            // 'masterExam'    => $masterExam,
             'allExams'      => $allBatchExams
         ];
         return view('frontend.exams.xm.all-exams',$this->data);
@@ -233,7 +228,7 @@ class BasicViewController extends Controller
     public function categoryCourses ($slug)
     {
         $this->courseCategory = CourseCategory::whereSlug($slug)->select('id','name', 'parent_id', 'image', 'icon', 'slug', 'status')->with(['courses' => function($course){
-            $course->whereStatus(1)->latest()->select('id','title','price','banner','total_pdf','total_exam','total_live','discount_amount','discount_type', 'admission_last_date', 'slug','alt_text','banner_title')->get()->makeHidden('updated_at');
+            $course->whereStatus(1)->latest()->select('id','title','price','banner','discount_amount','discount_type', 'admission_last_date', 'slug','alt_text','banner_title')->get()->makeHidden('updated_at');
         },
             'courseCategories' => function($courseCategories){
                 $courseCategories->whereStatus(1)->orderBy('order','ASC')->select('id', 'parent_id','name', 'image', 'icon', 'slug', 'status')->get();
@@ -247,7 +242,7 @@ class BasicViewController extends Controller
         {
             $course->order_status = ViewHelper::checkIfCourseIsEnrolled($course);
         }
-
+       //return $this->courseCategory;
         $this->data = ['courseCategory' => $this->courseCategory];
         return ViewHelper::checkViewForApi($this->data, 'frontend.courses.course-category', 'Category Not Found');
     }
@@ -343,10 +338,18 @@ class BasicViewController extends Controller
     {
         if ($type == 'course')
         {
-            $this->course = Course::whereSlug($slug)->select('id', 'title', 'price','discount_amount', 'discount_type', 'discount_end_date_timestamp')->first();
+            $this->course = Course::whereSlug($slug)->select('id', 'title','description', 'price','discount_amount', 'discount_type', 'discount_end_date_timestamp','banner','admission_last_date')->first();
+            $courseEnrollStatus = ViewHelper::checkIfCourseIsEnrolled($this->course);
+            if ($courseEnrollStatus === 'true') {
+                return redirect()->route('front.student.course-contents', ['course_id' => $this->course->id, 'slug' => $this->course->slug]);
+            }
         } elseif ($type == 'batch_exam')
         {
             $this->course = BatchExam::whereSlug($slug)->select('id', 'title')->first();
+            $purchase_status = ViewHelper::checkUserBatchExamIsEnrollment(ViewHelper::loggedUser(), $this->course);
+            if ($purchase_status === 'true') {
+                return redirect()->route('front.student.batch-exam-contents', ['course_id' => $this->course->id, 'slug' => $this->course->slug]);
+            }
         }
 
         if (auth()->check())

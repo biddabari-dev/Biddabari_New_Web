@@ -58,7 +58,7 @@ Biddabari - Login
                                             <button type="submit" class="btn btn_warning">Submit</button>
 
                                             <div class="my-3 form-check">
-                                                <span><a href="#">Forget Password?</a></span>
+                                                <span class="text-brand"><a href="{{ route('forgot-user-password') }}">Forget Password?</a></span>
                                             </div>
                                         </form>
 

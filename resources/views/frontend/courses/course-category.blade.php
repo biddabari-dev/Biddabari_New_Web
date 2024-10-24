@@ -1,143 +1,112 @@
 @extends('frontend.master')
-
+@section('meta-url'){{ request()->url() }}@endsection
 @section('title')
-Biddabari - Course Category
+Biddabari - All Course
 @endsection
 
 @section('body')
-    <div class="container">
-        <div class="row">
-            {{-- <div class="col-md-12 mt-4">
-                <p class="bread">Home / 
-                    @if(!$courseCategory->courseCategories->isEmpty())
-                        {{ $courseCategory->name }}</p>
-                   
-                    @else
-                    @if(count($courseCategory->courses)>0)
-                        <p class="bread">{{ $courseCategory->name }} / {{ $courseCategory->name }}</p>
-                    @endif
-                    @endif
-            </div> --}}
 
-            {{-- <div class="col-md-12 mt-4">
-                <p class="">
-                    Home / 
-                    @if(!$courseCategory->courseCategories->isEmpty())
-                        {{ $courseCategory->name }}
-                    @else
-                        @if(count($courseCategory->courses) > 0)
-                            {{ $courseCategory->name }} / {{ $courseCategory->name }} কোর্স সমূহ
-                        @endif
-                    @endif
-                </p>
-            </div> --}}
-            
-        </div>
-    </div>
-    @if(!$courseCategory->courseCategories->isEmpty())
-        <div class="categories-area pb-70">
-            <div class="container">
-                <div class="section-title mb-45 text-center">
-                    <!--   <h2>কোর্স  <b>ক্যাটাগরি</b></h2>-->
-                    <h2>কোর্স <b>সমূহ</b></h2>
-                    <hr class="w-25 mx-auto bg-danger"/>
-                </div>
-                <div class="row">
-                    @foreach($courseCategory->courseCategories as $courseCategoryx)
-                        <div class="col-md-3">
-                            <div class="categories-item rounded-0" >
-                                <a href="{{ route('front.category-courses', ['slug' => $courseCategoryx->slug]) }}">
-                                    <img src="{{ asset(isset($courseCategoryx->image) ? $courseCategoryx->image : 'frontend/logo/biddabari-card-logo.jpg') }}" alt="Categories" class="w-100 border-0" style="height: 200px">
-                                </a>
-                                <div class="content">
-                                    <a href="{{ route('front.category-courses', ['slug' => $courseCategoryx->slug]) }}">
-                                        <i class="{{ $courseCategoryx->icon ?? 'flaticon-web-development' }}"></i>
-                                        <h3>{{ $courseCategoryx->name ?? 'No Title' }}</h3>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+<main>
+
+    <section id="Home_Our_courses" class="background-res-free-banner py-5"
+        style="background-image: url('{{ asset('frontend') }}/assets/images/our-courses/our-courses.png')" ;>
+        <div class="container">
+            <div class="row">
+                <div class="title-area text-center">
+                    <h2 class="fw-bold">{{ $courseCategory->name }} <span>কোর্স</span>
+                    </h2>
+                    <p class="text-muted">
+                        প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
+                        চ্চতায়।
+                    </p>
                 </div>
             </div>
-        </div>
-    @endif
-    @if(count($courseCategory->courses)>0)
-        <div class="courses-area-two section-bg pt-100 pb-70">
-            <div class="container">
-                <div class="section-title text-center mb-45">
-                    <!--   <span>কোর্স সমূহ</span>-->
-                    <h2>{{ $courseCategory->name }} কোর্স সমূহ</h2>
-                    <hr class="w-25 mx-auto bg-danger">
-                </div>
-                <div class="row">
-                    @foreach($courseCategory->courses as $course)
-                        <div class="col-lg-4 col-md-6">
-                            <div class="courses-item">
-                                <a href="{{ route('front.course-details', [ 'slug' => $course->slug]) }}">
-                                    <img src="{{ asset(file_exists_obs($course->banner) ? $course->banner : 'frontend/logo/biddabari-card-logo.jpg') }}" alt="{{ $course->alt_text }}" title="{{ $course->banner_title }}" class="w-100" style="height: 230px"/>
-                                </a>
-                                <div class="content">
-                                    <h3><a href="{{ route('front.course-details', ['slug' => $course->slug]) }}">{{ $course->title }}</a></h3>
-                                    <ul class="course-list">
-                                        {{--                                        <li><i class="ri-time-fill"></i> 06 hr</li>--}}
-                                        <li><i class="ri-vidicon-fill"></i> {{ $course->total_note ?? 0 }} lectures</li>
-                                        <li><i class="ri-file-pdf-line"></i> {{ $course->total_pdf ?? 0 }} PDF</li>
-                                        <li><i class="ri-a-b"></i> {{ $course->total_exam ?? 0 }} Exam</li>
-                                        <li><i class="ri-store-3-line"></i>{{ $course->total_live ?? 0 }} live class</li>
-                                    </ul>
 
-                                    <div class="custome_dis_course_price">
-                                        @if($course->discount_type == 1 || $course->discount_type == 2)
-                                        <span class="course-price"> ৳ <del>{{ $course->price }} </del> </span>
-                                        <span class="dis-course-amount">৳ {{ $course->price-$course->discount_amount }}</span>
-                                        @else
-                                        <span class="dis-course-amount"> ৳ {{ $course->price }} </span>
-                                        @endif
-                                    </div>
-                                    <div class="bottom-content">
-                                        <a href="{{ route('front.course-details', [ 'slug' => $course->slug]) }}" class="btn btn-warning">বিস্তারিত দেখুন</a>
-                                        <div class="rating ">
+            <div class="all-courses-area">
+                <div class="row"  id="shorting-data">
+                    @foreach ($courseCategory->courses as $course)
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="exam-package-area">
+                            <div class="package-exam-image">
+                                <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img src="{{ static_asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $course->alt_text }}"/></a>
+                            </div>
+                            <div class="package-exam-content ms-3">
+                                <div class="package-exam-title pt-3">
+                                    <h2 class="fw-bold"><a href="{{ route('front.course-details', ['slug' => $course->slug]) }}">{{ Str::limit($course->title, 40) }}</a></h2>
+                                </div>
+                                <div class="row button-and-price pb-2">
+                                    <div class="col">
+                                        <div class="package-exam-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        {{--<div class="package-exam-price">
                                             @php
-                                                $date = date('Y-m-d H:i')
+                                                $discountAmount = $course->discount_type == 1  ? $course->discount_amount : ($course->price * $course->discount_amount) / 100;
+                                                $discountPrice = $course->price - (isset($discountAmount) ? $discountAmount : 0);
                                             @endphp
-												@php
-													$discountAmount = $course->discount_type == 1 ? $course->discount_amount : ($course->price * $course->discount_amount)/100;
-													$totalAmount = $course->price - (isset($discountAmount) ? $discountAmount : 0);
-												@endphp
-                                            @if($course->order_status == 'false')
-                                                @if($course->admission_last_date > $date)
-												                 <a href="{{ route('front.checkout', ['type' => 'course', 'slug' => $course->slug]) }}"
-												class="btn btn-warning btn-block" >কোর্সটি কিনুন</a>
+                                            <div class="package-exam-total-price text-muted">
+                                                <s class="text-muted">৳ {{$course->price ?? 0 }}</s>
+                                            </div>
+                                            <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
+                                        </div>--}}
 
-                                                @else
-                                                    <a class="btn btn-warning">ভর্তির সময় শেষ</a>
-                                                @endif
-                                            @elseif($course->order_status == 'pending')
-                                                <a href="javascript:void(0)" class="text-warning">Pending</a>
-                                            @elseif($course->order_status == 'true')
-                                                <a href="javascript:void(0)" class="">Active</a>
+                                        @php
+                                            $currentDate = \Carbon\Carbon::now();
+                                            $discountStartDate = \Carbon\Carbon::parse($course->discount_start_date);
+                                            $discountEndDate = \Carbon\Carbon::parse($course->discount_end_date);
+                                            $isDiscountActive = $currentDate->between($discountStartDate, $discountEndDate);
+                                            $discountAmount = ($isDiscountActive && $course->discount_type == 1)
+                                                                ? $course->discount_amount
+                                                                : (($isDiscountActive && $course->discount_type == 2)
+                                                                    ? ($course->price * $course->discount_amount) / 100
+                                                                    : 0);
+                                            $discountPrice = $course->price - $discountAmount;
+                                        @endphp
+
+                                        <div class="package-exam-price">
+
+                                            @if($isDiscountActive)
+                                                <div class="package-exam-total-price text-muted">
+                                                    <s class="text-muted">৳ {{ $course->price ?? 0 }}</s>
+                                                </div>
+                                                <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
+                                            @else
+                                                <div class="package-exam-discount-price">৳ {{ $course->price }}</div>
+                                            @endif
+                                        </div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div class="package-exam-button">
+                                            <button class="package-exam-details"><a
+                                                    href="{{ route('front.course-details', ['slug' => $course->slug]) }}">View Details </a></button><br>
+                                            @if ($course->admission_last_date > date('Y-m-d H:i'))
+                                            <a href="{{ route('front.checkout', ['type' => 'course', 'slug' => $course->slug]) }}"><button class="custom-btn btn-12">
+                                                <span>ক্লিক করুন!</span><span>কোর্সটি কিনুন</span>
+                                            </button></a>
+                                            @else
+                                            <button class="custom-btn btn-12">
+                                                <span>সময় শেষ</span><span>ভর্তির সময় শেষ</span>
+                                            </button>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>
         </div>
-        @else
-        <div class="courses-area-two section-bg pt-100 pb-70">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="text-center">
-                            <h2>কোনো কোর্স চালু হয়নি।  খুব দ্রুত কোর্স চালু হবে। </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
+    </section>
+
+</main>
 @endsection
+@push('script')
+
+@endpush

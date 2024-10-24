@@ -43,7 +43,7 @@
                                         allowfullscreen allowtransparency>
                                     </iframe>
                                 @else
-                                    <img src="{{ asset(isset($course->banner) ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" class="w-100 img-fluid" alt="{{ $course->alt_text }}" title="{{ $course->banner_title }}">
+                                    <img src="{{ static_asset(isset($course->banner) ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" class="w-100 img-fluid" alt="{{ $course->alt_text }}" title="{{ $course->banner_title }}">
                                 @endif
 
                             </div>
@@ -82,67 +82,6 @@
                                         <div class="overview-content">
                                             <p>{!! $course->description !!}</p>
                                         </div>
-                                        {{-- <div class="learn-this-course mb-4">
-                                             <div class="learn-course-title">
-                                                 <h4>What you will learn in this course</h4>
-                                             </div>
-                                             <div class="row">
-                                                 <div class="col-md-6">
-                                                     <div class="learn-course-text">
-                                                         <div class="text d-flex">
-                                                             <i class="fa-solid fa-circle-check"></i>
-                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                 elit.
-                                                                 dolorem repellendus. Incidunt totam Lorem ipsum
-                                                                 dolor
-                                                                 sit amet. </p>
-                                                         </div>
-                                                         <div class="text d-flex">
-                                                             <i class="fa-solid fa-circle-check"></i>
-                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                 elit.
-                                                                 Vero,
-                                                                 dolorem </p>
-                                                         </div>
-                                                         <div class="text d-flex">
-                                                             <i class="fa-solid fa-circle-check"></i>
-                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                 elit.
-                                                                 Vero,
-                                                                 dolorem repellendus. </p>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <div class="col-md-6">
-                                                     <div class="learn-course-text">
-                                                         <div class="text d-flex">
-                                                             <i class="fa-solid fa-circle-check"></i>
-                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                 elit.
-                                                                 Vero,
-                                                                 dolorem repellendus. Incidunt totam Lorem ipsum
-                                                                 dolor
-                                                                 sit. </p>
-                                                         </div>
-                                                         <div class="text d-flex">
-                                                             <i class="fa-solid fa-circle-check"></i>
-                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                 elit.
-                                                                 Vero,
-                                                                 dolorem repellendus</p>
-                                                         </div>
-                                                         <div class="text d-flex">
-                                                             <i class="fa-solid fa-circle-check"></i>
-                                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                                 elit.
-                                                                 Vero,
-                                                                 dolorem repellendus. Incidunt totam </p>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>--}}
-
                                         <!-- Course Curriculum Section -->
                                         <div class="course-curriculum-area mb-4">
                                             <div class="course-curriculum-title py-4">
@@ -383,107 +322,6 @@
                                             @endforeach
                                         </div>
 
-                                        {{--<div class="course-rating-area mb-4">
-                                            <div class="title py-4">
-                                                <h4>Course Rating</h4>
-                                            </div>
-                                            <div class="rating-area">
-                                                <div class="row g-3">
-                                                    <div class="col-md-3">
-                                                        <div class="main-rating ">
-                                                            <h2>4.8</h2>
-                                                            <div class="rating mb-3">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                            </div>
-                                                            <p>Course Rating</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="rating-star">
-                                                            <div class="rating mb-2">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <span>5 Start Rating</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="rating-star">
-                                                            <div class="rating mb-2">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <span>5 Start Rating</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="rating-star">
-                                                            <div class="rating mb-2">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <span>5 Start Rating</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="rating-star">
-                                                            <div class="rating mb-2">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <span>5 Start Rating</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="rating-star">
-                                                            <div class="rating mb-2">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <span>5 Start Rating</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="progress-bar-container">
-                                                            <div class="progress-row">
-                                                                <div class="progress-bar-75"></div>
-                                                                <span class="percentage">75%</span>
-                                                            </div>
-                                                            <div class="progress-row">
-                                                                <div class="progress-bar-45"></div>
-                                                                <span class="percentage">45%</span>
-                                                            </div>
-                                                            <div class="progress-row">
-                                                                <div class="progress-bar-21"></div>
-                                                                <span class="percentage">21%</span>
-                                                            </div>
-                                                            <div class="progress-row">
-                                                                <div class="progress-bar-12"></div>
-                                                                <span class="percentage">12%</span>
-                                                            </div>
-                                                            <div class="progress-row">
-                                                                <div class="progress-bar-5"></div>
-                                                                <span class="percentage">05%</span>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>--}}
-
                                         <div class="student-feedback-area mb-4">
                                             <div class="feedback-top d-flex justify-content-between py-5">
                                                 <div class="title">
@@ -713,10 +551,15 @@
                                 $admissionLastDate = \Carbon\Carbon::parse($course->admission_last_date);
                                 $now = \Carbon\Carbon::now();
                                 $daysLeft = $now->diffInDays($admissionLastDate);
+                                $status = false;
+                                if($admissionLastDate > $now){
+                                    $status = true;
+                                }
+
                             @endphp
 
                             <div class="left-days">
-                                @if ($daysLeft > 0)
+                                @if ($status == true)
                                     <p><i class="fa-regular fa-clock"></i> {{ $daysLeft }} day{{ $daysLeft > 1 ? 's' : '' }} left at this price!</p>
                                 @else
                                     <p><i class="fa-regular fa-clock"></i> Admission deadline has passed.</p>
@@ -819,59 +662,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="App_store" class="background-res background-ats py-5"
-                 style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="style-2phone-image">
-                            <img src="{{ asset('frontend') }}/assets/images/exam-page/2-mobile.png" class="img-fluid" alt="" srcset="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="download-text">
-                            <h5>ডাউনলোড করুন</h5>
-                            <h2>বিদ্যাবাড়ি App</h2>
-                        </div>
-                        <div class="rattingandflowers-area">
-                            <div class="row">
-                                <div class="col-md-4 learner-count">
-                                    <h2>50+</h2>
-                                    <p>WorldWide Learners</p>
-                                </div>
-                                <div class="col-md-4 review-count">
-                                    <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>
-                                    <p>Positive<br> Reviews</p>
-                                </div>
-                                <div class="col-md-4 courses-count">
-                                    <h2>180+</h2>
-                                    <p>Skill based Courses</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="download-hint">
-                            <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
-                                শেখা শুরু করুন আজ থেকেই</p>
-                        </div>
-                        <div class="download-store-path">
-                            <div class="app-store">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/app-store.png"
-                                         alt="App Store" srcset=""></a>
-                            </div>
-                            <div class="play-store">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/google-play.png"
-                                         alt="Google Play Store" srcset=""></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </section>
     </main>
 @endsection

@@ -318,8 +318,6 @@ class FrontendViewController extends Controller
                 $blogCategory->select('id', 'name', 'slug')->get();
             }])->latest()->take(5)->get();
 
-
-        $this->blog->image = asset($this->blog->image);
         $this->data = [
             'blog'    => $this->blog,
             'recentBlogs'   => $this->blogs,

@@ -14,7 +14,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="book-image-area">
                             <div class="book-image d-flex">
-                                <img src="{{ asset(isset($product->image) ? $product->image : 'frontend/logo/biddabari-card-logo.jpg') }}" alt="package-image"
+                                <img src="{{ static_asset(isset($product->image) ? $product->image : 'frontend/logo/biddabari-card-logo.jpg') }}" alt="package-image"
                                     srcset="" />
                                 <div class="see-more-btn">
                                     <a href="javascript:void(0)" data-id="{{ $product->id }}" target="_blank" type="button" class="btn btn_warning show-pdf">একটু পরে দেখুন</a>
@@ -96,7 +96,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="related-book-img">
-                                                    <img src="{{ asset(isset($latestProduct->image) ? $latestProduct->image : 'frontend/assets/images/book-page/book.png') }}" alt="" srcset="">
+                                                    <img src="{{ static_asset(isset($latestProduct->image) ? $latestProduct->image : 'frontend/assets/images/book-page/book.png') }}" alt="" srcset="">
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
@@ -145,7 +145,7 @@
                         <div class="col-md-6 col-lg-3 mb-4">
                             <div class="book-area">
                                 <div class="book-image">
-                                    <a href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}"> <img src="{{ asset(isset($product->image) ? $product->image : 'frontend/assets/images/book-page/book.png') }}" alt="{{ $product->title }}" srcset="" /> </a>
+                                    <a href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}"> <img src="{{ static_asset(isset($product->image) ? $product->image : 'frontend/assets/images/book-page/book.png') }}" alt="{{ $product->title }}" srcset="" /> </a>
                                 </div>
                                 <div class="book-content ms-3">
                                     <div class="book-title pt-3">
@@ -195,90 +195,88 @@
             </div>
         </div>
     </section>
+</main>
 
-    <section id="App_store" class="background-res background-ats py-5"
-        style="background-image: url('{{ asset('frontend')}}/assets/images/exam-page/footer-background.png')">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="style-2phone-image">
-                        <img src="{{ asset('frontend')}}/assets/images/exam-page/2-mobile.png" class="img-fluid" alt="" srcset="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="download-text">
-                        <h5>ডাউনলোড করুন</h5>
-                        <h2>বিদ্যাবাড়ি App</h2>
-                    </div>
-                    <div class="rattingandflowers-area">
-                        <div class="row">
-                            <div class="col-md-4 learner-count">
-                                <h2>50+</h2>
-                                <p>WorldWide Learners</p>
-                            </div>
-                            <div class="col-md-4 review-count">
-                                <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>
-                                <p>Positive<br> Reviews</p>
-                            </div>
-                            <div class="col-md-4 courses-count">
-                                <h2>180+</h2>
-                                <p>Skill based Courses</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="download-hint">
-                        <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
-                            শেখা শুরু করুন আজ থেকেই</p>
-                    </div>
-                    <div class="download-store-path">
-                        <div class="app-store">
-                            <a href="#">
-                                <img class="img-fluid" src="{{ asset('frontend')}}/assets/images/exam-page/app-store.png"
-                                    alt="App Store" srcset=""></a>
-                        </div>
-                        <div class="play-store">
-                            <a href="#">
-                                <img class="img-fluid" src="{{ asset('frontend')}}/assets/images/exam-page/google-play.png"
-                                    alt="Google Play Store" srcset=""></a>
-                        </div>
-                    </div>
-
-                </div>
+<section id="App_store" class="background-res background-ats py-5"
+style="background-image: url('{{ asset('frontend')}}/assets/images/exam-page/footer-background.png')">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="style-2phone-image">
+                <img src="{{ asset('frontend')}}/assets/images/exam-page/2-mobile.png" class="img-fluid" alt="" srcset="">
             </div>
         </div>
-
-    </section>
-    {{-- Pdf Modal --}}
-    <div style="margin-top:80px" class="modal fade show-pdf-modal" id="pdfModal" data-bs-backdrop="static"
-        data-modal-parent="courseContentModal">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <button type="button" class="btn-close position-absolute top-0 end-0" data-bs-dismiss="modal"
-                    onclick="close_video()" aria-label="Close"></button>
-                <div class="modal-body p-0">
-                    <div class="card card-body p-0" id="pdfContentPrintDiv">
-                        <div class="my-box pe-3 mx-auto">
-                            <div id="pdf-container">
-                                <div id="zoom-controls" class="text-center">
-                                    <button id="zoom-out" class="btn btn-sm btn-info"><i
-                                            class="fa fa-minus"></i></button>
-                                    <button id="zoom-in" class="btn btn-sm btn-primary"><i
-                                            class="fa fa-plus"></i></button>
-                                    <button id="zoom-reset" class="btn btn-sm btn-secondary">Reset Zoom</button>
-                                    <span id="zoom-percent">100</span>
-                                </div>
-                                <div id="pages"></div>
-                            </div>
-                            {{-- <div id="pspdfkit" style="width: 100%; height: 100vh"></div> --}}
-
-                        </div>
+        <div class="col-md-6">
+            <div class="download-text">
+                <h5>ডাউনলোড করুন</h5>
+                <h2>বিদ্যাবাড়ি App</h2>
+            </div>
+            <div class="rattingandflowers-area">
+                <div class="row">
+                    <div class="col-md-4 learner-count">
+                        <h2>50+</h2>
+                        <p>WorldWide Learners</p>
                     </div>
+                    <div class="col-md-4 review-count">
+                        <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>
+                        <p>Positive<br> Reviews</p>
+                    </div>
+                    <div class="col-md-4 courses-count">
+                        <h2>180+</h2>
+                        <p>Skill based Courses</p>
+                    </div>
+                </div>
+            </div>
+            <div class="download-hint">
+                <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
+                    শেখা শুরু করুন আজ থেকেই</p>
+            </div>
+            <div class="download-store-path">
+                <div class="app-store">
+                    <a href="#">
+                        <img class="img-fluid" src="{{ asset('frontend')}}/assets/images/exam-page/app-store.png"
+                            alt="App Store" srcset=""></a>
+                </div>
+                <div class="play-store">
+                    <a href="#">
+                        <img class="img-fluid" src="{{ asset('frontend')}}/assets/images/exam-page/google-play.png"
+                            alt="Google Play Store" srcset=""></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</section>
+{{-- Pdf Modal --}}
+<div style="margin-top:80px" class="modal fade show-pdf-modal" id="pdfModal" data-bs-backdrop="static"
+data-modal-parent="courseContentModal">
+<div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+        <button type="button" class="btn-close position-absolute top-0 end-0" data-bs-dismiss="modal"
+            onclick="close_video()" aria-label="Close"></button>
+        <div class="modal-body p-0">
+            <div class="card card-body p-0" id="pdfContentPrintDiv">
+                <div class="my-box pe-3 mx-auto">
+                    <div id="pdf-container">
+                        <div id="zoom-controls" class="text-center">
+                            <button id="zoom-out" class="btn btn-sm btn-info"><i
+                                    class="fa fa-minus"></i></button>
+                            <button id="zoom-in" class="btn btn-sm btn-primary"><i
+                                    class="fa fa-plus"></i></button>
+                            <button id="zoom-reset" class="btn btn-sm btn-secondary">Reset Zoom</button>
+                            <span id="zoom-percent">100</span>
+                        </div>
+                        <div id="pages"></div>
+                    </div>
+                    {{-- <div id="pspdfkit" style="width: 100%; height: 100vh"></div> --}}
+
                 </div>
             </div>
         </div>
     </div>
-</main>
-
+</div>
+</div>
 @endsection
 @push('style')
 <style>

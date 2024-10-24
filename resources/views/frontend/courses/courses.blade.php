@@ -28,7 +28,7 @@ Biddabari - All Course
         <div class="container">
             <div class="row">
                 <div class="title-area text-center">
-                    <h2 class="fw-bold">আমাদের <span>কোর্সসমুহ</span>
+                    <h2 class="fw-bold">আমাদের <span>কোর্স</span>
                     </h2>
                     <p class="text-muted">
                         প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
@@ -167,59 +167,6 @@ Biddabari - All Course
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="App_store" class="background-res background-ats py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="style-2phone-image">
-                        <img src="{{ asset('frontend') }}/assets/images/exam-page/2-mobile.png" class="img-fluid" alt="" srcset="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="download-text">
-                        <h5>ডাউনলোড করুন</h5>
-                        <h2>বিদ্যাবাড়ি App</h2>
-                    </div>
-                    <div class="rattingandflowers-area">
-                        <div class="row">
-                            <div class="col-md-4 learner-count">
-                                <h2>50+</h2>
-                                <p>WorldWide Learners</p>
-                            </div>
-                            <div class="col-md-4 review-count">
-                                <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>
-                                <p>Positive<br> Reviews</p>
-                            </div>
-                            <div class="col-md-4 courses-count">
-                                <h2>180+</h2>
-                                <p>Skill based Courses</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="download-hint">
-                        <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
-                            শেখা শুরু করুন আজ থেকেই</p>
-                    </div>
-                    <div class="download-store-path">
-                        <div class="app-store">
-                            <a href="#">
-                                <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/app-store.png"
-                                    alt="App Store" srcset=""></a>
-                        </div>
-                        <div class="play-store">
-                            <a href="#">
-                                <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/google-play.png"
-                                    alt="Google Play Store" srcset=""></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
     </section>
 
 </main>

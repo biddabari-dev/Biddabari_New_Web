@@ -47,8 +47,7 @@
                                 <div class="blog-slide">
                                     <div class="blog-slide-images">
                                         <a href="">
-                                            <img src="{{ asset('frontend') }}/assets/images/blog/blog-slid-img.jpg" alt="" srcset="">
-                                            {{-- <img src="{{ asset(isset($blog->image) ? $blog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $blog->title }}" srcset=""> --}}
+                                            <img src="{{ static_asset($blog->image ? $blog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="" srcset="">
                                         </a>
                                     </div>
                                 </div>
@@ -174,7 +173,7 @@
                                         <div class="row">
                                             <div class="col-12 col-lg-5">
                                                 <div class="blog-feature-img">
-                                                <a href="{{ route('front.blog-details', ['slug' => $recentblog->slug]) }}"> <img src="{{ asset(isset($recentblog->image) ? $recentblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $recentblog->title }}" srcset=""></a>
+                                                <a href="{{ route('front.blog-details', ['slug' => $recentblog->slug]) }}"> <img src="{{ static_asset(isset($recentblog->image) ? $recentblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $recentblog->title }}" srcset=""></a>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-7">
@@ -186,7 +185,7 @@
                                                         <h3>{{ $recentblog->title }}</h3>
                                                     </div>
                                                     <div class="blog-datetimeby d-flex">
-                                                        <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                                        <img src="{{ static_asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
                                                         <p> {{ $recentblog->user->name }} |</p>
                                                         <p><i class="fa-regular fa-calendar-days"></i> {{ date('d F Y',strtotime($recentblog->created_at)) }}
                                                         </p>
@@ -214,7 +213,7 @@
                                         <div class="row">
                                             <div class="col-12 col-lg-3">
                                                 <div class="blog-feature-img">
-                                                    <img src="{{ asset(isset($recentblog->image) ? $recentblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $recentblog->title }}" srcset="">
+                                                    <img src="{{ static_asset(isset($recentblog->image) ? $recentblog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" alt="{{ $recentblog->title }}" srcset="">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-9">
@@ -229,7 +228,7 @@
                                                         <p>{{ $recentblog->sub_title }}</p>
                                                     </div>
                                                     <div class="blog-datetimeby d-flex">
-                                                        <img src="{{ asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                                        <img src="{{ static_asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
                                                         <p> {{ $recentblog->user->name }} |</p>
                                                         <p><i class="fa-regular fa-calendar-days"></i> {{ date('d F Y',strtotime($recentblog->created_at)) }}</p>
                                                     </div>
