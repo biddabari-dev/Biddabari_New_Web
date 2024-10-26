@@ -71,13 +71,16 @@ style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/fo
                     <div class="footer-social-media-area">
                         <div class="social-media-icon">
                             <div class="linkedin-icon">
-                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://www.linkedin.com/in/biddabari" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                             </div>
                             <div class="facebook-icon">
-                                <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                                <a href="https://www.facebook.com/biddaabari" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
                             </div>
                             <div class="twiter-icon">
-                                </a><a href=""><i class="fa-brands fa-twitter"></i></a>
+                                </a><a href="https://www.linkedin.com/in/biddabari" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                            </div>
+                            <div class="twiter-icon">
+                                </a><a href="https://www.youtube.com/@biddabari" target="_blank"><i class="fa-brands fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -102,7 +105,7 @@ style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/fo
                                 <h3>Resources</h3>
                                 <ul>
                                     <li><a href="{{ route('front.all-courses') }}">Courses</li></a>
-                                    <li><a href="bl{{ route('front.all-blogs') }}">Our Blog</li></a>
+                                    <li><a href="{{ route('front.all-blogs') }}">Our Blog</li></a>
                                     <li><a href="{{ route('front.terms-conditions') }}">Terms & Conditions</li></a>
                                     <li><a href="{{ route('front.privacy-policy') }}">Privacy Policy</li></a>
                                 </ul>
