@@ -48,9 +48,8 @@
                                         @if (isset($notices[0]->image))
                                             <div class="row">
                                                 <div class="mx-auto">
-                                                    {{-- <div id="pdf-container" data-link="{{ asset($notices[0]->image) }}"
-                                                        style="width: 100%; height: 800px;"></div> --}}
-                                                        <pdf-viewer src="{{ asset($notices[0]->image) }}"></pdf-viewer>
+                                                    <div id="pdf-container" data-link="{{ asset($notices[0]->image) }}"
+                                                        style="width: 100%; height: 800px;"></div>
                                                 </div>
                                             </div>
                                         @endif
@@ -114,46 +113,7 @@
 
 <!-- Adobe PDF Viewer SDK -->
 <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
-<script>
-    const template = document.createElement("template");
-    template.innerHTML = `
-    <iframe frameborder="0"
-        width="825"
-        height="900">
-    </iframe>
-    `;
 
-class PdfViewer extends HTMLElement {
-  constructor() {
-    super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
-    shadowRoot.appendChild(template.content.cloneNode(true));
-  }
-  get observedAttributes() {
-    return ["src"];
-  }
-  connectedCallback() {
-    this.updateIframeSrc();
-  }
-  attributeChangedCallback(name) {
-    if (["src", "viewerPath"].includes(name)) {
-      this.updateIframeSrc();
-    }
-  }
-  updateIframeSrc() {
-    this.shadowRoot
-      .querySelector("iframe")
-      .setAttribute(
-        "src",
-        `https://mozilla.github.io/pdf.js/web/viewer.html?file=${
-          this.getAttribute("src") || ""
-        }`
-      );
-  }
-}
-window.customElements.define("pdf-viewer", PdfViewer);
-
-</script>
 <script>
     $(document).ready(function() {
         // Wait for the Adobe SDK to be loaded

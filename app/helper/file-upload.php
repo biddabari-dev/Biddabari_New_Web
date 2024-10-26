@@ -200,3 +200,19 @@ function moveFile($file, $directory)
     $file->move($destinationPath, $fileName);
     return $directory . $fileName;
 }
+
+if (!function_exists('static_asset')) {
+    /**
+     * Generate an asset path for the application.
+     *
+     * @param string $path
+     * @param bool|null $secure
+     * @return string
+     */
+    function static_asset($path, $secure = null)
+    {
+        $bucketUrl = env('BUCKET_URL');
+        $bucketUrl = rtrim($bucketUrl, '/') . '/';
+        return $bucketUrl . ltrim($path, '/');
+    }
+}

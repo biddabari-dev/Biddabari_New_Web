@@ -1021,8 +1021,6 @@
             });
         });
     </script>
-    </script>
-
 
     <script>
         function LoadCss(url) {

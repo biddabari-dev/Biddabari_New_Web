@@ -28,7 +28,7 @@ Biddabari - All Course
         <div class="container">
             <div class="row">
                 <div class="title-area text-center">
-                    <h2 class="fw-bold">আমাদের <span>কোর্সসমুহ</span>
+                    <h2 class="fw-bold">আমাদের <span>কোর্স</span>
                     </h2>
                     <p class="text-muted">
                         প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
@@ -77,7 +77,7 @@ Biddabari - All Course
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="exam-package-area">
                             <div class="package-exam-image">
-                                <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img src="{{ asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $course->alt_text }}"/></a>
+                                <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img src="{{ static_asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $course->alt_text }}"/></a>
                             </div>
                             <div class="package-exam-content ms-3">
                                 <div class="package-exam-title pt-3">
@@ -92,7 +92,7 @@ Biddabari - All Course
                                             <i class="fas fa-star"></i>
                                             <i class="far fa-star"></i>
                                         </div>
-                                        <div class="package-exam-price">
+                                        {{--<div class="package-exam-price">
                                             @php
                                                 $discountAmount = $course->discount_type == 1  ? $course->discount_amount : ($course->price * $course->discount_amount) / 100;
                                                 $discountPrice = $course->price - (isset($discountAmount) ? $discountAmount : 0);
@@ -101,7 +101,33 @@ Biddabari - All Course
                                                 <s class="text-muted">৳ {{$course->price ?? 0 }}</s>
                                             </div>
                                             <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
+                                        </div>--}}
+
+                                        @php
+                                            $currentDate = \Carbon\Carbon::now();
+                                            $discountStartDate = \Carbon\Carbon::parse($course->discount_start_date);
+                                            $discountEndDate = \Carbon\Carbon::parse($course->discount_end_date);
+                                            $isDiscountActive = $currentDate->between($discountStartDate, $discountEndDate);
+                                            $discountAmount = ($isDiscountActive && $course->discount_type == 1)
+                                                                ? $course->discount_amount
+                                                                : (($isDiscountActive && $course->discount_type == 2)
+                                                                    ? ($course->price * $course->discount_amount) / 100
+                                                                    : 0);
+                                            $discountPrice = $course->price - $discountAmount;
+                                        @endphp
+
+                                        <div class="package-exam-price">
+
+                                            @if($isDiscountActive)
+                                                <div class="package-exam-total-price text-muted">
+                                                    <s class="text-muted">৳ {{ $course->price ?? 0 }}</s>
+                                                </div>
+                                                <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
+                                            @else
+                                                <div class="package-exam-discount-price">৳ {{ $course->price }}</div>
+                                            @endif
                                         </div>
+
                                     </div>
                                     <div class="col">
                                         <div class="package-exam-button">
@@ -141,59 +167,6 @@ Biddabari - All Course
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="App_store" class="background-res background-ats py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="style-2phone-image">
-                        <img src="{{ asset('frontend') }}/assets/images/exam-page/2-mobile.png" class="img-fluid" alt="" srcset="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="download-text">
-                        <h5>ডাউনলোড করুন</h5>
-                        <h2>বিদ্যাবাড়ি App</h2>
-                    </div>
-                    <div class="rattingandflowers-area">
-                        <div class="row">
-                            <div class="col-md-4 learner-count">
-                                <h2>50+</h2>
-                                <p>WorldWide Learners</p>
-                            </div>
-                            <div class="col-md-4 review-count">
-                                <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>
-                                <p>Positive<br> Reviews</p>
-                            </div>
-                            <div class="col-md-4 courses-count">
-                                <h2>180+</h2>
-                                <p>Skill based Courses</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="download-hint">
-                        <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
-                            শেখা শুরু করুন আজ থেকেই</p>
-                    </div>
-                    <div class="download-store-path">
-                        <div class="app-store">
-                            <a href="#">
-                                <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/app-store.png"
-                                    alt="App Store" srcset=""></a>
-                        </div>
-                        <div class="play-store">
-                            <a href="#">
-                                <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/google-play.png"
-                                    alt="Google Play Store" srcset=""></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
     </section>
 
 </main>

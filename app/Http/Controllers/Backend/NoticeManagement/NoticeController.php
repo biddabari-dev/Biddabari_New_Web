@@ -45,7 +45,7 @@ class NoticeController extends Controller
             'notice_category_id'    => 'required',
             'type'                  => 'required',
             'title'                 => 'required',
-            'image'                 => 'required|file|mimes:pdf',
+            'image'                 => 'required',
         ]);
         Notice::createOrUpdateNotice($request);
         return back()->with('success', 'Notice Created Successfully');
@@ -85,7 +85,6 @@ class NoticeController extends Controller
             'notice_category_id'    => 'required',
             'type'                  => 'required',
             'title'                 => 'required',
-            'image'                 => 'required|file|mimes:pdf',
         ]);
         Notice::createOrUpdateNotice($request, $id);
         return back()->with('success', 'Notice Updated Successfully');

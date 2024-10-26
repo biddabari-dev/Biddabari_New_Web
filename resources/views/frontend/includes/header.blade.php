@@ -3,13 +3,17 @@
         <div class="container">
             <div class="mobile-menu d-flex justify-content-between align-items-center">
                 <div class="main-logo">
-                    <a href="index.html"><img src="{{ asset('frontend') }}/assets/images/logo/biddabari-logo.png" alt="Logo"
+                    <a href="{{ route('front.home') }}"><img src="{{ asset('frontend') }}/assets/images/logo/biddabari-logo.png" alt="Logo"
                             srcset=""></a>
                 </div>
 
                 <div class="moblie-icon">
                     <div class="nav-item login-button">
-                        <a href="sign-in.html" type="button" class="btn btn_warning">Login</a>
+                        @if(auth()->check())
+                        <a href="{{ route('dashboard') }}" type="button" class="btn btn_warning">Dashboard</a>
+                        @else
+                        <a href="{{ route('login') }}" type="button" class="btn btn_warning">Login</a>
+                        @endif
                     </div>
                     <div>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -38,7 +42,7 @@
                         </form>
                     </div>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="{{ route('front.home') }}">হোম</a>
+                        <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="{{ route('front.home') }}">হোম </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('course') ? 'active' : '' }}" href="{{ route('front.all-courses') }}">কোর্সসমূহ</a>
@@ -59,17 +63,7 @@
                         <a class="nav-link {{ request()->is('product') ? 'active' : '' }}" href="{{ route('front.all-products') }}">বই</a>
                     </li>
                 </ul>
-                <form class="search_button_area" action="">
-                    <div class="input-group">
-                        <span class="input-group-text border-0">
-                            <button class="" type="submit">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </span>
-                        <input type="text" class="form-control border-0 shadow-none"
-                            placeholder="Search courses" name="search" />
-                    </div>
-                </form>
+
                 @if(auth()->check())
                 <a href="#" class="border-radius-50" data-bs-toggle="dropdown">
                     <img src="{{ asset('frontend/man.png') }}" width="50" alt="login image">

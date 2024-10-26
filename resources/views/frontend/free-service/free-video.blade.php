@@ -9,7 +9,7 @@
         <div class="container">
             <div class="col-12 mb-4">
                 <div class="section-title text-center">
-                    <h2 class="">{{ $category->name }}<span class="test-danger f-s-24"
+                    <h2 class="">{{ $category->name }}<span class="text-brand f-s-24"
                             style="display:inline; margin:0; padding: 0;"> প্রস্তুতি </span> </h2>
                     <hr class="w-25 mx-auto bg-danger" />
                 </div>
@@ -17,18 +17,15 @@
 
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-8 ms-auto">
                     <ul class="nav nav-pills all-course-page-nav-pills text-center">
-                        <li class="nav-item mb-3">
-                            <button class="nav-link active border-danger btn py-0 mx-2 text-dark" style="border: 1px solid"
-                                data-bs-toggle="pill" data-bs-target="#freeClass">
+                        <li class="nav-item mb-3 me-2">
+                            <button class="nav-link btn text-white bg-brand" data-bs-toggle="pill" data-bs-target="#freeClass">
                                 <span class="f-s-30 f-s-24">ফ্রি ক্লাস করুন</span>
                             </button>
                         </li>
                         <li class="nav-item mb-3">
-                            <button class="nav-link border-danger btn py-0 mx-2 text-dark"
-                                style="border: 1px solid #F18C53;" data-bs-toggle="pill"
-                                data-bs-target="#freeExams">
+                            <button class="nav-link btn text-white bg-brand"  data-bs-toggle="pill" data-bs-target="#freeExams">
                                 <span class="f-s-30 f-s-24">ফ্রি পরীক্ষা দিন</span>
                             </button>
                         </li>
@@ -92,7 +89,7 @@
                                             <div class="courses-item pb-0">
                                                 <img src="{{ !empty($batchExam->banner) ? asset($batchExam->banner) : asset('/frontend/logo/biddabari-card-logo.jpg') }}"
                                                     alt="Batch Exams" class="w-100" style="height: 230px" />
- 
+
                                                 <div class="courses-item">
                                                     <div class="content">
                                                         <div class=" pt-3">

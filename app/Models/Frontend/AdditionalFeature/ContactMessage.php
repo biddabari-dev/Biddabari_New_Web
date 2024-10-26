@@ -50,18 +50,21 @@ class ContactMessage extends Model
 
     public static function createOrUpdateContactMessage ($request, $contactId = null)
     {
+
         $loggedUser = ViewHelper::loggedUser();
-        static::updateOrCreate(['id' => $contactId], [
-            'user_id'   => $loggedUser->id,
+
+       $data = static::updateOrCreate(['id' => $contactId], [
+            'user_id'   => $loggedUser->id ?? null,
             'parent_model_id'   => isset($request->parent_model_id) ? $request->parent_model_id : 0,
             'batch_exam_section_content_id' => isset($request->batch_exam_section_content_id) ? $request->batch_exam_section_content_id : null,
             'type'  => $request->type,
-            'subject'   => $request->subject,
+            'subject'   => $request->subject ?? null,
             'name'  => $request->name,
-            'email' => $request->email,
+            'email' => $request->email ?? null,
             'mobile'    => $request->mobile,
             'message'   => $request->message,
         ]);
+
     }
 
     public function user()

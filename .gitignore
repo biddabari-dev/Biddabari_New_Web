@@ -17,5 +17,3 @@ yarn-error.log
 *.log
 *.zip
 *.iml
-/storage
-/app/Providers/AppServiceProvider.php

@@ -39,6 +39,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        return $request;
         abort_if(Gate::denies('store-contact'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         //
     }

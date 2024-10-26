@@ -1,30 +1,104 @@
 @extends('frontend.master')
-
+@section('title'){{ 'Biddabari | Guidline'}}@endsection
 @section('body')
     {{\Illuminate\Support\Facades\Session::put('course_redirect_url',\Illuminate\Support\Facades\Request::url())}}
+    <main>
+        <section class="background-res background-ats py-5"
+            style="background-image: url('{{ asset('frontend') }}/assets/images/blog/blog-bg-1.png')">
 
+            <section id="Guideline">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col-lg-12">
 
-    <div class="privacy-policy-area py-5">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2 class="f-s-40"> গাইড লাইন </h2>
-                <hr class="w-25 mx-auto bg-danger"/>
-            </div>
-            <div class="row p-t-20">
-                <div class="col-lg-12">
-
-                  <div class="card ab-shadow">
-                      <div class="single-content py-3 pb-5 px-3 ">
-                          <h2 class="f-s-37 mb-0">আপনার সফলতার গল্প শুরু হোক এখানেই</h2>
-                          <p class="f-s-18"><a href="https://www.youtube.com/watch?v=NjqjVdVJX1g">যেভাবে ভর্তি হবেন</a></p>
-                          <p class="f-s-17">আপনি যে কোর্সে ভর্তি হতে চাচ্ছেন সেই কোর্সে ক্লিক করুন। ভর্তি হতে <strong>এখানে ক্লিক করুন</strong> বাটনে ক্লিক করে টাকা পেমেন্ট করে রিকুয়েস্ট পাঠান । বিদ্যাবাড়ি টীম থেকে আপনাকে কনফার্ম করে আপনার মোবাইলে ম্যাসেজ দেবে। এর পরে আপনার নির্ধারিত ব্যাচে প্রবেশ করে সকল সার্ভিস গ্রহণ করুন। ধন্যবাদ ......</p>
-                          <p class="f-s-17">আপনাকে সফল করতে বিদ্যাবাড়ি আছে আপনার পাশে।</p>
-                      </div>
-                  </div>
-
+                            <div class="title-area text-center">
+                                <h2 class="fw-bold">গাইড <span>লাইন </span></h2>
+                                <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য উচ্চতায়। আপনার জন্য
+                                    <br>
+                                    প্রয়োজনীয় সব ক্যাটাগরিই রয়েছে এখানে। বেছে নিন আপনার সবচেয়ে পছন্দের কোর্সটি।
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="guideline-card-area">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 mb-4">
+                                <div class="guideline-area">
+                                    <div class="guideline-video">
+                                        <div class="ratio ratio-16x9">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/NjqjVdVJX1g?si=FGIm8sipLMLOwaQX"
+                                                title="YouTube video" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="guideline-content">
+                                        <h6>Most Recent</h6>
+                                        <h3>How To Apply In BCS Exam</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-4">
+                                <div class="guideline-area">
+                                    <div class="guideline-video">
+                                        <div class="ratio ratio-16x9">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/NjqjVdVJX1g?si=FGIm8sipLMLOwaQX"
+                                                title="YouTube video" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="guideline-content">
+                                        <h6>Most Recent</h6>
+                                        <h3>How To Apply In BCS Exam</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-4">
+                                <div class="guideline-area">
+                                    <div class="guideline-video">
+                                        <div class="ratio ratio-16x9">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/NjqjVdVJX1g?si=FGIm8sipLMLOwaQX"
+                                                title="YouTube video" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="guideline-content">
+                                        <h6>Most Recent</h6>
+                                        <h3>How To Apply In BCS Exam</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </section>
+
+            <section id="Guideline_Download">
+                <div class="container">
+                    <div class="guideline-download-area mb-5">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Download Pdf</h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="download-area align-items-center justify-content-between my-3">
+                                    <div class="download-icon-img">
+                                        <div>
+                                            <i class="fa-regular fa-file-pdf"></i>
+                                        </div>
+                                        <p>How to apply in BCS Exam <span>(pdf)</span></p>
+                                    </div>
+                                    <div class="download-view-button">
+                                        <a href="" type="button" class="btn btn_warning">
+                                            <span><i class="fa-solid fa-download"></i></span> Download Pdf</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+    </main>
 
 @endsection

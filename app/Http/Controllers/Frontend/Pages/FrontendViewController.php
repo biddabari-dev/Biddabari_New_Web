@@ -30,12 +30,9 @@ class FrontendViewController extends Controller
     protected $seos = [];
     public function allProducts ()
     {
-        if (str()->contains(url()->current(), '/api/'))
-        {
-            $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_start_date', 'discount_end_date', 'slug')->get();
-        } else {
-            $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_start_date', 'discount_end_date', 'slug')->latest()->paginate(8);
-        }
+
+        $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_type', 'discount_start_date', 'discount_end_date', 'slug')->latest()->paginate(8);
+
         foreach ($this->products as $product)
         {
             if (!empty($product->discount_start_date) && !empty($product->discount_end_date))
@@ -47,10 +44,6 @@ class FrontendViewController extends Controller
             } else {
                 $product->has_discount_validity = 'false';
             }
-            $product->image = asset($product->image);
-//            $product->pdf = asset($product->pdf);
-//            $product->featured_image = asset($product->featured_image);
-            $product->order_status = ViewHelper::checkIfProductIsPurchased($product);
         }
         $this->data = [
             'products'  => $this->products
@@ -80,23 +73,18 @@ class FrontendViewController extends Controller
         if (isset($this->product))
         {
             $this->comments = ContactMessage::where(['status' => 1, 'type' => 'product', 'parent_model_id' => $this->product->id, 'is_seen' => 1])->get();
+            $this->seos = Seo::where(['status' => 1, 'seo_for' => 'product', 'parent_model_id' => $this->product->id])->first();
         }
 
-        $latestProducts = Product::where(['status' => 1])->select('id', 'title', 'image', 'status', 'slug', 'price')->latest()->take(4)->get();
-        if (str()->contains(url()->current(), '/api/'))
-        {
-            $this->product->image = asset($this->product->image);
-            foreach ($latestProducts as $latestProduct)
-            {
-                $latestProduct->image = asset($latestProduct->image);
-            }
-        }
+        $latestProducts = Product::with('productAuthor')->where(['status' => 1])->select('id', 'title', 'image', 'status', 'slug', 'price','product_author_id','discount_amount','discount_type')->latest()->take(4)->get();
+
         $this->data = [
             'product'   => $this->product,
             'comments'  => $this->comments,
-            'latestProducts' => $latestProducts
+            'latestProducts' => $latestProducts,
+            'seo' => $this->seos
         ];
-        return ViewHelper::checkViewForApi($this->data, 'frontend.product.product-details');
+        return view('frontend.product.product-details',$this->data);
     }
 
 //----------- neamot vai -------------//
@@ -279,57 +267,63 @@ class FrontendViewController extends Controller
     public function allBLogs ()
     {
         $this->blogCategories = BlogCategory::whereStatus(1)->orderBy('order', 'ASC')->select('id', 'name', 'parent_id', 'image', 'slug')->get();
-        $this->blogs = Blog::whereStatus(1)->with(['blogCategory' => function($blogCategory){
-            $blogCategory->select('id', 'name', 'slug')->get();
-        }])->paginate(9);
-        if (str()->contains(url()->current(), '/api/'))
-        {
-            foreach ($this->blogCategories as $blogCategory)
-            {
-                $blogCategory->image = asset($blogCategory->image);
-            }
-            foreach ($this->blogs as $blog)
-            {
-                $blog->image = asset($blog->image);
-            }
-        }
+
+        $this_month_blogs = Blog::with('user')->whereStatus(1)->where('is_featured', 1)->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))
+            ->with(['blogCategory' => function($blogCategory) {
+                $blogCategory->select('id', 'name', 'slug');
+            }])->take(2) // Limit to 2 blogs
+            ->get();
+
+        $this->blogs = Blog::with('user')->whereStatus(1)->with(['blogCategory' => function($blogCategory){
+                $blogCategory->select('id', 'name', 'slug')->get();
+            }])->latest()->take(5)->get();
+
+        $popular_blogs = Blog::with('user')->whereStatus(1)->orderBy('hit_count','DESC')->with(['blogCategory' => function($blogCategory){
+                $blogCategory->select('id', 'name', 'slug')->get();
+            }])->take(2)->get();
+
         $this->data = [
             'blogCategories'    => $this->blogCategories,
-            'blogs'             => $this->blogs,
+            'this_month_blogs'  => $this_month_blogs,
+            'recentBlogs'   => $this->blogs,
+            'popular_blogs'             => $popular_blogs,
         ];
-        return ViewHelper::checkViewForApi($this->data, 'frontend.blogs.blog');
+        return view('frontend.blogs.blog', $this->data);
     }
 
-    public function categoryBlogs ($id, $slug = null)
+    public function categoryBlogs ($slug = null)
     {
-        $this->blogs = BlogCategory::whereSlug($slug)->first()->blogs()->paginate(9);
-        $this->blogCategory = BlogCategory::whereSlug($slug)->select('id', 'parent_id', 'name', 'slug')->first();
+
+        $this->blogs = BlogCategory::with('blogs')->whereSlug($slug)->first();
         $this->data = [
             'blogs'    => $this->blogs,
-            'blogCategory'  => $this->blogCategory
         ];
         return ViewHelper::checkViewForApi($this->data, 'frontend.blogs.category-blogs');
     }
 
     public function blogDetails ($slug)
     {
+        $this->blogCategories = BlogCategory::whereStatus(1)->orderBy('order', 'ASC')->select('id', 'name', 'parent_id', 'image', 'slug')->get();
         $this->blog = Blog::where('slug',$slug)->first();
-        // dd($this->blog);
+
         if (isset($this->blog))
         {
-            $this->comments = ContactMessage::where(['status' => 1, 'type' => 'blog', 'parent_model_id' => $this->blog->id, 'is_seen' => 1])->get();
-            $this->seos= Seo::where(['status' => 1, 'seo_for' => 'blog', 'parent_model_id' => $this->blog->id])->get();
+            $this->blog->increment('hit_count');
+          // return $this->comments = ContactMessage::where(['status' => 1, 'type' => 'blog', 'parent_model_id' => $this->blog->id, 'is_seen' => 1])->get();
+            $this->comments = ContactMessage::where(['status' => 1, 'type' => 'blog', 'parent_model_id' => $this->blog->id])->get();
+            $this->seos= Seo::where(['status' => 1, 'seo_for' => 'blog', 'parent_model_id' => $this->blog->id])->first();
         }
 
-        // dd($this->seos);
+        $this->blogs = Blog::with('user')->whereStatus(1)->with(['blogCategory' => function($blogCategory){
+                $blogCategory->select('id', 'name', 'slug')->get();
+            }])->latest()->take(5)->get();
 
-        $this->blog->image = asset($this->blog->image);
         $this->data = [
             'blog'    => $this->blog,
-            'recentBlogs'   => Blog::whereStatus(1)->latest()->select('id', 'title', 'image', 'slug', 'created_at')->take(6)->get(),
+            'recentBlogs'   => $this->blogs,
             'comments'      => $this->comments,
-
-            'seos'          => $this->seos,
+            'seo'          => $this->seos,
+            'blogCategories'          => $this->blogCategories,
 
         ];
 
@@ -338,30 +332,22 @@ class FrontendViewController extends Controller
 
     public function allJobCirculars()
     {
-//        $this->jobCirculars = Circular::whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->paginate(12);
-        $this->jobCirculars = CircularCategory::whereStatus(1)->select('id', 'title', 'image')->whereHas('circulars')->with(['circulars' => function($circulars){
-            $circulars->whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->get();
-        }])->get();
-        if (str()->contains(url()->current(), '/api/'))
-        {
-            $jobCircularCategories = CircularCategory::where(['status' => 1])->select('id', 'title', 'image')->get();
-            foreach ($this->jobCirculars as $jobCircular)
-            {
-                $jobCircular->image = asset($jobCircular->image);
-                foreach ($jobCircular->circulars as $circular)
-                {
-                    $circular->image = asset($circular->image);
-                }
-            }
-            return response()->json([
-                'circularCategories'    => $jobCircularCategories,
-                'circulars'     => $this->jobCirculars
-            ]);
-        }
+
+       $this->jobCirculars = Circular::whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->get();
+        // return $this->jobCirculars = CircularCategory::whereStatus(1)->select('id', 'title', 'image')->whereHas('circulars')->with(['circulars' => function($circulars){
+        //     $circulars->whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->get();
+        // }])->get();
+
         $this->data = [
-            'circularCategories' => $this->jobCirculars,
+            'jobCirculars' => $this->jobCirculars,
         ];
-        return ViewHelper::checkViewForApi($this->data, 'frontend.job-circulars.circular');
+
+        return view('frontend.job-circulars.circular', $this->data);
+    }
+
+    public function liveQuestionSolving($id, $slug = null)
+    {
+        return view('frontend.basic-pages.questions-solving');
     }
 
     public function jobCircularDetail($id, $slug = null)
@@ -386,22 +372,22 @@ class FrontendViewController extends Controller
     public function newContact (Request $request)
     {
 
-        if (auth()->check())
-        {
+        // if (auth()->check())
+        // {
+
             $request->validate([
                 'name'  => 'required',
-                'email'  => 'required',
                 'mobile'  => ['required', 'regex:/^(?:\+88|88)?(01[3-9]\d{8})$/'],
                 'message'  => 'required',
             ]);
             try {
-                ContactMessage::createOrUpdateContactMessage($request);
+                $data = ContactMessage::createOrUpdateContactMessage($request);
                 return back()->with('success', 'Thanks for your message.');
             } catch (\Exception $exception)
             {
                 return back()->with('error', $exception->getMessage());
             }
-        }
+        //}
         return back()->with('error', 'Please Login First.');
     }
 
@@ -424,16 +410,21 @@ class FrontendViewController extends Controller
 //        return back()->with('success', 'Comment submitted successfully.');
     }
 
-    public function instructorDetails ($id, $slug = null)
+
+    public function instructorDetails($id, $slug = null)
     {
         $teacher = Teacher::find($id);
-        if(!$teacher){
+        if (!$teacher) {
             return response()->view('errors.404', [], 404);
         }
+        $latestCourses = $teacher->courses()->where('status', 1)->latest()->take(3)->get();
         $this->data = [
-            'teacher'   => $teacher,
-            'latestCourses' => Course::whereStatus(1)->latest()->take(6)->get(),
+            'teacher' => $teacher,
+            'latestCourses' => $latestCourses,
         ];
-        return ViewHelper::checkViewForApi($this->data, 'frontend.instructors.instructors-details');
+
+        return view('frontend.instructors.instructors-details', $this->data);
     }
+
+
 }

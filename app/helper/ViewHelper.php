@@ -103,6 +103,7 @@ class ViewHelper
         }
         return self::$status = 'false';
     }
+
     public static function checkIfProductIsPurchased($product)
     {
         if (self::authCheck())

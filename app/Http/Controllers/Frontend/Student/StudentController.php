@@ -364,17 +364,13 @@ class StudentController extends Controller
     }
     public function showProductPdf($contentId)
     {
-//        $this->data = [
-//            'sectionContent'  => CourseSectionContent::whereId($contentId)->select('id', 'course_section_id', 'content_type', 'title', 'pdf_link', 'pdf_file', 'status')->first(),
-//        ];
-         $this->data = [
-            'product'  => Product::whereId($contentId)->select('id', 'featured_pdf', 'status')->first(),
-        ];
+
+       return $data['product'] = Product::whereId($contentId)->select('id', 'featured_pdf', 'status')->first();
+
         if (\request()->ajax())
         {
-            return response()->json($this->data);
+            return response()->json($data);
         }
-        return ViewHelper::checkViewForApi($this->data, 'frontend.student.course.contents.pdf');
     }
 
     public function getVideoComments($contentId, $type = null)

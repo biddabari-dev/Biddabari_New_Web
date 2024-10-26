@@ -1,3 +1,58 @@
+<section id="App_store" class="background-res background-ats py-5"
+style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="style-2phone-image">
+                <img src="{{ asset('frontend') }}/assets/images/exam-page/2-mobile.png" class="img-fluid"
+                    alt="" srcset="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="download-text">
+                <h5>ডাউনলোড করুন</h5>
+                <h2>বিদ্যাবাড়ি App</h2>
+            </div>
+            <div class="rattingandflowers-area">
+                <div class="row">
+                    <div class="col-md-4 learner-count">
+                        <h2>50+</h2>
+                        <p>WorldWide Learners</p>
+                    </div>
+                    <div class="col-md-4 review-count">
+                        <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>
+                        <p>Positive<br> Reviews</p>
+                    </div>
+                    <div class="col-md-4 courses-count">
+                        <h2>180+</h2>
+                        <p>Skill based Courses</p>
+                    </div>
+                </div>
+            </div>
+            <div class="download-hint">
+                <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
+                    শেখা শুরু করুন আজ থেকেই</p>
+            </div>
+            <div class="download-store-path">
+                <div class="app-store">
+                    <a href="#">
+                        <img class="img-fluid"
+                            src="{{ asset('frontend') }}/assets/images/exam-page/app-store.png"
+                            alt="App Store" srcset=""></a>
+                </div>
+                <div class="play-store">
+                    <a href="#">
+                        <img class="img-fluid"
+                            src="{{ asset('frontend') }}/assets/images/exam-page/google-play.png"
+                            alt="Google Play Store" srcset=""></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</section>
+
 <footer id="Footer">
     <div class="container">
         <div class="row">
@@ -16,13 +71,16 @@
                     <div class="footer-social-media-area">
                         <div class="social-media-icon">
                             <div class="linkedin-icon">
-                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://www.linkedin.com/in/biddabari" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                             </div>
                             <div class="facebook-icon">
-                                <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                                <a href="https://www.facebook.com/biddaabari" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
                             </div>
                             <div class="twiter-icon">
-                                </a><a href=""><i class="fa-brands fa-twitter"></i></a>
+                                </a><a href="https://www.linkedin.com/in/biddabari" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                            </div>
+                            <div class="twiter-icon">
+                                </a><a href="https://www.youtube.com/@biddabari" target="_blank"><i class="fa-brands fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -47,7 +105,7 @@
                                 <h3>Resources</h3>
                                 <ul>
                                     <li><a href="{{ route('front.all-courses') }}">Courses</li></a>
-                                    <li><a href="bl{{ route('front.all-blogs') }}">Our Blog</li></a>
+                                    <li><a href="{{ route('front.all-blogs') }}">Our Blog</li></a>
                                     <li><a href="{{ route('front.terms-conditions') }}">Terms & Conditions</li></a>
                                     <li><a href="{{ route('front.privacy-policy') }}">Privacy Policy</li></a>
                                 </ul>

@@ -64,6 +64,7 @@ Route::post('sslcommerz/ipn',[CheckoutController::class, 'ipn'])->name('payment.
 
 Route::as('front.')->group(function (){
 
+Route::post('/contact', [FrontendViewController::class, 'newContact'])->name('contact');
 
 Route::middleware('previousUrlMiddleware')->group(function (){
 
@@ -85,10 +86,11 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/exam', [BasicViewController::class, 'showAllExams'])->name('all-exams');
         Route::get('/view-exam-details/{xm_id}/{slug?}', [FrontExamController::class, 'viewExamDetails'])->name('view-exam');
 
+        Route::get('/live-questions-solving', [FrontendViewController::class, 'liveQuestionSolving'])->name('live-questions-solving');
         Route::get('/subscription-details/{id}/{slug?}', [ExamSubscriptionPackageController::class, 'details'])->name('subscription-details');
 
         Route::get('/blog', [FrontendViewController::class, 'allBLogs'])->name('all-blogs');
-        Route::get('/category-blogs/{id}/{slug?}', [FrontendViewController::class, 'categoryBlogs'])->name('category-blogs');
+        Route::get('/category-blogs/{slug}', [FrontendViewController::class, 'categoryBlogs'])->name('category-blogs');
         Route::get('/blog-details/{slug?}', [FrontendViewController::class, 'blogDetails'])->name('blog-details');
         Route::get('/product', [FrontendViewController::class, 'allProducts'])->name('all-products');
 
@@ -106,6 +108,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/privacy-policy', [BasicViewController::class, 'privacy'])->name('privacy-policy');
         Route::get('/contact-us', [BasicViewController::class, 'contact'])->name('contact-us');
         Route::get('/guideline', [FrontViewTwoController::class, 'guideline'])->name('guideline');
+        Route::get('/social-media', [FrontViewTwoController::class, 'socialMedia'])->name('social-media');
         Route::get('/gallery', [FrontViewTwoController::class, 'GalleryImageView'])->name('all-gallery-images');
         Route::get('/gallery-images/{id}/{title?}', [FrontViewTwoController::class, 'GalleryImages'])->name('show-gallery-images');
 
@@ -127,7 +130,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
 
 
 
-    Route::post('/new-comment', [FrontendViewController::class, 'newComment'])->middleware('auth')->name('new-comment');
+    Route::post('/new-comment', [FrontendViewController::class, 'newComment'])->name('new-comment');
 
     Route::get('show-product-pdf/{content_id}', [StudentController::class, 'showProductPdf'])->name('show-product-pdf');
     Route::get('get-video-comments/{content_id}/{type?}', [StudentController::class, 'getVideoComments'])->name('get-video-comments');
@@ -145,7 +148,6 @@ Route::middleware('previousUrlMiddleware')->group(function (){
     ])->group(function (){
         Route::post('/place-course-order/{course_id}', [CheckoutController::class, 'placeCourseOrder'])->name('place-course-order');
         Route::post('/place-free-course-order/{course_id}', [CheckoutController::class, 'placeFreeCourseOrder'])->name('place-free-course-order');
-        Route::post('/contact', [FrontendViewController::class, 'newContact'])->name('contact');
         Route::prefix('student')->name('student.')->group(function (){
             Route::get('dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
             Route::get('my-courses', [StudentController::class, 'myCourses'])->name('my-courses');
