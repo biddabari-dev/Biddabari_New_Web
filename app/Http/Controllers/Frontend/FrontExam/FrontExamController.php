@@ -702,6 +702,7 @@ class FrontExamController extends Controller
     //         return ViewHelper::returEexceptionError('Exam Not Found.');
     //     }
     // }
+
     public function commonGetBatchExamResult(Request $request, $contentId, $slug = null)
     {
         $this->resultNumber = 0;
@@ -725,20 +726,29 @@ class FrontExamController extends Controller
                 $this->questionJson = $request->question;
 
                 foreach ($request->question as $question_id => $answer) {
+
+                    if (!is_array($answer)) {
+                        unset($this->questionJson[$question_id]);
+                    }
+
+                    $this->question = QuestionStore::whereId($question_id)->select('id', 'question_type', 'question_mark', 'negative_mark', 'has_all_wrong_ans', 'status')->first();
+
                     if (is_array($answer)) {
                         ++$this->totalProvidedAns;
-                        $this->question = QuestionStore::whereId($question_id)->first();
-
                         if ($this->question->has_all_wrong_ans == 1) {
-                            $this->resultNumber -= (int) $this->exam->exam_per_question_mark;
+                            $this->resultNumber -= $this->exam->exam_negative_mark;
                             ++$this->totalWrongAns;
-                        } else {
-                            $this->questionOption = QuestionOption::whereId($answer['answer'])->first();
-                            if ($this->questionOption->is_correct == 1) {
+                        }else {
+
+                            $this->questionOption = QuestionOption::whereId($answer['answer'])->select('id', 'is_correct')->first();
+
+                            if ($this->questionOption->is_correct == 1)
+                            {
+                                $this->resultNumber += (int)$this->exam->exam_per_question_mark;
                                 ++$this->totalRightAns;
-                                $this->resultNumber += (int) $this->exam->exam_per_question_mark;
                             } else {
-                                $this->resultNumber -= (int) $this->exam->exam_negative_mark;
+
+                                $this->resultNumber -= $this->exam->exam_negative_mark;
                                 ++$this->totalWrongAns;
                             }
                         }
@@ -748,16 +758,16 @@ class FrontExamController extends Controller
 
             $this->examResult = [
                 $this->type . '_exam_section_content_id' => $contentId,
-                'user_id' => ViewHelper::loggedUser()->id,
-                'xm_type' => $this->exam->content_type,
-                'provided_ans' => json_encode($this->questionJson),
-                'total_right_ans' => $this->totalRightAns,
-                'total_wrong_ans' => $this->totalWrongAns,
-                'total_provided_ans' => $this->totalProvidedAns,
-                'result_mark' => $this->resultNumber,
-                'is_reviewed' => 0,
-                'required_time' => $request->required_time ?? 0,
-                'status' => $this->resultNumber >= $this->exam->exam_pass_mark ? 'pass' : 'fail',
+                'user_id'       => ViewHelper::loggedUser()->id,
+                'xm_type'       => $this->exam->content_type,
+                'provided_ans'      => json_encode($this->questionJson),
+                'total_right_ans'       => $this->totalRightAns ?? 0,
+                'total_wrong_ans'       => $this->totalWrongAns ?? 0,
+                'total_provided_ans'    => $this->totalProvidedAns ?? 0,
+                'result_mark'       => $this->resultNumber,
+                'is_reviewed'       => 0,
+                'required_time'       => $request->required_time ?? 0,
+                'status'        => $this->exam->content_type == 'exam' ? ($this->resultNumber >= $this->exam->exam_pass_mark ? 'pass' : 'fail') : 'pending',
             ];
 
         } elseif ($this->exam->content_type == 'written_exam') {
