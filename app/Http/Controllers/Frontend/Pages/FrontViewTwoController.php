@@ -35,6 +35,10 @@ class FrontViewTwoController extends Controller
     {
         return view('frontend.basic-pages.guideline');
     }
+    public function socialMedia()
+    {
+        return view('frontend.basic-pages.social-media');
+    }
 
     public function todayClasses()
     {

@@ -86,6 +86,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/exam', [BasicViewController::class, 'showAllExams'])->name('all-exams');
         Route::get('/view-exam-details/{xm_id}/{slug?}', [FrontExamController::class, 'viewExamDetails'])->name('view-exam');
 
+        Route::get('/live-questions-solving', [FrontendViewController::class, 'liveQuestionSolving'])->name('live-questions-solving');
         Route::get('/subscription-details/{id}/{slug?}', [ExamSubscriptionPackageController::class, 'details'])->name('subscription-details');
 
         Route::get('/blog', [FrontendViewController::class, 'allBLogs'])->name('all-blogs');
@@ -107,6 +108,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/privacy-policy', [BasicViewController::class, 'privacy'])->name('privacy-policy');
         Route::get('/contact-us', [BasicViewController::class, 'contact'])->name('contact-us');
         Route::get('/guideline', [FrontViewTwoController::class, 'guideline'])->name('guideline');
+        Route::get('/social-media', [FrontViewTwoController::class, 'socialMedia'])->name('social-media');
         Route::get('/gallery', [FrontViewTwoController::class, 'GalleryImageView'])->name('all-gallery-images');
         Route::get('/gallery-images/{id}/{title?}', [FrontViewTwoController::class, 'GalleryImages'])->name('show-gallery-images');
 

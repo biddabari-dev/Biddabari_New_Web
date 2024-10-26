@@ -236,16 +236,18 @@
                             </a>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="my-home-category">
-                                <div class="my-home-category-icon">
-                                    <img src="{{ asset('frontend') }}/assets/images/home-page/category/media.png"
-                                        alt="" srcset="">
+                            <a href="{{ route('front.social-media') }}" class="text-black">
+                                <div class="my-home-category">
+                                    <div class="my-home-category-icon">
+                                        <img src="{{ asset('frontend') }}/assets/images/home-page/category/media.png"
+                                            alt="" srcset="">
+                                    </div>
+                                    <div class="my-home-category-content">
+                                        <h3>স্যোশাল মিডিয়ায় আমরা</h3>
+                                        <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                    </div>
                                 </div>
-                                <div class="my-home-category-content">
-                                    <h3>স্যোশাল মিডিয়ায় আমরা</h3>
-                                    <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <a href="{{ route('front.all-job-circulars') }}" class="text-black">
@@ -262,6 +264,7 @@
                             </a>
                         </div>
                         <div class="col-md-6 col-lg-4">
+                            <a href="{{ route('front.live-questions-solving') }}" class="text-black">
                             <div class="my-home-category">
                                 <div class="my-home-category-icon">
                                     <img src="{{ asset('frontend') }}/assets/images/home-page/category/questions.png"
@@ -272,6 +275,7 @@
                                     <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -301,7 +305,7 @@
                                         alt="" srcset="">
                                 </div>
                                 <div class="my-home-service-content">
-                                    <h3>আমাদের বিদাবাড়ি</h3>
+                                    <h3>চাকরির প্রস্তুতি </h3>
                                     <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
                                 </div>
                             </div>
@@ -313,34 +317,38 @@
                                         alt="" srcset="">
                                 </div>
                                 <div class="my-home-service-content">
-                                    <h3>আমাদের বিদাবাড়ি</h3>
+                                    <h3>আইটি স্কিল</h3>
                                     <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <a href="{{ route('front.all-exams') }}" >
                             <div class="my-home-service">
                                 <div class="my-home-service-icon">
                                     <img src="{{ asset('frontend') }}/assets/images/home-page/our-service/exam.png"
                                         alt="" srcset="">
                                 </div>
                                 <div class="my-home-service-content">
-                                    <h3>আমাদের বিদাবাড়ি</h3>
+                                    <h3>পরীক্ষা</h3>
                                     <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="col-md-6">
-                            <div class="my-home-service">
-                                <div class="my-home-service-icon">
-                                    <img src="{{ asset('frontend') }}/assets/images/home-page/our-service/Group 1000007142.png"
-                                        alt="" srcset="">
+                            <a href="https://nextpage.com.bd" target="_blank">
+                                <div class="my-home-service">
+                                    <div class="my-home-service-icon">
+                                        <img src="{{ asset('frontend') }}/assets/images/home-page/our-service/Group 1000007142.png"
+                                            alt="" srcset="">
+                                    </div>
+                                    <div class="my-home-service-content">
+                                        <h3>বইবাড়ি</h3>
+                                        <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                    </div>
                                 </div>
-                                <div class="my-home-service-content">
-                                    <h3>আমাদের বিদাবাড়ি</h3>
-                                    <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -653,24 +661,48 @@
     @endif
 {{-- video Modal --}}
 <!-- Bootstrap Modal Structure -->
-<div class="modal fade" style="margin-top: 70px;" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe id="modalVideo" width="100%" height="500" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe id="modalVideo" class="embed-responsive-item" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
-                <!-- Close button inside the modal body, to make it work -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 0px; right: -26px;">
-                    <span aria-hidden="true">X</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  style="position: absolute;"></button>
             </div>
         </div>
     </div>
 </div>
 
 @endsection
+@push('style')
+<style>
+.embed-responsive {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
 
+.embed-responsive-16by9 {
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+</style>
+@endpush
 @push('script')
     {{-- @if (isset($poppup))
         <script>

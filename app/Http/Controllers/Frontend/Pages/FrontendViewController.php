@@ -332,30 +332,22 @@ class FrontendViewController extends Controller
 
     public function allJobCirculars()
     {
-//        $this->jobCirculars = Circular::whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->paginate(12);
-        $this->jobCirculars = CircularCategory::whereStatus(1)->select('id', 'title', 'image')->whereHas('circulars')->with(['circulars' => function($circulars){
-            $circulars->whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->get();
-        }])->get();
-        if (str()->contains(url()->current(), '/api/'))
-        {
-            $jobCircularCategories = CircularCategory::where(['status' => 1])->select('id', 'title', 'image')->get();
-            foreach ($this->jobCirculars as $jobCircular)
-            {
-                $jobCircular->image = asset($jobCircular->image);
-                foreach ($jobCircular->circulars as $circular)
-                {
-                    $circular->image = asset($circular->image);
-                }
-            }
-            return response()->json([
-                'circularCategories'    => $jobCircularCategories,
-                'circulars'     => $this->jobCirculars
-            ]);
-        }
+
+       $this->jobCirculars = Circular::whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->get();
+        // return $this->jobCirculars = CircularCategory::whereStatus(1)->select('id', 'title', 'image')->whereHas('circulars')->with(['circulars' => function($circulars){
+        //     $circulars->whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->get();
+        // }])->get();
+
         $this->data = [
-            'circularCategories' => $this->jobCirculars,
+            'jobCirculars' => $this->jobCirculars,
         ];
-        return ViewHelper::checkViewForApi($this->data, 'frontend.job-circulars.circular');
+
+        return view('frontend.job-circulars.circular', $this->data);
+    }
+
+    public function liveQuestionSolving($id, $slug = null)
+    {
+        return view('frontend.basic-pages.questions-solving');
     }
 
     public function jobCircularDetail($id, $slug = null)

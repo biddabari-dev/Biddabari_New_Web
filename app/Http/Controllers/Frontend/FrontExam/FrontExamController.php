@@ -942,6 +942,7 @@ class FrontExamController extends Controller
         return ViewHelper::checkViewForApi($this->data, 'frontend.exams.xm.details');
     }
 
+
     public function orderXm (Request $request, $id)
     {
         if (ViewHelper::authCheck())

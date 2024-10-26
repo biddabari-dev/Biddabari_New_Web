@@ -89,6 +89,31 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
         <!-- Toastr JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <!-- Sweet Alert -->
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet" />
+        <script async src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
         @stack('script')
+
+        @if(Session::has('success'))
+            <script>
+                toastr.success("{{ Session::get('success') }}");
+            </script>
+        @endif
+        @if(Session::has('error'))
+            <script>
+                toastr.error("{{ Session::get('error') }}");
+            </script>
+        @endif
+        @if(Session::has('customError'))
+            <script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: "{{ Session::get('customError') }}",
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            </script>
+        @endif
     </body>
 </html>

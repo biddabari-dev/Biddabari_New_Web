@@ -1,7 +1,7 @@
 @extends('frontend.master')
 @section('meta-url'){{ request()->url() }}@endsection
 @section('title')
-Biddabari - Login
+Biddabari - User registration form
 @endsection
 
 @section('body')
@@ -34,6 +34,7 @@ Biddabari - Login
                                                         id="name" name="name" value="{{ old('name') }}" placeholder="Enter your full name"
                                                         aria-describedby="nameHelp">
                                                 </div>
+                                                <span class="invalid-feedback d-block name-error"></span>
                                                 @error('name')
                                                     <span class="invalid-feedback d-block">{{ $message }}</span>
                                                 @enderror
@@ -47,6 +48,7 @@ Biddabari - Login
                                                         aria-describedby="emailHelp">
                                                     <i class="fa-solid fa-phone input-icon"></i>
                                                 </div>
+                                                    <span class="invalid-feedback d-block mobile-error"></span>
                                                 @error('mobile')
                                                     <span class="invalid-feedback d-block">{{ $message }}</span>
                                                 @enderror
@@ -91,6 +93,7 @@ Biddabari - Login
             </div>
             <div class="modal-body">
                 <input type="text" id="otpNumber" class="form-control" placeholder="Enter OTP">
+                <span class="text-success d-block otp-success"></span>
             </div>
             <div class="modal-footer">
                 <button type="button" id="verifyOtpBtn" class="btn btn_warning">Verify OTP</button>
@@ -108,31 +111,65 @@ $(document).ready(function() {
             e.preventDefault();
 
             var mobileNumber = $('#mobile').val();
+            var name = $('#name').val();
 
-            // Validate mobile number first
-            if (mobileNumber == '') {
-                alert('Please enter your mobile number.');
+            // Define Bangladeshi mobile number pattern
+            var bangladeshMobilePattern = /^(01[3-9]\d{8})$/;
+
+            // Validate name first
+            if (name == '') {
+                $('.name-error').text('Name is required.');
                 return;
             }
 
-            // Open the OTP modal
-            $('#otpModal').modal('show');
+            // Validate mobile number
+            if (mobileNumber == '') {
+                $('.mobile-error').text('Mobile number is required.');
+                return;
+            } else if (!bangladeshMobilePattern.test(mobileNumber)) {
+                $('.mobile-error').text('Enter a valid mobile number.');
+                return;
+            }
 
             // Send OTP to mobile number
             $.ajax({
-                url: "{{ route('front.verify-otp') }}",
+                url: "{{ route('front.send-otp') }}",
                 method: "POST",
                 dataType: "JSON",
-                data: { mobile_number: mobileNumber },
+                data: {
+                    mobile: mobileNumber,
+                    _token: "{{ csrf_token() }}"
+                },
                 success: function(data) {
-                    if (data.status == 'success') {
-                        console.log('OTP sent to mobile number');
+                    if (data.user_status != 'exist' && data.status == 'success') {
+                        $('#otpModal').modal('show');
+                        $('.otp-success').text('OTP sent to mobile number.');
+                    } else if (data.user_status == 'exist') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Mobile number already exists.'
+                        });
+
+                        $('.mobile-error').text('Mobile number already exists.');
                     } else {
-                        console.log('Failed to send OTP');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'An unknown error occurred.'
+                        });
                     }
+                },
+                error: function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'An unknown error occurred.'
+                    });
                 }
             });
         });
+
 
         // Verify OTP when clicking verify button
         $('#verifyOtpBtn').on('click', function() {
@@ -143,17 +180,15 @@ $(document).ready(function() {
                 url: "{{ route('front.verify-otp') }}",
                 method: "POST",
                 dataType: "JSON",
-                data: { otp: otpNumber, mobile_number: mobileNumber },
+                data: { otp: otpNumber, mobile: mobileNumber, _token: "{{ csrf_token() }}" },
                 success: function(data) {
                     if (data.status == 'success') {
                         // Close the OTP modal
                         $('#otpModal').modal('hide');
-
                         if (data.user_status == 'exist') {
                             // Existing user logic
                             $('#registerForm').attr('action', '{{ route("login") }}');
                         }
-
                         // Submit the form after OTP verification
                         $('#registerForm').submit();
                     } else {
