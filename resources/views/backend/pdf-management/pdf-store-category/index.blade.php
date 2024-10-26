@@ -224,7 +224,7 @@
                     }
                     $('.submit-btn').addClass('update-btn').removeClass('submit-btn');
                     if (data.image != null) {
-                        const imageUrl = "{{ asset('') }}" + data.image;
+                        const imageUrl = "{{ static_asset('') }}" + data.image;
                         $('#imagePreview').attr('src', imageUrl).css({
                             height: '150px',
                             width: '150px',
