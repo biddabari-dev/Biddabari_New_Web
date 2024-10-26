@@ -28,7 +28,7 @@ class CustomAuthController extends Controller
             'mobile' => ['required', 'numeric', 'regex:/^(?:\+88|88)?(01[3-9]\d{8})$/'],
             'password' => ['required']
         ]);
-        
+
         if (auth()->attempt($request->only(['mobile', 'password']), $request->remember_me)) {
             $this->user = auth()->user();
             $this->user->device_token = session()->getId();
@@ -43,6 +43,7 @@ class CustomAuthController extends Controller
             } else {
                 if (Session::has('course_redirect_url')) {
                     $redirectUrl = Session::get('course_redirect_url');
+                    Session::forget('course_redirect_url');
 
                     if ($request->ajax()) {
                         return response()->json(['status' => 'success', 'url' => $redirectUrl]);
@@ -90,17 +91,18 @@ class CustomAuthController extends Controller
                 if (str()->contains(url()->current(), '/api/')) {
                     return response()->json(['user' => $this->user, 'auth_token' => $this->user->createToken('auth_token')->plainTextToken]);
                 } else {
-                    if (\session()->has('course_redirect_url'))
-                    {
+                    if (Session::has('course_redirect_url')) {
+                        $redirectUrl = Session::get('course_redirect_url');
+                        Session::forget('course_redirect_url');
+
                         if ($request->ajax())
                         {
-                            return response()->json(['status' => 'success', 'url' => \session()->get('course_redirect_url')]);
+                            return response()->json(['status' => 'success','url' => $redirectUrl]);
                         } else {
-                            return redirect(\session()->get('course_redirect_url'))->with('success', 'Your registration completed successfully.');
+                            return redirect($redirectUrl)->with('success', 'Your registration completed successfully.');
                         }
                     }
-                    if ($request->roles == 4)
-                    {
+                    if ($request->roles == 4) {
                         return redirect()->route('home')->with('success', 'Your registration completed successfully.');
                     }
                     return redirect()->route('home')->with('success', 'Your registration completed successfully.');
