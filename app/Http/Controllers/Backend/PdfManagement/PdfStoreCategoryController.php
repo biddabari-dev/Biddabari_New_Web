@@ -153,7 +153,7 @@ class PdfStoreCategoryController extends Controller
     public function edit(string $id, Request $request)
     {
         abort_if(Gate::denies('edit-pdf-category'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $this->pdfCategory = PdfStoreCategory::find($id);
+        $this->pdfCategory = PdfStoreCategory::findOrFail($id);
         if ($request->ajax())
         {
             return response()->json($this->pdfCategory);
