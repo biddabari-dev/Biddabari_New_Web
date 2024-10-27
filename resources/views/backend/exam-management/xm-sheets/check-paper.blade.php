@@ -120,7 +120,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <script src="{{ asset('/') }}backend/assets/plugins/pdf-draw/pdfannotate.js"></script>
     <script>
-        var pdf = new PDFAnnotate("pdf-container", "{{ asset($sectionContentType =='assignment' ? $examSheet->file : $examSheet->written_xm_file) }}", {
+        var pdf = new PDFAnnotate("pdf-container", "{{ static_asset($sectionContentType =='assignment' ? $examSheet->file : $examSheet->written_xm_file) }}", {
             onPageUpdated(page, oldData, newData) {
                 console.log(page, oldData, newData);
             },

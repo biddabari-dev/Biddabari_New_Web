@@ -1337,9 +1337,13 @@ body {
     height: 48px;
   }
 
-  #All-Questions .question-options .not-answered {
-    background-color: rgb(229, 255, 241);
+  #All-Questions .question-options .answered {
+    background-color: rgb(150, 253, 198);
   }
+
+/*#All-Questions .question-options .correct-ans-bg {
+    background-color: rgb(14, 147, 75);
+}*/
 
   #All-Questions .question-options .wrong-answered {
     background-color: rgb(248, 206, 191);

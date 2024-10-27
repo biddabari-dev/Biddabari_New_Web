@@ -1135,7 +1135,7 @@ class FrontExamController extends Controller
 
     public function showBatchExamAnswers($contentId)
     {
-        $this->sectionContent = BatchExamSectionContent::whereId($contentId)->select('id', 'batch_exam_section_id', 'parent_id', 'content_type', 'title', 'status')->with(['questionStores' => function($questionStores){
+        $this->sectionContent = BatchExamSectionContent::whereId($contentId)->select('id', 'batch_exam_section_id', 'parent_id', 'content_type', 'title', 'status', 'exam_total_questions', 'exam_per_question_mark', 'exam_pass_mark', 'exam_duration_in_minutes', 'exam_negative_mark')->with(['questionStores' => function($questionStores){
             $questionStores->select('id', 'question_type', 'question', 'question_description', 'question_image', 'question_video_link', 'written_que_ans', 'written_que_ans_description', 'has_all_wrong_ans', 'status', 'mcq_ans_description')->with('questionOptions')->get();
         }])->first();
         if ($this->sectionContent->content_type == 'exam')
@@ -1153,8 +1153,10 @@ class FrontExamController extends Controller
                 $writtenXmFile = $writtenXmFile->written_xm_file;
             }
         }
+
         $this->data = [
             'content'   => $this->sectionContent,
+            'batchExamResult'   => $getProvidedAnswers ?? null,
             'writtenFile' => $writtenXmFile ?? null
         ];
 
