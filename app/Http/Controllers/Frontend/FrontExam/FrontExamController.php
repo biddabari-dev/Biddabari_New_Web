@@ -1006,7 +1006,7 @@ class FrontExamController extends Controller
 
     public function showCourseExamAnswers($contentId)
     {
-        $this->sectionContent = CourseSectionContent::whereId($contentId)->select('id', 'course_section_id', 'parent_id', 'content_type', 'title', 'status', 'exam_end_time_timestamp')->with(['questionStores' => function($questionStores){
+        $this->sectionContent = CourseSectionContent::whereId($contentId)->select('id', 'course_section_id', 'parent_id', 'content_type', 'title', 'status', 'exam_end_time_timestamp', 'exam_total_questions', 'exam_per_question_mark', 'exam_pass_mark')->with(['questionStores' => function($questionStores){
             $questionStores->select('id', 'question_type', 'question', 'question_description', 'question_image', 'question_video_link', 'written_que_ans', 'written_que_ans_description', 'has_all_wrong_ans', 'status', 'mcq_ans_description')->with('questionOptions')->get();
         }])->first();
 
@@ -1050,6 +1050,7 @@ class FrontExamController extends Controller
 
         $this->data = [
             'content'   => $this->sectionContent,
+            'courseExamResult' => $getProvidedAnswers ?? null,
             'writtenFile' => $writtenXmFile ?? null
         ];
         return ViewHelper::checkViewForApi($this->data, 'frontend.exams.course.show-ans');
