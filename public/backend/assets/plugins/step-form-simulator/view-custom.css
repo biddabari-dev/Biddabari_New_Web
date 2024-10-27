@@ -9246,7 +9246,7 @@ button.btn.btn-custom.pull-left.btn-register-user:hover {
     border: solid 1px rgba(112, 112, 112, 0.34);
     background-color: #ffffff;
     cursor: pointer;
-    color: #6b6b6b;
+    color: #2b2d2e;
 }
 
 .quiz-form .form-card .form-radio label:hover {
@@ -9254,11 +9254,11 @@ button.btn.btn-custom.pull-left.btn-register-user:hover {
 }
 
 .quiz-form .form-card .form-radio label .answer-title {
-    padding: 5px; /* updated */
+    padding: 8px; /* updated */
     display: block;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
-    line-height: 1.2;
+    /* line-height: 1.2; */
     text-align: left; /* updated */
     width: 100%; /* updated */
 }

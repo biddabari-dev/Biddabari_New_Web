@@ -8,14 +8,14 @@ Biddabari - All Course
 <main>
 
     <section id="Free-service-banner" class="background-res-free-banner background-ats py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/free-service/free-service-banner-bg.png')">
+        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
         <div class="container">
             <div class="free-course-banner">
                 <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/free-service/free-service-banner.png" alt="Image 1"></a>
+                    <a href=""><img src="{{ asset('frontend') }}/assets/images/free-service/banner-1.webp" alt="Image 1"></a>
                 </div>
                 <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/free-service/free-service-banner.png" alt="Image 1"></a>
+                    <a href=""><img src="{{ asset('frontend') }}/assets/images/free-service/banner-1.webp" alt="Image 1"></a>
                 </div>
             </div>
         </div>

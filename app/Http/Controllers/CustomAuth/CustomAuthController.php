@@ -122,56 +122,6 @@ class CustomAuthController extends Controller
             }
         }
 
-
-
-//         $request['roles'] = 4;
-//         $request['request_form'] = 'student';
-// //        return $request;
-//         DB::beginTransaction();
-//         try {
-//             $this->user = User::createOrUpdateUser($request);
-//             $this->user->device_token = session()->getId();
-//             $this->user->save();
-//             if ($request->roles == 4)
-//             {
-//                 Student::createOrUpdateStudent($request, $this->user);
-//             }
-
-//             DB::commit();
-//             if (isset($this->user)) {
-//                 Auth::login($this->user);
-//                 if (str()->contains(url()->current(), '/api/')) {
-//                     return response()->json(['user' => $this->user, 'auth_token' => $this->user->createToken('auth_token')->plainTextToken]);
-//                 } else {
-//                     if ($request->ajax())
-//                     {
-//                         // return $this->login($request);
-//                         return response()->json(['status' => 'success']);
-//                     }
-//                     if ($request->roles == 4)
-//                     {
-//                         // return $this->login($request);
-//                         return redirect()->route('home')->with('success', 'Your registration completed successfully.');
-//                     }
-//                     return redirect()->route('home')->with('success', 'Your registration completed successfully.');
-//                 }
-//             }
-//         } catch (\Exception $exception)
-//         {
-//             DB::rollBack();
-//             if (str()->contains(url()->current(), '/api/')) {
-//                 return response()->json(['error' => $exception->getMessage()],500);
-//             } else {
-//                 if ($request->ajax())
-//                 {
-//                     return response()->json(['status' => 'error']);
-//                 }
-//                 return redirect('/register')->with('error', $exception->getMessage());
-//             }
-//         }
-
-
-//        return 'register failed';
     }
 
     public function sendOtp(Request $request)
