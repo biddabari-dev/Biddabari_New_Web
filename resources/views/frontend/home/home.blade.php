@@ -719,9 +719,8 @@
             document.getElementById('modalVideo').src = videoSrc;
             $('#videoModal').modal('show');
         }
-
         // When the modal is hidden, remove the src to stop the video
-        $('#videoModal').on('click', '.close', function() {
+        $('#videoModal').on('click', '.btn-close', function() {
             document.getElementById('modalVideo').src = ''; // This will stop the video
             $('#videoModal').modal('hide');
         });

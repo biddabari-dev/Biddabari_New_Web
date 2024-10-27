@@ -843,9 +843,9 @@ body {
     padding: 20px;
     display: flex;
     justify-content: center;
-    background-color: rgba(243, 113, 13, 0.897);
-    width: 72%;
-    margin-top: 3px;
+    background-color: #aa076b;
+    width: 60%;
+    margin-top: 25px;
     border-radius: 10px;
     margin-left: 14%;
     gap: 15px;
@@ -981,12 +981,12 @@ body {
     border-radius: 0px 10px 10px 0px;
   }
 
-  #All-Questions .exam-submit-button {
+.exam-submit-button {
     text-align: center;
     margin-top: 20px;
   }
 
-  #All-Questions .exam-submit-button a {
+.exam-submit-button a {
     border: 1px solid #8d0559;
     border-radius: 5px;
     background-color: #aa076b;
@@ -996,7 +996,7 @@ body {
     font-size: 22px;
   }
 
-  #All-Questions .exam-submit-button a:hover {
+.exam-submit-button a:hover {
     background-color: rgb(170 7 107 / 10%);
     color: #aa076b;
   }

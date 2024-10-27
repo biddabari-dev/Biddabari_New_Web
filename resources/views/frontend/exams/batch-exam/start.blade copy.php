@@ -64,6 +64,7 @@
     <div class="row" style=" min-height: 500px;">
         <div class="col-md-8 quiz-wizard mx-auto">
             <div class="card border-0">
+
                 <section id="Question-head">
                     <div class="background-res-qus-paper py-5"
                         style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/question-paper-bg.png')">
@@ -96,6 +97,8 @@
                         </div>
                     </div>
                 </section>
+
+
                 <!-- $quiz->questions->take(100)->shuffle(50)->random(50); -->
                 <div class="card-body d-none" id="questionsCard">
                     <div class="row custom_start_exam_scroll">
@@ -106,52 +109,48 @@
                                 <input type="hidden" name="required_time">
                                 <input type="hidden" name="_method" value="post"/>
                                 <input type="hidden" id="name" value="">
+                                <section id="All-Questions">
+                                    <div class="container">
                                 @if($exam->content_type == 'exam')
+                                <div class="row g-4 pt-2 pb-5">
                                     @foreach($exam->questionStores as $index => $question)
-                                        <div class="mt-2 p-3" id="questionDiv{{ $question->id }}">
-                                            <div class="form-card " id="fildset{{ $question->id }}">
-                                                <div class="question-title" id="loop{{ $question->id }}" data-loop="{{ $loop->iteration }}" style="margin-top: 10px">
-                                                    <span class="float-start f-s-26"> &nbsp;</span>
-                                                    <span class="float-start f-s-26">{!! $question->question !!}</span>
+                                        <div class="col-md-12 pt-3" id="questionDiv{{ $question->id }}">
+                                            <div class="question-title">
+                                                <h5>{!! $question->question !!}</h5>
+                                                <div>
+                                                    <div>
+                                                    <p class="anser-mark isConfirm{{ $question->id }}"></p>
                                                 </div>
-                                                @if(!empty($question->question_image))
-                                                    <div class="{{--image-container--}}">
-                                                        <img src="{{ asset($question->question_image) }}" class="fit-image" alt="" style="max-height: 350px; max-width: 94%" />
-                                                    </div>
-                                                @endif
-                                                @if(isset($question->question_option_image))
-                                                    <div class="row py-2">
-                                                        <div class="col-12">
-                                                            <img src="{{ asset($question->question_option_image) }}" class="" alt="" style="max-height: 350px; max-width: 94%">
+                                                </div>
+                                            </div>
+                                            @if(!empty($question->question_image))
+                                                <div class="{{--image-container--}}">
+                                                    <img src="{{ $question->question_image }}" class="fit-image" alt="" style="max-height: 350px; max-width: 94%" />
+                                                </div>
+                                            @endif
+
+                                            <div class="question-options">
+                                                <div class="row">
+                                                    @foreach($question->questionOptions as $optionIndex => $questionOption)
+                                                    @if(!empty($questionOption->option_title))
+                                                    <div class="col-md-6">
+                                                        <div class="option justify-content-between" data-ans-id="{{ $questionOption->id }}" >
+                                                            <p>{{ $questionOption->option_title }}</p>
+                                                            <div class="confirm-button">
+                                                                <div class="ok-button" id="ansCheck{{ $questionOption->id }}">
+                                                                    <input type="checkbox" class="asw{{ $questionOption->id }} d-none" name="question[{{ $question->id }}][answer]" value="{{ $questionOption->id }}">
+                                                                    <a class="check-ans" data-bs-toggle="tooltip" data-bs-placement="top" title="Click To confirm" data-question-id="{{ $question->id }}" data-option-id="{{ $questionOption->id }}"><i class="fa-solid fa-circle-check"></i></a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                @endif
-                                                <div class="answer-items mt-3" id="queRadio{{ $question->id }}">
-                                                    @foreach($question->questionOptions as $optionIndex => $questionOption)
-                                                        @if(!empty($questionOption->option_title))
-                                                            <div class="form-radio" >
-                                                                <input class="asw{{ $questionOption->id }}" type="checkbox" name="question[{{ $question->id }}][answer]" value="{{ $questionOption->id }}">
-
-                                                                <label class="answer-label" id="ali{{ $questionOption->id }}" data-que-id="{{ $question->id }}" data-ans-id="{{ $questionOption->id }}" for="asw{{ $questionOption->id }}">
-                                                                    <span class="answer-title mx-0">{{ $questionOption->option_title }}</span>
-                                                                </label>
-                                                                <span class="ps-1 d-none cont" id="ansCheck{{ $questionOption->id }}">
-                                                                    <span class="check-ans" data-option-id="{{ $questionOption->id }}" style="cursor: pointer; color: black"><i class="fa-solid fa-check"></i></span>
-                                                                </span>
-                                                            </div>
-                                                        @else
-                                                            <div class="form-radio">
-                                                                <input id="asw{{ $questionOption->id }}" type="checkbox" name="question[{{ $question->id }}][answer]" value="{{ $questionOption->id }}">
-                                                                <label class="" for="asw{{ $questionOption->id }}">
-                                                                    <img src="{{ $questionOption->option_image }}" class="fit-image" alt="">
-                                                                </label>
-                                                            </div>
-                                                        @endif
+                                                    @endif
                                                     @endforeach
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
+                                </div>
                                     {{-- <div class="card-actions d-flex align-items-center finish-div d-none">
                                         <button type="submit" class="action-button finish btn btn-danger">Finish Test</button>
                                     </div> --}}
@@ -186,8 +185,9 @@
                         </div>
                     </div>
                 @if($exam->content_type == 'exam')
-                    <div class="exam-submit-button">
-                        <a href="" type="submit" class="sticky-submit-btn">Submit</a>
+                    <div class="col-md-8 text-center mt-3 mx-auto mb-3">
+                        {{-- <a href="" class="btn sticky-submit-btn btn-outline-warning d-none">Submit</a> --}}
+                        <a href="" class="sticky-submit-btn btn btn-danger btn-outline-warning w-50 f-s-20 d-none">Submit</a>
                     </div>
                 @endif
                 </div>
@@ -220,34 +220,14 @@
         background: #ffe4d6!important;
         color: black!important;
     }
-    .now-confrim {
-        background: #0aa350 !important;
-        color: #FFFFFF !important;
-    }
 
     .form-card { padding: 10px 2px 20px 25px; border-radius: 10px}
 
     .check-ans  {
-        border: 3px solid green;
-        padding: 5px;
+        padding: 4px 3px 0px 4px;
         border-radius: 10px;
     }
-    .cont{
-        margin-top: 10px;
-    }
-    .check-ans :hover {
-        color: #ffffff !important;
-        padding: 5px;
-        background-color: #0aa350 !important;
-    }
-    .question-title span{
-        text-align: left !important;
-        font-weight: 600;
-        color: #000 !important;
-    }
-    .answer-label{
-        font-weight: 600;
-    }
+
 </style>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -517,17 +497,44 @@
             // $('#ansCheck'+questionOptionId).css('cssText', 'display: block!important;');
             $('#ansCheck'+questionOptionId).removeClass('d-none');
         })
+
         $(document).on('click', '.check-ans', function () {
-            $(this).parent().addClass('d-none');
-            $($(this).parent().parent()).addClass('disabled-it');
-            $(this).closest('.cont').prev('.answer-label').addClass('now-confrim');
-            var questionParentDivId = $($(this).parent().parent().parent().parent().parent()).attr('id');
-            $(this).parent().parent().parent().parent().parent().css({
-                // backgroundColor : 'rgb(150, 253, 198)',
-                // color           : 'white',
+            var questionId = $(this).data('question-id');
+            var questionOptionId = $(this).data('option-id');
+            // Disable all check-ans buttons and options within the same question group
+            $(this).closest('.col-md-6').siblings().find('.check-ans').addClass('disabled').css('pointer-events', 'none');
+            $(this).closest('.col-md-6').siblings().find('.option').css({
+                pointerEvents: 'none',
+                backgroundColor: '' // Reset background for non-selected options
             });
-            $('.asw'+$(this).attr('data-option-id')).prop( "checked", true );
-        })
+            $('.isConfirm'+questionId).text('Answered');
+            $('.asw' + questionOptionId).prop("checked", true);
+            console.log('.asw'+questionOptionId);
+            // Apply the selected background color to the clicked option and disable interactions
+            $(this).closest('.option').css({
+                backgroundColor: 'rgb(0 255 118)',
+                pointerEvents: 'none'
+            });
+
+            $(this).closest('.ok-button').css({
+                display: "block"
+            });
+
+            // Check the corresponding checkbox
+            $(this).closest('.option').find('input[type="checkbox"]').prop("checked", true);
+        });
+
+
+
+        $(document).on('click', '.option', function () {
+            $(this).closest('.option').css({
+                backgroundColor: 'rgb(229 255 241)',
+            });
+            $(this).closest('.col-md-6').siblings().find('.option').css({
+                backgroundColor: '' // Reset background for non-selected options
+            });
+
+        });
 
         $(document).on('click', '.cancel-ans', function () {
             if($($(this).parent().parent()).hasClass('disabled-it'))
