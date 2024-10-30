@@ -263,9 +263,9 @@
                     </div>
                     <div class="mt-3">
                         <a href="{{ route('front.student.show-course-exam-answers', ['content_id' => $content->id]) }}" class="btn btn-warning border" style="background-color: #f18345!important; border: 1px solid #F18345!important; color: white">See Answers</a>
-                        @if($content->written_publish_time_timestamp < strtotime(currentDateTimeYmdHi()))
+                        @if($content->written_publish_time_timestamp <= strtotime(currentDateTimeYmdHi()))
 {{--                            <a href="{{ route('front.student.show-course-exam-answers', ['content_id' => $content->id, 'slug' => str_replace(' ', '-', $content->title)]) }}" class="btn btn-primary">See Ranking</a>--}}
-                            <a href="{{ route('front.student.show-course-exam-ranking', ['content_id' => $content->id, 'slug' => str_replace(' ', '-', $content->title)]) }}" class="btn btn-primary">See Ranking</a>
+                         <a href="{{ route('front.student.show-course-exam-ranking', ['content_id' => $content->id, 'slug' => str_replace(' ', '-', $content->title)]) }}" class="btn btn-primary">See Ranking</a>
                         @endif
                     </div>
                 @endif
