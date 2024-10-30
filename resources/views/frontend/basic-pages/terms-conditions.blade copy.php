@@ -4,20 +4,21 @@
     {{ \Illuminate\Support\Facades\Session::put('course_redirect_url', \Illuminate\Support\Facades\Request::url()) }}
 
     <main>
-        <section id="TermsConditon" class="background-res-terms background-ats py-5">
+        <section id="TermsConditon" class="background-res-terms background-ats py-5"
+            style="background-image: url('{{ asset('frontend') }}/assets/images/termi&condition/terms&condition-bg.png')">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
 
-                        <div class="title-area text-start"  style="background-image: url('{{ asset('frontend') }}/assets/images/termi&condition/terms&condition-bg.png')">
+                        <div class="title-area text-start">
                             <h2 class="fw-bold">Terms and Conditions</h2>
-                            <h6>Last Updated : 31 July, 2024</h6>
+
                         </div>
 
                         <div class="terms-and-condition-area">
                             <div class="terms-welcome-area py-3">
                                 <h2>Welcome to <span>Biddabari</span></h2>
-
+                                <h6>Last Updated : 31 July, 2024</h6>
                                 <p>These terms and conditions outline the rules and regulations for the use of Biddabari's Website and Services, located at <a href="biddabari.com"> biddabari.com</a> <br> <br>
                                 By accessing this website and/or purchasing our courses, we assume you accept these terms and conditions. Do not continue to use Biddabari if you do not agree to all the terms and conditions stated on this page.</p>
                             </div>

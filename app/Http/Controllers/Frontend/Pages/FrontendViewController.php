@@ -402,6 +402,13 @@ class FrontendViewController extends Controller
 
     public function newComment (Request $request)
     {
+
+        $roleIds = auth()->user()->roles->pluck('id')->toArray();
+
+        if (!in_array(4, $roleIds)) {
+            return ViewHelper::returEexceptionError('Only students can send messages.');
+        }
+        
         $request->validate([
             'message' => 'required'
         ]);

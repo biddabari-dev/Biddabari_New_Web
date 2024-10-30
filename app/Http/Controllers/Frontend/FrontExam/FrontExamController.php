@@ -24,6 +24,7 @@ use App\Models\Backend\ExamManagement\ExamSubscriptionPackage;
 use App\Models\Backend\OrderManagement\ParentOrder;
 use App\Models\Backend\QuestionManagement\QuestionOption;
 use App\Models\Backend\QuestionManagement\QuestionStore;
+use App\Models\Frontend\AdditionalFeature\ContactMessage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -942,14 +943,18 @@ class FrontExamController extends Controller
 
     }
 
-    public function viewExamDetails($id, $slug = null)
+    public function viewExamDetails($slug = null)
     {
-        $this->exam = Exam::find($id);
+
+        $this->exam = BatchExam::where('slug',$slug)->first();
+        $totalStudentEnrollments = DB::table('batch_exam_student')->where('batch_exam_id', $this->exam->id)->count('student_id');
         $this->data = [
             'exam'  => $this->exam,
-            'enrollStatus'  => ViewHelper::checkUserBatchExamIsEnrollment(ViewHelper::loggedUser(),$this->exam)
+            'totalStudentEnrollments'  => $totalStudentEnrollments,
+            'enrollStatus'  => ViewHelper::checkUserBatchExamIsEnrollment(ViewHelper::loggedUser(),$this->exam),
+            'comments' => ContactMessage::where(['status' => 1, 'type' => 'batch_exam', 'parent_model_id' => $this->exam->id, 'is_seen' => 1])->get(),
         ];
-        return ViewHelper::checkViewForApi($this->data, 'frontend.exams.xm.details');
+        return view('frontend.exams.xm.details',$this->data);
     }
 
 

@@ -56,13 +56,13 @@
                 $(".variable-width").slick({
                     dots: true,
                     infinite: true,
-                    speed: 300,
+                    speed: 3000,
                     slidesToShow: 3, // Show 3 full slides
                     slidesToScroll: 1, // Scroll one slide at a time
                     centerMode: false, // Remove centering
                     arrows: true, // Enable next/previous arrows
                     autoplay: true, // Enable auto slide
-                    autoplaySpeed: 2000, // Set speed for auto slide (2 seconds)
+                    autoplaySpeed: 3000, // Set speed for auto slide (2 seconds)
 
                     responsive: [
                         {

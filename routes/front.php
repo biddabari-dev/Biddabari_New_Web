@@ -84,7 +84,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/free-course', [BasicViewController::class, 'freeCourses'])->name('free-courses');
         Route::get('/free-course/{slug}', [BasicViewController::class, 'freeCourseVideo'])->name('free.course');
         Route::get('/exam', [BasicViewController::class, 'showAllExams'])->name('all-exams');
-        Route::get('/view-exam-details/{xm_id}/{slug?}', [FrontExamController::class, 'viewExamDetails'])->name('view-exam');
+        Route::get('/exam-details/{slug?}', [FrontExamController::class, 'viewExamDetails'])->name('view-exam');
 
         Route::get('/live-questions-solving', [FrontendViewController::class, 'liveQuestionSolving'])->name('live-questions-solving');
         Route::get('/subscription-details/{id}/{slug?}', [ExamSubscriptionPackageController::class, 'details'])->name('subscription-details');
