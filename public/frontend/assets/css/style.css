@@ -4038,7 +4038,7 @@ body {
   }
 
   #Course_details .course-description-area .overview-area .course-curriculum-area .main-accordian .accordion-button::after {
-    background-color: #f0b897;
+    background-color: #fff;
     border-radius: 20px;
   }
 
