@@ -208,11 +208,13 @@
                         <p class="text-white ">Exam Has ended</p>
                     </div>
                     <div class="mt-3">
-                        <a href="{{ route('front.student.show-batch-exam-answers', ['content_id' => $content->id]) }}" class="btn btn-warning border" style="background-color: #f18345!important; border: 1px solid #F18345!important; color: white">See Answers</a>
-{{--                        @if(dateTimeFormatYmdHi($content->written_publish_time) < currentDateTimeYmdHi())--}}
-{{--                        @if(dateTimeFormatYmdHi($content->written_end_time) < currentDateTimeYmdHi())--}}
-                            <a href="{{ route('front.student.show-batch-exam-ranking', ['content_id' => $content->id, 'slug' => str_replace(' ', '-', $content->title)]) }}" class="btn btn-primary">See Ranking</a>
-{{--                        @endif--}}
+                         <a href="{{ route('front.student.show-batch-exam-answers', ['content_id' => $content->id]) }}" class="btn btn-warning border" style="background-color: #f18345!important; border: 1px solid #F18345!important; color: white">See Answers</a>
+                        {{--                        @if(dateTimeFormatYmdHi($content->written_publish_time) < currentDateTimeYmdHi())--}}
+                        {{--                        @if(dateTimeFormatYmdHi($content->written_end_time) < currentDateTimeYmdHi())--}}
+                        @if($content->written_publish_time_timestamp <= strtotime(currentDateTimeYmdHi()))
+                         <a href="{{ route('front.student.show-batch-exam-ranking', ['content_id' => $content->id, 'slug' => str_replace(' ', '-', $content->title)]) }}" class="btn btn-primary">See Ranking</a>
+                        @endif
+                        {{--                        @endif--}}
                     </div>
                 @endif
             </div>
