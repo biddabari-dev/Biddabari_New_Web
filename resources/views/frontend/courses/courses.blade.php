@@ -7,19 +7,31 @@ Biddabari - All Course
 @section('body')
 
 <main>
+    <section id="Home_add">
+        <div class="home-1st-add-image">
+            <img src="{{ asset('frontend') }}/assets/images/home-page/home-page-bn.webp" alt="Home 1st Add Banner"
+                srcset="">
+        </div>
+    </section>
+    {{-- <section id="Home_add">
+        <div class="home-1st-add-image" >
+            <img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" style="height: 500px !important;" alt="Home 1st Add Banner"
+                srcset="">
+        </div>
+    </section> --}}
 
     <section id="Free-service-banner" class="background-res-free-banner background-ats py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')" ;>
+        style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/home-page-main-banner.jpg')">
         <div class="container">
             <div class="free-course-banner">
                 <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-1.webp" alt="Image 1"></a>
+                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;" ></a>
                 </div>
                 <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-2.webp" alt="Image 1"></a>
+                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;"></a>
                 </div>
                 <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-3.webp" alt="Image 1"></a>
+                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;"></a>
                 </div>
 
             </div>
@@ -27,7 +39,7 @@ Biddabari - All Course
     </section>
 
     <section id="Home_Our_courses" class="background-res-free-banner py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/our-courses/our-courses.png')" ;>
+        style="background-image: url('{{ asset('frontend') }}/assets/images/our-courses/our-courses.png')" >
         <div class="container">
             <div class="row">
                 <div class="title-area text-center">
@@ -165,8 +177,8 @@ Biddabari - All Course
                         </path>
                     </svg>
                 </div>
-                <div class="see-more-button text-center">
-                    <button id="load-more" type="button" class="btn btn_warning">See More</button>
+                <div class="see-more-button text-center mt-3">
+                    <button id="load-more" type="button" class="btn btn_warning">আরো দেখুন</button>
                 </div>
             </div>
         </div>

@@ -31,6 +31,7 @@ use App\Models\Backend\UserManagement\Teacher;
 use App\Models\Frontend\AdditionalFeature\ContactMessage;
 use App\Models\Frontend\CourseOrder\CourseOrder;
 use App\Models\Seo;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -44,6 +45,7 @@ class BasicViewController extends Controller
     protected $seos = [];
     public function home ()
     {
+
         $this->batchExams  = BatchExam::where(['status' => 1, 'is_master_exam' => 0, 'is_paid' => 1])->select('id', 'title', 'banner', 'slug')->take(6)->get();
         $this->courseCategories = CourseCategory::whereStatus(1)->where('parent_id', 0)->orderBy('order', 'ASC')->select('id', 'name', 'image', 'slug', 'icon', 'order', 'status')->take(8)->get();
         $this->courses = Course::whereStatus(1)->where(['is_featured' => 1])->latest()->select('id', 'title', 'sub_title', 'price', 'banner', 'total_video', 'total_audio', 'total_pdf', 'total_exam', 'total_note', 'total_zip', 'total_live', 'total_link','total_file','total_written_exam', 'slug', 'discount_type', 'discount_amount', 'starting_date_time','admission_last_date','alt_text','banner_title')->take(12)->get();
@@ -302,7 +304,7 @@ class BasicViewController extends Controller
 
             $this->course->has_discount_validity = 'false';
         }
-        $totalStudentEnrollments = DB::table('course_student')->where('course_id', $course->id)->count('student_id');
+        $totalStudentEnrollments = DB::table('batch_exam_student')->where('batch_exam_id', $course->id)->count('student_id');
 
         $courseSec = Course::whereId($course->id)
             ->select('id', 'title', 'slug', 'status')

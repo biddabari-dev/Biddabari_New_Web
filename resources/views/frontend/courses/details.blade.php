@@ -368,7 +368,7 @@
                                                 <h4>Leave a Reply</h4>
                                             </div>
                                             <div class="box">
-                                                <form action="{{ route('front.new-comment') }}" method="post">
+                                                <form action="{{ auth()->check() ? route('front.new-comment') : route('login') }}" method="{{ auth()->check() ? 'POST' : 'GET'}}">
                                                     @csrf
                                                     <input type="hidden" name="type" value="course">
                                                     <input type="hidden" name="parent_model_id" value="{{ $course->id }}">

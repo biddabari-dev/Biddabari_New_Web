@@ -78,16 +78,21 @@
                                     <i class="angle fa fa-angle-right"></i>
                                 </a>
                                 <ul class="slide-menu">
-                                    @can('manage-user')
+                                    {{--@can('manage-user')
                                         <li><a href="{{ route('admin') }}"
                                                 class="slide-item {{ request()->is('admin') || request()->is('admin*') ? 'active' : '' }}">Admin</a>
                                         </li>
-                                    @endcan
+                                    @endcan--}}
                                     {{-- @can('manage-user')
                                         <li><a href=""
                                                 class="slide-item {{ request()->is('sub-admin') || request()->is('sub-admin*') ? 'active' : '' }}">Sub
                                                 Admin</a></li>
                                     @endcan --}}
+                                    @can('manage-user')
+                                        <li><a href="{{ route('admin_profile.index') }}"
+                                               class="slide-item {{ request()->is('admin') || request()->is('admin*') ? 'active' : '' }}">Admin</a>
+                                        </li>
+                                    @endcan
                                     @can('teacher-profile')
                                         <li><a href="{{ route('teachers_profile.index') }}"
                                                 class="slide-item {{ request()->is('sub-admin') || request()->is('sub-admin*') ? 'active' : '' }}">Teacher</a>

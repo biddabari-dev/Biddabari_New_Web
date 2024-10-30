@@ -57,6 +57,7 @@ use App\Http\Controllers\Backend\SEO\SeoController;
 use App\Http\Controllers\Backend\AppVarsion\AppVarsionController;
 use App\Http\Controllers\Backend\BkashController;
 use App\Http\Controllers\Backend\UserManagement\TeacherProfileController;
+use App\Http\Controllers\Backend\UserManagement\AdminProfileController;
 
 Route::post('create/bkash',[BkashController::class,'createPayment'])->name('bkash-create-payment');
 Route::get('/bkash/pay',[BkashController::class,'callBack'])->name('excute_payment');
@@ -95,6 +96,7 @@ Route::middleware([
 
     //    User Profile Management
     Route::get('/admin', [UserController::class, 'admin'])->name('admin');
+    Route::resource('admin_profile', AdminProfileController::class);
     Route::get('/view-profile', [UserController::class, 'viewProfile'])->name('view-profile');
     Route::get('/all-users-page', [UserController::class, 'allUsersPage'])->name('all-users-page');
 

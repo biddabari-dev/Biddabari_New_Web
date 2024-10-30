@@ -53,7 +53,7 @@ class ContactMessage extends Model
 
         $loggedUser = ViewHelper::loggedUser();
 
-       $data = static::updateOrCreate(['id' => $contactId], [
+        $data = static::updateOrCreate(['id' => $contactId], [
             'user_id'   => $loggedUser->id ?? null,
             'parent_model_id'   => isset($request->parent_model_id) ? $request->parent_model_id : 0,
             'batch_exam_section_content_id' => isset($request->batch_exam_section_content_id) ? $request->batch_exam_section_content_id : null,
