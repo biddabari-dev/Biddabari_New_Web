@@ -586,6 +586,9 @@ body {
     height: 207px;
     border-radius: 15px 15px 0px 0px;
   }
+  .exam-package-area {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  }
 
   .exam-package-area .package-exam-content .package-exam-title h2 {
     margin-bottom: 0px;

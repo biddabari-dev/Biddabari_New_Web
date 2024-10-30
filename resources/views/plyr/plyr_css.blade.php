@@ -3,7 +3,7 @@
   <style>
       button.plyr__controls__item.plyr__control[data-plyr="fast-forward"] {
           position: absolute;
-          top: -128%;
+          top: -50%;
           transform: translateY(-50%);
           opacity: 1;
           font-size: 24px;
@@ -23,7 +23,7 @@
 
       button.plyr__controls__item.plyr__control[data-plyr="rewind"] {
           position: absolute;
-          top: -119%;
+          top: -50%;
           transform: translateY(-50%);
           opacity: 1;
           font-size: 24px;
@@ -83,9 +83,12 @@
 
       .video-container {
           width: 100% !important;
-          height: 350px;
+          height: 305px;
           overflow: hidden;
           position: relative;
+          box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+          /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+          /* box-shadow: 0px 4px 10px rgba(180, 35, 244, 0.4); */
           /* padding-bottom: 56.25%; */
           /* padding-top: 25px; */
           /*height: 0;*/
