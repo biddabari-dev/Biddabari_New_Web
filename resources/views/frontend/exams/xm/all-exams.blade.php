@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="col">
                                         <div class="package-exam-button">
                                             <button class="package-exam-details"><a
