@@ -40,10 +40,14 @@ Biddabari - Login
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <div class="position_relative">
-                                                    <i class="fa-solid fa-lock input-icon"></i>
+                                                <div class="position-relative d-flex align-items-center">
+                                                    <i class="fa-solid fa-lock input-icon me-2"></i>
                                                     <input type="password" name="password" class="form-control icon-input @error('password') is-invalid @enderror"
-                                                        id="password" placeholder="Enter your password">
+                                                        id="password" placeholder="Enter your password" style="flex: 1;">
+                                                        <span class="view-icon btn btn-sm border show-pass ms-2 bg-" style="padding: 7px;" onclick="togglePasswordVisibility()">
+                                                            👁️
+                                                        </span>
+                                                    {{-- <span id="viewPass" class="btn btn-sm border show-pass ms-2" style="padding: 7px;"><i class="fa-solid fa-eye"></i></span> --}}
                                                 </div>
                                                 @error('password')
                                                     <span class="invalid-feedback d-block">{{ $message }}</span>
@@ -76,3 +80,19 @@ Biddabari - Login
 </main>
 
 @endsection
+@push('script')
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById("password");
+        const icon = document.querySelector(".view-icon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.textContent = "👀"; // Change icon to "hide" icon
+        } else {
+            passwordField.type = "password";
+            icon.textContent = "👁️"; // Change icon to "view" icon
+        }
+    }
+</script>
+@endpush

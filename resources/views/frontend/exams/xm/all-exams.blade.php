@@ -63,11 +63,11 @@
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="exam-package-area">
                             <div class="package-exam-image">
-                                <a href="{{ $url  }}"><img src="{{ static_asset($exam->banner ? $exam->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $exam->alt_text }}"/></a>
+                                <a href="{{ route('front.view-exam', ['slug' => $exam->slug]) }}"><img src="{{ static_asset($exam->banner ? $exam->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $exam->alt_text }}"/></a>
                             </div>
                             <div class="package-exam-content ms-3">
                                 <div class="package-exam-title pt-3">
-                                    <h2 class="fw-bold"><a href="{{ $url }}">{{ Str::limit($exam->title, 40) }}</a></h2>
+                                    <h2 class="fw-bold"><a href="{{ route('front.view-exam', ['slug' => $exam->slug]) }}">{{ Str::limit($exam->title, 40) }}</a></h2>
                                 </div>
                                 <div class="row button-and-price pb-2">
                                     <div class="col">
@@ -88,11 +88,11 @@
                                             </div>
                                             <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="col">
                                         <div class="package-exam-button">
-                                            <br>
-                                            <br>
+                                            <button class="package-exam-details"><a
+                                                href="{{ route('front.view-exam', ['slug' => $exam->slug]) }}">View Details </a></button><br>
                                             @if ($exam->admission_last_date > date('Y-m-d H:i'))
                                             <a href="{{ route('front.checkout', ['type' => 'batch_exam', 'slug' => $exam->slug]) }}"><button class="custom-btn btn-12">
                                                 <span>ক্লিক করুন!</span><span>পরিক্ষা কিনুন</span>

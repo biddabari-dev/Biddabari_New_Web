@@ -127,10 +127,10 @@
                         <div class="col-md-12 col-lg-4">
                             <div class="main-banner-video">
                                 <div class="ratio ratio-16x9" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-                                    <iframe id="videoIframe" src="https://www.youtube.com/embed/MbAMQXsp88M?si=9aTUs_YxqxlGsKaY"
+                                    <iframe id="videoIframe" src="https://www.youtube.com/embed/EGGWGLALnWU?si=9aTUs_YxqxlGsKaY"
                                             title="YouTube video" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                                     <!-- Transparent overlay to trigger the click event -->
-                                    <div onclick="showVideoModal('https://www.youtube.com/embed/MbAMQXsp88M?autoplay=1')"
+                                    <div onclick="showVideoModal('https://www.youtube.com/embed/EGGWGLALnWU?autoplay=1')"
                                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
                                 </div>
                             </div>
@@ -139,10 +139,10 @@
                                     <div class="col-4 ">
                                         <div class="home-feature-video">
                                             <div class="ratio ratio-1x1" style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/MbAMQXsp88M?si=9aTUs_YxqxlGsKaY"
+                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/o8ENSjeWip4?si=9aTUs_YxqxlGsKaY"
                                             title="YouTube video" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                                             <!-- Transparent overlay to trigger the click event -->
-                                            <div onclick="showVideoModal('https://www.youtube.com/embed/MbAMQXsp88M?autoplay=1')"
+                                            <div onclick="showVideoModal('https://www.youtube.com/embed/o8ENSjeWip4?autoplay=1')"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
                                                     </div>
                                             </div>
@@ -150,10 +150,10 @@
                                     <div class="col-4 ">
                                         <div class="home-feature-video">
                                             <div class="ratio ratio-1x1" style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/MbAMQXsp88M?si=9aTUs_YxqxlGsKaY"
+                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/TnCYR3kW_QU?si=9aTUs_YxqxlGsKaY"
                                             title="YouTube video" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                                             <!-- Transparent overlay to trigger the click event -->
-                                            <div onclick="showVideoModal('https://www.youtube.com/embed/MbAMQXsp88M?autoplay=1')"
+                                            <div onclick="showVideoModal('https://www.youtube.com/embed/TnCYR3kW_QU?autoplay=1')"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
                                                     </div>
                                             </div>
@@ -161,10 +161,10 @@
                                     <div class="col-4 ">
                                         <div class="home-feature-video">
                                             <div class="ratio ratio-1x1" style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/MbAMQXsp88M?si=9aTUs_YxqxlGsKaY"
+                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/DnpjPBACH6M?si=9aTUs_YxqxlGsKaY"
                                             title="YouTube video" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                                             <!-- Transparent overlay to trigger the click event -->
-                                            <div onclick="showVideoModal('https://www.youtube.com/embed/MbAMQXsp88M?autoplay=1')"
+                                            <div onclick="showVideoModal('https://www.youtube.com/embed/DnpjPBACH6M?autoplay=1')"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
                                                     </div>
                                             </div>
@@ -701,6 +701,27 @@
     border: 0;
 }
 
+.video-thumbnail {
+    position: relative;
+    width: 300px; /* Set the size you want for the video thumbnail */
+    height: 180px;
+    background-image: url('your-thumbnail.jpg'); /* Use a video thumbnail image */
+    background-size: cover;
+    cursor: pointer;
+}
+
+.custom-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px; /* Adjust size of the play button */
+    height: 50px;
+    background: url('custom-play-icon.png') no-repeat center center;
+    background-size: contain;
+    z-index: 1;
+}
+
 </style>
 @endpush
 @push('script')
@@ -716,7 +737,7 @@
     <script>
         // Function to show video modal and set video source
         function showVideoModal(videoSrc) {
-            document.getElementById('modalVideo').src = videoSrc;
+            document.getElementById('modalVideo').src = videoSrc + "?autoplay=1"; // Autoplay the video
             $('#videoModal').modal('show');
         }
         // When the modal is hidden, remove the src to stop the video
@@ -724,5 +745,8 @@
             document.getElementById('modalVideo').src = ''; // This will stop the video
             $('#videoModal').modal('hide');
         });
+
     </script>
+
+
 @endpush

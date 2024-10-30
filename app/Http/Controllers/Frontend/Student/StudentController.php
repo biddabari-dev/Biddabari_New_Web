@@ -36,14 +36,19 @@ class StudentController extends Controller
     public function dashboard ()
     {
 //        $isStudent = false;
+        // $roleIds = auth()->user()->roles->pluck('id')->toArray();
+        // if (!in_array(4, $roleIds)) {
+        //     return redirect('/')->with('error', 'You don\'t have student access.');
+        // }
+
         foreach (auth()->user()->roles as $role)
         {
             if ($role->id != 4)
             {
                 return redirect('/')->with('error', 'You don\'t have student access.');
-//                $isStudent = true;
             }
         }
+
 //        if ($isStudent == false)
 //        {
 //            return redirect()->route('dashboard')->with('success', 'You logged in successfully.');
