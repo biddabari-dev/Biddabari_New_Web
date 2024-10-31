@@ -21,8 +21,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Users $dateTable,Request $request)
-    {
+    public function index(Users $dateTable,Request $request){
         abort_if(Gate::denies('manage-user'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return $dateTable->render('backend.role-management.user.index');
@@ -38,6 +37,21 @@ class UserController extends Controller
             'users'   => $this->users,
         ]);
     }
+
+
+
+    /*  public function index(Users $dateTable){
+      abort_if(Gate::denies('manage-user'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+      $users = User::whereHas('roles', function ($query) {
+          $query->where('role_id', 4);
+      })->select('id', 'name', 'mobile', 'status')->orderBy('id', 'DESC')->paginate(100);
+
+      return $dateTable->render('backend.role-management.user.index', compact('users'));
+  }*/
+
+
+
     public function admin(Users $dateTable,Request $request)
     {
         abort_if(Gate::denies('manage-user'), Response::HTTP_FORBIDDEN, '403 Forbidden');

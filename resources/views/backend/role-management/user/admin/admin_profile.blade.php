@@ -1,14 +1,14 @@
 
 @extends('backend.master')
 
-@section('title', 'teachers')
+@section('title', 'Administrators')
 
 @section('body')
 <div class="row py-5">
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-warning">
-                <h4 class="float-start text-white">All Super-Admin & Admin</h4>
+                <h4 class="float-start text-white">All Administrators</h4>
                 @can('create-user')
                     <a href="{{route('admin_profile.create')}}" class="rounded-circle text-white border-5 text-light f-s-22 btn position-absolute end-0 me-4" title="Add Admin">
                         <i class="fa-solid fa-circle-plus"></i>
@@ -45,9 +45,21 @@
                                     @php
                                         $role = optional($admin->roles->first())->pivot->role_id;
                                     @endphp
-                                    <p class="badge bg-primary">{{ $role == 1 ? 'Super Admin' : ($role == 2 ? 'Admin' : 'No Role') }}</p>
+                                    <p class="badge bg-primary">
+                                        {{
+                                            $role == 1 ? 'Super Admin' :
+                                            ($role == 2 ? 'Admin' :
+                                            ($role == 5 ? 'Stuff' :
+                                            ($role == 6 ? 'Order Check' :
+                                            ($role == 7 ? 'IT' :
+                                            ($role == 8 ? 'Course' :
+                                            ($role == 9 ? 'Sub Admin' :
+                                            ($role == 10 ? 'Service' :
+                                            ($role == 11 ? 'SEO' : 'No Role'))))))))
+                                        }}
+                                    </p>
+                                    {{--<p class="badge bg-primary">{{ $role == 1 ? 'Super Admin' : ($role == 2 ? 'Admin' : 'No Role') }}</p>--}}
                                 </td>
-
                                 <td>{{ $admin->status == 1 ? 'Active' : 'Inactive' }}</td>
                                 <td>
                                    @can('edit-user')
