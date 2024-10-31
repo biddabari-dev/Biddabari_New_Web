@@ -1,82 +1,72 @@
-<div class="col-md-4 col-sm-6 px-1">
-    <div class="courses-item">
-        <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}">
-            <img src="{{ asset(file_exists_obs($course->banner) ? $course->banner : 'frontend/logo/biddabari-card-logo.jpg') }}"
-                alt="{{ $course->alt_text }}" title="{{ $course->banner_title }}" class="w-100" style="height: 230px" />
-        </a>
-        <div class="content">
-            <h3><a href="{{ route('front.course-details', ['slug' => $course->slug]) }}">{{ $course->title ?? 'Course Title' }}</a></h3>
-            <ul class="course-list">
-                {{-- <li><i class="ri-time-fill"></i> 06 hr</li>--}}
-                <li><i class="ri-vidicon-fill"></i> {{ $course->total_note ?? 0 }} lectures</li>
-                <li><i class="ri-file-pdf-line"></i> {{ $course->total_pdf ?? 0 }} PDF</li>
-                <li><i class="ri-a-b"></i> {{ $course->total_exam ?? 0 }} Exam</li>
-                <li><i class="ri-store-3-line"></i>{{ $course->total_live ?? 0 }} live class</li>
-                <div class="dis-course-price">
-                    @if($course->discount_type == 1 || $course->discount_type == 2)
-                    <span class="course-price"> ৳ <del>{{ $course->price ?? 0 }} </del> </span>
-                    <!--<span class="dis-course-amount">৳ {{ $course->discount_type == 1 ? $course->price - $course->discount_amount : ($course->price - ($course->price * $course->discount_amount)/100) }}</span>-->
-                    <span class="dis-course-amount">৳ {{ $course->price-$course->discount_amount }}</span>
-                    @else
-                    <span class="dis-course-amount"> ৳ {{ $course->price ?? 0 }} </span>
-                    @endif
-                </div>
-            </ul>
-            @php
-                $discountAmount = $course->discount_type == 1 ? $course->discount_amount : ($course->price * $course->discount_amount)/100;
-                $totalAmount = $course->price - (isset($discountAmount) ? $discountAmount : 0);
-            @endphp
-
-            <div class="custome_dis_course_price">
-                @if($course->discount_type == 1 || $course->discount_type == 2)
-                <span class="course-price"> ৳ <del>{{ $course->price ?? 0 }} </del> </span>
-                <span class="dis-course-amount">৳ {{ $course->price - $discountAmount ?? 0 }}</span>
-                @else
-                <span class="dis-course-amount"> ৳ {{ $course->price ?? 0 }} </span>
-                @endif
+<div class="col-md-6 col-lg-3 mb-4">
+    <div class="exam-package-area">
+        <div class="package-exam-image">
+            <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img src="{{ static_asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $course->alt_text }}"/></a>
+        </div>
+        <div class="package-exam-content ms-3">
+            <div class="package-exam-title pt-3">
+                <h2 class="fw-bold"><a href="{{ route('front.course-details', ['slug' => $course->slug]) }}">{{ Str::limit($course->title, 40) }}</a></h2>
             </div>
+            <div class="row button-and-price pb-2">
+                <div class="col">
+                    <div class="package-exam-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    {{--<div class="package-exam-price">
+                        @php
+                            $discountAmount = $course->discount_type == 1  ? $course->discount_amount : ($course->price * $course->discount_amount) / 100;
+                            $discountPrice = $course->price - (isset($discountAmount) ? $discountAmount : 0);
+                        @endphp
+                        <div class="package-exam-total-price text-muted">
+                            <s class="text-muted">৳ {{$course->price ?? 0 }}</s>
+                        </div>
+                        <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
+                    </div>--}}
 
-            <div class="bottom-content">
-                @if($course->order_status != 'true')
-                <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"
-                    class="btn btn-warning">বিস্তারিত দেখুন</a>
-                @endif
-                <div class="rating ">
                     @php
-                        $date = date('Y-m-d H:i')
+                        $currentDate = \Carbon\Carbon::now();
+                        $discountStartDate = \Carbon\Carbon::parse($course->discount_start_date);
+                        $discountEndDate = \Carbon\Carbon::parse($course->discount_end_date);
+                        $isDiscountActive = $currentDate->between($discountStartDate, $discountEndDate);
+                        $discountAmount = ($isDiscountActive && $course->discount_type == 1)
+                                            ? $course->discount_amount
+                                            : (($isDiscountActive && $course->discount_type == 2)
+                                                ? ($course->price * $course->discount_amount) / 100
+                                                : 0);
+                        $discountPrice = $course->price - $discountAmount;
                     @endphp
-                    @if($course->order_status == 'false')
-                        @if($course->admission_last_date > $date)
-{{--                            <a href="{{ route('front.checkout', ['id' => $course->id, 'slug' => $course->slug]) }}"--}}
-{{--                               class="btn btn-warning">কোর্সটি কিনুন</a>--}}
 
-                            {{-- <form action="{{ route('front.place-course-order', ['course_id' => $course->id]) }}" method="post">
-                                @csrf
-                                <input type="hidden" name="course_id" value="{{ $course->id }}" />
-                                <input type="hidden" name="total_amount" value="{{ $totalAmount }}" />
-                                <input type="hidden" name="used_coupon" value="0">
-                                <input type="hidden" name="coupon_code" value="">
-                                <input type="hidden" name="coupon_amount" value="">
-                                <input type="hidden" name="ordered_for" value="course">
-                                <input type="hidden" name="rc" value="{{ $_GET['rc'] ?? '' }}">
-                                <input type="hidden" name="payment_method" value="ssl">
-                                <input type="submit" class="btn btn-warning" value="কোর্সটি কিনুন">
-                            </form> --}}
+                    <div class="package-exam-price">
 
-                            <a
-                            {{-- {{ dd($course) }} --}}
-                                href="{{ route('front.checkout', ['type' => 'course', 'slug' => $course->slug]) }}"
-                                class="btn btn-warning">কোর্সটি কিনুন</a>
-
-
+                        @if($isDiscountActive)
+                            <div class="package-exam-total-price text-muted">
+                                <s class="text-muted">৳ {{ $course->price ?? 0 }}</s>
+                            </div>
+                            <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
                         @else
-                            <a class="btn btn-warning">ভর্তির সময় শেষ</a>
+                            <div class="package-exam-discount-price">৳ {{ $course->price }}</div>
                         @endif
-                    @elseif($course->order_status == 'pending')
-                    <a href="javascript:void(0)" class="text-warning">Pending</a>
-                    @elseif($course->order_status == 'true')
-                    <a href="javascript:void(0)" class="">Active</a>
-                    @endif
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="package-exam-button">
+                        <button class="package-exam-details"><a
+                                href="{{ route('front.course-details', ['slug' => $course->slug]) }}">View Details </a></button><br>
+                        @if ($course->admission_last_date > date('Y-m-d H:i'))
+                        <a href="{{ route('front.checkout', ['type' => 'course', 'slug' => $course->slug]) }}"><button class="custom-btn btn-12">
+                            <span>ক্লিক করুন!</span><span>কোর্সটি কিনুন</span>
+                        </button></a>
+                        @else
+                        <button class="custom-btn btn-12">
+                            <span>সময় শেষ</span><span>ভর্তির সময় শেষ</span>
+                        </button>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
