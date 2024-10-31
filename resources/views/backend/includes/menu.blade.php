@@ -90,7 +90,7 @@
                                     @endcan --}}
                                     @can('manage-user')
                                         <li><a href="{{ route('admin_profile.index') }}"
-                                               class="slide-item {{ request()->is('admin') || request()->is('admin*') ? 'active' : '' }}">Admin</a>
+                                               class="slide-item {{ request()->is('admin') || request()->is('admin*') ? 'active' : '' }}">Administrators</a>
                                         </li>
                                     @endcan
                                     @can('teacher-profile')
