@@ -1,13 +1,13 @@
 @extends('backend.master')
 
-@section('title', 'Admins')
+@section('title', 'Administrators')
 
 @section('body')
     <div class="row py-5">
         <div class="col-md-6 mx-auto">
             <div class="card">
                 <div class="card-header bg-warning">
-                    <h4 class="float-start text-white">Super-Admin & Admin</h4>
+                    <h4 class="float-start text-white">Create & Update Administrators</h4>
                     <a href="{{ route('admin_profile.index') }}" class="btn rounded-circle position-absolute end-0 me-3">
                         <i class="fa-regular fa-file-lines fa-2x text-white"></i>
                     </a>
@@ -136,7 +136,7 @@
                             </div>
                         </div>
                         <div>
-                            <input type="submit" class="btn btn-success btn-sm float-end" value="{{ isset($user) ? 'Update' : 'Create' }} Admin" />
+                            <input type="submit" class="btn btn-success btn-sm float-end" value="{{ isset($user) ? 'Update' : 'Create' }} Administrators" />
                         </div>
                     </form>
                 </div>

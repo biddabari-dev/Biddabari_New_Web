@@ -1,14 +1,14 @@
 
 @extends('backend.master')
 
-@section('title', 'teachers')
+@section('title', 'Teachers')
 
 @section('body')
 <div class="row py-5">
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-warning">
-                <h4 class="float-start text-white">Teachers</h4>
+                <h4 class="float-start text-white">Manage Teachers</h4>
                 {{--                    @can('create-product')--}}
                 {{--                        <button type="button" class="rounded-circle text-white border-5 text-light f-s-22 btn position-absolute end-0 me-4 product-category-modal-btn"><i class="fa-solid fa-circle-plus"></i></button>--}}
                 {{--                    @endcan--}}
@@ -57,12 +57,12 @@
                                 <td>
                                     @if(!empty($product->demo_video_1))
                                         <video src="{{ asset($product->demo_video_1) }}" controls class="" style="height: 75px">
-                                            <source src="{{ asset($product->demo_video_1) }}" type="video/mp4" /> 
+                                            <source src="{{ asset($product->demo_video_1) }}" type="video/mp4" />
                                         </video>
                                     @endif <br>
                                     @if(!empty($product->demo_video_2))
                                         <video src="{{ asset($product->demo_video_2) }}" controls class="" style="height: 75px">
-                                            <source src="{{ asset($product->demo_video_2) }}" type="video/mp4" /> 
+                                            <source src="{{ asset($product->demo_video_2) }}" type="video/mp4" />
                                         </video>
                                     @endif
 

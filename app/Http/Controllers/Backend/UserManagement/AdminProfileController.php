@@ -23,8 +23,8 @@ class AdminProfileController extends Controller
         abort_if(Gate::denies('manage-user'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $allAdmin = User::whereHas('roles', function ($query) {
-            $query->whereIn('role_id', [1, 2]);
-        })->select('id', 'name', 'email', 'mobile', 'status')->orderBy('id', 'DESC')->get();
+            $query->whereIn('role_id', [1, 2, 5, 6, 7, 8, 9, 10, 11]);
+        })->select('id', 'name', 'mobile', 'status')->orderBy('id', 'DESC')->get();
 
         return view('backend.role-management.user.admin.admin_profile', compact('allAdmin'));
     }

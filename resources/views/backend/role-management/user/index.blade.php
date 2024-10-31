@@ -1,6 +1,6 @@
 @extends('backend.master')
 
-@section('title', 'Permission')
+@section('title', 'Users')
 
 @section('body')
     <div class="row py-5">
