@@ -62,6 +62,17 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('product') ? 'active' : '' }}" href="{{ route('front.all-products') }}">বই</a>
                     </li>
+                    <form class="search_button_area" action="">
+                        <div class="input-group">
+                            <span class="input-group-text border-0">
+                                <button class="" type="submit">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </span>
+                            <input type="text" class="form-control border-0 shadow-none"
+                                placeholder="Search courses" name="search" />
+                        </div>
+                    </form>
                 </ul>
 
                 @if(auth()->check())
