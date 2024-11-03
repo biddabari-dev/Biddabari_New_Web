@@ -56,8 +56,8 @@
 
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css" />
         <!-- Add the slick-theme.css if you want default styling -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/slick/slick.css" />
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/slick/slick-theme.css" />
 
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css"/>
@@ -74,9 +74,9 @@
         @include('frontend.includes.footer')
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('frontend') }}/assets/js/jquery-3.6.0.min.js"></script>
         <script src="{{ asset('frontend') }}/assets/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="{{ asset('frontend') }}/assets/vendors/slick/slick.min.js"></script>
         <script>
             $(document).ready(function () {
                 $(".variable-width").slick({
@@ -94,14 +94,14 @@
                         {
                             breakpoint: 1024, // Adjust settings for screens less than 1024px
                             settings: {
-                                slidesToShow: 2, // Show 2 slides
+                                slidesToShow: 3, // Show 2 slides
                                 slidesToScroll: 1,
                             },
                         },
                         {
                             breakpoint: 768, // Adjust settings for screens less than 768px
                             settings: {
-                                slidesToShow: 1, // Show 1 slide
+                                slidesToShow: 2, // Show 1 slide
                                 slidesToScroll: 1,
                             },
                         },
