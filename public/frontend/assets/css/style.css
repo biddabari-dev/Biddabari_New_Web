@@ -136,6 +136,9 @@ img {
 }
 
 @media (max-width: 575.98px) {
+    .btn-12 {
+        top:0;
+    }
     .btn-12 span {
         width: 80px;
         height: 30px;
@@ -696,6 +699,10 @@ img {
 
     .exam-package-area .package-exam-content .package-exam-rating i {
         font-size: 8px;
+    }
+
+    .exam-package-area .package-exam-content .button-and-price .package-exam-details {
+        margin: 8px 0;
     }
 
     .exam-package-area .package-exam-content .button-and-price .package-exam-details a {
@@ -1996,6 +2003,7 @@ img {
     box-shadow: 0px 3px 15px -3px rgb(0 0 0 / 15%);
     padding: 12px;
     border-radius: 8px;
+    height: calc(100%);
 }
 
 #Our_story .our-story-event-area .event-area-content .event-icon {
