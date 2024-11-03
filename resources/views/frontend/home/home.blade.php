@@ -443,7 +443,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <div class="see-more-button text-center mt-4">
+                    <div class="see-more-button text-center mt-5">
                         <a href="{{ route('front.all-courses') }}" type="button" class="btn btn_warning">See More</a>
                     </div>
                 </div>

@@ -16,15 +16,13 @@
           {
               breakpoint: 1024, // Adjust settings for screens less than 1024px
               settings: {
-                  slidesToShow: 3, // Show 2 slides
-                  slidesToScroll: 1,
+                  slidesToShow: 3 // Show 2 slides
               },
           },
           {
               breakpoint: 768, // Adjust settings for screens less than 768px
               settings: {
-                  slidesToShow: 2, // Show 1 slide
-                  slidesToScroll: 1,
+                  slidesToShow: 2 // Show 1 slide
               },
           },
       ],

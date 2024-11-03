@@ -58,24 +58,27 @@ img {
 /* 12 */
 .btn-12 {
     position: relative;
-    right: 20px;
-    bottom: 20px;
+    right: 0px;
+    top: -5px;
     border: none;
     box-shadow: none;
-    width: 130px;
-    height: 40px;
-    line-height: 42px;
-    -webkit-perspective: 230px;
-    perspective: 230px;
+    display: block;
+    background: transparent;
 }
 
 .btn-12 span {
     background: #aa076b;
+    font-size: 14px;
     /* background: linear-gradient(0deg, #aa076b 0%, #61045f 100%); */
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    width: 130px;
+    width: 125px;
     height: 40px;
+    top: 0;
+    right: 0;
+    line-height: 40px;
     box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
         7px 7px 20px 0px rgba(0, 0, 0, .1),
         4px 4px 5px 0px rgba(0, 0, 0, .1);
@@ -130,6 +133,14 @@ img {
     -webkit-transform: rotateX(-90deg);
     -moz-transform: rotateX(-90deg);
     transform: rotateX(-90deg);
+}
+
+@media (max-width: 575.98px) {
+    .btn-12 span {
+        width: 80px;
+        height: 30px;
+        font-size: 10px;
+    }
 }
 
 /* -------- Buy now button--------- */
@@ -655,32 +666,40 @@ img {
     padding: 7px 0;
 }
 
+.exam-package-area .package-exam-content .button-and-price .package-exam-price {
+    margin-top: 10px;
+}
+
 .exam-package-area .package-exam-content .button-and-price .package-exam-discount-price {
     font-size: 24px;
     font-weight: 700;
 }
 
-.exam-package-area .package-exam-content .button-and-price .package-exam-button .package-exam-details {
+.exam-package-area .package-exam-content .button-and-price .package-exam-details {
     color: #aa076b;
     border: 0;
     margin-bottom: 15px;
 }
 
-.exam-package-area .package-exam-content .button-and-price .package-exam-button .package-exam-details a {
+.exam-package-area .package-exam-content .button-and-price .package-exam-details a {
     color: #aa076b;
 }
 
-.exam-package-area .package-exam-content .button-and-price .package-exam-button button {
-    background-color: white;
+.exam-package-area .package-exam-content .button-and-price .package-exam-button a {
+    display: block;
 }
 
 @media (max-width: 575.98px) {
-    .exam-package-area .package-exam-content .package-exam-price {
-        display: block;
+    .exam-package-area .package-exam-content .button-and-price .package-exam-discount-price {
+        font-size: 18px;
     }
 
     .exam-package-area .package-exam-content .package-exam-rating i {
         font-size: 8px;
+    }
+
+    .exam-package-area .package-exam-content .button-and-price .package-exam-details a {
+        font-size: 10px;
     }
 }
 
