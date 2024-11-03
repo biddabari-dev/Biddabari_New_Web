@@ -1630,7 +1630,7 @@ img {
 /* ----------------- Home Slider Section Start ---------------------------- */
 #Home_main_banner .home-1st-slide .home-1st-slide-img img {
     width: 280px;
-    height: 330;
+    height: 330px;
     padding: 0 4px;
 }
 
@@ -1897,6 +1897,12 @@ img {
     background-color: #aa076b;
     color: white;
     transition: ease-in-out 0.8s;
+}
+
+@media (max-width: 575.98px) {
+    .btn_warning {
+        padding: 8px 0;
+    }
 }
 
 /* ----------------- Our Courses Section End ---------------------------- */
