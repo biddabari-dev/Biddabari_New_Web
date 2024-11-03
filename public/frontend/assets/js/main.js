@@ -2,7 +2,7 @@
     "use strict"
 
     $(".variable-width").slick({
-      dots: true,
+      dots: false,
       infinite: true,
       speed: 3000,
       slidesToShow: 3, // Show 3 full slides

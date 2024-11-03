@@ -602,12 +602,19 @@ img {
     font-size: 22px;
 }
 
+.hero-slide .exam-package-area .package-exam-content .package-exam-title h2 a {
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+}
+
 @media (max-width: 575.98px) {
     .exam-package-area .package-exam-image img {
         height: 140px;
     }
-    .exam-package-area .package-exam-content .package-exam-title h2 a {
+    .hero-slide .exam-package-area .package-exam-content .package-exam-title h2 a {
         font-size: 18px;
+        font-weight: 600;
     }
 }
 
@@ -628,11 +635,6 @@ img {
     background-color: #ffffff;
     padding: 0 10px 10px;
     border-radius: 0px 0px 15px 15px;
-}
-
-.hero-slide .exam-package-area .package-exam-content .package-exam-title h2 a {
-    color: #000;
-    font-size: 20px;
 }
 
 #All_Exam .exam-package-area,
@@ -1637,6 +1639,10 @@ img {
 .slick-prev:before,
 .slick-next:before {
     font-size: 25px;
+}
+
+.slick-prev {
+    left: -20px;
 }
 
 
