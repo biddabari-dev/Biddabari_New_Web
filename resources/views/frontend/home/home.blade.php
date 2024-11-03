@@ -84,7 +84,7 @@
         <section id="Home_main_banner" class="background-res background-ats py-5"
             style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/home-page-main-banner.jpg')">
             <div class="container">
-                <div class="row g-4">
+                <div class="row gy-4">
                     <div class="col-md-12 col-lg-8">
                         <div class="home-1st-slide">
                             <div class="variable-width">
@@ -216,7 +216,7 @@
                 <div class="row">
                     <div class="title-area text-center">
                         <h1 class="fw-bold">নিজের শেখা নিজেই গুছিয়ে নেয়ার <br>
-                            <span class="">যাত্রা শুরু হোক</span>
+                            <span>যাত্রা শুরু হোক</span>
                         </h1>
                         <p class="text-muted">
                             প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
@@ -436,14 +436,14 @@
                     </div>
                 </div>
                 <div class="all-courses-area">
-                    <div class="row">
+                    <div class="row g-3 g-md-4 g-lg-4">
                         @if (isset($courses))
                             @foreach ($courses as $course)
                                 @include('frontend.courses.include-courses-course', ['course' => $course])
                             @endforeach
                         @endif
                     </div>
-                    <div class="see-more-button text-center">
+                    <div class="see-more-button text-center mt-4">
                         <a href="{{ route('front.all-courses') }}" type="button" class="btn btn_warning">See More</a>
                     </div>
                 </div>
