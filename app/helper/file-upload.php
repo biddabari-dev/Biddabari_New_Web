@@ -11,19 +11,19 @@ function imageUpload ($image, $imageDirectory, $imageNameString = null, $width =
 {
     if ($image)
     {
-        // if (isset($modelFileUrl))
-        // {
-        //     if (file_exists($modelFileUrl))
-        //     {
-        //         unlink($modelFileUrl);
-        //     }
-        // }
-        // $folderPath = public_path('backend/assets/uploaded-files/'.rtrim($imageDirectory));
-        // dd($folderPath);
-        // if (!File::isDirectory($folderPath))
-        // {
-        //     File::makeDirectory($folderPath, 0777, true, true);
-        // }
+        if (isset($modelFileUrl))
+        {
+            if (file_exists($modelFileUrl))
+            {
+                unlink($modelFileUrl);
+            }
+        }
+        $folderPath = ('https://biddabari-bucket.obs.as-south-208.rcloud.reddotdigitalit.com/backend/assets/uploaded-files/'.rtrim($imageDirectory));
+
+        if (!File::isDirectory($folderPath))
+        {
+            File::makeDirectory($folderPath, 0777, true, true);
+        }
 
         $imageNameString = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
 

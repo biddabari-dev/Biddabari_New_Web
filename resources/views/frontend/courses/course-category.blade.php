@@ -13,7 +13,7 @@ Biddabari - All Course
         <div class="container">
             <div class="row">
                 <div class="title-area text-center">
-                    <h2 class="fw-bold">{{ $courseCategory->name }} <span>কোর্স</span>
+                    <h2 class="fw-bold">{{ $result->name }} <span>কোর্স</span>
                     </h2>
                     <p class="text-muted">
                         প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
@@ -21,11 +21,43 @@ Biddabari - All Course
                     </p>
                 </div>
             </div>
-
+            @if(!empty($result->courseCategories))
+            <div class="home-course-category-area">
+                <div class="row g-4">
+                    @foreach ($result->courseCategories as $courseCategory)
+                    <div class="col-md-6 col-lg-3">
+                        @if ($courseCategory->id == 157)
+                        <a href="{{ route('front.free-courses') }}">
+                        <div class="my-course-category">
+                            <div class="my-course-category-icon">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div class="my-course-category-content">
+                                <h3>{{ $courseCategory->name }} </h3>
+                            </div>
+                        </div>
+                        </a>
+                        @else
+                        <a href="{{ route('front.category-courses', ['slug' => $courseCategory->slug]) }}">
+                        <div class="my-course-category">
+                            <div class="my-course-category-icon">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div class="my-course-category-content">
+                                <h3>{{ $courseCategory->name }} </h3>
+                            </div>
+                        </div>
+                        </a>
+                        @endif
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
             <div class="all-courses-area">
                 <div class="row"  id="shorting-data">
-                    @if(isset($courseCategory->courses))
-                    @foreach ($courseCategory->courses as $course)
+                    @if(isset($result->courses))
+                    @foreach ($result->courses as $course)
                             @include('frontend.courses.include-courses-course', ['course' => $course])
                         @endforeach
                     @endif

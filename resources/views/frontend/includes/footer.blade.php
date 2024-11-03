@@ -4,8 +4,8 @@ style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/fo
     <div class="row">
         <div class="col-md-6">
             <div class="style-2phone-image">
-                <img src="{{ asset('frontend') }}/assets/images/exam-page/2-mobile.png" class="img-fluid"
-                    alt="" srcset="">
+                <a href="https://play.google.com/store/apps/details?id=com.nextive.biddabari2021&pcampaignid=web_share&pli=1"><img src="{{ asset('frontend') }}/assets/images/exam-page/mobile-app.webp" class="img-fluid"
+                    alt="" srcset=""></a>
             </div>
         </div>
         <div class="col-md-6">
@@ -16,8 +16,8 @@ style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/fo
             <div class="rattingandflowers-area">
                 <div class="row">
                     <div class="col-md-4 learner-count">
-                        <h2>50+</h2>
-                        <p>WorldWide Learners</p>
+                        <h2>180K+</h2>
+                        <p> Learners</p>
                     </div>
                     <div class="col-md-4 review-count">
                         <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>

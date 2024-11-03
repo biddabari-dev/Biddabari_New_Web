@@ -116,12 +116,12 @@ class BkashController extends Controller
                                 Log::error('SMS API request failed: ' . $e->getMessage());
                                 $responseCode = null;
                             }
-                            return redirect()->route('front.student.dashboard')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
+                            return redirect()->route('front.thankyou')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
                         }
 
                         if ($userCreateAuth['message'] == 'failed')
                         {
-                            return redirect()->route('front.student.dashboard')->with('error', 'Your successfully enrolled in the course but something went wrong during sending sms to your number. Please Contact with our support.');
+                            return redirect()->route('front.thankyou')->with('error', 'Your successfully enrolled in the course but something went wrong during sending sms to your number. Please Contact with our support.');
                         }
 
 
@@ -129,7 +129,7 @@ class BkashController extends Controller
                         {
                             return response()->json(['message' => 'You Ordered the course successfully.'], 200);
                         }
-                        return redirect()->route('front.student.dashboard')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
+                        return redirect()->route('front.thankyou')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
                     } elseif ($userCreateAuth['processStatus'] == 'failed')
                     {
                         return redirect()->back()->with('error', 'Something went wrong during payment. Please try again.');

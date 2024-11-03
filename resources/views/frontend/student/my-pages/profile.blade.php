@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <img src="{{ isset($user) && !empty($student->image) ? asset($student->image) : '' }}"
+                                        <img src="{{ isset($user) && !empty($student->image) ? static_asset($student->image) : '' }}"
                                             id="imagePreview"
                                             style="{{ isset($user) && !empty($student->image) ? 'height: 100px;' : '' }}"
                                             alt="show profile image" />

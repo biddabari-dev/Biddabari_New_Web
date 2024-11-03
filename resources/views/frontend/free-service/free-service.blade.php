@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section('title')
-Biddabari - All Course
+Biddabari - Free Service
 @endsection
 
 @section('body')

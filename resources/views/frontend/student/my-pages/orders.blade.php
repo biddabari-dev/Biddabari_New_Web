@@ -48,7 +48,7 @@
                                                 @elseif($order->ordered_for == 'batch_exam')
                                                     <td class="custome_td">{{ $order->batchExam->title }}</td>
                                                 @else
-                                                    <td class="custome_td">{{ $order->product->title }}</td>
+                                                    <td class="custome_td">{{ $order->product->title ?? '' }}</td>
                                                 @endif
                                                     <td>{{ $order->total_amount }}</td>
                                                 <td>
@@ -122,7 +122,7 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>#{{ $order->order_invoice_number }}</td>
-                                                    <td class="custome_td">{{ $order->product->title }}</td>
+                                                    <td class="custome_td">{{ $order->product->title ?? ''}}</td>
                                                     <td>{{ $order->total_amount }}</td>
                                                     <td>
                                                         {{ $order->status }}

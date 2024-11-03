@@ -453,12 +453,12 @@
                             <div class="col-md-6">
                                 <div class="our-story-video-area mt-4">
                                     <div class="our-story" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-                                        <iframe id="videoIframe2" src="https://www.youtube.com/embed/bhCWhEosa3Y?si=myZrYsOTKstGK0zx"
+                                        <iframe id="videoIframe2" src="https://www.youtube.com/embed/EGGWGLALnWU?si=myZrYsOTKstGK0zx"
                                             title="YouTube video player" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
                                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                                        <div onclick="showVideoModal('https://www.youtube.com/embed/bhCWhEosa3Y?autoplay=1')"
+                                        <div onclick="showVideoModal('https://www.youtube.com/embed/EGGWGLALnWU?autoplay=1')"
                                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
                                     </div>
                                 </div>

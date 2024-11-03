@@ -1,11 +1,11 @@
 @extends('frontend.master')
-
+@section('title'){{ 'Biddabari | All Exams'}}@endsection
 @section('body')
 <main>
 
 
     <section id="Free-service-banner" class="background-res-free-banner background-ats py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')" ;>
+        style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/Background-banner.webp')" ;>
         <div class="container">
             <div class="free-course-banner">
                 <div class="free-course-banner-image">
@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="col">
                                         <div class="package-exam-button">
                                             <button class="package-exam-details"><a

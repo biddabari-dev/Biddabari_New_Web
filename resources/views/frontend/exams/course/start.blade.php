@@ -87,7 +87,7 @@
                 </div> --}}
                 <section id="Question-head">
                     <div class="background-res-qus-paper py-5"
-                        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/question-paper-bg.png')">
+                        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/Asset 6.webp');">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="exam-title">
@@ -95,8 +95,8 @@
                                     <p>{{ count($exam->questionStores) }} Questions</p>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-5">
-                                <div class="exam-timer  d-none" id="quizDiv">
+                            <div class="col-md-6 col-lg-5 d-none" id="quizDiv">
+                                <div class="exam-timer ">
                                     <div class="quiz-time">
                                         <div class="flipTimer">
                                             @if(isset($exam) && $exam->content_type == 'exam' ? $exam->exam_duration_in_minutes : $exam->written_exam_duration_in_minutes > 60)
@@ -108,8 +108,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="mt-5">
+                            <div class="col-md-6 col-lg-5">
+                                <div class="text-center" style="margin-top: 55px;">
                                     <a href="" class="btn btn-lg start-btn btn-warning bg-brand text-white" data-xm-type="{{ isset($exam) ? $exam->content_type : 'null' }}" >Start</a>
                                 </div>
                             </div>

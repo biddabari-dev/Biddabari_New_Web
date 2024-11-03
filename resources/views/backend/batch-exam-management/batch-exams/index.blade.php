@@ -64,9 +64,9 @@
                                             <div class="mt-3">
                                                 <a href="{{ route('batch-exam-sections.index', ['batch_exam_id' => $batchExam->id]) }}" >
                                                     <div class="text-center">
-                                                        <img src="{{ asset($batchExam->banner) }}" alt="" style="height: 100px;" />
+                                                        <img src="{{ static_asset($batchExam->banner) }}" alt="" style="height: 100px;" />
                                                     </div>
-                                                    {{--                                            <br>--}}
+                                                    {{--                                            <br>--}}we
                                                     <div class="text-center mt-2">{{ $batchExam->title }}</div>
                                                 </a>
                                             </div>
@@ -263,7 +263,7 @@
                     alert("An error occurred while trying to delete the video.");
                 }
             });
-        } 
+        }
     });
 </script>
 

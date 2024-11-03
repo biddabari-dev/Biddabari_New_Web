@@ -7,12 +7,12 @@ Biddabari - All Course
 @section('body')
 
 <main>
-    <section id="Home_add">
+    {{-- <section id="Home_add">
         <div class="home-1st-add-image">
             <img src="{{ asset('frontend') }}/assets/images/home-page/home-page-bn.webp" alt="Home 1st Add Banner"
                 srcset="">
         </div>
-    </section>
+    </section> --}}
     {{-- <section id="Home_add">
         <div class="home-1st-add-image" >
             <img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" style="height: 500px !important;" alt="Home 1st Add Banner"
@@ -21,7 +21,7 @@ Biddabari - All Course
     </section> --}}
 
     <section id="Free-service-banner" class="background-res-free-banner background-ats py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/home-page-main-banner.jpg')">
+        style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/Background-banner.webp')">
         <div class="container">
             <div class="free-course-banner">
                 <div class="free-course-banner-image">
