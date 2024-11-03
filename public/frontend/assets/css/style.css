@@ -606,7 +606,9 @@ img {
     .exam-package-area .package-exam-image img {
         height: 140px;
     }
-    
+    .exam-package-area .package-exam-content .package-exam-title h2 a {
+        font-size: 18px;
+    }
 }
 
 /* Add margin between slides */

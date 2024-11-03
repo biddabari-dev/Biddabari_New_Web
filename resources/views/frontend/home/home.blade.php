@@ -99,7 +99,7 @@
                                             </div>
                                             <div class="package-exam-content">
                                                 <div class="package-exam-title pt-3">
-                                                    <h2 class="fw-bold"><a href="course-details.html">{{ Str::limit($item->title, 40) }}</a></h2>
+                                                    <h2><a href="course-details.html">{{ Str::limit($item->title, 35) }}</a></h2>
                                                 </div>
                                                 <div class="row gy-2 button-and-price">
                                                     <div class="col-12">
