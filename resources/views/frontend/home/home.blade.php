@@ -463,9 +463,9 @@
                         </p>
                     </div>
                     <div class="our-story-event-area py-4">
-                        <div class="row g-4">
+                        <div class="row g-3 g-lg-4">
                             @foreach ($ourServices as $key => $ourService)
-                                <div class="col-md-6 col-lg-3">
+                                <div class="col-6 col-lg-3">
                                     <div class="event-area-content">
                                         <div class="event-icon">
                                             <img src="{{ asset('frontend') }}/assets/images/home-page/live-exam.png"

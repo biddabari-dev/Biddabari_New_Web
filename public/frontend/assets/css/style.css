@@ -638,6 +638,13 @@ img {
     }
 }
 
+@media (max-width: 425px) {
+    .exam-package-area .package-exam-content .package-exam-title h2 a {
+        font-size: 11px;
+        line-height: 11px;
+    }
+}
+
 /* Add margin between slides */
 .variable-width .slick-slide {
     margin: 0 5px;
@@ -707,6 +714,12 @@ img {
 
     .exam-package-area .package-exam-content .button-and-price .package-exam-details a {
         font-size: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .exam-package-area .package-exam-content .button-and-price .package-exam-discount-price {
+        font-size: 16px;
     }
 }
 
@@ -2011,13 +2024,14 @@ img {
 }
 
 #Our_story .our-story-event-area .event-area-content .event-icon img {
-    width: 80px;
-    height: 80px;
+    max-width: 100%;
+    height: 100px;
 }
 
 #Our_story .our-story-event-area .event-area-content .event-content h3 {
     font-size: 24px;
     font-weight: 700;
+    margin: 15px 0;
 }
 
 #Our_story .our-story-event-area .event-area-content .event-content p {
@@ -2101,6 +2115,18 @@ img {
 #Our_story .our-story-video-content-area .our-story-content-area p {
     font-size: 14px;
     text-align: justify;
+}
+
+@media (max-width: 575.98px) {
+    #Our_story.background-res {
+        background-position: top right;
+    }
+    #Our_story .our-story-event-area .event-area-content .event-icon img {
+        height: 80px;
+    }
+    #Our_story .our-story-event-area .event-area-content .event-content h3 {
+        font-size: 16px;
+    }
 }
 
 /* ----------------- Our Story Section End ---------------------------- */
