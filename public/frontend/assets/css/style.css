@@ -137,8 +137,9 @@ img {
 
 @media (max-width: 575.98px) {
     .btn-12 {
-        top:0;
+        top: 0;
     }
+
     .btn-12 span {
         width: 80px;
         height: 30px;
@@ -412,25 +413,29 @@ img {
     color: white;
     font-size: 22px;
     font-weight: 700;
-}
-
-#Footer .footer-others-div ul li a {
-    color: white;
-    font-size: 15px;
-    line-height: 40px;
-}
-
-#Footer .footer-others-div ul li a:hover {
-    color: #aa076b;
+    margin-bottom: 30px;
 }
 
 #Footer .footer-others-div ul {
-    padding-left: 0;
-    list-style-type: none;
+    padding-left: 15px;
+    list-style-type: inherit;
+    color: #ca0d82;
+}
+
+#Footer .footer-others-div ul li a {
+    display: block;
+    color: white;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+
+#Footer .footer-others-div ul li a:hover {
+    color: #ca0d82;
 }
 
 #Footer .footer-others-div ul li i {
-    color: #aa076b;
+    color: #ca0d82;
     font-size: 20px;
     margin-right: 8px;
 }
@@ -478,8 +483,23 @@ img {
     color: white;
 }
 
+.official-info ul {
+    padding-left: 0 !important;
+}
+.official-info ul li {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.official-info ul li a {
+    color: #D7E4F9;
+}
+
 @media (max-width: 575.98px) {
-    .footer-logo-content {
+    #Footer .container .row {
+        padding-top: 25px;
+    }
+    /* .footer-logo-content {
         text-align: center;
     }
 
@@ -496,8 +516,8 @@ img {
     }
 
     .official-info {
-        text-align: center;
-    }
+        text-align: left;
+    } */
 
 }
 
@@ -706,6 +726,7 @@ img {
     .exam-package-area {
         border-radius: 10px;
     }
+
     .exam-package-area .package-exam-content .button-and-price .package-exam-discount-price {
         font-size: 18px;
     }
@@ -791,14 +812,14 @@ img {
 }
 
 #App_store .download-text h2 {
-    font-size: 30px;
+    font-size: 44px;
     font-weight: 700;
     color: #aa076b;
 }
 
 #App_store .download-text h5 {
-    font-size: 18px;
-    /* font-weight: 600; */
+    font-size: 24px;
+    font-weight: 500;
 }
 
 #App_store .rattingandflowers-area {
@@ -806,7 +827,6 @@ img {
     background: rgb(206, 11, 211);
     background: linear-gradient(153deg, rgba(206, 11, 211, 1) 0%, rgba(177, 39, 249, 1) 50%, rgba(100, 78, 251, 1) 100%);
     border-radius: 10px;
-    display: flex;
     padding: 15px;
     margin: 30px 0;
 }
@@ -825,6 +845,8 @@ img {
 
 #App_store .rattingandflowers-area .learner-count p {
     font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
 }
 
 #App_store .rattingandflowers-area .review-count {
@@ -839,8 +861,15 @@ img {
     font-weight: 700;
 }
 
+#App_store .rattingandflowers-area .review-count span img {
+    height: 30px;
+    margin-top: -5px;
+}
+
 #App_store .rattingandflowers-area .review-count p {
     font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
 }
 
 #App_store .rattingandflowers-area .courses-count {
@@ -857,6 +886,8 @@ img {
 
 #App_store .rattingandflowers-area .courses-count p {
     font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
 }
 
 #App_store .download-hint {
@@ -881,20 +912,66 @@ img {
   } */
 
 @media (max-width: 991.98px) {
+    #App_store .download-text h2 {
+        font-size: 36px;
+    }
+
+    #App_store .download-text h5 {
+        font-size: 20px;
+    }
+
     #App_store .rattingandflowers-area {
         width: 100%;
+    }
+
+    #App_store .rattingandflowers-area .learner-count {
+        padding: 10px 10px 5px 10px;
+    }
+
+    #App_store .rattingandflowers-area .review-count {
+        padding: 10px 10px 5px 10px;
+    }
+
+    #App_store .rattingandflowers-area .courses-count {
+        padding: 10px 10px 5px 10px;
     }
 }
 
 @media (max-width: 575.98px) {
-    #App_store .rattingandflowers-area .learner-count {
-        border-right: none;
+    #App_store .download-text h2 {
+        font-size: 30px;
     }
 
-    #App_store .rattingandflowers-area .review-count {
-        border-top: 1px solid white;
-        border-right: none;
-        border-bottom: 1px solid #fff;
+    #App_store .download-text h5 {
+        font-size: 16px;
+    }
+
+    #App_store .rattingandflowers-area .review-count h2 {
+        font-size: 24px;
+    }
+
+    #App_store .rattingandflowers-area .review-count p {
+        font-size: 14px;
+    }
+
+    #App_store .rattingandflowers-area .review-count span img {
+        height: 24px;
+    }
+
+    #App_store .rattingandflowers-area .learner-count h2 {
+        font-size: 24px;
+    }
+
+    #App_store .rattingandflowers-area .learner-count p {
+        font-size: 14px;
+    }
+
+    #App_store .rattingandflowers-area .courses-count h2 {
+        font-size: 24px;
+    }
+
+    #App_store .rattingandflowers-area .courses-count p {
+        font-size: 14px;
     }
 }
 
@@ -1995,6 +2072,7 @@ img {
     #Home_Our_courses .exam-package-area {
         border-radius: 10px;
     }
+
     #Home_Our_courses .title-area h2 {
         font-size: 24px;
     }
@@ -2131,9 +2209,11 @@ img {
     #Our_story.background-res {
         background-position: top right;
     }
+
     #Our_story .our-story-event-area .event-area-content .event-icon img {
         height: 80px;
     }
+
     #Our_story .our-story-event-area .event-area-content .event-content h3 {
         font-size: 16px;
     }
@@ -2169,11 +2249,24 @@ img {
     #Home_odomiter .background-res {
         background-position: bottom left;
     }
+
     #Home_odomiter .odomiter-content h3 {
         font-size: 34px;
     }
+
     #Home_odomiter .odomiter-content p {
         font-size: 18px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #Home_odomiter .odomiter-content h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    #Home_odomiter .odomiter-content p {
+        font-size: 14px;
     }
 }
 
@@ -2207,6 +2300,7 @@ img {
 #Student_review .student-review-area .student-review-content .student-image {
     margin-top: -50px;
 }
+
 #Student_review .student-review-area .student-review-content .student-image img {
     width: 100px;
     height: 100px;
