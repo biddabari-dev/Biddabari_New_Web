@@ -12,7 +12,7 @@
                         href="{{ route('front.course-details', ['slug' => $course->slug]) }}">{{ Str::limit($course->title, 40) }}</a>
                 </h2>
             </div>
-            <div class="row button-and-price pb-4">
+            <div class="row button-and-price pb-3 pb-lg-4">
                 <div class="col">
                     <div class="package-exam-rating">
                         <i class="fas fa-star"></i>

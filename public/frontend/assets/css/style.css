@@ -596,6 +596,15 @@ img {
     display: inline-block;
 }
 
+
+.exam-package-area {
+    display: block;
+    box-shadow: 0px 3px 15px -3px rgb(0 0 0 / 15%);
+    border-radius: 15px;
+    height: calc(100%);
+    overflow: hidden;
+}
+
 .master-exam-text-comtent .master-exam-button .details-button:hover a {
     color: #aa076b;
     background-color: rgb(170 7 107 / 10%);
@@ -604,11 +613,6 @@ img {
 .exam-package-area .package-exam-image img {
     width: 100%;
     height: 170px;
-    border-radius: 15px 15px 0px 0px;
-}
-
-.exam-package-area {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .exam-package-area .package-exam-content .package-exam-title h2 {
@@ -661,7 +665,6 @@ img {
 .hero-slide .exam-package-area .package-exam-content {
     background-color: #ffffff;
     padding: 0 10px 10px;
-    border-radius: 0px 0px 15px 15px;
 }
 
 #All_Exam .exam-package-area,
@@ -700,6 +703,9 @@ img {
 }
 
 @media (max-width: 575.98px) {
+    .exam-package-area {
+        border-radius: 10px;
+    }
     .exam-package-area .package-exam-content .button-and-price .package-exam-discount-price {
         font-size: 18px;
     }
@@ -1965,6 +1971,7 @@ img {
     border: .5px solid rgb(230 225 225);
     border-radius: 15px;
     background-color: #fff;
+    box-shadow: none;
 }
 
 #Home_Our_courses .all-courses-area {
@@ -1985,6 +1992,9 @@ img {
 }
 
 @media (max-width: 575.98px) {
+    #Home_Our_courses .exam-package-area {
+        border-radius: 10px;
+    }
     #Home_Our_courses .title-area h2 {
         font-size: 24px;
     }
@@ -2136,26 +2146,34 @@ img {
     background-color: rgb(20, 30, 56);
     border-radius: 12px;
     box-shadow: 5px 3px 15px -3px;
-    padding: 15px;
+    padding: 25px 0;
     text-align: center;
     width: 100%;
 }
 
 #Home_odomiter .odomiter-content h3 {
-    font-size: 54px;
-    font-weight: 800;
+    font-size: 42px;
+    font-weight: 700;
     color: #e32097;
+    margin-bottom: 0;
 }
 
 #Home_odomiter .odomiter-content p {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
     color: white;
+    margin-bottom: 0;
 }
 
 @media (max-width: 991.98px) {
+    #Home_odomiter .background-res {
+        background-position: bottom left;
+    }
     #Home_odomiter .odomiter-content h3 {
         font-size: 34px;
+    }
+    #Home_odomiter .odomiter-content p {
+        font-size: 18px;
     }
 }
 
@@ -2165,6 +2183,7 @@ img {
 /* ----------------- Student Review Section End ---------------------------- */
 #Student_review .title-area h2 {
     font-size: 2.2rem;
+    margin-bottom: 35px;
 }
 
 #Student_review .title-area p {
@@ -2176,15 +2195,23 @@ img {
 }
 
 #Student_review .student-review-area .student-review-content {
+    display: block;
+    height: calc(100% - 50px);
+    margin-bottom: 50px;
     background-color: white;
     border-radius: 12px;
     padding: 25px;
     box-shadow: 0px 3px 15px -3px rgb(0 0 0 / 15%);
 }
 
+#Student_review .student-review-area .student-review-content .student-image {
+    margin-top: -50px;
+}
 #Student_review .student-review-area .student-review-content .student-image img {
     width: 100px;
     height: 100px;
+    border-radius: 7px;
+    box-shadow: 0px 3px 15px 0px rgb(0 0 0 / 15%);
 }
 
 #Student_review .student-review-area .student-review-content .student-name h4 {
@@ -2202,6 +2229,13 @@ img {
     font-size: 13px;
     text-align: justify;
 }
+
+@media (max-width: 575.98px) {
+    #Student_review .title-area h2 {
+        font-size: 24px;
+    }
+}
+
 
 /* ----------------- Student Review Section End ---------------------------- */
 
