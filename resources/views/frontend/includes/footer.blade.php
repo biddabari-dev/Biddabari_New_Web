@@ -55,9 +55,9 @@
 
 <footer id="Footer">
     <div class="container">
-        <div class="row g-3 g-lg-5">
+        <div class="row g-4">
             <div class="col-sm-12 col-md-4">
-                <div class="footer-logo-content">
+                <div class="footer-logo-content mb-lg-5">
                     <div class="footer-logo">
                         <div class="footer-logo-image">
                             <img src="{{ asset('frontend') }}/assets/images/logo/footer-logo-bgr.png" alt=""

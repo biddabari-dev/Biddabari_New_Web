@@ -364,10 +364,7 @@ img {
 /* -----------------------Footer Start ---------------- */
 #Footer {
     background-color: rgb(25, 25, 25);
-}
-
-#Footer .container .row {
-    padding: 45px 0px 25px 0px;
+    padding-top: 45px;
 }
 
 #Footer .footer-logo-text {
@@ -388,25 +385,28 @@ img {
 
 #Footer .footer-logo-content .footer-social-media-area .social-media-icon {
     display: flex;
-    font-size: 30px;
     padding-top: 15px;
+    align-items: center;
+    gap: 20px;
 }
 
-#Footer .footer-logo-content .footer-social-media-area .social-media-icon i {
+#Footer .footer-logo-content .footer-social-media-area .social-media-icon a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50px;
-    text-align: center;
-    color: white;
-    border: 1px solid #aa076b;
+    height: 50px;
+    font-size: 24px;
     border-radius: 50%;
-    padding: 10px;
-    margin-right: 20px;
+    border: 1px solid #ca0d82;
+    color: white;
+    transition: .7s ease-in-out;
 }
 
-#Footer .footer-logo-content .footer-social-media-area .social-media-icon i:hover {
-    color: white;
-    border: 1px solid white;
-    background-color: #aa076b;
-    transition: .7s ease-in-out;
+#Footer .footer-logo-content .footer-social-media-area .social-media-icon a:hover {
+    background-color: white;
+    color: #aa076b;
+    border: 1px solid #aa076b;
 }
 
 #Footer .footer-others-div h3 {
@@ -476,29 +476,31 @@ img {
 }
 
 #Footer .copy-right-section p span a {
-    color: #aa076b;
+    color: #ca0d82;
 }
 
 #Footer .copy-right-section p span a:hover {
     color: white;
 }
 
-.official-info ul {
-    padding-left: 0 !important;
+#Footer .footer-others-div .official-info ul {
+    padding-left: 0;
 }
-.official-info ul li {
+
+#Footer .footer-others-div .official-info ul li {
     display: flex;
     margin-bottom: 10px;
 }
 
-.official-info ul li a {
-    color: #D7E4F9;
+#Footer .footer-others-div .official-info ul li a {
+    color: #D7E4F9 ;
 }
 
 @media (max-width: 575.98px) {
-    #Footer .container .row {
+    #Footer {
         padding-top: 25px;
     }
+
     /* .footer-logo-content {
         text-align: center;
     }
@@ -625,6 +627,10 @@ img {
     overflow: hidden;
 }
 
+.exam-package-area.custom-height {
+    height: auto;
+}
+
 .master-exam-text-comtent .master-exam-button .details-button:hover a {
     color: #aa076b;
     background-color: rgb(170 7 107 / 10%);
@@ -664,8 +670,10 @@ img {
 
 @media (max-width: 425px) {
     .exam-package-area .package-exam-content .package-exam-title h2 a {
+        display: block;
         font-size: 11px;
         line-height: 11px;
+        height: 20px;
     }
 }
 
@@ -723,6 +731,7 @@ img {
 }
 
 @media (max-width: 575.98px) {
+
     .exam-package-area {
         border-radius: 10px;
     }
