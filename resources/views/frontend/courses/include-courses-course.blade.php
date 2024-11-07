@@ -7,11 +7,12 @@
         </div>
         <div class="package-exam-content mx-2 mx-lg-3">
             <div class="package-exam-title pt-3">
-                <h2 class="fw-bold"><a
+                <h2>
+                    <a
                         href="{{ route('front.course-details', ['slug' => $course->slug]) }}">{{ Str::limit($course->title, 40) }}</a>
                 </h2>
             </div>
-            <div class="row button-and-price pb-2">
+            <div class="row button-and-price pb-3 pb-lg-4">
                 <div class="col">
                     <div class="package-exam-rating">
                         <i class="fas fa-star"></i>

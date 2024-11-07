@@ -81,7 +81,7 @@
     </section>
 
     <main>
-        <section id="Home_main_banner" class="background-res background-ats py-5"
+        <section id="Home_main_banner" class="background-res background-ats py-3 py-lg-5"
             style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/home-page-main-banner.jpg')">
             <div class="container">
                 <div class="row gy-4">
@@ -316,7 +316,7 @@
 
         <section id="Our_service" class="background-res background-ats py-5"
             style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/main-category-bg.jpg')">
-            <div class="container">
+            <div class="container py-4">
                 <div class="row">
                     <div class="title-area text-center">
                         <h2 class="fw-bold">দেশসেরা স্কিল ডেভেলপমেন্ট <br>
@@ -437,7 +437,7 @@
                     </div>
                 </div>
                 <div class="all-courses-area">
-                    <div class="row g-3 g-md-4 g-lg-4">
+                    <div class="row g-2 g-md-3 g-lg-4">
                         @if (isset($courses))
                             @foreach ($courses as $course)
                                 @include('frontend.courses.include-courses-course', ['course' => $course])
@@ -464,10 +464,14 @@
                         </p>
                     </div>
                     <div class="our-story-event-area py-4">
-                        <div class="row g-4">
+                        <div class="row g-3 g-lg-4">
                             @foreach ($ourServices as $key => $ourService)
+<<<<<<< HEAD
 
                                 <div class="col-md-6 col-lg-3">
+=======
+                                <div class="col-6 col-lg-3">
+>>>>>>> 203d092c129e0c1b4f02a75f9c14c0c0d10828c0
                                     <div class="event-area-content">
                                         <div class="event-icon">
 
@@ -584,13 +588,18 @@
                     </div>
                 </div>
                 <div class="student-review-area py-4">
-                    <div class="row g-4">
+                    <div class="row gx-4">
                         @foreach ($studentOpinions as $successStudentOpinion)
                             <div class="col-md-6 col-lg-4">
                                 <div class="student-review-content">
                                     <div class="student-image">
+<<<<<<< HEAD
                                         <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
                                             alt="" srcset="" class="img img-thumbnail p-2">
+=======
+                                        <img src="https://biddabari-bucket.obs.as-south-208.rcloud.reddotdigitalit.com/{{ $successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg' }}"
+                                            alt="" srcset="">
+>>>>>>> 203d092c129e0c1b4f02a75f9c14c0c0d10828c0
                                     </div>
                                     <div class="student-name mt-2">
                                         <h4>{{ $successStudentOpinion->name ?? 'Student Name' }}</h4>
