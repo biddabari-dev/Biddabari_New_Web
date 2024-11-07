@@ -632,8 +632,8 @@ img {
     }
 
     .exam-package-area .package-exam-content .package-exam-title h2 a {
-        font-size: 14px;
-        line-height: 14px;
+        font-size: 11px;
+        line-height: 11px;
         font-weight: 600;
     }
 }
@@ -1923,7 +1923,7 @@ img {
     background-color: rgb(162 107 174 / 20%);
     font-size: 30px;
     padding: 18px 12px;
-    color: #8E519F;
+    color: #86308b;
     border-radius: 10px;
 }
 

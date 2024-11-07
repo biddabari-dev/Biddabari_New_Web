@@ -58,10 +58,10 @@
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/slick/slick.css" />
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/slick/slick-theme.css" />
-
+        @php $rand = rand('0000','9999'); @endphp
         <!-- Add the slick-theme.css if you want default styling -->
-        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css"/>
-        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css"/>
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v={{ $rand }}"/>
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css?v={{ $rand }}"/>
         @stack('style')
     </head>
 
