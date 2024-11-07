@@ -87,7 +87,7 @@ Biddabari - All Course
             </div>
 
             <div class="all-courses-area">
-                <div class="row"  id="shorting-data">
+                <div class="row g-2 g-md-3 g-lg-4"  id="shorting-data">
                     @if(isset($courses))
                         @foreach ($courses as $course)
                             @include('frontend.courses.include-courses-course', ['course' => $course])

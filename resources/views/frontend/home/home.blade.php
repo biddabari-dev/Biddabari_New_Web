@@ -466,12 +466,7 @@
                     <div class="our-story-event-area py-4">
                         <div class="row g-3 g-lg-4">
                             @foreach ($ourServices as $key => $ourService)
-<<<<<<< HEAD
-
                                 <div class="col-md-6 col-lg-3">
-=======
-                                <div class="col-6 col-lg-3">
->>>>>>> 203d092c129e0c1b4f02a75f9c14c0c0d10828c0
                                     <div class="event-area-content">
                                         <div class="event-icon">
 
@@ -593,13 +588,8 @@
                             <div class="col-md-6 col-lg-4">
                                 <div class="student-review-content">
                                     <div class="student-image">
-<<<<<<< HEAD
                                         <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
                                             alt="" srcset="" class="img img-thumbnail p-2">
-=======
-                                        <img src="https://biddabari-bucket.obs.as-south-208.rcloud.reddotdigitalit.com/{{ $successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg' }}"
-                                            alt="" srcset="">
->>>>>>> 203d092c129e0c1b4f02a75f9c14c0c0d10828c0
                                     </div>
                                     <div class="student-name mt-2">
                                         <h4>{{ $successStudentOpinion->name ?? 'Student Name' }}</h4>
