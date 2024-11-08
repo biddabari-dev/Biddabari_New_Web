@@ -493,7 +493,7 @@ img {
 }
 
 #Footer .footer-others-div .official-info ul li a {
-    color: #D7E4F9 ;
+    color: #D7E4F9;
 }
 
 @media (max-width: 575.98px) {
@@ -677,6 +677,13 @@ img {
     }
 }
 
+@media (max-width: 320px) {
+    .exam-package-area .package-exam-image img {
+        height: 90px;
+    }
+}
+
+
 /* Add margin between slides */
 .variable-width .slick-slide {
     margin: 0 5px;
@@ -758,6 +765,26 @@ img {
         font-size: 16px;
     }
 }
+
+@media (max-width:320px) {
+    .exam-package-area .package-exam-content .package-exam-rating i {
+        font-size: 6px;
+    }
+
+    .exam-package-area .package-exam-content .button-and-price .package-exam-details a {
+        font-size: 8px;
+    }
+
+    .exam-package-area .package-exam-content .button-and-price .package-exam-discount-price {
+        font-size: 12px;
+    }
+
+    .btn-12 span {
+        width: 70px;
+        font-size: 8px;
+    }
+}
+
 
 /* --------------------------------All Exams Section End ------------------------------- */
 
@@ -2212,6 +2239,27 @@ img {
 #Our_story .our-story-video-content-area .our-story-content-area p {
     font-size: 14px;
     text-align: justify;
+    max-height: 290px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 15px;
+}
+
+@media (max-width: 1024px) {
+    #Our_story .our-story-video-content-area .our-story-content-area p {
+        max-height: 210px;
+    }
+} 
+
+@media (max-width: 991.98px) {
+    #Our_story .our-story-video-content-area .our-story-content-area p {
+        max-height: 180px;
+    }
+}
+@media (max-width: 768px) {
+    #Our_story .our-story-video-content-area .our-story-content-area p {
+        max-height: 145px;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -2227,6 +2275,17 @@ img {
         font-size: 16px;
     }
 }
+
+@media (max-width: 320px) {
+    #Our_story .our-story-event-area .event-area-content .event-icon img {
+        height: 60px;
+    }
+
+    #Our_story .our-story-event-area .event-area-content .event-content h3 {
+        font-size: 14px;
+    }
+}
+
 
 /* ----------------- Our Story Section End ---------------------------- */
 
