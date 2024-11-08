@@ -466,7 +466,7 @@
                     <div class="our-story-event-area py-4">
                         <div class="row g-3 g-lg-4">
                             @foreach ($ourServices as $key => $ourService)
-                                <div class="col-md-6 col-lg-3">
+                                <div class="col-6 col-lg-3">
                                     <div class="event-area-content">
                                         <div class="event-icon">
 
@@ -503,7 +503,7 @@
                                 <div class="our-story-content-area">
                                     <h3>আমাদের
                                         <span class=""> সফলতার গল্প </span>
-                                    </h3><br>
+                                    </h3>
                                     <p>বর্তমানে দেশে শিক্ষিত বেকার প্রায় ২৬ লাখ। এর সাথে প্রতি বছরই নতুন আরো দুই
                                         লক্ষ
                                         করে শিক্ষিত বেকার যুক্ত হচ্ছেন। এই ২৬ লাখ মানুষকে তাদের ক্যারিয়ার প্লানিং
