@@ -17,7 +17,7 @@ Biddabari - Login
                             <div class="col-md-6">
                                 <div class="signup-image-area text-center">
                                     <h4><strong> Welcome to <br><span class="text-brand"> Biddabari </span> Online Learning Platform </strong></h4>
-                                    <img src="{{ asset('frontend') }}/assets/images/signup/signup.png" alt="" srcset="">
+                                    <img src="{{ asset('frontend') }}/assets/images/signup/Signup-Image.webp" alt="" srcset="" style="width: 80%">
                                 </div>
                             </div>
                             <div class="col-md-6">

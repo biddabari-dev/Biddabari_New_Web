@@ -36,16 +36,16 @@
                                             <h6><span>{{ $blog->blogCategory->name }}</span></h6>
                                         </div>
                                         <div class="blog-feature-title">
-                                            <h3>{{ $blog->title }}</h3>
+                                            <h3 class="m-0">{{ $blog->title }}</h3>
                                         </div>
                                         <div class="blog-datetimeby d-flex">
-                                            <img src="{{ static_asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset="">
+                                            {{-- <img src="{{ static_asset('frontend') }}/assets/images/blog/blog-by.png" alt="" srcset=""> --}}
                                             <p> {{ $blog->user->name }} |</p>
                                             <p><i class="fa-regular fa-calendar-days"></i> {{ date('d F Y',strtotime($blog->created_at)) }}
                                             </p>
                                         </div>
                                         <div class="someText">
-                                            <p>{{ $blog->sub_title }}</p>
+                                            <p>{!! Str::limit($blog->sub_title, 105) !!}</p>
                                         </div>
                                         <div class="blog-read-button">
                                             <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}" type="button"
@@ -72,22 +72,23 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-9">
-                                    <div class="blog-feature-content">
-                                        <div class="blog-category mt-2">
-                                            <h6><span>{{ $popularblog->blogCategory->name }}</span></h6>
+                                    <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}" class="text-black">
+                                        <div class="blog-feature-content">
+                                            <div class="blog-category mt-2">
+                                                <h6><span>{{ $popularblog->blogCategory->name }}</span></h6>
+                                            </div>
+                                            <div class="blog-feature-title">
+                                                <h3>{{ $popularblog->title }}</h3>
+                                            </div>
+                                            <div class="someText">
+                                                <p>{{ $popularblog->sub_title }}</p>
+                                            </div>
+                                            <div class="blog-datetimeby d-flex">
+                                                <p> {{ $popularblog->user->name }} |</p>
+                                                <p><i class="fa-regular fa-calendar-days"></i>{{ date('d F Y',strtotime($popularblog->created_at)) }}</p>
+                                            </div>
                                         </div>
-                                        <div class="blog-feature-title">
-                                            <h3><a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}" class="text-black">{{ $popularblog->title }} </a></h3>
-                                        </div>
-                                        <div class="someText">
-                                            <p>{{ $popularblog->sub_title }}</p>
-                                        </div>
-                                        <div class="blog-datetimeby d-flex">
-                                            <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}"> <img src="" alt="" srcset=""></a>
-                                            <p> {{ $popularblog->user->name }} |</p>
-                                            <p><i class="fa-regular fa-calendar-days"></i>{{ date('d F Y',strtotime($popularblog->created_at)) }}</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +132,7 @@
                                     assumenda ipsum nesciunt nostrum numquam,</p>
                             </div>
                             <div class="blog-read-button">
-                                <a href="blog-details.html" type="button" class="btn btn_warning">View
+                                <a href="" type="button" class="btn btn_warning">View
                                     Details</a>
                             </div>
                         </div>
@@ -177,7 +178,7 @@
                                     assumenda ipsum nesciunt nostrum numquam,</p>
                             </div>
                             <div class="blog-read-button">
-                                <a href="blog-details.html" type="button" class="btn btn_warning">View
+                                <a href="" type="button" class="btn btn_warning">View
                                     Details</a>
                             </div>
                         </div>

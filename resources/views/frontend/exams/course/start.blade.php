@@ -64,7 +64,7 @@
     <div class="row" style=" min-height: 500px;">
         <div class="col-md-8 quiz-wizard mx-auto">
             <div class="card border-0">
-                <div class="card-header d-flex align-items-center position-sticky" >
+                {{-- <div class="card-header d-flex align-items-center position-sticky" >
                     <div class="custome_mobile_null">
                         <div>
                             <h2 class="quiz-name">Exam - {{ $exam->title }}</h2>
@@ -84,7 +84,39 @@
                             </div>
                     </div>
 
-                </div>
+                </div> --}}
+                <section id="Question-head">
+                    <div class="background-res-qus-paper py-5"
+                        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/Asset 6.webp');">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="exam-title">
+                                    <h3>Exam - {{ $exam->title }}</h3>
+                                    <p>{{ count($exam->questionStores) }} Questions</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-5 d-none" id="quizDiv">
+                                <div class="exam-timer ">
+                                    <div class="quiz-time">
+                                        <div class="flipTimer">
+                                            @if(isset($exam) && $exam->content_type == 'exam' ? $exam->exam_duration_in_minutes : $exam->written_exam_duration_in_minutes > 60)
+                                                <div class="hours"><span class="time-title text-white p-2 mb-1">Hours</span></div>
+                                            @endif
+                                            <div class="minutes"><span class="time-title text-white p-2 mb-1">Minutes</span></div>
+                                            <div class="seconds"><span class="time-title text-white p-2 mb-1">Seconds</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-5">
+                                <div class="text-center" style="margin-top: 55px;">
+                                    <a href="" class="btn btn-lg start-btn btn-warning bg-brand text-white" data-xm-type="{{ isset($exam) ? $exam->content_type : 'null' }}" >Start</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
                 <!-- $quiz->questions->take(100)->shuffle(50)->random(50); -->
                 <div class="card-body d-none" id="questionsCard">
                     <div class="row custom_start_exam_scroll">
@@ -182,9 +214,11 @@
                         </div>
                     </div>
                 @if($exam->content_type == 'exam')
-                    <div class="col-md-8 text-center mt-3 mx-auto mb-3">
-                        {{-- <a href="" class="btn sticky-submit-btn btn-outline-warning d-none">Submit</a> --}}
+                    {{-- <div class="col-md-8 text-center mt-3 mx-auto mb-3">
                         <a href="" class="sticky-submit-btn btn btn-danger btn-outline-warning w-50 f-s-20 d-none">Submit</a>
+                    </div> --}}
+                    <div class="exam-submit-button">
+                        <a href="" type="submit" class="sticky-submit-btn">Submit</a>
                     </div>
                 @endif
                 </div>
@@ -218,17 +252,31 @@
         color: black!important;
     }
 
+    .now-confrim {
+        background: #0aa350 !important;
+        color: #FFFFFF !important;
+    }
+
     .form-card { padding: 10px 2px 20px 25px; border-radius: 10px}
 
     .check-ans  {
-        border: 1px solid green;
-        padding: 4px 3px 0px 4px;
+        border: 3px solid green;
+        padding: 5px;
         border-radius: 10px;
     }
-    .cancel-ans  {
-        border: 1px solid red;
-        padding: 4px 3px 0px 4px;
-        border-radius: 10px;
+    .check-ans :hover {
+        color: #ffffff !important;
+        padding: 3px;
+        background-color: #0aa350 !important;
+    }
+
+    .question-title span{
+        text-align: left !important;
+        font-weight: 600;
+        color: #000 !important;
+    }
+    .answer-title {
+        padding: 6px !important;
     }
 </style>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -502,9 +550,10 @@
         $(document).on('click', '.check-ans', function () {
             $(this).parent().addClass('d-none');
             $($(this).parent().parent()).addClass('disabled-it');
+            $(this).closest('.cont').prev('.answer-label').addClass('now-confrim');
             var questionParentDivId = $($(this).parent().parent().parent().parent().parent()).attr('id');
             $(this).parent().parent().parent().parent().parent().css({
-                backgroundColor : '#8efaa4',
+                 backgroundColor : 'rgb(234 255 238)',
                 // color           : 'white',
             });
             $('.asw'+$(this).attr('data-option-id')).prop( "checked", true );

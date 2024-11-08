@@ -28,8 +28,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <div class="search_button">
-
-                        <form class="search_button_area" action="">
+                        <form class="search_button_area" action="{{ route('search-content-home') }}" method="POST">
+                            @csrf
                             <div class="input-group">
                                 <span class="input-group-text border-0">
                                     <button class="" type="submit">
@@ -62,7 +62,8 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('product') ? 'active' : '' }}" href="{{ route('front.all-products') }}">বই</a>
                     </li>
-                    <form class="search_button_area" action="">
+                    <form class="search_button_area desk-top-search" action="{{ route('search-content-home') }}" method="POST">
+                        @csrf
                         <div class="input-group">
                             <span class="input-group-text border-0">
                                 <button class="" type="submit">
@@ -70,7 +71,7 @@
                                 </button>
                             </span>
                             <input type="text" class="form-control border-0 shadow-none"
-                                placeholder="Search courses" name="search" />
+                                placeholder="Search courses" name="search_content" value="{{ request('search_content') }}" />
                         </div>
                     </form>
                 </ul>

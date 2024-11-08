@@ -408,7 +408,7 @@ class FrontendViewController extends Controller
         if (!in_array(4, $roleIds)) {
             return ViewHelper::returEexceptionError('Only students can send messages.');
         }
-        
+
         $request->validate([
             'message' => 'required'
         ]);

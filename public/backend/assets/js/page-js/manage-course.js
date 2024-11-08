@@ -54,7 +54,7 @@ $(document).on('click', '.show-btn', function () {
     event.preventDefault();
     var courseId = $(this).attr('data-course-id');
     $.ajax({
-        url: base_url+"courses/"+courseId,
+        url: "/courses/"+courseId,
         method: "GET",
         // dataType: "JSON",
         success: function (data) {

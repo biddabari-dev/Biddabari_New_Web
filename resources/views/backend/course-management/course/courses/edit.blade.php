@@ -88,7 +88,7 @@
                 <div class="col-md-6 mt-2">
                     @if(isset($course))
                         <div>
-                            <img src="{{ asset($course->banner) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
+                            <img src="{{ static_asset($course->banner) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
                         </div>
                     @endif
                 </div>

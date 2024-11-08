@@ -81,14 +81,14 @@
     </section>
 
     <main>
-        <section id="Home_main_banner" class="background-res background-ats py-5"
-                style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/home-page-main-banner.jpg')">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-8">
-                            <div class="home-1st-slide">
-                                <div class="variable-width">
-                                    @foreach ($courses as $item)
+        <section id="Home_main_banner" class="background-res background-ats py-3 py-lg-5"
+            style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/home-page-main-banner.jpg')">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="home-1st-slide">
+                            <div class="variable-width">
+                                @foreach ($courses as $item)
                                     <div class="hero-slide">
                                         <div class="exam-package-area">
                                             <div class="package-exam-image">
@@ -99,7 +99,8 @@
                                             </div>
                                             <div class="package-exam-content">
                                                 <div class="package-exam-title pt-3">
-                                                    <h2 class="fw-bold"><a href="course-details.html">{{ Str::limit($item->title, 40) }}</a></h2>
+                                                    <h2><a href="course-details.html">{{ Str::limit($item->title, 30) }}</a>
+                                                    </h2>
                                                 </div>
                                                 <div class="row gy-2 button-and-price">
                                                     <div class="col-12">
@@ -113,70 +114,101 @@
 
                                                     </div>
                                                     <div class="col-12">
-                                                        <a href="{{ route('front.course-details', ['slug' => $item->slug]) }}" class="btn btn_warning text-white bg-brand w-100"> বিস্তারিত দেখুন  <i
-                                                                class="fa-solid fa-arrow-right"></i></a>
+                                                        <a href="{{ route('front.course-details', ['slug' => $item->slug]) }}"
+                                                            class="btn btn_warning text-white bg-brand w-100"> বিস্তারিত
+                                                            দেখুন <i class="fa-solid fa-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    @endforeach
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <div class="main-banner-video">
+                            <div class="ratio ratio-16x9"
+                                style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                                <iframe id="videoIframe" src="https://www.youtube.com/embed/EGGWGLALnWU?si=9aTUs_YxqxlGsKaY"
+                                    title="YouTube video" frameborder="0" allowfullscreen
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                                <!-- Transparent overlay to trigger the click event -->
+                                <div onclick="showVideoModal('https://www.youtube.com/embed/EGGWGLALnWU?autoplay=1')"
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-lg-4">
-                            <div class="main-banner-video">
-                                <div class="ratio ratio-16x9" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-                                    <iframe id="videoIframe" src="https://www.youtube.com/embed/EGGWGLALnWU?si=9aTUs_YxqxlGsKaY"
-                                            title="YouTube video" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                                    <!-- Transparent overlay to trigger the click event -->
-                                    <div onclick="showVideoModal('https://www.youtube.com/embed/EGGWGLALnWU?autoplay=1')"
-                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
-                                </div>
-                            </div>
-                            <div class="home-video-feature-area mt-2">
-                                <div class="row">
-                                    <div class="col-4 ">
-                                        <div class="home-feature-video">
-                                            <div class="ratio ratio-1x1" style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/o8ENSjeWip4?si=9aTUs_YxqxlGsKaY"
-                                            title="YouTube video" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <div class="home-video-feature-area mt-2">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="home-feature-video">
+                                        <div class="ratio ratio-1x1"
+                                            style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
+                                            <iframe id="videoIframe"
+                                                src="https://www.youtube.com/embed/o8ENSjeWip4?si=9aTUs_YxqxlGsKaY"
+                                                title="YouTube video" frameborder="0" allowfullscreen
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                                             <!-- Transparent overlay to trigger the click event -->
                                             <div onclick="showVideoModal('https://www.youtube.com/embed/o8ENSjeWip4?autoplay=1')"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
-                                                    </div>
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
                                             </div>
+                                        </div>
                                     </div>
-                                    <div class="col-4 ">
-                                        <div class="home-feature-video">
-                                            <div class="ratio ratio-1x1" style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/TnCYR3kW_QU?si=9aTUs_YxqxlGsKaY"
-                                            title="YouTube video" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                                </div>
+                                <div class="col-3 ">
+                                    <div class="home-feature-video">
+                                        <div class="ratio ratio-1x1"
+                                            style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
+                                            <iframe id="videoIframe"
+                                                src="https://www.youtube.com/embed/TnCYR3kW_QU?si=9aTUs_YxqxlGsKaY"
+                                                title="YouTube video" frameborder="0" allowfullscreen
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                                             <!-- Transparent overlay to trigger the click event -->
                                             <div onclick="showVideoModal('https://www.youtube.com/embed/TnCYR3kW_QU?autoplay=1')"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
-                                                    </div>
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
                                             </div>
+                                        </div>
                                     </div>
-                                    <div class="col-4 ">
-                                        <div class="home-feature-video">
-                                            <div class="ratio ratio-1x1" style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                                <iframe id="videoIframe" src="https://www.youtube.com/embed/DnpjPBACH6M?si=9aTUs_YxqxlGsKaY"
-                                            title="YouTube video" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                                </div>
+                                <div class="col-3 ">
+                                    <div class="home-feature-video">
+                                        <div class="ratio ratio-1x1"
+                                            style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
+                                            <iframe id="videoIframe"
+                                                src="https://www.youtube.com/embed/DnpjPBACH6M?si=9aTUs_YxqxlGsKaY"
+                                                title="YouTube video" frameborder="0" allowfullscreen
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                                             <!-- Transparent overlay to trigger the click event -->
                                             <div onclick="showVideoModal('https://www.youtube.com/embed/DnpjPBACH6M?autoplay=1')"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
-                                                    </div>
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
                                             </div>
+                                        </div>
                                     </div>
-
-
                                 </div>
+                                <div class="col-3 ">
+                                    <div class="home-feature-video">
+                                        <div class="ratio ratio-1x1"
+                                            style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
+                                            <iframe id="videoIframe"
+                                                src="https://www.youtube.com/embed/DnpjPBACH6M?si=9aTUs_YxqxlGsKaY"
+                                                title="YouTube video" frameborder="0" allowfullscreen
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                                            <!-- Transparent overlay to trigger the click event -->
+                                            <div onclick="showVideoModal('https://www.youtube.com/embed/DnpjPBACH6M?autoplay=1')"
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
         <section id="Home_category" class="background-res background-ats py-5"
             style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/home-page-category-bg.jpg')">
@@ -184,7 +216,7 @@
                 <div class="row">
                     <div class="title-area text-center">
                         <h1 class="fw-bold">নিজের শেখা নিজেই গুছিয়ে নেয়ার <br>
-                            <span class="">যাত্রা শুরু হোক</span>
+                            <span>যাত্রা শুরু হোক</span>
                         </h1>
                         <p class="text-muted">
                             প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
@@ -265,16 +297,16 @@
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <a href="{{ route('front.live-questions-solving') }}" class="text-black">
-                            <div class="my-home-category">
-                                <div class="my-home-category-icon">
-                                    <img src="{{ asset('frontend') }}/assets/images/home-page/category/questions.png"
-                                        alt="" srcset="">
+                                <div class="my-home-category">
+                                    <div class="my-home-category-icon">
+                                        <img src="{{ asset('frontend') }}/assets/images/home-page/category/questions.png"
+                                            alt="" srcset="">
+                                    </div>
+                                    <div class="my-home-category-content">
+                                        <h3>প্রশ্নের লাইভ সমাধান</h3>
+                                        <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                    </div>
                                 </div>
-                                <div class="my-home-category-content">
-                                    <h3>প্রশ্নের লাইভ সমাধান</h3>
-                                    <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
-                                </div>
-                            </div>
                             </a>
                         </div>
                     </div>
@@ -284,7 +316,7 @@
 
         <section id="Our_service" class="background-res background-ats py-5"
             style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/main-category-bg.jpg')">
-            <div class="container">
+            <div class="container py-4">
                 <div class="row">
                     <div class="title-area text-center">
                         <h2 class="fw-bold">দেশসেরা স্কিল ডেভেলপমেন্ট <br>
@@ -323,17 +355,17 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <a href="{{ route('front.all-exams') }}" >
-                            <div class="my-home-service">
-                                <div class="my-home-service-icon">
-                                    <img src="{{ asset('frontend') }}/assets/images/home-page/our-service/exam.png"
-                                        alt="" srcset="">
+                            <a href="{{ route('front.all-exams') }}">
+                                <div class="my-home-service">
+                                    <div class="my-home-service-icon">
+                                        <img src="{{ asset('frontend') }}/assets/images/home-page/our-service/exam.png"
+                                            alt="" srcset="">
+                                    </div>
+                                    <div class="my-home-service-content">
+                                        <h3>পরীক্ষা</h3>
+                                        <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                    </div>
                                 </div>
-                                <div class="my-home-service-content">
-                                    <h3>পরীক্ষা</h3>
-                                    <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
-                                </div>
-                            </div>
                             </a>
                         </div>
                         <div class="col-md-6">
@@ -377,7 +409,7 @@
                                     <a href="{{ route('front.free-courses') }}">
                                         <div class="my-course-category">
                                             <div class="my-course-category-icon">
-                                                <i class="fa-solid fa-graduation-cap"></i>
+                                                <i class="fa-solid fa-book-tanakh"></i>
                                             </div>
                                             <div class="my-course-category-content">
                                                 <h3>{{ $courseCategory->name }} </h3>
@@ -389,7 +421,8 @@
                                     <a href="{{ route('front.category-courses', ['slug' => $courseCategory->slug]) }}">
                                         <div class="my-course-category">
                                             <div class="my-course-category-icon">
-                                                <i class="fa-solid fa-graduation-cap"></i>
+
+                                                <i class="fa-solid fa-book-tanakh"></i>
                                             </div>
                                             <div class="my-course-category-content">
                                                 <h3>{{ $courseCategory->name }} </h3>
@@ -404,71 +437,14 @@
                     </div>
                 </div>
                 <div class="all-courses-area">
-                    <div class="row">
-                        @foreach ($courses as $course)
-                            <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="exam-package-area">
-                                    <div class="package-exam-image">
-                                        <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img
-                                                src="{{ static_asset($course->banner ? $course->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}"
-                                                alt="{{ $course->alt_text }}" /></a>
-                                    </div>
-                                    <div class="package-exam-content ms-3">
-                                        <div class="package-exam-title pt-3">
-                                            <h2 class="fw-bold"><a
-                                                    href="{{ route('front.course-details', ['slug' => $course->slug]) }}">{{ Str::limit($course->title, 40) }}</a>
-                                            </h2>
-                                        </div>
-                                        <div class="row button-and-price pb-2">
-                                            <div class="col">
-                                                <div class="package-exam-rating">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </div>
-                                                <div class="package-exam-price">
-                                                    @php
-                                                        $discountAmount =
-                                                            $course->discount_type == 1
-                                                                ? $course->discount_amount
-                                                                : ($course->price * $course->discount_amount) / 100;
-                                                        $discountPrice =
-                                                            $course->price -
-                                                            (isset($discountAmount) ? $discountAmount : 0);
-                                                    @endphp
-                                                    <div class="package-exam-total-price text-muted">
-                                                        <s class="text-muted">৳ {{ $course->price ?? 0 }}</s>
-                                                    </div>
-                                                    <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="package-exam-button">
-                                                    <button class="package-exam-details"><a
-                                                            href="{{ route('front.course-details', ['slug' => $course->slug]) }}">View
-                                                            Details </a></button><br>
-                                                    @if ($course->admission_last_date > date('Y-m-d H:i'))
-                                                        <a
-                                                            href="{{ route('front.checkout', ['type' => 'course', 'slug' => $course->slug]) }}"><button
-                                                                class="custom-btn btn-12">
-                                                                <span>ক্লিক করুন!</span><span>কোর্সটি কিনুন</span>
-                                                            </button></a>
-                                                    @else
-                                                        <button class="custom-btn btn-12">
-                                                            <span>সময় শেষ</span><span>ভর্তির সময় শেষ</span>
-                                                        </button>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                    <div class="row g-2 g-md-3 g-lg-4">
+                        @if (isset($courses))
+                            @foreach ($courses as $course)
+                                @include('frontend.courses.include-courses-course', ['course' => $course])
+                            @endforeach
+                        @endif
                     </div>
-                    <div class="see-more-button text-center">
+                    <div class="see-more-button text-center mt-5">
                         <a href="{{ route('front.all-courses') }}" type="button" class="btn btn_warning">See More</a>
                     </div>
                 </div>
@@ -488,13 +464,13 @@
                         </p>
                     </div>
                     <div class="our-story-event-area py-4">
-                        <div class="row g-4">
+                        <div class="row g-3 g-lg-4">
                             @foreach ($ourServices as $key => $ourService)
-                                <div class="col-md-6 col-lg-3">
+                                <div class="col-6 col-lg-3">
                                     <div class="event-area-content">
                                         <div class="event-icon">
-                                            <img src="{{ asset('frontend') }}/assets/images/home-page/live-exam.png"
-                                                alt="" srcset="">
+
+                                            <img src="{{ asset('frontend') }}/assets/images/home-page/service{{ ($key % 5) + 1 }}.webp" alt="" srcset="">
                                         </div>
                                         <div class="event-content">
                                             <h3>{{ $ourService->title ?? '' }}</h3>
@@ -509,14 +485,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="our-story-video-area mt-4">
-                                    <div class="our-story" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-                                        <iframe id="videoIframe2" src="https://www.youtube.com/embed/bhCWhEosa3Y?si=myZrYsOTKstGK0zx"
+                                    <div class="our-story"
+                                        style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                                        <iframe id="videoIframe2"
+                                            src="https://www.youtube.com/embed/EGGWGLALnWU?si=myZrYsOTKstGK0zx"
                                             title="YouTube video player" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
                                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                                        <div onclick="showVideoModal('https://www.youtube.com/embed/bhCWhEosa3Y?autoplay=1')"
-                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;"></div>
+                                        <div onclick="showVideoModal('https://www.youtube.com/embed/EGGWGLALnWU?autoplay=1')"
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -524,7 +503,7 @@
                                 <div class="our-story-content-area">
                                     <h3>আমাদের
                                         <span class=""> সফলতার গল্প </span>
-                                    </h3><br>
+                                    </h3>
                                     <p>বর্তমানে দেশে শিক্ষিত বেকার প্রায় ২৬ লাখ। এর সাথে প্রতি বছরই নতুন আরো দুই
                                         লক্ষ
                                         করে শিক্ষিত বেকার যুক্ত হচ্ছেন। এই ২৬ লাখ মানুষকে তাদের ক্যারিয়ার প্লানিং
@@ -604,13 +583,13 @@
                     </div>
                 </div>
                 <div class="student-review-area py-4">
-                    <div class="row g-4">
+                    <div class="row gx-4">
                         @foreach ($studentOpinions as $successStudentOpinion)
                             <div class="col-md-6 col-lg-4">
                                 <div class="student-review-content">
                                     <div class="student-image">
-                                        <img src="https://biddabari-bucket.obs.as-south-208.rcloud.reddotdigitalit.com/{{ $successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg' }}"
-                                            alt="" srcset="" class="img img-thumbnail p-2">
+                                        <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
+                                            alt="" srcset="" class="">
                                     </div>
                                     <div class="student-name mt-2">
                                         <h4>{{ $successStudentOpinion->name ?? 'Student Name' }}</h4>
@@ -659,70 +638,75 @@
             </div>
         </div>
     @endif
-{{-- video Modal --}}
-<!-- Bootstrap Modal Structure -->
-<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe id="modalVideo" class="embed-responsive-item" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    {{-- video Modal --}}
+    <!-- Bootstrap Modal Structure -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="modalVideo" class="embed-responsive-item" allow="autoplay; encrypted-media"
+                            allowfullscreen></iframe>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="position: absolute;"></button>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  style="position: absolute;"></button>
             </div>
         </div>
     </div>
-</div>
 
 @endsection
 @push('style')
-<style>
-.embed-responsive {
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: 0;
-    overflow: hidden;
-}
+    <style>
+        .embed-responsive {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
 
-.embed-responsive-16by9 {
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
-}
+        .embed-responsive-16by9 {
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+        }
 
-.embed-responsive .embed-responsive-item,
-.embed-responsive iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
+        .embed-responsive .embed-responsive-item,
+        .embed-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
-.video-thumbnail {
-    position: relative;
-    width: 300px; /* Set the size you want for the video thumbnail */
-    height: 180px;
-    background-image: url('your-thumbnail.jpg'); /* Use a video thumbnail image */
-    background-size: cover;
-    cursor: pointer;
-}
+        .video-thumbnail {
+            position: relative;
+            width: 300px;
+            /* Set the size you want for the video thumbnail */
+            height: 180px;
+            background-image: url('your-thumbnail.jpg');
+            /* Use a video thumbnail image */
+            background-size: cover;
+            cursor: pointer;
+        }
 
-.custom-play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px; /* Adjust size of the play button */
-    height: 50px;
-    background: url('custom-play-icon.png') no-repeat center center;
-    background-size: contain;
-    z-index: 1;
-}
-
-</style>
+        .custom-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            /* Adjust size of the play button */
+            height: 50px;
+            background: url('custom-play-icon.png') no-repeat center center;
+            background-size: contain;
+            z-index: 1;
+        }
+    </style>
 @endpush
 @push('script')
     {{-- @if (isset($poppup))
@@ -745,8 +729,5 @@
             document.getElementById('modalVideo').src = ''; // This will stop the video
             $('#videoModal').modal('hide');
         });
-
     </script>
-
-
 @endpush

@@ -56,12 +56,12 @@
 
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css" />
         <!-- Add the slick-theme.css if you want default styling -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/slick/slick.css" />
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/slick/slick-theme.css" />
+        @php $rand = rand('0000','9999'); @endphp
         <!-- Add the slick-theme.css if you want default styling -->
-        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css"/>
-        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css"/>
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v={{ $rand }}"/>
+        <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css?v={{ $rand }}"/>
         @stack('style')
     </head>
 
@@ -74,42 +74,12 @@
         @include('frontend.includes.footer')
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('frontend') }}/assets/js/jquery-3.6.0.min.js"></script>
         <script src="{{ asset('frontend') }}/assets/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $(".variable-width").slick({
-                    dots: true,
-                    infinite: true,
-                    speed: 3000,
-                    slidesToShow: 3, // Show 3 full slides
-                    slidesToScroll: 1, // Scroll one slide at a time
-                    centerMode: false, // Remove centering
-                    arrows: true, // Enable next/previous arrows
-                    autoplay: true, // Enable auto slide
-                    autoplaySpeed: 3000, // Set speed for auto slide (2 seconds)
+        <!-- slick slide -->
+        <script src="{{ asset('frontend') }}/assets/vendors/slick/slick.min.js"></script>
 
-                    responsive: [
-                        {
-                            breakpoint: 1024, // Adjust settings for screens less than 1024px
-                            settings: {
-                                slidesToShow: 2, // Show 2 slides
-                                slidesToScroll: 1,
-                            },
-                        },
-                        {
-                            breakpoint: 768, // Adjust settings for screens less than 768px
-                            settings: {
-                                slidesToShow: 1, // Show 1 slide
-                                slidesToScroll: 1,
-                            },
-                        },
-                    ],
-                });
-            });
-        </script>
-        <!-- slick slide cdn -->
+        <!-- main -->
         <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
         <!-- Toastr Css -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>

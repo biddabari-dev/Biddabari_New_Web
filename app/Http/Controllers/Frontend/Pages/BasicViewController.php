@@ -245,7 +245,7 @@ class BasicViewController extends Controller
             $course->order_status = ViewHelper::checkIfCourseIsEnrolled($course);
         }
        //return $this->courseCategory;
-        $this->data = ['courseCategory' => $this->courseCategory];
+        $this->data = ['result' => $this->courseCategory];
         return ViewHelper::checkViewForApi($this->data, 'frontend.courses.course-category', 'Category Not Found');
     }
 

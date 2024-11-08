@@ -30,6 +30,7 @@ class CustomAuthController extends Controller
         ]);
 
         if (auth()->attempt($request->only(['mobile', 'password']), $request->remember_me)) {
+
             $this->user = auth()->user();
             $this->user->device_token = session()->getId();
             $this->user->save();
@@ -41,18 +42,19 @@ class CustomAuthController extends Controller
                     'status'    => 200
                 ]);
             } else {
-                if (Session::has('course_redirect_url')) {
-                    $redirectUrl = Session::get('course_redirect_url');
+                $appUrl = config('app.url');
+                $redirectUrl = Session::get('course_redirect_url');
+                if (Session::has('course_redirect_url') && $appUrl != $redirectUrl) {
                     Session::forget('course_redirect_url');
-
                     if ($request->ajax()) {
                         return response()->json(['status' => 'success', 'url' => $redirectUrl]);
                     } else {
                         return redirect($redirectUrl)->with('success', 'You are successfully logged in.');
                     }
                 }
-                return redirect(route('home'))->with('success', 'You are successfully logged in.');
+                return redirect(route('dashboard'))->with('success', 'You are successfully logged in.');
             }
+
         } else {
             // Handling failed login attempt
             if ($request->ajax()) {

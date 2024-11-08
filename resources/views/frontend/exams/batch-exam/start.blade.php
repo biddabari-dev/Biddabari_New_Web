@@ -523,7 +523,7 @@
             $(this).closest('.cont').prev('.answer-label').addClass('now-confrim');
             var questionParentDivId = $($(this).parent().parent().parent().parent().parent()).attr('id');
             $(this).parent().parent().parent().parent().parent().css({
-                // backgroundColor : 'rgb(150, 253, 198)',
+                backgroundColor : 'rgb(234 255 238)',
                 // color           : 'white',
             });
             $('.asw'+$(this).attr('data-option-id')).prop( "checked", true );
