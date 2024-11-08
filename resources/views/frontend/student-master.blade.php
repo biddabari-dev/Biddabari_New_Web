@@ -8,14 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {!! isset($siteSettings) ? $siteSettings->default_seo_code_on_header : '' !!}
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/plugins.css">
-    <link rel="stylesheet" href="/frontend/assets-old/css/iconplugins.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css"/>
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css"/>
 
+    <link rel="stylesheet" href="/frontend/assets-old/css/iconplugins.css">
+
+    <link rel="stylesheet" href="/frontend/assets-old/css/style.css">
+
+    <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/responsive.css">
+
+    <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/theme-dark.css">
+
+    <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/custom.css">
     <title>BiddaBari - The First Job Study Online Platform in Bangladesh</title>
 
     <!-- HELPER CSS -->
-    <link href="{{ asset('/') }}backend/assets/css/helper.css" rel="stylesheet" />
+    <link href="{{ asset('/') }}backend/assets-old/css/helper.css" rel="stylesheet" />
 
     <link rel="icon" type="image/png" href="{{ asset('/') }}frontend/assets-old/images/favicon.png">
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/news-tinker/style.css">
@@ -137,123 +143,144 @@
 
 <body>
 
+<!--<div id="preloader">-->
+<!-- <div id="preloader-area">-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!-- </div>-->
+<!-- <div class="preloader-section preloader-left"></div>-->
+<!-- <div class="preloader-section preloader-right"></div>-->
+<!--</div>-->
+
+
 @include('frontend.includes.header')
 
-<section>
-    <div class="container-fluid">
-        <div class="row custom_col_res">
-            <div class="col-md-2 ps-5 stu_btn">
-                <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
-                <div class="bg-dark mt-5 pt-2 mobile_res" style="">
-                    <ul class="nav flex-column student-panel-menu">
-                        <li class="nav-item border-1">
-                            <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
-                                href="{{ route('front.student.dashboard') }}">My Dashboard</a>
-                        </li>
-                        <li class="nav-item border-1">
-                            <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
-                                href="{{ route('front.student.my-courses') }}">My Courses</a>
-                        </li>
-                        <li class="nav-item border-1">
-                            <a class="nav-link {{ request()->is('student/my-exams') ? 'st-menu-active' : '' }}"
-                                href="{{ route('front.student.my-exams') }}">My Exams Courses</a>
-                        </li>
-                        <li class="nav-item border-1">
-                            <a class="nav-link {{ request()->is('student/my-orders') ? 'st-menu-active' : '' }}"
-                                href="{{ route('front.student.my-orders') }}">My Orders</a>
-                        </li>
-                        <li class="nav-item border-1">
-                            <a class="nav-link {{ request()->is('student/view-profile') ? 'st-menu-active' : '' }}"
-                                href="{{ route('front.student.view-profile') }}">My Profile</a>
-                        </li>
-                        <li class="nav-item border-1">
-                            <a class="nav-link" href="{{ route('front.student.my-affiliation') }}">My
-                                Affiliation</a>
-                        </li>
-                        <li class="nav-item border-1">
-                            <a class="nav-link" href="{{ route('front.student.change-password') }}">Change
-                                Password</a>
-                        </li>
-                            @can('Service')
+
+<section class="">
+    <div class=" ps-0">
+        <div class="container-fluid">
+            <div class="row custom_col_res">
+                <div class="col-md-2 pe-0 stu_btn">
+                    <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
+                    <div class="bg-dark pt-5 mobile_res" style="">
+                        <ul class="nav flex-column student-panel-menu">
                             <li class="nav-item border-1">
-                                <a class="nav-link" href="{{ route('front.student.my_service') }}">Service</a>
+                                <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
+                                   href="{{ route('front.student.dashboard') }}">My Dashboard</a>
                             </li>
-                        @endcan
-                        <li class="nav-item border-1">
-                            <a class="nav-link" href="#"
-                                onclick="event.preventDefault();document.getElementById('logout').submit()">Logout</a>
-                            <form action="{{ route('logout') }}" method="post" id="logout">@csrf</form>
-                        </li>
-                    </ul>
-                </div>
-                <button class="btn btn-warning mobile_res_btn" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    My Dashboard
-                </button>
-
-                <div class="offcanvas offcanvas-start offcanvas_top_bottom" tabindex="-1" id="offcanvasExample"
-                        aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">My Dashboard</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                            <li class="nav-item border-1">
+                                <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
+                                   href="{{ route('front.student.my-courses') }}">My Courses</a>
+                            </li>
+                            <li class="nav-item border-1">
+                                <a class="nav-link {{ request()->is('student/my-exams') ? 'st-menu-active' : '' }}"
+                                   href="{{ route('front.student.my-exams') }}">My Exams Courses</a>
+                            </li>
+                            <li class="nav-item border-1">
+                                <a class="nav-link {{ request()->is('student/my-orders') ? 'st-menu-active' : '' }}"
+                                   href="{{ route('front.student.my-orders') }}">My Orders</a>
+                            </li>
+                            <li class="nav-item border-1">
+                                <a class="nav-link {{ request()->is('student/view-profile') ? 'st-menu-active' : '' }}"
+                                   href="{{ route('front.student.view-profile') }}">My Profile</a>
+                            </li>
+                            <li class="nav-item border-1">
+                                <a class="nav-link" href="{{ route('front.student.my-affiliation') }}">My
+                                    Affiliation</a>
+                            </li>
+                            <li class="nav-item border-1">
+                                <a class="nav-link" href="{{ route('front.student.change-password') }}">Change
+                                    Password</a>
+                            </li>
+                             @can('Service')
+                                <li class="nav-item border-1">
+                                    <a class="nav-link" href="{{ route('front.student.my_service') }}">Service</a>
+                                </li>
+                            @endcan
+                            <li class="nav-item border-1">
+                                <a class="nav-link" href="#"
+                                   onclick="event.preventDefault();document.getElementById('logout').submit()">Logout</a>
+                                <form action="{{ route('logout') }}" method="post" id="logout">@csrf</form>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="offcanvas-body">
-                        <div class="col-md-2 pe-0">
-                            <div class="bg-dark ">
-                                <ul class="nav flex-column student-panel-menu">
-                                    <li class="nav-item border-1">
-                                        <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
-                                            href="{{ route('front.student.dashboard') }}">My Dashboard</a>
-                                    </li>
-                                    <li class="nav-item border-1">
-                                        <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
-                                            href="{{ route('front.student.my-courses') }}">My Courses</a>
-                                    </li>
-                                    <li class="nav-item border-1">
-                                        <a class="nav-link {{ request()->is('student/my-exams') ? 'st-menu-active' : '' }}"
-                                            href="{{ route('front.student.my-exams') }}">My Exams Courses</a>
-                                    </li>
-                                    <li class="nav-item border-1">
-                                        <a class="nav-link {{ request()->is('student/my-orders') ? 'st-menu-active' : '' }}"
-                                            href="{{ route('front.student.my-orders') }}">My Orders</a>
-                                    </li>
-                                    <li class="nav-item border-1">
-                                        <a class="nav-link {{ request()->is('student/view-profile') ? 'st-menu-active' : '' }}"
-                                            href="{{ route('front.student.view-profile') }}">My Profile</a>
-                                    </li>
-                                    <li class="nav-item border-1">
-                                        <a class="nav-link"
-                                            href="{{ route('front.student.my-affiliation') }}">My
-                                            Affiliation</a>
-                                    </li>
-                                    <li class="nav-item border-1">
-                                        <a class="nav-link"
-                                            href="{{ route('front.student.change-password') }}">Change
-                                            Password</a>
-                                    </li>
-                                    @can('Service')
+
+
+                    <button class="btn btn-warning mobile_res_btn" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        My Dashboard
+                    </button>
+
+                    <div class="offcanvas offcanvas-start offcanvas_top_bottom" tabindex="-1" id="offcanvasExample"
+                         aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">My Dashboard</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="col-md-2 pe-0">
+                                <div class="bg-dark ">
+                                    <ul class="nav flex-column student-panel-menu">
                                         <li class="nav-item border-1">
-                                            <a class="nav-link" href="{{ route('front.student.my_service') }}">Service</a>
+                                            <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
+                                               href="{{ route('front.student.dashboard') }}">My Dashboard</a>
                                         </li>
-                                    @endcan
+                                        <li class="nav-item border-1">
+                                            <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
+                                               href="{{ route('front.student.my-courses') }}">My Courses</a>
+                                        </li>
+                                        <li class="nav-item border-1">
+                                            <a class="nav-link {{ request()->is('student/my-exams') ? 'st-menu-active' : '' }}"
+                                               href="{{ route('front.student.my-exams') }}">My Exams Courses</a>
+                                        </li>
+                                        <li class="nav-item border-1">
+                                            <a class="nav-link {{ request()->is('student/my-orders') ? 'st-menu-active' : '' }}"
+                                               href="{{ route('front.student.my-orders') }}">My Orders</a>
+                                        </li>
+                                        <li class="nav-item border-1">
+                                            <a class="nav-link {{ request()->is('student/view-profile') ? 'st-menu-active' : '' }}"
+                                               href="{{ route('front.student.view-profile') }}">My Profile</a>
+                                        </li>
+                                        <li class="nav-item border-1">
+                                            <a class="nav-link"
+                                               href="{{ route('front.student.my-affiliation') }}">My
+                                                Affiliation</a>
+                                        </li>
+                                        <li class="nav-item border-1">
+                                            <a class="nav-link"
+                                               href="{{ route('front.student.change-password') }}">Change
+                                                Password</a>
+                                        </li>
+                                        @can('Service')
+                                            <li class="nav-item border-1">
+                                                <a class="nav-link" href="{{ route('front.student.my_service') }}">Service</a>
+                                            </li>
+                                        @endcan
 
 
 
-                                    <li class="nav-item border-1">
-                                        <a class="nav-link" href="#"
-                                            onclick="event.preventDefault();document.getElementById('logout').submit()">Logout</a>
-                                        <form action="{{ route('logout') }}" method="post" id="logout">@csrf
-                                        </form>
-                                    </li>
-                                </ul>
+                                        <li class="nav-item border-1">
+                                            <a class="nav-link" href="#"
+                                               onclick="event.preventDefault();document.getElementById('logout').submit()">Logout</a>
+                                            <form action="{{ route('logout') }}" method="post" id="logout">@csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-9">
-                @yield('student-body')
+                <div class="col-md-10">
+                    @yield('student-body')
+                </div>
             </div>
         </div>
     </div>
@@ -268,7 +295,7 @@
 
     <!--<script src="{{ asset('/') }}frontend/assets-old/js/plugins.js"></script>-->
 
-    <script src="{{ asset('/') }}frontend/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/') }}frontend/assets-old/js/bootstrap.bundle.min.js" type="text/javascript"></script>
     <script src="{{ asset('/') }}frontend/assets-old/js/meanmenu.min.js" type="text/javascript"></script>
     <script src="{{ asset('/') }}frontend/assets-old/js/ajaxchimp.min.js" type="text/javascript"></script>
     <script src="{{ asset('/') }}frontend/assets-old/js/form-validator.min.js" type="text/javascript"></script>
@@ -333,6 +360,42 @@
 <script>
     let base_url = {!! json_encode(url('/')) !!}+'/';
 </script>
+
+{{--fb messenger integrate starts--}}
+<!-- Messenger Chat Plugin Code -->
+<!--<div id="fb-root"></div>-->
+
+<!-- Your Chat Plugin code -->
+<!--<div id="fb-customer-chat" class="fb-customerchat">-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    var chatbox = document.getElementById('fb-customer-chat');-->
+<!--    chatbox.setAttribute("page_id", "1652435885033225");-->
+<!--    chatbox.setAttribute("attribution", "biz_inbox");-->
+<!--</script>-->
+
+<!-- Your SDK code -->
+<!--<script>-->
+<!--    window.fbAsyncInit = function() {-->
+<!--        FB.init({-->
+<!--            xfbml            : true,-->
+<!--            version          : 'v18.0'-->
+<!--        });-->
+<!--    };-->
+
+<!--    (function(d, s, id) {-->
+<!--        var js, fjs = d.getElementsByTagName(s)[0];-->
+<!--        if (d.getElementById(id)) return;-->
+<!--        js = d.createElement(s); js.id = id;-->
+<!--        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';-->
+<!--        fjs.parentNode.insertBefore(js, fjs);-->
+<!--    }(document, 'script', 'facebook-jssdk'));-->
+<!--</script>-->
+{{--fb messenger integrate ends--}}
+
+
+
 
 
 
