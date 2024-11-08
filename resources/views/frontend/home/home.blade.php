@@ -589,7 +589,7 @@
                                 <div class="student-review-content">
                                     <div class="student-image">
                                         <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
-                                            alt="" srcset="" class="img img-thumbnail p-2">
+                                            alt="" srcset="" class="">
                                     </div>
                                     <div class="student-name mt-2">
                                         <h4>{{ $successStudentOpinion->name ?? 'Student Name' }}</h4>

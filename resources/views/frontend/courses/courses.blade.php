@@ -112,7 +112,6 @@ Biddabari - All Course
             </div>
         </div>
     </section>
-
 </main>
 @endsection
 @push('script')
