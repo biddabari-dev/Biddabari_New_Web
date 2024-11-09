@@ -183,6 +183,39 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+/* corce_exam_mobile_res */
+.stu_das_mobile_res .card {
+    border: 1px solid #e9ecef;
+}
+.corce_exam_mobile_res {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.corce_exam_mobile_res span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #202244;
+    margin-bottom: 0;
+    display: block;
+}
+.corce_exam_mobile_res h3 {
+    color: #aa076b;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.corce_exam-icon {
+    background-color: #aa076b;
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+}
 /* -------------------------------- App Store Section Start ---------------------------- */
 /* #App_store .style-2phone-image img {
     width: 520px;

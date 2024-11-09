@@ -55,17 +55,26 @@
         }
     </style>
     <style>
+        .student-panel-menu {
+            background-color: #ffffff;
+            border: 1px solid #EBEBEB;
+            border-radius: 5px;
+            padding: 10px;
+        }
         .student-panel-menu li a {
-            color: white;
-            font-size: 20px;
+            color: #4F4F4F;
+            font-size: 16px;
+            border-radius: 5px;
         }
 
         .student-panel-menu li:hover a {
-            color: #85AF54 !important;
+            background-color: #EBEBEB;
+            color: #4f4f4f  !important;
         }
 
         .st-menu-active {
-            color: #85AF54 !important;
+            background-color: #aa076b;
+            color: #ffffff !important;
         }
 
         .content-shadow {
@@ -171,8 +180,8 @@
             <div class="row custom_col_res py-5">
                 <div class="col-md-2 stu_btn">
                     <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
-                    <div class="bg-dark pt-5 mobile_res" style="">
-                        <ul class="nav flex-column student-panel-menu">
+                    <div class="bg-light mobile_res">
+                        <ul class="nav flex-column student-panel-menu shadow-sm">
                             <li class="nav-item border-1">
                                 <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
                                    href="{{ route('front.student.dashboard') }}">My Dashboard</a>
