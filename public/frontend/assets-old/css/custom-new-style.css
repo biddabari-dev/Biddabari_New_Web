@@ -1,0 +1,532 @@
+#Header .main-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+#Header .search_button_area {
+    /* width: 100%; */
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+#Header .search_button_area .input-group-text {
+    background-color: rgba(229, 229, 236, 0.315);
+    border-radius: 25px 0 0 25px;
+}
+
+#Header .search_button_area .form-control {
+    border-radius: 0 25px 25px 0;
+    background-color: rgba(229, 229, 236, 0.315);
+}
+
+#Header .search_button_area .form-control::placeholder {
+    font-size: 1rem;
+}
+
+#Header .search_button_area.input-group {
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px rgb(245, 245, 254, 0.1);
+}
+
+#Header .search_button_area .input-group i {
+    color: rgb(170 7 107);
+    background-color: rgb(170 7 107 / 10%);
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 20px;
+}
+
+#Header .search_button_area .input-group button {
+    border: 0 !important;
+    background-color: rgba(229, 229, 236, 0.212);
+    padding: 1px 0px !important;
+}
+
+#Header {
+    padding-bottom: 91px;
+}
+
+#Header .bg-body-tertiary {
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    height: auto;
+    -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+    /* box-shadow: 0px 10px 10px #D6D6D6; */
+}
+
+#Header .login-button .btn_warning {
+    background-color: #aa076b;
+    color: white;
+    padding: 12px 25px;
+}
+
+#Header .navbar-collapse ul li a {
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 20px;
+}
+
+#Header .navbar-collapse ul li a:hover {
+    color: #aa076b;
+    background-color: #f2f2f5;
+    border-bottom: 1.8px solid #aa076b;
+    border-radius: 10px;
+}
+
+.moblie-icon {
+    display: none;
+}
+
+.search_button {
+    display: none;
+}
+
+.mobile-menu {
+    width: auto;
+}
+
+@media (max-width: 1399.98px) {
+    #Header .search_button_area {
+        max-width: 182px;
+    }
+
+    #Header .search_button_area .input-group i {
+        font-size: 18px;
+    }
+
+    #Header .search_button_area .form-control {
+        margin-left: -20px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .mobile-menu {
+        width: 100%;
+    }
+
+    .moblie-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .search_button {
+        display: block;
+        margin-top: 15px;
+    }
+
+    #Header .moblie-icon .search_button_area {
+        max-width: 80px;
+        margin-right: 0;
+    }
+
+    #Header .moblie-icon .search_button_area .input-group-text {
+        border-radius: 25px;
+    }
+
+    #Header .login-button .btn_warning {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    /* #Header {
+      padding-bottom: 0;
+    } */
+    .moblie-icon {
+        gap: 20px;
+    }
+
+    #Header .moblie-icon .search_button_area {
+        max-width: 50px;
+    }
+
+    #Header .moblie-icon .search_button_area .input-group i {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .desk-top-search {
+        display: none;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .moblie-icon {
+        gap: 15px;
+    }
+
+    #Header .moblie-icon .search_button_area {
+        max-width: 40px;
+    }
+
+    #Header .moblie-icon .search_button_area .input-group i {
+        font-size: 12px;
+    }
+
+    #Header .login-button .btn_warning {
+        padding: 7px 20px;
+    }
+}
+/* --------------------- Head Navber End ------------- */
+.background-res {
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/* -------------------------------- App Store Section Start ---------------------------- */
+/* #App_store .style-2phone-image img {
+    width: 520px;
+    height: 480px;
+  } */
+
+  #App_store .download-text {
+    color: white;
+    padding-top: 40px;
+}
+
+#App_store .download-text h2 {
+    font-size: 44px;
+    font-weight: 700;
+    color: #aa076b;
+}
+
+#App_store .download-text h5 {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#App_store .rattingandflowers-area {
+    width: 80%;
+    background: rgb(206, 11, 211);
+    background: linear-gradient(153deg, rgba(206, 11, 211, 1) 0%, rgba(177, 39, 249, 1) 50%, rgba(100, 78, 251, 1) 100%);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 30px 0;
+}
+
+#App_store .rattingandflowers-area .learner-count {
+    text-align: center;
+    border-right: 1px solid white;
+    color: white;
+    padding: 20px 20px 5px 20px;
+}
+
+#App_store .rattingandflowers-area .learner-count h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+}
+
+#App_store .rattingandflowers-area .learner-count p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: white;
+}
+
+#App_store .rattingandflowers-area .review-count {
+    text-align: center;
+    border-right: 1px solid white;
+    color: white;
+    padding: 20px 20px 5px 20px;
+}
+
+#App_store .rattingandflowers-area .review-count h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+}
+
+#App_store .rattingandflowers-area .review-count span img {
+    height: 30px;
+    margin-top: -5px;
+}
+
+#App_store .rattingandflowers-area .review-count p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: white;
+}
+
+#App_store .rattingandflowers-area .courses-count {
+    text-align: center;
+    /* border-right: 1px solid white; */
+    color: white;
+    padding: 20px 20px 5px 20px;
+}
+
+#App_store .rattingandflowers-area .courses-count h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+}
+
+#App_store .rattingandflowers-area .courses-count p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: white;
+}
+
+#App_store .download-hint p {
+    color: white;
+    font-size: 18px;
+}
+
+#App_store .download-store-path {
+    display: flex;
+    padding: 20px 20px 20px 0;
+    gap: 20px;
+}
+
+/* #App_store .download-store-path .app-store img,
+  #App_store .download-store-path .play-store img {
+
+  } */
+
+/* #App_store .download-store-path .play-store img {
+    width: 250px;
+    height: 70px;
+  } */
+
+@media (max-width: 991.98px) {
+    #App_store .download-text h2 {
+        font-size: 36px;
+    }
+
+    #App_store .download-text h5 {
+        font-size: 20px;
+    }
+
+    #App_store .rattingandflowers-area {
+        width: 100%;
+    }
+
+    #App_store .rattingandflowers-area .learner-count {
+        padding: 10px 10px 5px 10px;
+    }
+
+    #App_store .rattingandflowers-area .review-count {
+        padding: 10px 10px 5px 10px;
+    }
+
+    #App_store .rattingandflowers-area .courses-count {
+        padding: 10px 10px 5px 10px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #App_store .download-text h2 {
+        font-size: 30px;
+    }
+
+    #App_store .download-text h5 {
+        font-size: 16px;
+    }
+
+    #App_store .rattingandflowers-area .review-count h2 {
+        font-size: 24px;
+    }
+
+    #App_store .rattingandflowers-area .review-count p {
+        font-size: 14px;
+    }
+
+    #App_store .rattingandflowers-area .review-count span img {
+        height: 24px;
+    }
+
+    #App_store .rattingandflowers-area .learner-count h2 {
+        font-size: 24px;
+    }
+
+    #App_store .rattingandflowers-area .learner-count p {
+        font-size: 14px;
+    }
+
+    #App_store .rattingandflowers-area .courses-count h2 {
+        font-size: 24px;
+    }
+
+    #App_store .rattingandflowers-area .courses-count p {
+        font-size: 14px;
+    }
+}
+
+/* -------------------------------- App Store Section End ---------------------------- */
+/* -----------------------Footer Start ---------------- */
+#Footer {
+    background-color: rgb(25, 25, 25);
+    padding-top: 45px;
+}
+
+#Footer .footer-logo-text {
+    color: white;
+}
+
+#Footer .footer-logo-content .footer-logo .footer-logo-image img {
+    width: 80px;
+    height: 80px;
+    left: 0;
+}
+
+#Footer .footer-logo-content .footer-logo-text p {
+    font-size: 15px;
+    line-height: 25px;
+    margin-top: 25px;
+    color: white;
+}
+
+#Footer .footer-logo-content .footer-social-media-area .social-media-icon {
+    display: flex;
+    padding-top: 15px;
+    align-items: center;
+    gap: 20px;
+}
+
+#Footer .footer-logo-content .footer-social-media-area .social-media-icon a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 50%;
+    border: 1px solid #ca0d82;
+    color: white;
+    transition: .7s ease-in-out;
+}
+
+#Footer .footer-logo-content .footer-social-media-area .social-media-icon a:hover {
+    background-color: white;
+    color: #aa076b;
+    border: 1px solid #aa076b;
+}
+
+#Footer .footer-others-div h3 {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+#Footer .footer-others-div ul {
+    padding-left: 15px;
+    list-style-type: inherit;
+    color: #ca0d82;
+}
+
+#Footer .footer-others-div ul li a {
+    display: block;
+    color: white;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+
+#Footer .footer-others-div ul li a:hover {
+    color: #ca0d82;
+}
+
+#Footer .footer-others-div ul li i {
+    color: #ca0d82;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+#Footer .footer-others-div ul li i:hover {
+    color: white;
+}
+
+#Footer .footer-others-div p i {
+    color: #aa076b;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+#Footer .footer-others-div p i:hover {
+    color: white;
+}
+
+#Footer .footer-others-div p a {
+    color: white;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+#Footer .footer-others-div p span {
+    color: #aa076b;
+}
+
+#Footer .copy-right-section {
+    border-top: 1px solid rgb(58, 58, 58);
+    padding: 13px 0px;
+}
+
+#Footer .copy-right-section p {
+    text-align: center;
+    color: white;
+    margin-bottom: 0;
+}
+
+#Footer .copy-right-section p span a {
+    color: #ca0d82;
+}
+
+#Footer .copy-right-section p span a:hover {
+    color: white;
+}
+
+#Footer .footer-others-div .official-info ul {
+    padding-left: 0;
+}
+
+#Footer .footer-others-div .official-info ul li {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#Footer .footer-others-div .official-info ul li a {
+    color: #D7E4F9;
+}
+
+@media (max-width: 575.98px) {
+    #Footer {
+        padding-top: 25px;
+    }
+
+    /* .footer-logo-content {
+        text-align: center;
+    }
+
+    #Footer .footer-logo-content .footer-social-media-area .social-media-icon {
+        justify-content: center;
+    }
+
+    .about-us {
+        text-align: center;
+    }
+
+    .resources {
+        text-align: center;
+    }
+
+    .official-info {
+        text-align: left;
+    } */
+
+}
+
+/* -----------------------Footer End ---------------- */
