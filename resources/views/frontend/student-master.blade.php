@@ -62,8 +62,9 @@
             padding: 10px;
         }
         .student-panel-menu li a {
-            color: #4F4F4F;
+            color: #1d1d1d;
             font-size: 16px;
+            font-weight: 500;
             border-radius: 5px;
         }
 
