@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" href="/frontend/assets-old/css/iconplugins.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
     <link rel="stylesheet" href="/frontend/assets-old/css/style.css">
 
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/responsive.css">
@@ -26,6 +28,7 @@
     <link rel="icon" type="image/png" href="{{ asset('/') }}frontend/assets-old/images/favicon.png">
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/news-tinker/style.css">
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/custom-my-mod.css">
+    <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/custom-new-style.css">
     {{--
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/mirazmac/bengali-webfont-cdn@master/solaimanlipi/style.css">--}}
@@ -52,17 +55,27 @@
         }
     </style>
     <style>
+        .student-panel-menu {
+            background-color: #ffffff;
+            border: 1px solid #EBEBEB;
+            border-radius: 5px;
+            padding: 10px;
+        }
         .student-panel-menu li a {
-            color: white;
-            font-size: 20px;
+            color: #1d1d1d;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
         }
 
         .student-panel-menu li:hover a {
-            color: #85AF54 !important;
+            background-color: #EBEBEB;
+            color: #4f4f4f  !important;
         }
 
         .st-menu-active {
-            color: #85AF54 !important;
+            background-color: #aa076b;
+            color: #ffffff !important;
         }
 
         .content-shadow {
@@ -165,11 +178,11 @@
 <section class="">
     <div class=" ps-0">
         <div class="container-fluid">
-            <div class="row custom_col_res">
-                <div class="col-md-2 pe-0 stu_btn">
+            <div class="row custom_col_res py-5">
+                <div class="col-md-2 stu_btn">
                     <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
-                    <div class="bg-dark pt-5 mobile_res" style="">
-                        <ul class="nav flex-column student-panel-menu">
+                    <div class="bg-light mobile_res">
+                        <ul class="nav flex-column student-panel-menu shadow-sm">
                             <li class="nav-item border-1">
                                 <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
                                    href="{{ route('front.student.dashboard') }}">My Dashboard</a>
