@@ -69,7 +69,7 @@
         }
 
         .student-panel-menu li:hover a {
-            background-color: #EBEBEB;
+            background-color: #ffcfed;
             color: #4f4f4f  !important;
         }
 
@@ -175,125 +175,122 @@
 @include('frontend.includes.header')
 
 
-<section class="">
-    <div class=" ps-0">
-        <div class="container-fluid">
-            <div class="row custom_col_res py-5">
-                <div class="col-md-2 stu_btn">
-                    <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
-                    <div class="bg-light mobile_res">
-                        <ul class="nav flex-column student-panel-menu shadow-sm">
+<section>
+    <div class="container-fluid">
+        <div class="row custom_col_res py-5">
+            <div class="col-md-2 stu_btn">
+                <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
+                <div class="bg-light mobile_res">
+                    <ul class="nav flex-column student-panel-menu shadow-sm">
+                        <li class="nav-item border-1">
+                            <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
+                                href="{{ route('front.student.dashboard') }}">My Dashboard</a>
+                        </li>
+                        <li class="nav-item border-1">
+                            <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
+                                href="{{ route('front.student.my-courses') }}">My Courses</a>
+                        </li>
+                        <li class="nav-item border-1">
+                            <a class="nav-link {{ request()->is('student/my-exams') ? 'st-menu-active' : '' }}"
+                                href="{{ route('front.student.my-exams') }}">My Exams Courses</a>
+                        </li>
+                        <li class="nav-item border-1">
+                            <a class="nav-link {{ request()->is('student/my-orders') ? 'st-menu-active' : '' }}"
+                                href="{{ route('front.student.my-orders') }}">My Orders</a>
+                        </li>
+                        <li class="nav-item border-1">
+                            <a class="nav-link {{ request()->is('student/view-profile') ? 'st-menu-active' : '' }}"
+                                href="{{ route('front.student.view-profile') }}">My Profile</a>
+                        </li>
+                        <li class="nav-item border-1">
+                            <a class="nav-link" href="{{ route('front.student.my-affiliation') }}">My
+                                Affiliation</a>
+                        </li>
+                        <li class="nav-item border-1">
+                            <a class="nav-link {{ request()->is('student/change-password') ? 'st-menu-active' : '' }}" href="{{ route('front.student.change-password') }}">Change
+                                Password</a>
+                        </li>
+                            @can('Service')
                             <li class="nav-item border-1">
-                                <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
-                                   href="{{ route('front.student.dashboard') }}">My Dashboard</a>
+                                <a class="nav-link" href="{{ route('front.student.my_service') }}">Service</a>
                             </li>
-                            <li class="nav-item border-1">
-                                <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
-                                   href="{{ route('front.student.my-courses') }}">My Courses</a>
-                            </li>
-                            <li class="nav-item border-1">
-                                <a class="nav-link {{ request()->is('student/my-exams') ? 'st-menu-active' : '' }}"
-                                   href="{{ route('front.student.my-exams') }}">My Exams Courses</a>
-                            </li>
-                            <li class="nav-item border-1">
-                                <a class="nav-link {{ request()->is('student/my-orders') ? 'st-menu-active' : '' }}"
-                                   href="{{ route('front.student.my-orders') }}">My Orders</a>
-                            </li>
-                            <li class="nav-item border-1">
-                                <a class="nav-link {{ request()->is('student/view-profile') ? 'st-menu-active' : '' }}"
-                                   href="{{ route('front.student.view-profile') }}">My Profile</a>
-                            </li>
-                            <li class="nav-item border-1">
-                                <a class="nav-link" href="{{ route('front.student.my-affiliation') }}">My
-                                    Affiliation</a>
-                            </li>
-                            <li class="nav-item border-1">
-                                <a class="nav-link" href="{{ route('front.student.change-password') }}">Change
-                                    Password</a>
-                            </li>
-                             @can('Service')
-                                <li class="nav-item border-1">
-                                    <a class="nav-link" href="{{ route('front.student.my_service') }}">Service</a>
-                                </li>
-                            @endcan
-                            <li class="nav-item border-1">
-                                <a class="nav-link" href="#"
-                                   onclick="event.preventDefault();document.getElementById('logout').submit()">Logout</a>
-                                <form action="{{ route('logout') }}" method="post" id="logout">@csrf</form>
-                            </li>
-                        </ul>
+                        @endcan
+                        <li class="nav-item border-1">
+                            <a class="nav-link" href="#"
+                                onclick="event.preventDefault();document.getElementById('logout').submit()">Logout</a>
+                            <form action="{{ route('logout') }}" method="post" id="logout">@csrf</form>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <button class="btn btn-warning mobile_res_btn mb-4" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"> My Dashboard
+                </button>
+
+                <div class="offcanvas offcanvas-start offcanvas_top_bottom" tabindex="-1" id="offcanvasExample"
+                        aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">My Dashboard</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
                     </div>
-
-
-                    <button class="btn btn-warning mobile_res_btn" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                        My Dashboard
-                    </button>
-
-                    <div class="offcanvas offcanvas-start offcanvas_top_bottom" tabindex="-1" id="offcanvasExample"
-                         aria-labelledby="offcanvasExampleLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">My Dashboard</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <div class="col-md-2 pe-0">
-                                <div class="bg-dark ">
-                                    <ul class="nav flex-column student-panel-menu">
+                    <div class="offcanvas-body">
+                        <div class="col-md-2 pe-0">
+                            <div class="bg-dark ">
+                                <ul class="nav flex-column student-panel-menu">
+                                    <li class="nav-item border-1">
+                                        <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
+                                            href="{{ route('front.student.dashboard') }}">My Dashboard</a>
+                                    </li>
+                                    <li class="nav-item border-1">
+                                        <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
+                                            href="{{ route('front.student.my-courses') }}">My Courses</a>
+                                    </li>
+                                    <li class="nav-item border-1">
+                                        <a class="nav-link {{ request()->is('student/my-exams') ? 'st-menu-active' : '' }}"
+                                            href="{{ route('front.student.my-exams') }}">My Exams Courses</a>
+                                    </li>
+                                    <li class="nav-item border-1">
+                                        <a class="nav-link {{ request()->is('student/my-orders') ? 'st-menu-active' : '' }}"
+                                            href="{{ route('front.student.my-orders') }}">My Orders</a>
+                                    </li>
+                                    <li class="nav-item border-1">
+                                        <a class="nav-link {{ request()->is('student/view-profile') ? 'st-menu-active' : '' }}"
+                                            href="{{ route('front.student.view-profile') }}">My Profile</a>
+                                    </li>
+                                    <li class="nav-item border-1">
+                                        <a class="nav-link"
+                                            href="{{ route('front.student.my-affiliation') }}">My
+                                            Affiliation</a>
+                                    </li>
+                                    <li class="nav-item border-1">
+                                        <a class="nav-link"
+                                            href="{{ route('front.student.change-password') }}">Change
+                                            Password</a>
+                                    </li>
+                                    @can('Service')
                                         <li class="nav-item border-1">
-                                            <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
-                                               href="{{ route('front.student.dashboard') }}">My Dashboard</a>
+                                            <a class="nav-link" href="{{ route('front.student.my_service') }}">Service</a>
                                         </li>
-                                        <li class="nav-item border-1">
-                                            <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
-                                               href="{{ route('front.student.my-courses') }}">My Courses</a>
-                                        </li>
-                                        <li class="nav-item border-1">
-                                            <a class="nav-link {{ request()->is('student/my-exams') ? 'st-menu-active' : '' }}"
-                                               href="{{ route('front.student.my-exams') }}">My Exams Courses</a>
-                                        </li>
-                                        <li class="nav-item border-1">
-                                            <a class="nav-link {{ request()->is('student/my-orders') ? 'st-menu-active' : '' }}"
-                                               href="{{ route('front.student.my-orders') }}">My Orders</a>
-                                        </li>
-                                        <li class="nav-item border-1">
-                                            <a class="nav-link {{ request()->is('student/view-profile') ? 'st-menu-active' : '' }}"
-                                               href="{{ route('front.student.view-profile') }}">My Profile</a>
-                                        </li>
-                                        <li class="nav-item border-1">
-                                            <a class="nav-link"
-                                               href="{{ route('front.student.my-affiliation') }}">My
-                                                Affiliation</a>
-                                        </li>
-                                        <li class="nav-item border-1">
-                                            <a class="nav-link"
-                                               href="{{ route('front.student.change-password') }}">Change
-                                                Password</a>
-                                        </li>
-                                        @can('Service')
-                                            <li class="nav-item border-1">
-                                                <a class="nav-link" href="{{ route('front.student.my_service') }}">Service</a>
-                                            </li>
-                                        @endcan
+                                    @endcan
 
 
 
-                                        <li class="nav-item border-1">
-                                            <a class="nav-link" href="#"
-                                               onclick="event.preventDefault();document.getElementById('logout').submit()">Logout</a>
-                                            <form action="{{ route('logout') }}" method="post" id="logout">@csrf
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <li class="nav-item border-1">
+                                        <a class="nav-link" href="#"
+                                            onclick="event.preventDefault();document.getElementById('logout').submit()">Logout</a>
+                                        <form action="{{ route('logout') }}" method="post" id="logout">@csrf
+                                        </form>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-10">
-                    @yield('student-body')
-                </div>
+            </div>
+            <div class="col-md-10">
+                @yield('student-body')
             </div>
         </div>
     </div>

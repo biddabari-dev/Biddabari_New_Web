@@ -10,7 +10,14 @@
                 <div class="moblie-icon">
                     <div class="nav-item login-button">
                         @if(auth()->check())
-                        <a href="{{ route('dashboard') }}" type="button" class="btn btn_warning">Dashboard</a>
+
+                        @if (request()->is('student*'))
+                            {{-- <button class="btn btn_warning" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Dashboard
+                            </button> --}}
+                        @else
+                            <a href="{{ route('dashboard') }}" type="button" class="btn btn_warning">Dashboard</a>
+                        @endif
                         @else
                         <a href="{{ route('login') }}" type="button" class="btn btn_warning">Login</a>
                         @endif

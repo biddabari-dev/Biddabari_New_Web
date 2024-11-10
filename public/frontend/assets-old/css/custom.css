@@ -697,15 +697,16 @@ body {
 }
 
 .courses-details-tab-content .courses-details-accordion .accordion .accordion-title.active {
-    color: #F18345;
+    color: #aa076b;
+    font-weight: 800;
 }
 
 .courses-details-tab-content a:hover {
-    border-bottom: 1px solid #F18345;
+    border-bottom: 2px solid #aa076b;
 }
 
 .courses-details-tab-content .courses-details-accordion .accordion .accordion-title.active i {
-    color: #F18345;
+    color: #aa076b;
 }
 
 .courses-details-tab-content .courses-details-accordion .accordion .accordion-title i {

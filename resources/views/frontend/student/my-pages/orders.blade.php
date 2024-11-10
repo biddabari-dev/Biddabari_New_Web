@@ -1,15 +1,15 @@
 @extends('frontend.student-master')
 
 @section('student-body')
-    <section class="py-5">
+    <section class="pb-3">
         <div class="">
             <div class="row custom_col_12">
-                <div class="section-title text-center">
+                <div class="section-title text-center ">
                     <h2>  আমার অর্ডার সমূহ</h2>
                     <hr class="w-25 mx-auto bg-danger"/>
                 </div>
                 <div class="col-lg-12 col-md-6">
-                    <div class="courses-item pt-5">
+                    <div class="courses-item pt-2">
                         <div class="content">
 
 
