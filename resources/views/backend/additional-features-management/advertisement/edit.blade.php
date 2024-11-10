@@ -21,7 +21,7 @@
                     <select name="content_type" required class="form-control select2" data-placeholder="Select a Content" >
                         <option value=""></option>
                         <option value="course" {{ $advertisement->content_type == 'course' ? 'selected' : '' }}>Course</option>
-                        <option value="ebook" {{ $advertisement->content_type == 'ebook' ? 'selected' : '' }}>Ebook</option>
+                        <option value="exam" {{ $advertisement->content_type == 'exam' ? 'selected' : '' }}>Exam</option>
                         <option value="book" {{ $advertisement->content_type == 'book' ? 'selected' : '' }}>Book</option>
                         <option value="external-link" {{ $advertisement->content_type == 'external-link' ? 'selected' : '' }}>External Link</option>
                     </select>
@@ -48,7 +48,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-md-4 mt-2">
-                     <label for="">Image <span class="text-red">(760 X 440 + WEBP)</span> </label>
+                     <label for="">Image <span class="text-red">(1296 X 340 + WEBP)</span> </label>
                     <input type="file" name="image" class="form-control" id="image" placeholder="Image" />
                     <span class="text-danger" id="image">{{ $errors->has('image') ? $errors->first('image') : '' }}</span>
                 </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-4 mt-2">
                     <div>
-                        <img src="{{ asset($advertisement->image) }}" height="150" width="150" id="" alt="">
+                        <img src="{{ static_asset($advertisement->image) }}" height="150" width="150" id="" alt="">
                     </div>
                 </div>
             </div>

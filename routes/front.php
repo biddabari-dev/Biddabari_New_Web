@@ -21,9 +21,6 @@ use App\Http\Controllers\SqlScriptController;
 
 route::get('/assign-role',[CourseController::class,'assign_role']);
 
-
-
-
 Route::get('import', function(){
     return view('import');
 });
@@ -106,6 +103,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/about-us', [BasicViewController::class, 'aboutUs'])->name('about-us');
         Route::get('/terms-and-conditions', [BasicViewController::class, 'termsConditions'])->name('terms-conditions');
         Route::get('/privacy-policy', [BasicViewController::class, 'privacy'])->name('privacy-policy');
+        Route::get('/refund-policy', [BasicViewController::class, 'refundPolicy'])->name('refund-policy');
         Route::get('/contact-us', [BasicViewController::class, 'contact'])->name('contact-us');
         Route::get('/guideline', [FrontViewTwoController::class, 'guideline'])->name('guideline');
         Route::get('/social-media', [FrontViewTwoController::class, 'socialMedia'])->name('social-media');

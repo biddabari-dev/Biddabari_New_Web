@@ -8,13 +8,16 @@
         style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/Background-banner.webp')" ;>
         <div class="container">
             <div class="free-course-banner">
+                @foreach($exam_sliders as $slider)
                 <div class="free-course-banner-image">
                     <a href=""><img src="{{ asset('frontend') }}/assets/images/exam-page/banner-1.webp" alt="Image 1"></a>
+                    {{-- <a href="{{ $slider->link }}">
+                        <img src="{{ $slider->image ? static_asset($slider->image) : asset('frontend/assets/images/exam-page/banner-1.webp') }}"
+                             alt="Image 1"
+                             style="border-radius: 20px;">
+                    </a> --}}
                 </div>
-                <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/exam-page/banner-2.webp" alt="Image 1"></a>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </section>
@@ -51,7 +54,7 @@
                 </div>
             </div>
             <div class="all-courses-area">
-                <div class="row">
+                <div class="row g-2 g-md-3 g-lg-4">
                     @foreach ($allExams as $exam)
                     @php
                     if ($exam->admission_last_date > date('Y-m-d H:i')){
@@ -60,16 +63,16 @@
                         $url = "#";
                     }
                     @endphp
-                    <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="col-6 col-lg-3">
                         <div class="exam-package-area">
                             <div class="package-exam-image">
                                 <a href="{{ route('front.view-exam', ['slug' => $exam->slug]) }}"><img src="{{ static_asset($exam->banner ? $exam->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="{{ $exam->alt_text }}"/></a>
                             </div>
-                            <div class="package-exam-content ms-3">
+                            <div class="package-exam-content mx-2 mx-lg-3">
                                 <div class="package-exam-title pt-3">
                                     <h2 class="fw-bold"><a href="{{ route('front.view-exam', ['slug' => $exam->slug]) }}">{{ Str::limit($exam->title, 40) }}</a></h2>
                                 </div>
-                                <div class="row button-and-price pb-2">
+                                <div class="row button-and-price pb-3 pb-lg-4">
                                     <div class="col">
                                         <div class="package-exam-rating">
                                             <i class="fas fa-star"></i>
@@ -89,7 +92,7 @@
                                             <div class="package-exam-discount-price">৳ {{ $discountPrice }}</div>
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-end">
                                         <div class="package-exam-button">
                                             <button class="package-exam-details"><a
                                                 href="{{ route('front.view-exam', ['slug' => $exam->slug]) }}">View Details </a></button><br>
@@ -98,9 +101,11 @@
                                                 <span>ক্লিক করুন!</span><span>পরিক্ষা কিনুন</span>
                                             </button></a>
                                             @else
-                                            <button class="custom-btn btn-12">
-                                                <span>সময় শেষ</span><span>পরিক্ষার সময় শেষ</span>
-                                            </button>
+                                            <a href="#">
+                                                <div class="custom-btn btn-12">
+                                                    <span>সময় শেষ</span><span>পরিক্ষার সময় শেষ</span>
+                                                </div>
+                                            </a>
                                             @endif
                                         </div>
                                     </div>

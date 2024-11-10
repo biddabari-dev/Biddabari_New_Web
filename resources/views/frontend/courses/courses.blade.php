@@ -24,16 +24,16 @@ Biddabari - All Course
         style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/Background-banner.webp')">
         <div class="container">
             <div class="free-course-banner">
-                <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;" ></a>
-                </div>
-                <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;"></a>
-                </div>
-                <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;"></a>
-                </div>
-
+                @foreach($course_sliders as $slider)
+                    <div class="free-course-banner-image">
+                        <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;" ></a>
+                        {{-- <a href="{{ $slider->link }}">
+                            <img src="{{ $slider->image ? static_asset($slider->image) : asset('frontend/assets/images/our-courses/banner-4.jpeg') }}"
+                                 alt="Image 1"
+                                 style="border-radius: 20px;">
+                        </a> --}}
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

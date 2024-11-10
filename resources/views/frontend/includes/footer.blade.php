@@ -100,7 +100,7 @@
                                 <ul>
                                     <li><a href="{{ route('front.about-us') }}">About Us</li></a>
                                     <li><a href="{{ route('front.instructors') }}">Instructor</li></a>
-                                    <li><a href="#">Our Event</li></a>
+                                    <li><a href="{{ route('front.refund-policy') }}">Refund Policy</li></a>
                                     <li><a href="{{ route('front.contact-us') }}">Contact Us</li></a>
                                 </ul>
                             </div>
