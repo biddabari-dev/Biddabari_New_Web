@@ -521,6 +521,11 @@ img {
         text-align: left;
     } */
 
+    #Footer .footer-others-div h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
 }
 
 /* -----------------------Footer End ---------------- */
@@ -2249,13 +2254,14 @@ img {
     #Our_story .our-story-video-content-area .our-story-content-area p {
         max-height: 210px;
     }
-} 
+}
 
 @media (max-width: 991.98px) {
     #Our_story .our-story-video-content-area .our-story-content-area p {
         max-height: 180px;
     }
 }
+
 @media (max-width: 768px) {
     #Our_story .our-story-video-content-area .our-story-content-area p {
         max-height: 145px;
@@ -3640,7 +3646,17 @@ img {
     .book-banner .slick-next {
         right: 0;
     }
+}
 
+@media (max-width: 575.98px) {
+
+    #All_book .title-area h2 {
+        font-size: 24px;
+    }
+
+    #All_book .title-area p {
+        font-size: 13px;
+    }
 }
 
 /* =================================== Book Page End =========================================== */
@@ -3913,6 +3929,21 @@ img {
     background-color: #aa076b;
 }
 
+@media (max-width: 575.98px) {
+
+    #Blog_feature .title-area h2 {
+        font-size: 24px;
+    }
+
+    #Blog_feature .title-area p {
+        font-size: 13px;
+    }
+
+    #Blog_feature .blog-popular-posted-area .popular-posted-area {
+        padding: 10px;
+    }
+}
+
 /* ---------------------Popular poster area start---------------------- */
 
 #Blog_feature .blog-popular-posted-area .popular-posted-area {
@@ -4001,6 +4032,21 @@ img {
 #Blog_feature .blog-popular-posted-area .popular-posted-area .blog-feature-content .blog-read-button .btn_warning:hover {
     color: white;
     background-color: #aa076b;
+}
+
+@media (max-width: 575.98px) {
+
+    #Blog_feature .title-area h2 {
+        font-size: 24px;
+    }
+
+    #Blog_feature .title-area p {
+        font-size: 13px;
+    }
+
+    #Blog_feature .blog-popular-posted-area .popular-posted-area {
+        padding: 14px;
+    }
 }
 
 /* ---------------------Popular poster area End---------------------- */
