@@ -72,6 +72,11 @@
     padding: 12px 25px;
 }
 
+#Header .login-button a img {
+    width: 70px;
+    height: 70px;
+}
+
 #Header .navbar-collapse ul li a {
     color: black;
     font-size: 15px;
@@ -109,6 +114,12 @@
 
     #Header .search_button_area .form-control {
         margin-left: -20px;
+    }
+}
+
+@media (max-width: 1200.98px) {
+    #Header .navbar-collapse ul li a {
+        padding: 15px 10px;
     }
 }
 
@@ -184,6 +195,7 @@
         padding: 7px 20px;
     }
 }
+
 /* --------------------- Head Navber End ------------- */
 .background-res {
     background-position: top center;
@@ -195,11 +207,13 @@
 .stu_das_mobile_res .card {
     border: 1px solid #e9ecef;
 }
+
 .corce_exam_mobile_res {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .corce_exam_mobile_res span {
     font-size: 16px;
     font-weight: 600;
@@ -207,12 +221,14 @@
     margin-bottom: 0;
     display: block;
 }
+
 .corce_exam_mobile_res h3 {
     color: #aa076b;
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 0;
 }
+
 .corce_exam-icon {
     background-color: #aa076b;
     color: white;
@@ -222,6 +238,20 @@
     align-items: center;
     width: 45px;
     height: 45px;
+}
+
+@media (max-width: 425px) {
+    .corce_exam_mobile_res {
+        flex-direction: column-reverse;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .corce_exam-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 6px;
+    }
 }
 
 /* .courses-item */
@@ -234,9 +264,10 @@
     overflow: hidden;
     box-shadow: 0px 3px 15px -3px rgb(0 0 0 / 15%);
 }
+
 .courses-item .content {
     padding: 10px;
-    }
+}
 
 .courses-item .content h4 {
     font-size: 20px;
@@ -244,13 +275,14 @@
     color: #202244;
     margin-bottom: 0px;
 }
+
 /* -------------------------------- App Store Section Start ---------------------------- */
 /* #App_store .style-2phone-image img {
     width: 520px;
     height: 480px;
   } */
 
-  #App_store .download-text {
+#App_store .download-text {
     color: white;
     padding-top: 40px;
 }

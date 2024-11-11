@@ -244,6 +244,10 @@ img {
     color: white;
     padding: 12px 25px;
 }
+#Header .login-button a img {
+    width: 70px;
+    height: 70px;
+}
 
 #Header .navbar-collapse ul li a {
     color: black;
@@ -282,6 +286,12 @@ img {
 
     #Header .search_button_area .form-control {
         margin-left: -20px;
+    }
+}
+
+@media (max-width: 1200.98px) {
+    #Header .navbar-collapse ul li a {
+        padding: 15px 10px;
     }
 }
 
