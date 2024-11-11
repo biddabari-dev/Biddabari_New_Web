@@ -5,6 +5,7 @@
     }
 }
 
+
 #Header .main-logo img {
     max-width: 100%;
     height: auto;
@@ -201,6 +202,10 @@
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+input.form-control::placeholder {
+    font-size: 1rem;
 }
 
 /* corce_exam_mobile_res */
