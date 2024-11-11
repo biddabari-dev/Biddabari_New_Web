@@ -6,6 +6,7 @@ use App\helper\ViewHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Checkout\CheckoutController;
 use App\Http\Requests\Frontend\Order\ProductOrderRequest;
+use App\Models\Backend\AdditionalFeatureManagement\Advertisement;
 use App\Models\Backend\BatchExamManagement\BatchExam;
 use App\Models\Backend\BlogManagement\Blog;
 use App\Models\Backend\BlogManagement\BlogCategory;
@@ -33,6 +34,8 @@ class FrontendViewController extends Controller
 
         $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_type', 'discount_start_date', 'discount_end_date', 'slug')->latest()->paginate(8);
 
+        $product_sliders = Advertisement::whereStatus(1)->whereContentType('book')->select('id', 'title', 'content_type', 'description','link','image')->take(6)->get();
+        
         foreach ($this->products as $product)
         {
             if (!empty($product->discount_start_date) && !empty($product->discount_end_date))
@@ -46,7 +49,9 @@ class FrontendViewController extends Controller
             }
         }
         $this->data = [
-            'products'  => $this->products
+            'products'  => $this->products,
+            'product_sliders'  => $product_sliders,
+
         ];
         return ViewHelper::checkViewForApi($this->data, 'frontend.product.all-products');
     }

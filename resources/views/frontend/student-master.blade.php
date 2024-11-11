@@ -8,18 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {!! isset($siteSettings) ? $siteSettings->default_seo_code_on_header : '' !!}
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/plugins.css">
-    <link rel="stylesheet" href="/frontend/assets-old/css/iconplugins.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css"/>
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css"/>
 
+    <link rel="stylesheet" href="/frontend/assets-old/css/iconplugins.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="/frontend/assets-old/css/style.css">
+
+    <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/responsive.css">
+
+    <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/theme-dark.css">
+
+    <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/custom.css">
     <title>BiddaBari - The First Job Study Online Platform in Bangladesh</title>
 
     <!-- HELPER CSS -->
-    <link href="{{ asset('/') }}backend/assets/css/helper.css" rel="stylesheet" />
+    <link href="{{ asset('/') }}backend/assets-old/css/helper.css" rel="stylesheet" />
 
     <link rel="icon" type="image/png" href="{{ asset('/') }}frontend/assets-old/images/favicon.png">
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/news-tinker/style.css">
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/custom-my-mod.css">
+    <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/custom-new-style.css">
     {{--
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/mirazmac/bengali-webfont-cdn@master/solaimanlipi/style.css">--}}
@@ -46,17 +55,27 @@
         }
     </style>
     <style>
+        .student-panel-menu {
+            background-color: #ffffff;
+            border: 1px solid #EBEBEB;
+            border-radius: 5px;
+            padding: 10px;
+        }
         .student-panel-menu li a {
-            color: white;
-            font-size: 20px;
+            color: #1d1d1d;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
         }
 
         .student-panel-menu li:hover a {
-            color: #85AF54 !important;
+            background-color: #ffcfed;
+            color: #4f4f4f  !important;
         }
 
         .st-menu-active {
-            color: #85AF54 !important;
+            background-color: #aa076b;
+            color: #ffffff !important;
         }
 
         .content-shadow {
@@ -137,15 +156,32 @@
 
 <body>
 
+<!--<div id="preloader">-->
+<!-- <div id="preloader-area">-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!--  <div class="spinner"></div>-->
+<!-- </div>-->
+<!-- <div class="preloader-section preloader-left"></div>-->
+<!-- <div class="preloader-section preloader-right"></div>-->
+<!--</div>-->
+
+
 @include('frontend.includes.header')
+
 
 <section>
     <div class="container-fluid">
-        <div class="row custom_col_res">
-            <div class="col-md-2 ps-5 stu_btn">
+        <div class="row custom_col_res py-5">
+            <div class="col-md-2 stu_btn">
                 <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
-                <div class="bg-dark mt-5 pt-2 mobile_res" style="">
-                    <ul class="nav flex-column student-panel-menu">
+                <div class="bg-light mobile_res">
+                    <ul class="nav flex-column student-panel-menu shadow-sm">
                         <li class="nav-item border-1">
                             <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
                                 href="{{ route('front.student.dashboard') }}">My Dashboard</a>
@@ -171,7 +207,7 @@
                                 Affiliation</a>
                         </li>
                         <li class="nav-item border-1">
-                            <a class="nav-link" href="{{ route('front.student.change-password') }}">Change
+                            <a class="nav-link {{ request()->is('student/change-password') ? 'st-menu-active' : '' }}" href="{{ route('front.student.change-password') }}">Change
                                 Password</a>
                         </li>
                             @can('Service')
@@ -186,9 +222,10 @@
                         </li>
                     </ul>
                 </div>
-                <button class="btn btn-warning mobile_res_btn" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    My Dashboard
+
+
+                <button class="btn btn-warning mobile_res_btn mb-4" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"> My Dashboard
                 </button>
 
                 <div class="offcanvas offcanvas-start offcanvas_top_bottom" tabindex="-1" id="offcanvasExample"
@@ -252,7 +289,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-10">
                 @yield('student-body')
             </div>
         </div>
@@ -268,7 +305,7 @@
 
     <!--<script src="{{ asset('/') }}frontend/assets-old/js/plugins.js"></script>-->
 
-    <script src="{{ asset('/') }}frontend/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/') }}frontend/assets-old/js/bootstrap.bundle.min.js" type="text/javascript"></script>
     <script src="{{ asset('/') }}frontend/assets-old/js/meanmenu.min.js" type="text/javascript"></script>
     <script src="{{ asset('/') }}frontend/assets-old/js/ajaxchimp.min.js" type="text/javascript"></script>
     <script src="{{ asset('/') }}frontend/assets-old/js/form-validator.min.js" type="text/javascript"></script>
@@ -333,6 +370,42 @@
 <script>
     let base_url = {!! json_encode(url('/')) !!}+'/';
 </script>
+
+{{--fb messenger integrate starts--}}
+<!-- Messenger Chat Plugin Code -->
+<!--<div id="fb-root"></div>-->
+
+<!-- Your Chat Plugin code -->
+<!--<div id="fb-customer-chat" class="fb-customerchat">-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    var chatbox = document.getElementById('fb-customer-chat');-->
+<!--    chatbox.setAttribute("page_id", "1652435885033225");-->
+<!--    chatbox.setAttribute("attribution", "biz_inbox");-->
+<!--</script>-->
+
+<!-- Your SDK code -->
+<!--<script>-->
+<!--    window.fbAsyncInit = function() {-->
+<!--        FB.init({-->
+<!--            xfbml            : true,-->
+<!--            version          : 'v18.0'-->
+<!--        });-->
+<!--    };-->
+
+<!--    (function(d, s, id) {-->
+<!--        var js, fjs = d.getElementsByTagName(s)[0];-->
+<!--        if (d.getElementById(id)) return;-->
+<!--        js = d.createElement(s); js.id = id;-->
+<!--        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';-->
+<!--        fjs.parentNode.insertBefore(js, fjs);-->
+<!--    }(document, 'script', 'facebook-jssdk'));-->
+<!--</script>-->
+{{--fb messenger integrate ends--}}
+
+
+
 
 
 

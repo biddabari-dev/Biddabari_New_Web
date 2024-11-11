@@ -9,9 +9,13 @@
                 <div class="book-banner-image">
                     <a href=""><img src="{{ asset('frontend') }}/assets/images/book-page/book-banner.png" alt="Image 1"></a>
                 </div>
-                <div class="book-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/book-page/book-banner.png" alt="Image 1"></a>
-                </div>
+                {{-- @foreach($product_sliders as $slider)
+                <a href="{{ $slider->link }}">
+                    <img src="{{ $slider->image ? static_asset($slider->image) : asset('frontend/assets/images/book-page/book-banner.png') }}"
+                            alt="Image 1"
+                            style="border-radius: 20px;">
+                </a>
+                @endforeach --}}
             </div>
         </div>
     </section>
@@ -28,13 +32,13 @@
                 </p>
             </div>
             <div class="all-book-area">
-                <div class="row all-exam-area">
+                <div class="row all-exam-area g-2 g-md-3 g-lg-4">
                     @foreach($products as $product)
                         @php
                             $discountAmount = $product->discount_type == 1  ? $product->discount_amount : ($product->price * $product->discount_amount) / 100;
                             $discountPrice = $product->price - (isset($discountAmount) ? $discountAmount : 0);
                         @endphp
-                    <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="col-6 col-lg-3">
                         <div class="book-area">
                             <div class="book-image">
                                 <a href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}"> <img src="{{ static_asset(isset($product->image) ? $product->image : 'frontend/assets/images/book-page/book.png') }}" alt="{{ $product->title }}" srcset="" /> </a>
@@ -51,7 +55,7 @@
 
                                     <h2 class="fw-bold"><a class="text-black" href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}">{{ $product->title }} </a></h2>
                                 </div>
-                                <div class="row button-and-price pb-2">
+                                <div class="row button-and-price pb-3 pb-lg-4">
                                     <div class="col">
                                         <div class="book-rating">
                                             <i class="fas fa-star"></i>
@@ -67,7 +71,7 @@
                                             <div class="book-discount-price">৳ {{ $discountAmount ? $discountAmount : $product->price }}</div>
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-end">
                                         <div class="book-button">
                                             <button class="book-details"> <a href="{{ route('front.product-details',['id'=>$product->id, 'slug'=>$product->slug]) }}">View
                                                     Details</a> </button><br>

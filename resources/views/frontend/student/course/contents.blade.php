@@ -2,188 +2,188 @@
 
 @section('student-body')
     <section class="py-5">
-        <div class="container">
+        <div>
             <div class="row">
                 <div class="section-title text-center">
                     <h2> {!! $course->title !!}</h2>
                     <hr class="w-25 mx-auto bg-danger" />
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="courses-details-tab-content">
-                            <div class="courses-details-accordion">
-                                <ul class="accordion">
-                                    @if (!empty($course->courseSections))
-                                        @forelse($course->courseSections as $courseSection)
-                                            <li class="accordion-item">
-                                                <a class="accordion-title f-s-26" href="javascript:void(0)">
-                                                    <i class="ri-add-fill"></i>
-                                                    {{ $courseSection->title }}
-                                                </a>
-                                                @if (!empty($courseSection->courseSectionContents))
-                                                    <div class="accordion-content">
-                                                        @foreach ($courseSection->courseSectionContents as $courseSectionContent)
-                                                            @if ($courseSectionContent->content_type == 'pdf')
-                                                                <a href="javascript:void(0)"
-                                                                    data-content-id="{{ $courseSectionContent->id }}"
-                                                                    class="w-100 show-pdf">
-                                                                    <div class="accordion-content-list pt-2 pb-0">
-                                                                        <div class="accordion-content-left">
-                                                                            {{--                                                                            PDF --}}
-                                                                            {{--                                                                            <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
-                                                                            <p class="f-s-20">
-                                                                                {{--                                                                                <i class="fa-regular fa-file-pdf"></i> --}}
-                                                                                <img src="{{ asset('/') }}backend/assets/images/icons-bb/pdf.jpg"
-                                                                                    alt="pdf icon" class="img-16" />
-                                                                                {{ $courseSectionContent->title }}
-                                                                            </p>
-                                                                        </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="courses-details-tab-content">
+                        <div class="courses-details-accordion">
+                            <ul class="accordion">
+                                @if (!empty($course->courseSections))
+                                    @forelse($course->courseSections as $courseSection)
+                                        <li class="accordion-item">
+                                            <a class="accordion-title f-s-26" href="javascript:void(0)">
+                                                <i class="ri-add-fill"></i>
+                                                {{ $courseSection->title }}
+                                            </a>
+                                            @if (!empty($courseSection->courseSectionContents))
+                                                <div class="accordion-content">
+                                                    @foreach ($courseSection->courseSectionContents as $courseSectionContent)
+                                                        @if ($courseSectionContent->content_type == 'pdf')
+                                                            <a href="javascript:void(0)"
+                                                                data-content-id="{{ $courseSectionContent->id }}"
+                                                                class="w-100 show-pdf">
+                                                                <div class="accordion-content-list pt-2 pb-0">
+                                                                    <div class="accordion-content-left">
+                                                                        {{--                                                                            PDF --}}
+                                                                        {{--                                                                            <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
+                                                                        <p class="f-s-20">
+                                                                            {{--                                                                                <i class="fa-regular fa-file-pdf"></i> --}}
+                                                                            <img src="{{ asset('/') }}backend/assets/images/icons-bb/pdf.jpg"
+                                                                                alt="pdf icon" class="img-16" />
+                                                                            {{ $courseSectionContent->title }}
+                                                                        </p>
                                                                     </div>
-                                                                </a>
-                                                            @endif
-                                                            @if ($courseSectionContent->content_type == 'video')
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                        @if ($courseSectionContent->content_type == 'video')
 
-                                                                @if ($courseSectionContent->video_vendor == 'youtube' && strpos($courseSectionContent->video_link, 'https://www.youtube.com/watch?v=') !== false)
-                                                                    @php
-                                                                        $videoId = explode('https://www.youtube.com/watch?v=', $courseSectionContent->video_link)[1] ?? null;
-                                                                    @endphp
-                                                                @else
-                                                                    @php
-                                                                        $videoId = $courseSectionContent->video_link;
-                                                                    @endphp
-                                                                @endif
+                                                            @if ($courseSectionContent->video_vendor == 'youtube' && strpos($courseSectionContent->video_link, 'https://www.youtube.com/watch?v=') !== false)
+                                                                @php
+                                                                    $videoId = explode('https://www.youtube.com/watch?v=', $courseSectionContent->video_link)[1] ?? null;
+                                                                @endphp
+                                                            @else
+                                                                @php
+                                                                    $videoId = $courseSectionContent->video_link;
+                                                                @endphp
+                                                            @endif
 
-                                                                <a href="javascript:void(0)" class="w-100 show-video-modal"
-                                                                    data-title="{{ $courseSectionContent->title }}"
-                                                                    data-has-class-xm="{{ $courseSectionContent->has_class_xm }}"
-                                                                    data-complete-class-xm="{{ $courseSectionContent->classXmStatus }}"
-                                                                    data-video-link="{{ $videoId  }}"
-                                                                    data-video-vendor="{{ $courseSectionContent->video_vendor }}"
-                                                                    data-content-id="{{ $courseSectionContent->id }}">
-                                                                    <div class="accordion-content-list pt-2 pb-0">
-                                                                        <div class="accordion-content-left">
-                                                                            {{--                                                                                Video --}}
-                                                                            {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
-                                                                            <p class="f-s-20"><i
-                                                                                    class="fa-solid fa-video"></i>
-                                                                                {{ $courseSectionContent->title }}</p>
-                                                                        </div>
+                                                            <a href="javascript:void(0)" class="w-100 show-video-modal"
+                                                                data-title="{{ $courseSectionContent->title }}"
+                                                                data-has-class-xm="{{ $courseSectionContent->has_class_xm }}"
+                                                                data-complete-class-xm="{{ $courseSectionContent->classXmStatus }}"
+                                                                data-video-link="{{ $videoId  }}"
+                                                                data-video-vendor="{{ $courseSectionContent->video_vendor }}"
+                                                                data-content-id="{{ $courseSectionContent->id }}">
+                                                                <div class="accordion-content-list pt-2 pb-0">
+                                                                    <div class="accordion-content-left">
+                                                                        {{--                                                                                Video --}}
+                                                                        {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
+                                                                        <p class="f-s-20"><i
+                                                                                class="fa-solid fa-video"></i>
+                                                                            {{ $courseSectionContent->title }}</p>
                                                                     </div>
-                                                                </a>
-                                                            @endif
-                                                            @if ($courseSectionContent->content_type == 'note')
-                                                                <a href="javascript:void(0)" class="w-100 get-text-data"
-                                                                    data-content-id="{{ $courseSectionContent->id }}">
-                                                                    <div class="accordion-content-list pt-2 pb-0">
-                                                                        <div class="accordion-content-left">
-                                                                            {{--                                                                                Note --}}
-                                                                            {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
-                                                                            <p class="f-s-20"><i
-                                                                                    class="fa-regular fa-note-sticky"></i>
-                                                                                {{ $courseSectionContent->title }}</p>
-                                                                        </div>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                        @if ($courseSectionContent->content_type == 'note')
+                                                            <a href="javascript:void(0)" class="w-100 get-text-data"
+                                                                data-content-id="{{ $courseSectionContent->id }}">
+                                                                <div class="accordion-content-list pt-2 pb-0">
+                                                                    <div class="accordion-content-left">
+                                                                        {{--                                                                                Note --}}
+                                                                        {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
+                                                                        <p class="f-s-20"><i
+                                                                                class="fa-regular fa-note-sticky"></i>
+                                                                            {{ $courseSectionContent->title }}</p>
                                                                     </div>
-                                                                </a>
-                                                            @endif
-                                                            @if ($courseSectionContent->content_type == 'live')
-                                                                <a href="javascript:void(0)" class="w-100 get-text-data"
-                                                                    data-content-id="{{ $courseSectionContent->id }}">
-                                                                    <div class="accordion-content-list pt-2 pb-0">
-                                                                        <div class="accordion-content-left">
-                                                                            {{--                                                                                Go Live --}}
-                                                                            {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
-                                                                            <p class="f-s-20">
-                                                                                {{--                                                                                    <i class="fa-solid fa-tower-broadcast"></i> --}}
-                                                                                <img src="{{ asset('/') }}backend/assets/images/icons-bb/live-icon.jpg"
-                                                                                    alt="pdf icon" class="img-16" />
-                                                                                {{ $courseSectionContent->title }}
-                                                                            </p>
-                                                                        </div>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                        @if ($courseSectionContent->content_type == 'live')
+                                                            <a href="javascript:void(0)" class="w-100 get-text-data"
+                                                                data-content-id="{{ $courseSectionContent->id }}">
+                                                                <div class="accordion-content-list pt-2 pb-0">
+                                                                    <div class="accordion-content-left">
+                                                                        {{--                                                                                Go Live --}}
+                                                                        {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
+                                                                        <p class="f-s-20">
+                                                                            {{--                                                                                    <i class="fa-solid fa-tower-broadcast"></i> --}}
+                                                                            <img src="{{ asset('/') }}backend/assets/images/icons-bb/live-icon.jpg"
+                                                                                alt="pdf icon" class="img-16" />
+                                                                            {{ $courseSectionContent->title }}
+                                                                        </p>
                                                                     </div>
-                                                                </a>
-                                                            @endif
-                                                            @if ($courseSectionContent->content_type == 'link')
-                                                                <a href="javascript:void(0)" class="w-100 get-text-data"
-                                                                    data-content-id="{{ $courseSectionContent->id }}">
-                                                                    <div class="accordion-content-list pt-2 pb-0">
-                                                                        <div class="accordion-content-left">
-                                                                            {{--                                                                                Regular Link --}}
-                                                                            {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
-                                                                            <p class="f-s-20"><i
-                                                                                    class="fa-solid fa-link"></i>
-                                                                                {{ $courseSectionContent->title }}</p>
-                                                                        </div>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                        @if ($courseSectionContent->content_type == 'link')
+                                                            <a href="javascript:void(0)" class="w-100 get-text-data"
+                                                                data-content-id="{{ $courseSectionContent->id }}">
+                                                                <div class="accordion-content-list pt-2 pb-0">
+                                                                    <div class="accordion-content-left">
+                                                                        {{--                                                                                Regular Link --}}
+                                                                        {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
+                                                                        <p class="f-s-20"><i
+                                                                                class="fa-solid fa-link"></i>
+                                                                            {{ $courseSectionContent->title }}</p>
                                                                     </div>
-                                                                </a>
-                                                            @endif
-                                                            @if ($courseSectionContent->content_type == 'assignment')
-                                                                <a href="javascript:void(0)" class="w-100 get-text-data"
-                                                                    data-content-id="{{ $courseSectionContent->id }}">
-                                                                    <div class="accordion-content-list pt-2 pb-0">
-                                                                        <div class="accordion-content-left">
-                                                                            {{--                                                                        Assignment File --}}
-                                                                            {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
-                                                                            <p class="f-s-20">
-                                                                                {{--                                                                                    <i class="fa-regular fa-copy"></i> --}}
-                                                                                <img src="{{ asset('/') }}backend/assets/images/icons-bb/Assignment.jpg"
-                                                                                    alt="pdf icon" class="img-16" />
-                                                                                {{ $courseSectionContent->title }}
-                                                                            </p>
-                                                                        </div>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                        @if ($courseSectionContent->content_type == 'assignment')
+                                                            <a href="javascript:void(0)" class="w-100 get-text-data"
+                                                                data-content-id="{{ $courseSectionContent->id }}">
+                                                                <div class="accordion-content-list pt-2 pb-0">
+                                                                    <div class="accordion-content-left">
+                                                                        {{--                                                                        Assignment File --}}
+                                                                        {{--                                                                                <p class="f-s-20"><i class="ri-file-text-line"></i> {{ $courseSectionContent->title }}</p> --}}
+                                                                        <p class="f-s-20">
+                                                                            {{--                                                                                    <i class="fa-regular fa-copy"></i> --}}
+                                                                            <img src="{{ asset('/') }}backend/assets/images/icons-bb/Assignment.jpg"
+                                                                                alt="pdf icon" class="img-16" />
+                                                                            {{ $courseSectionContent->title }}
+                                                                        </p>
                                                                     </div>
-                                                                </a>
-                                                            @endif
-                                                            @if ($courseSectionContent->content_type == 'exam')
-                                                                <a href="javascript:void(0)" class="w-100 get-text-data"
-                                                                    data-content-id="{{ $courseSectionContent->id }}">
-                                                                    <div class="accordion-content-list pt-2 pb-0">
-                                                                        <div class="accordion-content-left">
-                                                                            <p class="f-s-20">
-                                                                                {{--                                                                                    <i class="fa-regular fa-note-sticky"></i> --}}
-                                                                                <img src="{{ asset('/') }}backend/assets/images/icons-bb/MCQ.jpg"
-                                                                                    alt="pdf icon" class="img-16" />
-                                                                                {{ $courseSectionContent->title }}
-                                                                            </p>
-                                                                        </div>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                        @if ($courseSectionContent->content_type == 'exam')
+                                                            <a href="javascript:void(0)" class="w-100 get-text-data"
+                                                                data-content-id="{{ $courseSectionContent->id }}">
+                                                                <div class="accordion-content-list pt-2 pb-0">
+                                                                    <div class="accordion-content-left">
+                                                                        <p class="f-s-20">
+                                                                            {{--                                                                                    <i class="fa-regular fa-note-sticky"></i> --}}
+                                                                            <img src="{{ asset('/') }}backend/assets/images/icons-bb/MCQ.jpg"
+                                                                                alt="pdf icon" class="img-16" />
+                                                                            {{ $courseSectionContent->title }}
+                                                                        </p>
                                                                     </div>
-                                                                </a>
-                                                            @endif
-                                                            @if ($courseSectionContent->content_type == 'written_exam')
-                                                                <a href="javascript:void(0)" class="w-100 get-text-data"
-                                                                    data-content-id="{{ $courseSectionContent->id }}">
-                                                                    <div class="accordion-content-list pt-2 pb-0">
-                                                                        <div class="accordion-content-left">
-                                                                            {{--                                                                        Written Exam --}}
-                                                                            <p class="f-s-20">
-                                                                                {{--                                                                                    <i class="fa-regular fa-paste"></i> --}}
-                                                                                <img src="{{ asset('/') }}backend/assets/images/icons-bb/Written-exam-icon.jpg"
-                                                                                    alt="pdf icon" class="img-16" />
-                                                                                {{ $courseSectionContent->title }}
-                                                                            </p>
-                                                                        </div>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                        @if ($courseSectionContent->content_type == 'written_exam')
+                                                            <a href="javascript:void(0)" class="w-100 get-text-data"
+                                                                data-content-id="{{ $courseSectionContent->id }}">
+                                                                <div class="accordion-content-list pt-2 pb-0">
+                                                                    <div class="accordion-content-left">
+                                                                        {{--                                                                        Written Exam --}}
+                                                                        <p class="f-s-20">
+                                                                            {{--                                                                                    <i class="fa-regular fa-paste"></i> --}}
+                                                                            <img src="{{ asset('/') }}backend/assets/images/icons-bb/Written-exam-icon.jpg"
+                                                                                alt="pdf icon" class="img-16" />
+                                                                            {{ $courseSectionContent->title }}
+                                                                        </p>
                                                                     </div>
-                                                                </a>
-                                                            @endif
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                            </li>
-                                        @empty
-                                            <li class="accordion-item">
-                                                <a class="accordion-title" href="javascript:void(0)">
-                                                    No Content Available Yet
-                                                </a>
-                                            </li>
-                                        @endforelse
-                                    @endif
-                                </ul>
-                            </div>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </li>
+                                    @empty
+                                        <li class="accordion-item">
+                                            <a class="accordion-title" href="javascript:void(0)">
+                                                No Content Available Yet
+                                            </a>
+                                        </li>
+                                    @endforelse
+                                @endif
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="" id="">
+                </div>
+                <div class="col-md-6">
+                    <div class="" id="">
 
-                        </div>
                     </div>
                 </div>
             </div>

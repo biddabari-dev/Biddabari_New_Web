@@ -102,7 +102,7 @@
         $(document).on('click', '.edit-btn', function () {
             var advertisementId = $(this).attr('data-advertisement-id');
             $.ajax({
-                url: base_url+"advertisements/"+advertisementId+"/edit",
+                url: "/advertisements/"+advertisementId+"/edit",
                 method: "GET",
                 success: function (data) {
                     $('#modalForm').empty().append(data);

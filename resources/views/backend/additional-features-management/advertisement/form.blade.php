@@ -18,7 +18,7 @@
                     <select name="content_type" class="form-control select2" required data-placeholder="Select A Content" >
                         <option value=""></option>
                         <option value="course">Course</option>
-                        <option value="ebook">Ebook</option>
+                        <option value="exam">Exam</option>
                         <option value="book">Book</option>
                         <option value="external-link">External Link</option>
                     </select>
@@ -45,7 +45,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-md-4 mt-2">
-                     <label for="">Image <span class="text-red">(7620 X 440 + WEBP)</span> </label>
+                     <label for="">Image <span class="text-red">(1296 X 340 + WEBP)</span> </label>
                     <input type="file" name="image" class="form-control" id="imagex" placeholder="Image" />
                     <span class="text-danger" id="image">{{ $errors->has('image') ? $errors->first('image') : '' }}</span>
                 </div>

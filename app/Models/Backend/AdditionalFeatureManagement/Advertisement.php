@@ -37,7 +37,7 @@ class Advertisement extends Model
         self::$advertisement->content_type = $request->content_type;
         self::$advertisement->description = $request->description;
         self::$advertisement->link = $request->link;
-        self::$advertisement->image = isset($id) ? imageUpload($request->file('image'), 'advertisement-management/advertisements/', 'advertisement-', '760', '440', Advertisement::find($id)->image) : imageUpload($request->file('image'), 'advertisement-management/advertisements/', 'advertisement-', '760', '440');
+        self::$advertisement->image = isset($id) ? imageUpload($request->file('image'), 'advertisement-management/advertisements/', 'advertisement-', '1296', '340', Advertisement::find($id)->image) : imageUpload($request->file('image'), 'advertisement-management/advertisements/', 'advertisement-', '1296', '340');
         self::$advertisement->slug = str_replace(' ', '-', $request->title);
         self::$advertisement->status = $request->status == 'on' ? 1 : 0;
         self::$advertisement->save();
