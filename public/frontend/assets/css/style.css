@@ -523,7 +523,7 @@ img {
 
     #Footer .footer-others-div h3 {
         font-size: 18px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
 }
@@ -536,8 +536,8 @@ img {
     width: 45px;
 }
 
-.slick-prev:before,
-.slick-next:before {
+#Home_main_banner .home-1st-slide .slick-prev:before,
+#Home_main_banner .home-1st-slide .slick-next:before {
     font-size: 45px;
     opacity: .75;
     color: #f5baba;
@@ -545,6 +545,15 @@ img {
 
 .slick-prev {
     z-index: 1000;
+}
+
+@media (max-width: 575.98px) {
+    .slick-prev {
+        left: 0;
+    }
+    .slick-next {
+        right: 0;
+    }
 }
 
 /* ----------------------Slick Slider End---------------- */
