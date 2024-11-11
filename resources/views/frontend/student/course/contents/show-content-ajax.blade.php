@@ -251,15 +251,15 @@
                         <a href="{{ route('front.student.start-course-exam', ['content_id' => $content->id, 'slug' => str_replace(' ', '-', $content->title)]) }}" class="btn btn-success">Enter Exam</a>
                     </div>
                     @else
-                        <div class="bg-danger py-4">
-                            <p class="text-white ">You already participated in this exam.</p>
-                        </div>
+                    <div>
+                        <p class="f-s-22 text-success">You already participated in this exam.</p>
+                    </div>
                     @endif
                 @endif
 {{--                @if( \Illuminate\Support\Carbon::parse($content->written_end_time)->format('Y-m-d H:i') < \Illuminate\Support\Carbon::now()->format('Y-m-d H:i'))--}}
                 @if(dateTimeFormatYmdHi($content->written_end_time) < currentDateTimeYmdHi())
-                    <div class="bg-danger py-4">
-                        <p class="text-white ">Exam Has ended</p>
+                    <div class="callout-danger py-2 " style="border-left: 3px solid red">
+                        <span class="f-s-22 py-0">Exam Has ended</span>
                     </div>
                     <div class="mt-3">
                         <a href="{{ route('front.student.show-course-exam-answers', ['content_id' => $content->id]) }}" class="btn btn-warning border" style="background-color: #f18345!important; border: 1px solid #F18345!important; color: white">See Answers</a>

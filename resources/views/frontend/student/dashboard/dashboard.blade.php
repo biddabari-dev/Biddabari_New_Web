@@ -13,6 +13,7 @@
         <div class="row">
             <div class="col-lg-3 col-sm-6 mb-2">
                 <div class="card card-body shadow-sm">
+                    <a href="{{ route('front.student.my-courses') }}">
                     <div class="corce_exam_mobile_res">
                         <div>
                             <span>কোর্স সমূহ</span>
@@ -22,10 +23,12 @@
                             <i class="fa fa-wallet"></i>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 mb-2">
                 <div class="card card-body shadow-sm">
+                    <a href="{{ route('front.student.my-exams') }}">
                     <div class="corce_exam_mobile_res">
                         <div>
                             <span>পরীক্ষা সমূহ</span>
@@ -35,10 +38,12 @@
                             <i class="fa fa-wallet"></i>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 mb-2">
                 <div class="card card-body shadow-sm">
+                    <a href="{{ route('front.student.my-orders') }}">
                     <div class="corce_exam_mobile_res">
                         <div>
                             <span>প্রোডাক্ট সমূহ</span>
@@ -48,6 +53,7 @@
                             <i class="fa fa-wallet"></i>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 mb-2">

@@ -378,19 +378,19 @@
     </style>
     <style>
         .mcq-xm th {
-            font-size: 24px
+            font-size: 15px
         }
 
         .mcq-xm td {
-            font-size: 22px
+            font-size: 15px
         }
 
         .written-xm th {
-            font-size: 24px
+            font-size: 15px
         }
 
         .written-xm td {
-            font-size: 22px
+            font-size: 15px
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
