@@ -551,6 +551,7 @@ img {
     .slick-prev {
         left: 0;
     }
+
     .slick-next {
         right: 0;
     }
@@ -2601,6 +2602,21 @@ img {
     box-shadow: 5px 3px 15px -3px;
 }
 
+@media (max-width: 575.98px) {
+
+    #All_notice .title-area h2 {
+        font-size: 24px;
+    }
+
+    #All_notice .title-area p {
+        font-size: 13px;
+    }
+
+    #All_notice .notice-category-area .my-notice-category .my-notice-category-content h3 {
+        font-size: 20px;
+    }
+}
+
 /* =================================== Notice Page End =========================================== */
 
 /* =================================== About Us Page Start =========================================== */
@@ -3948,6 +3964,14 @@ img {
         font-size: 13px;
     }
 
+    #Blog_feature .blog-feature-area h4 {
+        font-size: 18px;
+    }
+
+    #Blog_feature .blog-feature-area .feature-this-month-area .blog-feature-content .blog-feature-title h3 {
+        font-size: 16px;
+    }
+
     #Blog_feature .blog-popular-posted-area .popular-posted-area {
         padding: 10px;
     }
@@ -4053,6 +4077,10 @@ img {
         font-size: 13px;
     }
 
+    #Blog_feature .blog-popular-posted-area h4 {
+        font-size: 20px;
+    }
+
     #Blog_feature .blog-popular-posted-area .popular-posted-area {
         padding: 14px;
     }
@@ -4141,6 +4169,19 @@ img {
 #Recently_posted .blog-recently-posted-area .blog-recently-posted-content .blog-read-button .btn_warning:hover {
     color: white;
     background-color: #aa076b;
+}
+
+@media (max-width: 575.98px) {
+    
+    #Recently_posted .blog-recently-posted-area h2 {
+        font-size: 20px;
+    }
+    #Recently_posted .blog-recently-posted-area .blog-recently-posted-content .blog-recently-posted-title h3 {
+        font-size: 16px;
+    }
+    #Recently_posted .blog-recently-posted-area .blog-recently-posted-content .someText p {
+        font-size: 13px;
+    }
 }
 
 /* ----------------------Recently Posted Area End--------------------- */

@@ -112,7 +112,7 @@
             <div class="container py-4">
                 <div class="blog-recently-posted-area">
                     <h2><span>Recently</span> Posted</h2>
-                    <div class="row g-5 py-md-5">
+                    <div class="row g-4 py-md-5">
                         <div class="col-md-6 py-2  py-md-5">
                             <div class="blog-recently-posted-content">
                                 <div class="blog-category mt-2">
@@ -155,7 +155,7 @@
                         </div>
 
                     </div>
-                    <div class="row g-5 py-5">
+                    <div class="row g-4 py-5">
                         <div class="col-md-6">
                             <div class="blog-recently-posted-img">
                                 <img src="{{ asset('frontend') }}/assets/images/blog/blog-img-1.jpg" class="w-100"
