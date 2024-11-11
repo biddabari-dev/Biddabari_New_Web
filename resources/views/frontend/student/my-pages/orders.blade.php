@@ -16,16 +16,14 @@
         <div class="">
             <div class="row custom_col_12">
                 <div class="section-title text-center ">
-                    <h2>  আমার অর্ডার সমূহ</h2>
+                    <h2>আমার অর্ডার সমূহ</h2>
                     <hr class="w-25 mx-auto bg-danger"/>
                 </div>
                 <div class="col-lg-12 col-md-6">
                     <div class="courses-item pt-2">
                         <div class="content">
-
-
                             <div class="custom_tab_pan_li mb-lg-4">
-                                <ul class="nav nav-pills mb-3 text-center" id="pills-tab" role="tablist" style="margin-left: 30%">
+                                <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation" >
                                         <button class="nav-link active f-s-22" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-home" aria-selected="true">All</button>
                                     </li>
