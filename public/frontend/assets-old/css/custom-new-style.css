@@ -1,3 +1,10 @@
+@media (max-width: 575.98px) {
+    .col-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
 #Header .main-logo img {
     max-width: 100%;
     height: auto;
@@ -420,6 +427,8 @@
 }
 
 /* -------------------------------- App Store Section End ---------------------------- */
+
+
 /* -----------------------Footer Start ---------------- */
 #Footer {
     background-color: rgb(25, 25, 25);
@@ -580,6 +589,11 @@
     .official-info {
         text-align: left;
     } */
+
+    #Footer .footer-others-div h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
 
 }
 
