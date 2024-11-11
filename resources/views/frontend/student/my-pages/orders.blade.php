@@ -1,6 +1,17 @@
 @extends('frontend.student-master')
 
 @section('student-body')
+@push('style')
+<style>
+    .custom_tab_pan_li .nav-link.active {
+        background-color: #aa076b !important;
+        color: #fff !important;
+    }
+    .custom_tab_pan_li .nav-link {
+        color: #aa076b !important;
+    }
+</style>
+@endpush
     <section class="pb-3">
         <div class="">
             <div class="row custom_col_12">
@@ -13,9 +24,9 @@
                         <div class="content">
 
 
-                            <div class="custom_tab_pan_li">
+                            <div class="custom_tab_pan_li mb-lg-4">
                                 <ul class="nav nav-pills mb-3 text-center" id="pills-tab" role="tablist" style="margin-left: 30%">
-                                    <li class="nav-item" role="presentation">
+                                    <li class="nav-item" role="presentation" >
                                         <button class="nav-link active f-s-22" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-home" aria-selected="true">All</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
@@ -29,7 +40,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="tab-content overflow-scroll" id="pills-tabContent">
+                            <div class="tab-content overflow-scroll " id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-home-tab">
                                     <table class="table table-striped table-bordered table-hover">
                                         <tr>

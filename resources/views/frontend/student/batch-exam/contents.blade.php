@@ -187,10 +187,10 @@
 @endsection
 @push('style')
     <style>
-        .mcq-xm th {font-size: 24px}
-        .mcq-xm td {font-size: 22px}
-        .written-xm th {font-size: 24px}
-        .written-xm td {font-size: 22px}
+        .mcq-xm th {font-size: 15px}
+        .mcq-xm td {font-size: 15px}
+        .written-xm th {font-size: 15px}
+        .written-xm td {font-size: 15px}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="{{ asset('/') }}backend/assets/plugins/pdf-draw/pdfannotate.css">-->
