@@ -4,7 +4,7 @@ use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 use Monolog\Processor\PsrLogMessageProcessor;
-
+use Monolog\Logger;
 return [
 
     /*
@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'hourly'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,12 +65,25 @@ return [
             'replace_placeholders' => true,
         ],
 
-        'daily' => [
-            'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-            'days' => 14,
-            'replace_placeholders' => true,
+        // 'daily' => [
+        //     'driver' => 'daily',
+        //     'path' => storage_path('logs/laravel.log'),
+        //     'level' => env('LOG_LEVEL', 'debug'),
+        //     'days' => 1,
+        //     'replace_placeholders' => true,
+        // ],
+
+        'hourly' => [
+            'driver' => 'custom',
+            'via' => function ($app) {
+                $hourlyLog = new Logger('hourly');
+                $hourlyLog->pushHandler(new StreamHandler(
+                    storage_path('logs/laravel-' . date('Y-m-d-H') . '.log'),
+                    Logger::DEBUG
+                ));
+                return $hourlyLog;
+            },
+            'level' => 'debug',
         ],
 
         'slack' => [

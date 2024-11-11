@@ -469,11 +469,10 @@
                                 <div class="col-6 col-lg-3">
                                     <div class="event-area-content">
                                         <div class="event-icon">
-
-                                            <img src="{{ asset('frontend') }}/assets/images/home-page/service{{ ($key % 5) + 1 }}.webp" alt="" srcset="">
+                                            <img src="{{ asset('frontend') }}/assets/images/home-page/service{{ ($key % 8) + 1 }}.webp" alt="" srcset="">
                                         </div>
                                         <div class="event-content">
-                                            <h3>{{ $ourService->title ?? '' }}</h3>
+                                            <h3><strong> {{ $ourService->title ?? '' }} </strong></h3>
                                             {{-- <p>{!! $ourService->content !!}</p> --}}
                                         </div>
                                     </div>
