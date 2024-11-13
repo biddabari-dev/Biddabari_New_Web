@@ -180,11 +180,11 @@
         <div class="row custom_col_res py-lg-5">
             <div class="col-md-2 stu_btn">
                 <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
-                <div class="bg-light mobile_res">
+                <div class="bg-light mobile_res" style="border:2px solid #aa076b;">
                     <ul class="nav flex-column student-panel-menu shadow-sm">
                         <li class="nav-item border-1">
                             <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"
-                                href="{{ route('front.student.dashboard') }}">My Dashboard</a>
+                                href="{{ route('front.student.dashboard') }}">My Dashboard </a>
                         </li>
                         <li class="nav-item border-1">
                             <a class="nav-link {{ request()->is('student/my-courses') ? 'st-menu-active' : '' }}"
