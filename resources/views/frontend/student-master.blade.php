@@ -95,7 +95,7 @@
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: #F18345;
+            background: #aa076b;
         }
 
         /* Handle on hover */
@@ -178,7 +178,7 @@
 <section>
     <div class="container-fluid">
         <div class="row custom_col_res py-lg-5">
-            <div class="col-md-2 stu_btn">
+            <div class="col-md-4 col-lg-3 col-xl-2 stu_btn">
                 <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
                 <div class="bg-light mobile_res" style="border:2px solid #aa076b;">
                     <ul class="nav flex-column student-panel-menu shadow-sm">
@@ -236,7 +236,7 @@
                                 aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <div class="col-md-2 pe-0">
+                        <div class="pe-0">
                             <div class="bg-dark ">
                                 <ul class="nav flex-column student-panel-menu">
                                     <li class="nav-item border-1">
@@ -289,7 +289,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-8 col-lg-9 col-xl-10">
                 @yield('student-body')
             </div>
         </div>

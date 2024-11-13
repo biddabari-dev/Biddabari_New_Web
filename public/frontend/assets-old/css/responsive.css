@@ -1,7 +1,7 @@
 @media only screen and (max-width:767px) {
-    :root {
+    /* :root {
         --fontSize: 15px
-    }
+    } */
 
     body {
         font-size: var(--fontSize)
@@ -1362,10 +1362,10 @@
         margin-left: auto;
         margin-right: auto
     }
-
+/* 
     :root {
         --fontSize: 15px
-    }
+    } */
 
     body {
         font-size: var(--fontSize)

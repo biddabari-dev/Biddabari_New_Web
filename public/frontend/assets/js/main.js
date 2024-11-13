@@ -29,7 +29,7 @@
     });
 
     $(".free-course-banner").slick({
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -44,7 +44,7 @@
     });
 
     $(".book-banner").slick({
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,

@@ -20,20 +20,25 @@ Biddabari - All Course
         </div>
     </section> --}}
 
-    <section id="Free-service-banner" class="background-res-free-banner background-ats py-5"
+    <section id="Free-service-banner" class="background-res-free-banner background-ats py-2 py-md-5"
         style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/Background-banner.webp')">
         <div class="container">
-            <div class="free-course-banner">
-                @foreach($course_sliders as $slider)
-                    <div class="free-course-banner-image">
-                        <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;" ></a>
-                        {{-- <a href="{{ $slider->link }}">
-                            <img src="{{ $slider->image ? static_asset($slider->image) : asset('frontend/assets/images/our-courses/banner-4.jpeg') }}"
-                                 alt="Image 1"
-                                 style="border-radius: 20px;">
-                        </a> --}}
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="free-course-banner">
+                        @foreach($course_sliders as $slider)
+                            <div class="free-course-banner-image">
+                                <a href=""><img src="{{ asset('frontend') }}/assets/images/our-courses/banner-4.jpeg" alt="Image 1" style="border-radius: 20px;" ></a>
+                                {{-- <a href="{{ $slider->link }}">
+                                    <img src="{{ $slider->image ? static_asset($slider->image) : asset('frontend/assets/images/our-courses/banner-4.jpeg') }}"
+                                         alt="Image 1"
+                                         style="border-radius: 20px;">
+                                </a> --}}
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </section>
@@ -42,13 +47,15 @@ Biddabari - All Course
         style="background-image: url('{{ asset('frontend') }}/assets/images/our-courses/our-courses.png')" >
         <div class="container">
             <div class="row">
-                <div class="title-area text-center">
-                    <h2 class="fw-bold">আমাদের <span>কোর্স</span>
-                    </h2>
-                    <p class="text-muted">
-                        প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                        চ্চতায়।
-                    </p>
+                <div class="col-md-12">
+                    <div class="title-area text-center">
+                        <h2 class="fw-bold">আমাদের <span>কোর্স</span>
+                        </h2>
+                        <p class="text-muted">
+                            প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
+                            চ্চতায়।
+                        </p>
+                    </div>
                 </div>
             </div>
 

@@ -7,7 +7,7 @@ Biddabari - Free Service
 @section('body')
 <main>
 
-    <section id="Free-service-banner" class="background-res-free-banner background-ats py-5"
+    <section id="Free-service-banner" class="background-res-free-banner background-ats py-2 py-mb-5"
         style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
         <div class="container">
             <div class="free-course-banner">
@@ -25,7 +25,7 @@ Biddabari - Free Service
         style="background-image: url('{{ asset('frontend') }}/assets/images/free-service/free-service-bg.jpg')">
         <div class="container">
             <div class="title-area text-center">
-                <h1 class="fw-bold">আমাদের <span class="">ফ্রি সার্ভিস</span></h1>
+                <h2 class="fw-bold">আমাদের <span class="">ফ্রি সার্ভিস</span></h2>
                 <p class="text-muted">
                     প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
                     চ্চতায়। আপনার জন্য <br />প্রয়োজনীয় সব ক্যাটাগরিই রয়েছে এখানে।
