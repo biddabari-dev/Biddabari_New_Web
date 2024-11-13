@@ -244,6 +244,10 @@ img {
     color: white;
     padding: 12px 25px;
 }
+#Header .login-button a img {
+    width: 70px;
+    height: 70px;
+}
 
 #Header .navbar-collapse ul li a {
     color: black;
@@ -282,6 +286,12 @@ img {
 
     #Header .search_button_area .form-control {
         margin-left: -20px;
+    }
+}
+
+@media (max-width: 1200.98px) {
+    #Header .navbar-collapse ul li a {
+        padding: 15px 10px;
     }
 }
 
@@ -521,6 +531,11 @@ img {
         text-align: left;
     } */
 
+    #Footer .footer-others-div h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
 }
 
 /* -----------------------Footer End ---------------- */
@@ -531,8 +546,8 @@ img {
     width: 45px;
 }
 
-.slick-prev:before,
-.slick-next:before {
+#Home_main_banner .home-1st-slide .slick-prev:before,
+#Home_main_banner .home-1st-slide .slick-next:before {
     font-size: 45px;
     opacity: .75;
     color: #f5baba;
@@ -540,6 +555,16 @@ img {
 
 .slick-prev {
     z-index: 1000;
+}
+
+@media (max-width: 575.98px) {
+    .slick-prev {
+        left: 0;
+    }
+
+    .slick-next {
+        right: 0;
+    }
 }
 
 /* ----------------------Slick Slider End---------------- */
@@ -638,7 +663,7 @@ img {
 
 .exam-package-area .package-exam-image img {
     width: 100%;
-    height: 170px;
+    height: 190px;
 }
 
 .exam-package-area .package-exam-content .package-exam-title h2 {
@@ -2249,13 +2274,14 @@ img {
     #Our_story .our-story-video-content-area .our-story-content-area p {
         max-height: 210px;
     }
-} 
+}
 
 @media (max-width: 991.98px) {
     #Our_story .our-story-video-content-area .our-story-content-area p {
         max-height: 180px;
     }
 }
+
 @media (max-width: 768px) {
     #Our_story .our-story-video-content-area .our-story-content-area p {
         max-height: 145px;
@@ -2584,6 +2610,21 @@ img {
 
 #All_notice .notice-content-area .notice-content:hover {
     box-shadow: 5px 3px 15px -3px;
+}
+
+@media (max-width: 575.98px) {
+
+    #All_notice .title-area h2 {
+        font-size: 24px;
+    }
+
+    #All_notice .title-area p {
+        font-size: 13px;
+    }
+
+    #All_notice .notice-category-area .my-notice-category .my-notice-category-content h3 {
+        font-size: 20px;
+    }
 }
 
 /* =================================== Notice Page End =========================================== */
@@ -3640,7 +3681,17 @@ img {
     .book-banner .slick-next {
         right: 0;
     }
+}
 
+@media (max-width: 575.98px) {
+
+    #All_book .title-area h2 {
+        font-size: 24px;
+    }
+
+    #All_book .title-area p {
+        font-size: 13px;
+    }
 }
 
 /* =================================== Book Page End =========================================== */
@@ -3913,6 +3964,29 @@ img {
     background-color: #aa076b;
 }
 
+@media (max-width: 575.98px) {
+
+    #Blog_feature .title-area h2 {
+        font-size: 24px;
+    }
+
+    #Blog_feature .title-area p {
+        font-size: 13px;
+    }
+
+    #Blog_feature .blog-feature-area h4 {
+        font-size: 18px;
+    }
+
+    #Blog_feature .blog-feature-area .feature-this-month-area .blog-feature-content .blog-feature-title h3 {
+        font-size: 16px;
+    }
+
+    #Blog_feature .blog-popular-posted-area .popular-posted-area {
+        padding: 10px;
+    }
+}
+
 /* ---------------------Popular poster area start---------------------- */
 
 #Blog_feature .blog-popular-posted-area .popular-posted-area {
@@ -4003,6 +4077,25 @@ img {
     background-color: #aa076b;
 }
 
+@media (max-width: 575.98px) {
+
+    #Blog_feature .title-area h2 {
+        font-size: 24px;
+    }
+
+    #Blog_feature .title-area p {
+        font-size: 13px;
+    }
+
+    #Blog_feature .blog-popular-posted-area h4 {
+        font-size: 20px;
+    }
+
+    #Blog_feature .blog-popular-posted-area .popular-posted-area {
+        padding: 14px;
+    }
+}
+
 /* ---------------------Popular poster area End---------------------- */
 /* ----------------------Recently Posted Area Start--------------------- */
 
@@ -4086,6 +4179,19 @@ img {
 #Recently_posted .blog-recently-posted-area .blog-recently-posted-content .blog-read-button .btn_warning:hover {
     color: white;
     background-color: #aa076b;
+}
+
+@media (max-width: 575.98px) {
+
+    #Recently_posted .blog-recently-posted-area h2 {
+        font-size: 20px;
+    }
+    #Recently_posted .blog-recently-posted-area .blog-recently-posted-content .blog-recently-posted-title h3 {
+        font-size: 16px;
+    }
+    #Recently_posted .blog-recently-posted-area .blog-recently-posted-content .someText p {
+        font-size: 13px;
+    }
 }
 
 /* ----------------------Recently Posted Area End--------------------- */

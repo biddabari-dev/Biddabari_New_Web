@@ -16,7 +16,7 @@
 @section('body')
 <main>
 
-    <section id="All_notice" class="background-res background-ats py-5"
+    <section id="All_notice" class="background-res background-ats py-2 py-mb-5"
         style="background-image: url('{{ asset('frontend') }}/assets/images/notice-page/notice-page-bg.png')">
         <div class="container">
             <div class="row">

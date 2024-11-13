@@ -3,23 +3,24 @@
         <div class="container">
             <div class="mobile-menu d-flex justify-content-between align-items-center">
                 <div class="main-logo">
-                    <a href="{{ route('front.home') }}"><img src="{{ asset('frontend') }}/assets/images/logo/biddabari-logo.png" alt="Logo"
+                    <a href="{{ route('front.home') }}"><img
+                            src="{{ asset('frontend') }}/assets/images/logo/biddabari-logo.png" alt="Logo"
                             srcset=""></a>
                 </div>
 
                 <div class="moblie-icon">
                     <div class="nav-item login-button">
-                        @if(auth()->check())
+                        @if (auth()->check())
 
-                        @if (request()->is('student*'))
-                            {{-- <button class="btn btn_warning" type="button" data-bs-toggle="offcanvas"
+                            @if (request()->is('student*'))
+                                {{-- <button class="btn btn_warning" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Dashboard
                             </button> --}}
+                            @else
+                                <a href="{{ route('dashboard') }}" type="button" class="btn btn_warning">Dashboard</a>
+                            @endif
                         @else
-                            <a href="{{ route('dashboard') }}" type="button" class="btn btn_warning">Dashboard</a>
-                        @endif
-                        @else
-                        <a href="{{ route('login') }}" type="button" class="btn btn_warning">Login</a>
+                            <a href="{{ route('login') }}" type="button" class="btn btn_warning">Login</a>
                         @endif
                     </div>
                     <div>
@@ -49,27 +50,35 @@
                         </form>
                     </div>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="{{ route('front.home') }}">হোম </a>
+                        <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page"
+                            href="{{ route('front.home') }}">হোম </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('course') ? 'active' : '' }}" href="{{ route('front.all-courses') }}">কোর্সসমূহ</a>
+                        <a class="nav-link {{ request()->is('course') ? 'active' : '' }}"
+                            href="{{ route('front.all-courses') }}">কোর্সসমূহ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('exam') ? 'active' : '' }}" href="{{ route('front.all-exams') }}">পরীক্ষাসমূহ</a>
+                        <a class="nav-link {{ request()->is('exam') ? 'active' : '' }}"
+                            href="{{ route('front.all-exams') }}">পরীক্ষাসমূহ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('free-course') ? 'active' : '' }}" href="{{ route('front.free-courses') }}">ফ্রি সার্ভিস</a>
+                        <a class="nav-link {{ request()->is('free-course') ? 'active' : '' }}"
+                            href="{{ route('front.free-courses') }}">ফ্রি সার্ভিস</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('notice') ? 'active' : '' }}" href="{{ route('front.notices') }}">নোটিশ</a>
+                        <a class="nav-link {{ request()->is('notice') ? 'active' : '' }}"
+                            href="{{ route('front.notices') }}">নোটিশ</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link {{ request()->is('blog') ? 'active' : '' }}" href="{{ route('front.all-blogs') }}">ব্লগ</a>
+                        <a class="nav-link {{ request()->is('blog') ? 'active' : '' }}"
+                            href="{{ route('front.all-blogs') }}">ব্লগ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('product') ? 'active' : '' }}" href="{{ route('front.all-products') }}">বই</a>
+                        <a class="nav-link {{ request()->is('product') ? 'active' : '' }}"
+                            href="{{ route('front.all-products') }}">বই</a>
                     </li>
-                    <form class="search_button_area desk-top-search" action="{{ route('search-content-home') }}" method="POST">
+                    <form class="search_button_area mt-lg-1 desk-top-search" action="{{ route('search-content-home') }}"
+                        method="POST">
                         @csrf
                         <div class="input-group">
                             <span class="input-group-text border-0">
@@ -77,41 +86,44 @@
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>
                             </span>
-                            <input type="text" class="form-control border-0 shadow-none"
-                                placeholder="Search courses" name="search_content" value="{{ request('search_content') }}" />
+                            <input type="text" class="form-control border-0 shadow-none" placeholder="Search courses"
+                                name="search_content" value="{{ request('search_content') }}" />
                         </div>
                     </form>
                 </ul>
 
-                @if(auth()->check())
-                <a href="#" class="border-radius-50" data-bs-toggle="dropdown">
-                    <img src="{{ asset('frontend/man.png') }}" width="50" alt="login image">
-                </a>
-                <div class="dropdown-menu dropdown-menu-end" style="right: 305px;">
-                    <div class="dropdown-item">
-                        <a href="{{ route('dashboard') }}" class="text-dark f-s-20">Dashboard</a>
+                @if (auth()->check())
+                    <div class="nav-item dropdown login-button">
+                        <a href="#" class="border-radius-50" data-bs-toggle="dropdown">
+                            <img src="{{ asset('frontend/man.png') }}" class="rounded-circle" alt="login image">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <div class="dropdown-item">
+                                <a href="{{ route('dashboard') }}" class="text-dark f-s-20">Dashboard</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="{{ route('front.all-job-circulars') }}" class="text-dark f-s-20">Job
+                                    Circulars</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="{{ route('front.student.view-profile') }}"
+                                    class="text-dark f-s-20">Profile</a>
+                            </div>
+                            <div class="dropdown-item"
+                                onclick="event.preventDefault(); document.getElementById('logoutForm').submit()">
+                                <a href="#" class="text-dark f-s-20">Logout</a>
+                                <form action="{{ route('logout') }}" method="post" id="logoutForm">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="dropdown-item">
-                        <a href="{{ route('front.all-job-circulars') }}" class="text-dark f-s-20">Job Circulars</a>
-                    </div>
-                    <div class="dropdown-item">
-                        <a href="{{ route('front.student.view-profile') }}" class="text-dark f-s-20">Profile</a>
-                    </div>
-                    <div class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logoutForm').submit()">
-                        <a href="#" class="text-dark f-s-20">Logout</a>
-                        <form action="{{ route('logout') }}" method="post" id="logoutForm">
-                            @csrf
-                        </form>
-                    </div>
-                </div>
-
                 @else
-                <div class="nav-item login-button">
-                    <a href="{{ route('login') }}" type="button" class="btn btn_warning">Login</a>
-                </div>
+                    <div class="nav-item login-button">
+                        <a href="{{ route('login') }}" type="button" class="btn btn_warning">Login</a>
+                    </div>
                 @endif
             </div>
         </div>
     </nav>
 </header>
-

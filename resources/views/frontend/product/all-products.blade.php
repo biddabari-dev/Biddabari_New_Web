@@ -2,7 +2,7 @@
 
 @section('body')
 <main>
-    <section id="Book_page_banner" class="background-res-book-banner background-ats py-5"
+    <section id="Book_page_banner" class="background-res-book-banner background-ats py-2 py-md-5"
         style="background-image: url('{{ asset('frontend') }}/assets/images/free-service/free-service-banner-bg.png')">
         <div class="container">
             <div class="book-banner">

@@ -10,8 +10,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 col-sm-6 mb-2">
+        <div class="row g-4">
+            <div class="col-6 col-lg-3">
                 <div class="card card-body shadow-sm">
                     <a href="{{ route('front.student.my-courses') }}">
                     <div class="corce_exam_mobile_res">
@@ -26,7 +26,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 mb-2">
+            <div class="col-6 col-lg-3">
                 <div class="card card-body shadow-sm">
                     <a href="{{ route('front.student.my-exams') }}">
                     <div class="corce_exam_mobile_res">
@@ -41,7 +41,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 mb-2">
+            <div class="col-6 col-lg-3">
                 <div class="card card-body shadow-sm">
                     <a href="{{ route('front.student.my-orders') }}">
                     <div class="corce_exam_mobile_res">
@@ -56,7 +56,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 mb-2">
+            <div class="col-6 col-lg-3">
                 <div class="card card-body shadow-sm">
                     <div class="corce_exam_mobile_res">
                         <div>
