@@ -63,6 +63,7 @@ Biddabari - Login
 
                                             <div class="my-3 form-check">
                                                 <span class="text-brand"><a href="{{ route('forgot-user-password') }}">Forget Password?</a></span>
+                                                <span class="text-brand"><a href="{{ route('forgot-user-password') }}">Forget Password?</a></span>
                                             </div>
                                         </form>
 

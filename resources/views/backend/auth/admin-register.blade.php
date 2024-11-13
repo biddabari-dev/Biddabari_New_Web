@@ -16,7 +16,7 @@ Biddabari - User registration form
                             <div class="col-md-6">
                                 <div class="signup-image-area text-center">
                                     <h4><strong> Welcome to <br><span class="text-brand"> Biddabari </span> Online Learning Platform </strong></h4>
-                                    <img src="{{ asset('frontend') }}/assets/images/signup/Signup-Image.webp" alt="" srcset="">
+                                    <img src="{{ asset('frontend') }}/assets/images/signup/Signup-Image.webp" alt="" srcset="" width="80%">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -24,7 +24,7 @@ Biddabari - User registration form
                                     <h4 class="text-center">Sign up</h4>
                                     <div class="signup-form">
                                         <!-- Signup Form -->
-                                        <form id="registerForm" action="{{ route('register') }}" method="POST">
+                                        <form id="registerForm" action="{{ route('user-register') }}" method="POST">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="name" class="form-label">Full Name</label>
@@ -62,7 +62,21 @@ Biddabari - User registration form
                                                         id="password" name="password" placeholder="Enter your password"
                                                         aria-describedby="passwordHelp">
                                                 </div>
+                                                <span class="invalid-feedback d-block password-error"></span>
                                                 @error('password')
+                                                    <span class="invalid-feedback d-block">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Confirm Password</label>
+                                                <div class="position_relative">
+                                                    <i class="fa-solid fa-lock input-icon"></i>
+                                                    <input type="password" class="form-control icon-input @error('confirm_password') is-invalid @enderror"
+                                                        id="confirm_password" name="password_confirmation" placeholder="Retype password"
+                                                        aria-describedby="passwordHelp">
+                                                </div>
+                                                <span class="invalid-feedback d-block confirm-password-error"></span>
+                                                @error('confirm_password')
                                                     <span class="invalid-feedback d-block">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -83,123 +97,61 @@ Biddabari - User registration form
     </section>
 
 </main>
-<!-- OTP Modal -->
-<div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"> <!-- Added 'modal-dialog-centered' class -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="otpModalLabel">Enter OTP</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <input type="text" id="otpNumber" class="form-control" placeholder="Enter OTP">
-                <span class="text-success d-block otp-success"></span>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="verifyOtpBtn" class="btn btn_warning">Verify OTP</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 @endsection
 @push('script')
 <script>
 $(document).ready(function() {
-        // When user clicks submit button
-        $('#submitBtn').on('click', function(e) {
-            e.preventDefault();
+    $('#submitBtn').on('click', function(e) {
+    e.preventDefault();
 
-            var mobileNumber = $('#mobile').val();
-            var name = $('#name').val();
+    // Clear previous error messages
+    $('.name-error, .mobile-error, .password-error, .confirm-password-error').text('');
 
-            // Define Bangladeshi mobile number pattern
-            var bangladeshMobilePattern = /^(01[3-9]\d{8})$/;
+    var name = $('#name').val();
+    var mobileNumber = $('#mobile').val();
+    var password = $('#password').val();
+    var confirmPassword = $('#confirm_password').val();
 
-            // Validate name first
-            if (name == '') {
-                $('.name-error').text('Name is required.');
-                return;
-            }
+    // Define Bangladeshi mobile number pattern
+    var bangladeshMobilePattern = /^(01[3-9]\d{8})$/;
 
-            // Validate mobile number
-            if (mobileNumber == '') {
-                $('.mobile-error').text('Mobile number is required.');
-                return;
-            } else if (!bangladeshMobilePattern.test(mobileNumber)) {
-                $('.mobile-error').text('Enter a valid mobile number.');
-                return;
-            }
+    // Validate name
+    if (name === '') {
+        $('.name-error').text('Name is required.');
+        return;
+    }
 
-            // Send OTP to mobile number
-            $.ajax({
-                url: "{{ route('front.send-otp') }}",
-                method: "POST",
-                dataType: "JSON",
-                data: {
-                    mobile: mobileNumber,
-                    _token: "{{ csrf_token() }}"
-                },
-                success: function(data) {
-                    if (data.user_status != 'exist' && data.status == 'success') {
-                        $('#otpModal').modal('show');
-                        $('.otp-success').text('OTP sent to mobile number.');
-                    } else if (data.user_status == 'exist') {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Mobile number already exists.'
-                        });
+    // Validate mobile number
+    if (mobileNumber === '') {
+        $('.mobile-error').text('Mobile number is required.');
+        return;
+    } else if (!bangladeshMobilePattern.test(mobileNumber)) {
+        $('.mobile-error').text('Enter a valid mobile number.');
+        return;
+    }
 
-                        $('.mobile-error').text('Mobile number already exists.');
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'An unknown error occurred.'
-                        });
-                    }
-                },
-                error: function() {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'An unknown error occurred.'
-                    });
-                }
-            });
-        });
+    // Validate password
+    if (password === '') {
+        $('.password-error').text('Password is required.');
+        return;
+    }
 
+    // Validate confirm password
+    if (confirmPassword === '') {
+        $('.confirm-password-error').text('Confirm password is required.');
+        return;
+    } else if (password !== confirmPassword) {
+        $('.confirm-password-error').text('Passwords do not match.');
+        $('#password').val('');
+        $('#confirm_password').val('');
+        return;
+    }
+    // If all validations pass, submit the form
+    $('#registerForm').submit();
+});
 
-        // Verify OTP when clicking verify button
-        $('#verifyOtpBtn').on('click', function() {
-            var otpNumber = $('#otpNumber').val();
-            var mobileNumber = $('#mobile').val();
-
-            $.ajax({
-                url: "{{ route('front.verify-otp') }}",
-                method: "POST",
-                dataType: "JSON",
-                data: { otp: otpNumber, mobile: mobileNumber, _token: "{{ csrf_token() }}" },
-                success: function(data) {
-                    if (data.status == 'success') {
-                        // Close the OTP modal
-                        $('#otpModal').modal('hide');
-                        if (data.user_status == 'exist') {
-                            // Existing user logic
-                            $('#registerForm').attr('action', '{{ route("login") }}');
-                        }
-                        // Submit the form after OTP verification
-                        $('#registerForm').submit();
-                    } else {
-                        alert('Invalid OTP. Please try again.');
-                    }
-                },
-                error: function() {
-                    alert('An error occurred. Please try again.');
-                }
-            });
-        });
 });
 </script>
 @endpush

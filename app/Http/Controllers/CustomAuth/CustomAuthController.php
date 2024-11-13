@@ -66,18 +66,59 @@ class CustomAuthController extends Controller
 
     }
 
-    public function register (UserRegisterRequest $request)
+    public function registerOtp (UserRegisterRequest $request)
     {
-
-
         $this->validate($request, [
             'name' => ['required'],
             'mobile' => ['required', 'numeric', 'regex:/^(?:\+88|88)?(01[3-9]\d{8})$/'],
-            'password' => ['required']
+            'password' => ['required', 'confirmed']
         ]);
-        $request['roles'] = 4;
-        $request['request_form'] = 'student';
 
+        $exists = User::where('mobile', $request->mobile)->exists();
+        if ($exists) {
+            return back()->with('error', 'Mobile number already exists.');
+        }else{
+            $otpNumber = rand(1000, 9999);
+            $client = new Client();
+            $response = $client->request('GET', 'https://msg.elitbuzz-bd.com/smsapi', [
+                'query' => [
+                    'api_key' => 'C2008649660d0a04f3d0e9.72990969',
+                    'type' => 'text',
+                    'contacts' => $request->mobile,
+                    'senderid' => '8809601011181',
+                    'msg' => 'Biddabari OTP is ' . $otpNumber,
+                ]
+            ]);
+            // Parse response to get the response code
+            $responseCode = explode(':', $response->getBody()->getContents())[1];
+            // If OTP sent successfully
+             if (!empty($responseCode)) {
+                $mobile = $request->mobile;
+                $maskedMobile = '*******' . substr($mobile, -4);
+                session()->put([
+                    'otp' => $otpNumber,
+                    'mobile' => $mobile,
+                    'name' => $request->name,
+                    'password' => $request->password,
+                ]);
+                return view('backend.auth.user_login_otp',['otp'=> $otpNumber, 'mobile'=> $mobile ,'maskedMobile' => $maskedMobile]);
+            } else {
+                return response()->json(['status' => 'false', 'message' => 'Failed to send OTP.']);
+            }
+        }
+    }
+
+    public function register (Request $request)
+    {
+
+        // Merge session data into request
+        $request->merge([
+            'name' => session()->get('name'),
+            'mobile' => session()->get('mobile'),
+            'password' => session()->get('password'),
+            'roles' => 4,
+            'request_form' => 'student',
+        ]);
         try {
             DB::beginTransaction();
             $this->user = User::createOrUpdateUser($request);
@@ -95,7 +136,9 @@ class CustomAuthController extends Controller
                     if (Session::has('course_redirect_url')) {
                         $redirectUrl = Session::get('course_redirect_url');
                         Session::forget('course_redirect_url');
-
+                        // session()->forget('name');
+                        // session()->forget('mobile');
+                        // session()->forget('password');
                         if ($request->ajax())
                         {
                             return response()->json(['status' => 'success','url' => $redirectUrl]);
