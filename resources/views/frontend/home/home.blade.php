@@ -615,7 +615,7 @@
                             @if (!empty($poppup->image))
                                 <img src="{{ $poppup->image ? 'https://biddabari.s3.ap-southeast-1.amazonaws.com/' . $poppup->image : asset('frontend/logo/biddabari-card-logo.jpg') }}"
                                     alt="popup-img" class="popup-img" style="height: 60%;">
-                                {{-- <img src="{{ asset(file_exists_obs($poppup->image) ? $poppup->image : 'frontend/logo/biddabari-card-logo.jpg') }}"
+                                {{-- <img src="{{ asset(file_exists_s3($poppup->image) ? $poppup->image : 'frontend/logo/biddabari-card-logo.jpg') }}"
                                     alt="popup-img" class="popup-img" height="60%"> --}}
                             @else
                                 <div class="text-content p-2 text-white">

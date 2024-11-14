@@ -362,9 +362,9 @@ function file_exists_s3($url)
 {
     if ($url != null) {
         // Check if the file exists in the S3 bucket
-        $exists = Storage::disk('s3')->exists($url);
+        // $exists = Storage::disk('s3')->exists($url);
 
-        return $exists;
+        return $url;
     } else {
         return false;
     }

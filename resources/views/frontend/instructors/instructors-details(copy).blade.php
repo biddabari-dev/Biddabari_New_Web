@@ -191,7 +191,7 @@
                         <div class="courses-item">
                             <a
                                 href="{{ route('front.course-details', ['id' => $latestCourse->id, 'slug' => $latestCourse->slug]) }}">
-                                <img src="{{ asset(file_exists_obs($latestCourse->banner) ? $latestCourse->banner : '/frontend/logo/biddabari-card-logo.jpg') }}"
+                                <img src="{{ asset(file_exists_s3($latestCourse->banner) ? $latestCourse->banner : '/frontend/logo/biddabari-card-logo.jpg') }}"
                                     alt="Courses" style="width: 100%; height: 200px" />
                             </a>
                             <div class="content">
