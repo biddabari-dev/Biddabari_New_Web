@@ -502,15 +502,16 @@ class FrontExamController extends Controller
                             ++$this->totalProvidedAns;
                             if ($this->question->has_all_wrong_ans == 1)
                             {
-                                $this->resultNumber -= 1;
+                                $this->resultNumber -= $this->exam->exam_negative_mark;
                                 ++$this->totalWrongAns;
                             } else {
                                 $this->questionOption = QuestionOption::whereId($answer['answer'])->select('id', 'is_correct')->first();
                                 if ($this->questionOption->is_correct == 1)
                                 {
-                                    $this->resultNumber += 1;
+                                    $this->resultNumber += (int)$this->exam->exam_per_question_mark;
                                     ++$this->totalRightAns;
                                 } else {
+                                    $this->resultNumber -= $this->exam->exam_negative_mark;
                                     ++$this->totalWrongAns;
                                 }
                             }
