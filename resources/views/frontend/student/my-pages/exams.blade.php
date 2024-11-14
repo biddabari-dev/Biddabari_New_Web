@@ -4,7 +4,7 @@
     <section class="pb-3">
         <div class="container">
             <div class="row">
-                <div class="section-title text-center mb-5">
+                <div class="section-title text-center mb-2">
                     <h2> আমার এক্সাম সমূহ</h2>
                     <hr class="w-25 mx-auto bg-danger"/>
                 </div>

@@ -3,7 +3,7 @@
 @section('student-body')
     <section class="pb-3">
         <div class="row">
-            <div class="section-title text-center mb-5">
+            <div class="section-title text-center mb-2">
                 <h2> আমার কোর্স সমূহ</h2>
                 <hr class="w-25 mx-auto bg-danger"/>
             </div>
@@ -11,7 +11,7 @@
         <div class="row">
             @if(!empty($courseOrders))
                 @forelse($courseOrders as $courseOrder)
-                    <div class="col-lg-3 col-md-6 ">
+                    <div class="col-lg-3 col-md-6">
                         <div class="courses-item position-relative">
                                 <a href="{{ route('front.student.course-contents', ['course_id' => $courseOrder->course->id, 'slug' => $courseOrder->course->slug]) }}" @if($courseOrder->status == 'pending') onclick="event.preventDefault(); toastr.error('Your request is pending. Please wait till your request is approved.')" @endif>
                                     <img src="{{ static_asset($courseOrder->course->banner) }}" alt="Courses" class="img-fluid" style="height: 230px; width:100%;" />

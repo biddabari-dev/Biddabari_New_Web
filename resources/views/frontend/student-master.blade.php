@@ -180,7 +180,7 @@
         <div class="row custom_col_res py-lg-5">
             <div class="col-md-4 col-lg-3 col-xl-2 stu_btn">
                 <!-- <div class="bg-dark pt-5 mobile_res" style="min-height: 450px; height: 100%"> -->
-                <div class="bg-light mobile_res" style="border:2px solid #aa076b;">
+                <div class="bg-light mobile_res card" style=" margin-top: 5rem; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; border-top:1px solid #aa076b; border-left:1px solid #aa076b;">
                     <ul class="nav flex-column student-panel-menu shadow-sm">
                         <li class="nav-item border-1">
                             <a class="nav-link {{ request()->is('student/dashboard') ? 'st-menu-active' : '' }}"

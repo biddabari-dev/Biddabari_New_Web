@@ -256,6 +256,13 @@
                         <label for="someSwitchOptionSuccess" class="label-info"></label>
                     </div>
                 </div>
+                <div class="col-md-4 mt-3">
+                    <label for="">Popular This Course</label>
+                    <div class="material-switch">
+                        <input id="someSwitchOption" name="is_popular" type="checkbox"/>
+                        <label for="someSwitchOption" class="label-info"></label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

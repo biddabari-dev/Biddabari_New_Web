@@ -4924,3 +4924,9 @@ img {
 .fw-bold a {
     color: #000;
 }
+
+.form-control::placeholder {
+    color: #9c9c9c;
+    opacity: 1;
+}
+

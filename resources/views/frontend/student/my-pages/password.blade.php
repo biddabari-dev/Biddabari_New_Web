@@ -3,51 +3,50 @@
 @section('student-body')
     <section class="py-5">
         <div class="container">
-            <div class="row">
+            <div class="row ">
                 <div class="section-title text-center">
                     <h2>  পাসওয়ার্ড পরিবর্তন </h2>
                     <hr class="w-25 mx-auto bg-danger"/>
                 </div>
-                <div class="col-md-6 col-sm-8 mx-auto">
-                    <div class="courses-item pt-5">
+                <div class="col-md-12 col-lg-8 col-sm-12 mx-auto">
+                    <div class="courses-item pt-lg-3">
                         <div class="content">
                             <form class="" id="changePasswordForm" method="post" action="{{ route('front.student.change-student-password', ['id' => auth()->id()]) }}" enctype="multipart/form-data">
                                 @csrf
-                                <div class="row mb-20">
-                                    <div class="col-md-12 mt-2">
+                                <div class="row p-3">
+                                    <div class="col-md-6 mt-2">
                                         <div class="form-group">
                                             <label for="">User Name</label>
                                             <input type="text" class="form-control" readonly value="{{ auth()->user()->name }}" placeholder="Username">
                                         </div>
                                     </div>
-                                    <div class="col-md-12 mt-2">
+                                    <div class="col-md-6 mt-2">
                                         <div class="form-group">
                                             <label for="">Old Password</label>
                                             <input type="text" class="form-control" name="old_password" required data-error="FirstName" placeholder="Old Password">
                                         </div>
                                     </div>
-                                    <div class="col-md-12 mt-2">
+                                    <div class="col-md-6 mt-2">
                                         <div class="form-group">
                                             <label for="">New Password</label>
                                             <input type="text" class="form-control" name="new_password" required data-error="LastName" placeholder="New Password">
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12 mt-2">
+                                    <div class="col-md-6 mt-2">
                                         <div class="form-group">
                                             <label for="">Confirm Password</label>
                                             <input type="text" class="form-control" name="confirm_password" required placeholder="Confirm Password">
                                             <span id="errorMsg" class="text-danger">.</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mb-20">
-                                    <div class="col-8 mt-2 mx-auto">
+                                    <div class="col-lg-3 col-sm-12">
                                         <div class="form-group">
-                                            <input class="form-control default-btn" type="submit" value="Update">
+                                            <input class="form-control default-btn " type="submit" value="Update">
                                         </div>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>

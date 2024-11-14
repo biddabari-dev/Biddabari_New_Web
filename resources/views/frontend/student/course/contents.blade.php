@@ -4,7 +4,7 @@
     <section class="pb-3">
         <div>
             <div class="row">
-                <div class="section-title text-center">
+                <div class="section-title text-center mb-2">
                     <h2> {!! $course->title !!}</h2>
                     <hr class="w-25 mx-auto bg-danger" />
                 </div>
@@ -195,56 +195,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body p-0">
                     <div class="card card-body p-0">
-                        <div class="" id="printHere"></div>
+                        <div id="printHere"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{-- old video model --}}
-    {{-- <div class="modal fade video-modal" id="videoModal" data-bs-backdrop="static" data-modal-parent="courseContentModal" >
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content" >
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Watch Class Video</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="close_video()" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <div class="card card-body p-0">
-                        <div class="private d-none">
-                            <video class="w-100 video" height="500" controls="controls" controlist="nodownload">
-                                <source id="privatVid" src="//samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="youtube d-none">
-                            <div class="video-container video_mobile_res" >
-                                <div class="video-foreground">
-
-                                    <div id="video"></div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="vimeo d-none">
-                            <div style="padding:56.25% 0 0 0;position:relative;">
-                                <iframe id="vimeoPlayer" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="mt-4 ms-4">
-                            <a href="" target="_blank" class="btn btn-success see-answer">See Answer</a>
-                        </div>
-                        <div class="mt-4">
-                            <div id="videoCommentDiv">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     {{-- new video model --}}
     <div class="modal fade video-modal" id="videoModal" data-bs-backdrop="static"
         data-modal-parent="courseContentModal">
@@ -267,22 +223,10 @@
                         <a href="" target="_blank" class="btn btn-success see-answer">See Answer</a>
                         </div>
                     </div>
-
-                    <!-- Uncomment this if needed
-                        <div class="vimeo d-none">
-                            <div style="padding:56.25% 0 0 0;position:relative;">
-                                <iframe id="vimeoPlayer" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
-                                </iframe>
-                            </div>
-                        </div>
-                        -->
                 </div>
             </div>
         </div>
     </div>
-
-
 
     <div class="modal fade show-pdf-modal" id="pdfModal" data-bs-backdrop="static"
         data-modal-parent="courseContentModal">
@@ -392,14 +336,11 @@
         .written-xm td {
             font-size: 15px
         }
+    #pdfModal, #videoModal {
+        margin-top: 6rem !important; /* Add your desired margin */
+    }
+
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
-    <!--<link rel="stylesheet" href="{{ asset('/') }}backend/assets/plugins/pdf-draw/pdfannotate.css">-->
-    <!--<link rel="stylesheet" href="{{ asset('/') }}backend/assets/plugins/pdf-draw/styles.css">-->
-    {{-- <link rel="stylesheet" href="{{ asset('/') }}backend/ppdf/css/pdfviewer.jquery.css" /> --}}
     <style>
         .pdf-toolbar {
             display: none;

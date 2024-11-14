@@ -6,7 +6,6 @@ Biddabari - The First Job Study Online Platform in Bangladesh
 
 @section('body')
 <main>
-
     <section id="Checkout" class="bg-light py-5">
         <div class="container">
             <div class="row g-4 justify-content-between">
@@ -124,6 +123,11 @@ Biddabari - The First Job Study Online Platform in Bangladesh
                                 <input type="text" format="" onkeypress="return isNumberKey(event)" id="confirmPhone" name="confirm_mobile" required class="form-control"
                                                    placeholder="Enter your phone no" value="{{ auth()->check() ? auth()->user()->mobile : '' }}"/>
                             </div>
+                            <div class="mb-3">
+                                <label for="paidTo" class="form-label">Full Address</label>
+                                <textarea type="text" required name="shipping_address" class="form-control" cols="30" rows="3"
+                                       placeholder="জেলা,থানা ও সম্পূর্ণ ঠিকানা দিন। গ্রাম/শহর, বাসা নং (পাশে কোন বাজার থাকলে নাম লিখুন)"></textarea>
+                            </div>
                             <div class="border rounded px-4 py-2 mb-3">
                                 <div class="form-check d-flex justify-content-between align-items-center">
                                     <input class="form-check-input" type="radio" value="bkash" name="payment_method"
@@ -145,13 +149,12 @@ Biddabari - The First Job Study Online Platform in Bangladesh
                 </div>
             </div>
         </div>
-
     </section>
-
 </main>
-
-
 @endsection
+@push('style')
+
+@endpush
 
 @section('js')
 <script>
