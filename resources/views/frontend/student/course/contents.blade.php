@@ -930,9 +930,14 @@
                     if (data.sectionContent.pdf_link) {
                         pdflink = data.sectionContent.pdf_link;
                     } else if (data.sectionContent.pdf_file) {
-                        pdflink =
-                            'https://biddabari-bucket.obs.as-south-208.rcloud.reddotdigitalit.com/' +
-                            data.sectionContent.pdf_file;
+                        let path = data.sectionContent.pdf_file
+                            .replace(/^\/+|\/+$/g, "")
+                            .replace(/\/{2,}/g, "/");
+
+                        let baseUrl = 'https://biddabari.s3.ap-southeast-1.amazonaws.com/';
+                        pdflink = baseUrl + path;
+
+                        console.log(pdflink);
                     } else {
                         pdflink = 'default-document.pdf'; // Fallback if no PDF is provided
                     }

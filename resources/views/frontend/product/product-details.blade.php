@@ -486,7 +486,7 @@ $(document).ready(function() {
             success: function(data) {
                 pdflink = data.featured_pdf;
                 if (pdflink) {
-                    pdflink ='https://biddabari-bucket.obs.as-south-208.rcloud.reddotdigitalit.com/' +pdflink;
+                    pdflink ='https://biddabari.s3.ap-southeast-1.amazonaws.com/' +pdflink;
                 } else {
                     pdflink = 'default-document.pdf'; // Fallback if no PDF is provided
                 }
