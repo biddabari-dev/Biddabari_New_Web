@@ -49,6 +49,134 @@
                             </div>
                         </div>
 
+                        <div class="course-cart-area course-cart-custom-area">
+                            @php
+                                $discountPrice = 0;
+                                $parcent = 0;
+                                if ($exam->has_discount_validity == 'true' && $exam->price > 0) {
+                                    $discountPrice = $exam->price - $exam->discount_amount;
+                                    $parcent = ($exam->discount_amount / $exam->price) * 100;
+                                } else {
+                                    $regular_price = $exam->price;
+                                }
+                            @endphp
+
+                            <div class="course-price d-flex justify-content-between">
+                                @if ($exam->has_discount_validity == 'true' && $exam->price > 0)
+                                    <h4>৳ {{ number_format($discountPrice) }} <s>৳ {{ number_format($exam->price) }}</s></h4>
+                                    <div class="discount">
+                                        <p>{{ round($parcent) }}% off</p>
+                                    </div>
+                                @else
+                                    <h4>৳ {{ number_format($regular_price ?? 0) }}</h4>
+                                @endif
+                            </div>
+
+                            @php
+                                $admissionLastDate = \Carbon\Carbon::parse($exam->admission_last_date);
+                                $now = \Carbon\Carbon::now();
+                                $daysLeft = $now->diffInDays($admissionLastDate);
+                                $status = false;
+                                if($admissionLastDate > $now){
+                                    $status = true;
+                                }
+
+                            @endphp
+
+                            <div class="left-days">
+                                @if ($status == true)
+                                    <p><i class="fa-regular fa-clock"></i> {{ $daysLeft }} day{{ $daysLeft > 1 ? 's' : '' }} left at this price!</p>
+                                @else
+                                    <p><i class="fa-regular fa-clock"></i> Admission deadline has passed.</p>
+                                @endif
+                            </div>
+
+                            <div class="course-short-description">
+                                <div class="description-column d-flex justify-content-between">
+                                    <p><i class="fa-regular fa-clock"></i> Course Duration</p>
+                                    <p>{{ $exam->duration_in_month ?? 0 }} Month</p>
+                                </div>
+                                <div class="description-column d-flex justify-content-between">
+                                    <p><i class="fa-solid fa-people-group"></i> Student Enroll</p>
+                                    <p>{{ $totalStudentEnrollments }}</p>
+                                </div>
+                                <div class="description-column d-flex justify-content-between">
+                                    <p><i class="fa-solid fa-print"></i> Total Exam</p>
+                                    <p>{{ $exam->total_exam ?? '' }}</p>
+                                </div>
+                            </div>
+                            {{--<div class="coupon-code-area">
+                                <div class="title">
+                                    <h5>Apply Promo Code</h5>
+                                </div>
+                                <div class="promo-code-container">
+                                    <input type="text" class="promo-input" placeholder="Apply Promo Code">
+                                    <button class="promo-button">Apply</button>
+                                </div>
+                            </div>--}}
+                            <div class="course-purchase-button">
+
+                                @if ($exam->is_paid == 1)
+                                    @if ($enrollStatus == 'false')
+                                        @php
+                                            $date = date('Y-m-d H:i');
+                                        @endphp
+                                        @if ($exam->admission_last_date > $date)
+                                            <a href="{{ route('front.checkout', ['type' => 'course', 'slug' => $exam->slug, 'rc' => $_GET['rc'] ?? '']) }}"
+                                               class="default-btn bg-default-color mt-4"><h6>কোর্সটি কিনুন </h6></a>
+                                        @else
+                                            <a class="default-btn bg-default-color btn-block mt-4"><h6>ভর্তির সময় শেষ</h6></a>
+                                        @endif
+
+                                        <ul class="social-link">
+                                        </ul>
+                                    @elseif($enrollStatus == 'pending')
+                                        <a href="javascript:void(0)" class="default-btn bg-default-color mt-2"><h4>Your Order is Pending</h4></a>
+                                    @endif
+                                @else
+                                    @if ($enrollStatus == 'false')
+                                        @if (auth()->check())
+                                            <a href="" data-course-id="{{ $exam->id }}"
+                                               onclick="event.preventDefault(); document.getElementById('freeCourseOrderForm').submit()"
+                                               class="default-btn bg-default-color order-free-course"> <h4>কোর্সটি করুন</h4> </a>
+                                        @else
+                                            <a href="{{ route('login') }}" data-course-id="{{ $exam->id }}"
+                                               class="default-btn bg-default-color order-free-course"> <h4>কোর্সটি করুন</h4> </a>
+                                        @endif
+                                        <form
+                                            action="{{ route('front.place-free-course-order', ['course_id' => $exam->id]) }}"
+                                            method="post" id="freeCourseOrderForm">
+                                            @csrf
+
+                                            <input type="hidden" name="ordered_for" value="course">
+                                        </form>
+                                    @endif
+                                @endif
+
+                                {{--<h6>কোর্সটি কিনুন </h6>--}}
+                                <p><span class="fw-bold">Note : </span>all course have 30-days money-back guarantee
+                                </p>
+                            </div>
+                            <div class="course-includes-area">
+                                <div class="title">
+                                    <h5>This Course includes :</h5>
+                                </div>
+                                <p><i class="fa-regular fa-clock"></i> Lifetime access</p>
+                                <p><i class="fa-solid fa-dollar-sign"></i> 30 Day money back guaranty</p>
+                                <p><i class="fa-regular fa-file"></i> Free exercises file & downloadable resources
+                                </p>
+                                <p><i class="fa-solid fa-trophy"></i> Shareable certificate of completion</p>
+                                <p><i class="fa-solid fa-tv"></i> Access on mobile , tablet and TV</p>
+                                <p><i class="fa-regular fa-file"></i> English subtitles</p>
+                                <p><i class="fa-solid fa-globe"></i> 100% online course</p>
+                            </div>
+                            <br>
+                            <div class="cart-contact">
+                                <h5>কোর্সটি সম্পর্কে বিস্তারিত জানতে কল করুন </h5>
+                                <h4 style="text-align: center"><i class="fa-solid fa-phone"></i> 09644433300</h4>
+                            </div>
+                        </div>
+
                         <div class="course-description-area">
 
                             <div class="course-description-tab-button">

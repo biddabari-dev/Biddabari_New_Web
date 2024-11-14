@@ -9199,6 +9199,7 @@ img {
         .accordion
         .accordion-title {
         padding: 5px 10px !important;
+        font-size: 16px;
     }
 
     /* .p-0 {

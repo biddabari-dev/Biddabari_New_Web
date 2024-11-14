@@ -136,9 +136,6 @@ class CustomAuthController extends Controller
                     if (Session::has('course_redirect_url')) {
                         $redirectUrl = Session::get('course_redirect_url');
                         Session::forget('course_redirect_url');
-                        // session()->forget('name');
-                        // session()->forget('mobile');
-                        // session()->forget('password');
                         if ($request->ajax())
                         {
                             return response()->json(['status' => 'success','url' => $redirectUrl]);
