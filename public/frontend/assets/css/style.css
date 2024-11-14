@@ -3174,6 +3174,13 @@ img {
     background-repeat: no-repeat;
 }
 
+@media  (max-width: 991.98px) {
+    #Get_in_touch .get-in-touch-form {
+        padding: 20px;
+    }
+
+}
+
 /* =================================== Contact Us Page End =========================================== */
 
 /* =================================== Sign Up & Sign In Page Start =========================================== */
@@ -4871,6 +4878,21 @@ img {
     font-weight: 700;
     color: #aa076b;
 }
+
+.course-cart-area.course-cart-custom-area {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .course-cart-area.course-cart-custom-area {
+        display: block;
+        margin-bottom: 20px;
+    }
+    .course-cart-area {
+        display: none;
+    }
+
+ }
 
 /* =================================== Course Details Page End =========================================== */
 /* Neamat  */

@@ -118,6 +118,7 @@ Route::get('/login', function (){
 Route::get('/register-page', function (){
     return view('backend.auth.admin-register');
 })->name('custom-register');
+Route::post('/user-register', [CustomAuthController::class, 'registerOtp'])->name('user-register');
 Route::get('/forgot-user-password', [CustomAuthController::class, 'forgotPassword'])->name('forgot-user-password');
 Route::post('/send-password-reset-otp', [CustomAuthController::class, 'passResetOtp'])->name('send-password-reset-otp');
 Route::get('/password-reset-otp', [CustomAuthController::class, 'passwordResetOtp'])->name('password-reset-otp');

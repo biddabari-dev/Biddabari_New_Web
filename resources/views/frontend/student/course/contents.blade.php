@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-10">
                     <div class="courses-details-tab-content">
                         <div class="courses-details-accordion">
                             <ul class="accordion">
@@ -181,11 +181,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <div class="" id="">
 
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
