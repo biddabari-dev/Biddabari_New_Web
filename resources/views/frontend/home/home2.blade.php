@@ -181,7 +181,7 @@
                             <div class="courses-item">
                                 <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}">
                                     <img loading="lazy"
-                                        src="{{ asset(file_exists_obs($course->banner) ? $course->banner : 'frontend/logo/biddabari-card-logo.jpg') }}"
+                                        src="{{ asset(file_exists_s3($course->banner) ? $course->banner : 'frontend/logo/biddabari-card-logo.jpg') }}"
                                         alt="{{ $course->alt_text }}" title="{{ $course->banner_title }}"
                                         class="w-100 p-2" style="height: 230px" />
                                 </a>
@@ -596,7 +596,7 @@
                     <div class="modal-body p-0">
                         <div class="card card-body p-0">
                             @if (!empty($poppup->image))
-                                <img src="{{ asset(file_exists_obs($poppup->image) ? $poppup->image : 'frontend/logo/biddabari-card-logo.jpg') }}"
+                                <img src="{{ asset(file_exists_s3($poppup->image) ? $poppup->image : 'frontend/logo/biddabari-card-logo.jpg') }}"
                                     alt="popup-img" class="popup-img" height="60%">
                             @else
                             <div class="text-content p-2 text-white">
