@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('batch_exams', function (Blueprint $table) {
-            $table->string('admission_last_date')->nullable(); 
+            $table->string('admission_last_date')->nullable();
         });
     }
 
