@@ -26,12 +26,8 @@ Biddabari - All Books
         style="background-image: url('{{ asset('frontend') }}/assets/images/blog/blog-bg-1.png')">
         <div class="container">
             <div class="title-area text-center">
-                <h2 class="fw-bold">আমাদের <span class="">বই সমূহ </span></h2>
-                <p class="text-muted">
-                    প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                    চ্চতায়। আপনার জন্য <br />প্রয়োজনীয় সব ক্যাটাগরিই রয়েছে এখানে।
-                    বেছে নিন আপনার সবচেয়ে পছন্দের কোর্সটি।
-                </p>
+                <h2 class="fw-bold">আমাদের <span class="">বই! </span></h2>
+                <br>
             </div>
             <div class="all-courses-area">
                 <div class="row g-2 g-md-3 g-lg-4">

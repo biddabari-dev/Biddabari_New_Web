@@ -76,7 +76,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         //neamat
         Route::get('/free-category/{slug}', [BasicViewController::class, 'freeCategoryCourses'])->name('free-category-courses');
         Route::get('/notice', [BasicViewController::class, 'allNotices'])->name('notices');
-
+        Route::get('/thanks-for-purchase', [BasicViewController::class, 'thankYou'])->name('thankyou');
 
         Route::get('/free-course', [BasicViewController::class, 'freeCourses'])->name('free-courses');
         Route::get('/free-course/{slug}', [BasicViewController::class, 'freeCourseVideo'])->name('free.course');
@@ -110,7 +110,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/gallery', [FrontViewTwoController::class, 'GalleryImageView'])->name('all-gallery-images');
         Route::get('/gallery-images/{id}/{title?}', [FrontViewTwoController::class, 'GalleryImages'])->name('show-gallery-images');
 
-        Route::get('/product-details/{slug?}', [FrontendViewController::class, 'productDetails'])->name('product-details');
+        Route::get('/product-details/{slug}', [FrontendViewController::class, 'productDetails'])->name('product-details');
     });
 
     Route::get('/check-coupon', [BasicViewController::class, 'checkCoupon'])->name('check-coupon');

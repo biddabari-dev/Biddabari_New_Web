@@ -141,7 +141,7 @@
                         </div>
                         <div class="home-video-feature-area mt-2">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div class="home-feature-video">
                                         <div class="ratio ratio-1x1"
                                             style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
@@ -156,7 +156,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 ">
+                                <div class="col-4">
                                     <div class="home-feature-video">
                                         <div class="ratio ratio-1x1"
                                             style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
@@ -171,7 +171,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 ">
+                                <div class="col-4">
                                     <div class="home-feature-video">
                                         <div class="ratio ratio-1x1"
                                             style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
@@ -186,23 +186,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 ">
-                                    <div class="home-feature-video">
-                                        <div class="ratio ratio-1x1"
-                                            style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                            <iframe id="videoIframe"
-                                                src="https://www.youtube.com/embed/DnpjPBACH6M?si=9aTUs_YxqxlGsKaY"
-                                                title="YouTube video" frameborder="0" allowfullscreen
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                                            <!-- Transparent overlay to trigger the click event -->
-                                            <div onclick="showVideoModal('https://www.youtube.com/embed/DnpjPBACH6M?autoplay=1')"
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -215,29 +198,27 @@
             <div class="container">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h1 class="fw-bold">নিজের শেখা নিজেই গুছিয়ে নেয়ার <br>
-                            <span>যাত্রা শুরু হোক</span>
+                        <h1 class="fw-bold">
+                            আমাদের <span> সাথে!</span>
                         </h1>
-                        <p class="text-muted">
-                            প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                            উচ্চতায়।
-                        </p>
+                        <br>
                     </div>
                 </div>
                 <div class="home-category-area pb-5">
                     <div class="row g-3">
                         <div class="col-md-6 col-lg-4">
-                            <div class="my-home-category">
-                                <div class="my-home-category-icon">
-                                    <!-- <i class="fa-solid fa-graduation-cap"></i> -->
-                                    <img src="{{ asset('frontend') }}/assets/images/home-page/category/home.png"
-                                        alt="" srcset="">
+                            <a href="{{ route('front.all-job-circulars') }}" class="text-black">
+                                <div class="my-home-category">
+                                    <div class="my-home-category-icon">
+                                        <img src="{{ asset('frontend') }}/assets/images/home-page/category/jobcircular.png"
+                                            alt="" srcset="">
+                                    </div>
+                                    <div class="my-home-category-content">
+                                        <h3> চাকরির বিজ্ঞাপন</h3>
+                                        <p>প্রতিযোগিতামূলক চাকরি পরীক্ষার নতুন বিজ্ঞাপন</p>
+                                    </div>
                                 </div>
-                                <div class="my-home-category-content">
-                                    <h3>আমাদের বিদ্যাবাড়ি</h3>
-                                    <p>বিদ্যাবাড়ি সংক্রান্ত যাবতীয় তথ্য</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <a href="{{ route('front.guideline') }}" class="text-black">
@@ -247,8 +228,8 @@
                                             alt="" srcset="">
                                     </div>
                                     <div class="my-home-category-content">
-                                        <h3>গাইডলাইন</h3>
-                                        <p>সকল চাকরি পরীক্ষার আপডেট তথ্যভিত্তিক গাইডলাইন</p>
+                                        <h3>প্রস্তুতি গাইডলাইন</h3>
+                                        <p>চাকরি পরীক্ষার প্রস্তুতি সংক্রান্ত পরামর্শ </p>
                                     </div>
                                 </div>
                             </a>
@@ -261,50 +242,53 @@
                                             alt="" srcset="">
                                     </div>
                                     <div class="my-home-category-content">
-                                        <h3>শিক্ষকবৃন্দ</h3>
-                                        <p>বিদ্যাবাড়ির সম্মানিত শিক্ষকবৃন্দের তালিকা</p>
+                                        <h3>শ্রদ্ধেয় শিক্ষকবৃন্দ</h3>
+                                        <p>আমাদের শ্রদ্ধেয় শিক্ষকবৃন্দ যা বলেন</p>
                                     </div>
                                 </div>
                             </a>
                         </div>
+                        <div class="col-md-6 col-lg-4">
+                            <a href="#Student_review" class="text-black">
+                            <div class="my-home-category">
+                                <div class="my-home-category-icon">
+                                    <!-- <i class="fa-solid fa-graduation-cap"></i> -->
+                                    <img src="{{ asset('frontend') }}/assets/images/home-page/category/home.png"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="my-home-category-content">
+                                    <h3> শিক্ষার্থীরা যা বলে...</h3>
+                                    <p>আমাদের ভর্তিকৃত শিক্ষার্থীদের মন্তব্য </p>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+
                         <div class="col-md-6 col-lg-4">
                             <a href="{{ route('front.social-media') }}" class="text-black">
-                                <div class="my-home-category">
-                                    <div class="my-home-category-icon">
-                                        <img src="{{ asset('frontend') }}/assets/images/home-page/category/media.png"
-                                            alt="" srcset="">
-                                    </div>
-                                    <div class="my-home-category-content">
-                                        <h3>সোশ্যাল মিডিয়ায় আমরা</h3>
-                                        <p>সামাজিক যোগাযোগ মাধ্যমে বিদ্যাবাড়ির পদচারণা</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <a href="{{ route('front.all-job-circulars') }}" class="text-black">
-                                <div class="my-home-category">
-                                    <div class="my-home-category-icon">
-                                        <img src="{{ asset('frontend') }}/assets/images/home-page/category/jobcircular.png"
-                                            alt="" srcset="">
-                                    </div>
-                                    <div class="my-home-category-content">
-                                        <h3>জব সার্কুলার</h3>
-                                        <p>সকল প্রতিযোগিতামূলক চাকরি পরীক্ষার সার্কুলার</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <a href="{{ route('front.live-questions-solving') }}" class="text-black">
                                 <div class="my-home-category">
                                     <div class="my-home-category-icon">
                                         <img src="{{ asset('frontend') }}/assets/images/home-page/category/questions.png"
                                             alt="" srcset="">
                                     </div>
                                     <div class="my-home-category-content">
-                                        <h3>প্রশ্নের লাইভ সমাধান</h3>
-                                        <p>প্রতিযোগিতামূলক পরীক্ষার ব্যাখ্যাসহ লাইভ সমাধান</p>
+                                        <h3>ওয়েবসাইট / অ্যাপ / ফেসবুক / ইউটিউব </h3>
+                                        <p>সামাজিক যোগাযোগ মাধ্যমে আপনাদের জন্য আমরা</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <a href="{{ route('front.about-us') }}" class="text-black">
+                                <div class="my-home-category">
+                                    <div class="my-home-category-icon">
+                                        <img src="{{ asset('frontend') }}/assets/images/home-page/category/media.png"
+                                            alt="" srcset="">
+                                    </div>
+                                    <div class="my-home-category-content">
+                                        <h3>বিদ্যাবাড়ি পরিবার</h3>
+                                        <p>আমাদের কর্মপরিধি, ফটোগ্যালারি ও আমাদের সম্পর্কে</p>
                                     </div>
                                 </div>
                             </a>
@@ -319,40 +303,39 @@
             <div class="container py-4">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">দেশসেরা স্কিল ডেভেলপমেন্ট <br>
-                            <span class="">প্লাটফর্ম</span>
+                        <h2 class="fw-bold">একটি ঘর; আছে সব আয়োজন! <br>
                         </h2>
-                        <p class="text-white">
-                            প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                            চ্চতায়।
-                        </p>
                     </div>
                 </div>
                 <div class="home-services-area">
                     <div class="row">
                         <div class="col-md-6">
+                            <a href="{{ route('front.all-courses') }}">
                             <div class="my-home-service">
                                 <div class="my-home-service-icon">
                                     <img src="{{ asset('frontend') }}/assets/images/home-page/our-service/job.png"
                                         alt="" srcset="">
                                 </div>
                                 <div class="my-home-service-content">
-                                    <h3>চাকরির প্রস্তুতি </h3>
-                                    <p>প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                    <h3>চাকরির প্রস্তুতি সংক্রান্ত</h3>
+                                    <p>চাকরির প্রস্তুতি সংক্রান্ত সবকিছু পেতে এখানে ক্লিক করুন</p>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="col-md-6">
+                            <a href="{{ route('front.category-courses', ['slug' => 'আইটি-কোর্স']) }}">
                             <div class="my-home-service">
                                 <div class="my-home-service-icon">
                                     <img src="{{ asset('frontend') }}/assets/images/home-page/our-service/Group 1000007140.png"
                                         alt="" srcset="">
                                 </div>
                                 <div class="my-home-service-content">
-                                    <h3>আইটি স্কিল</h3>
-                                    <p>প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                    <h3>আইটি কোর্স সমূহ</h3>
+                                    <p>আইটি কোর্স সংক্রান্ত সবকিছু পেতে এখানে ক্লিক করুন</p>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="col-md-6">
                             <a href="{{ route('front.all-exams') }}">
@@ -362,8 +345,8 @@
                                             alt="" srcset="">
                                     </div>
                                     <div class="my-home-service-content">
-                                        <h3>পরীক্ষা</h3>
-                                        <p>প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                        <h3>ALL EXAMS</h3>
+                                        <p>চাকরি পরীক্ষা, বাছাইকৃত নির্ভুল প্রশ্ন, ব্যখ্যাসহ উত্তর</p>
                                     </div>
                                 </div>
                             </a>
@@ -376,8 +359,8 @@
                                             alt="" srcset="">
                                     </div>
                                     <div class="my-home-service-content">
-                                        <h3>বইবাড়ি</h3>
-                                        <p>প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                        <h3>নেক্সটপেজ (বইসমূহ)</h3>
+                                        <p>প্রতিযোগিতামূলক পরীক্ষা সহ সব ধরনের বই পেতে</p>
                                     </div>
                                 </div>
                             </a>
@@ -392,11 +375,10 @@
             <div class="container">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">আমাদের <span>কোর্সসমূহ</span>
+                        <h2 class="fw-bold">চলমান <span>কোর্স সমূহ!</span>
                         </h2>
                         <p class="text-muted">
-                            প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                            চ্চতায়।
+                           নিচের তালিকা থেকে আপনার কোর্সটি বেছে নিন।
                         </p>
                     </div>
                 </div>
@@ -413,7 +395,7 @@
                                             </div>
                                             <div class="my-course-category-content">
                                                 <h3>{{ $courseCategory->name }} </h3>
-                                                <p>প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                                <p>{!! $courseCategory->note !!}</p>
                                             </div>
                                         </div>
                                     </a>
@@ -426,7 +408,7 @@
                                             </div>
                                             <div class="my-course-category-content">
                                                 <h3>{{ $courseCategory->name }} </h3>
-                                                <p>প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                                <p>{!! $courseCategory->note !!}</p>
                                             </div>
                                         </div>
                                     </a>
@@ -458,10 +440,7 @@
                     <div class="title-area text-center">
                         <h2 class="fw-bold">আমাদের <span class="">সেবা সমূহ</span>
                         </h2>
-                        <p class="text-muted">
-                            প্রতিযোগিতামূলক এই জব মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                            উচ্চতায়।
-                        </p>
+
                     </div>
                     <div class="our-story-event-area py-4">
                         <div class="row g-3 g-lg-4">
@@ -501,7 +480,7 @@
                             <div class="col-md-6">
                                 <div class="our-story-content-area">
                                     <h3>আমাদের
-                                        <span class=""> সফলতার গল্প </span>
+                                        <span class=""> সাফল্য! </span>
                                     </h3>
                                     <p>বর্তমানে দেশে শিক্ষিত বেকার প্রায় ২৬ লাখ। এর সাথে প্রতি বছরই নতুন আরো দুই
                                         লক্ষ
@@ -514,19 +493,19 @@
                                         অনলাইনে
                                         যে যেমন পারছে পড়াচ্ছে। এদের মধ্যে ২০১৯ সালের ___তারিখে দেশের লাখ লাখ চাকরি
                                         প্রত্যাশী প্রার্থীদের জন্য দেশের ১ম চাকরি প্রস্তুতির অনলাইন প্ল্যাটফর্ম
-                                        “বিদ্যাবাড়ি” প্রতিষ্ঠত হয়। শুরু থেকেই প্রতিষ্ঠানটি পরিচালনায় রয়েছেন জনাব এম
+                                        “বিদ্যাবাড়ি” প্রতিষ্ঠিত হয়। শুরু থেকেই প্রতিষ্ঠানটি পরিচালনায় রয়েছেন জনাব এম
                                         আই
                                         প্রধান মুকুল স্যারের নেতৃত্বে একদল বিসিএস ক্যাডার ও নন-ক্যাডার দক্ষ ও অভীজ্ঞ
-                                        একদল শিক্ষক।
+                                        শিক্ষকবৃন্দ।
                                         এই মুহূর্তে রাজধানী ঢাকাসহ দেশের আনাচে-কানাচে ছড়িয়ে থাকা লাখ লাখ চাকরি
                                         প্রত্যাশীদের ভালো ক্যারিয়ারের প্রস্তুতির জন্য অনলাইনই বড় ভরসার জায়গা।
                                         অনলাইনে
                                         যে যেমন পারছে পড়াচ্ছে। এদের মধ্যে ২০১৯ সালের ___তারিখে দেশের লাখ লাখ চাকরি
                                         প্রত্যাশী প্রার্থীদের জন্য দেশের ১ম চাকরি প্রস্তুতির অনলাইন প্ল্যাটফর্ম
-                                        “বিদ্যাবাড়ি” প্রতিষ্ঠত হয়। শুরু থেকেই প্রতিষ্ঠানটি পরিচালনায় রয়েছেন জনাব এম
+                                        “বিদ্যাবাড়ি” প্রতিষ্ঠিত হয়। শুরু থেকেই প্রতিষ্ঠানটি পরিচালনায় রয়েছেন জনাব এম
                                         আই
                                         প্রধান মুকুল স্যারের নেতৃত্বে একদল বিসিএস ক্যাডার ও নন-ক্যাডার দক্ষ ও অভীজ্ঞ
-                                        একদল শিক্ষক।
+                                        শিক্ষকবৃন্দ।
                                     </p>
                                     {{-- <p>{!! $siteSettings->our_speech_text !!}</p> --}}
                                 </div>
@@ -575,9 +554,8 @@
             <div class="container">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">বিদ্যাবাড়িই দেশ সেরা <span> ই-লার্নিং প্লাটফর্ম</span><br>
-                            দেখে নেয়া যাক কি বলছে<br>
-                            <span> আমাদের শিক্ষার্থীরা</span>
+                        <h2 class="fw-bold">আমাদের শিক্ষার্থীরা <span> যা বলছে...</span><br>
+
                         </h2>
                     </div>
                 </div>

@@ -26,12 +26,8 @@
         <div class="container">
             <div class="row">
                 <div class="title-area text-center">
-                    <h1 class="fw-bold">আমাদের <span class="text-brand">এক্সাম</span> সমূহ</h1>
-                    <p class="text-muted">
-                        প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                        চ্চতায়। আপনার জন্য <br />প্রয়োজনীয় সব ক্যাটাগরিই রয়েছে এখানে।
-                        বেছে নিন আপনার সবচেয়ে পছন্দের কোর্সটি।
-                    </p>
+                    <h1 class="fw-bold"> <span class="text-brand">EXAM </span> COURSE!</h1>
+                    <br>
                 </div>
             </div>
             <div class="home-course-category-area">

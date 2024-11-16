@@ -12,6 +12,7 @@
         <meta property="keywords" content="@yield('meta-keywords')" />
         {{-- <link rel="canonical" href="@yield('meta-url')" /> --}}
         <link rel="canonical" href="{{ request()->url() }}" />
+        <link rel="icon" type="image/png" href="{{ asset('/') }}frontend/logo/favicon/favicon-32x32.png">
         <!-- for facebook -->
         <meta property="og:url" content="{{ request()->url() }}" />
         <meta property="og:description" content="" />
@@ -95,6 +96,18 @@
         <!-- End Google Tag Manager (noscript) -->
 
         @stack('script')
+    <script>
+        const cachedData = localStorage.getItem('logData');
+            if (cachedData) {
+                // Use cached data
+            } else {
+                fetch('/log?format=json&hasfast=true&authuser=0').then(response => {
+                    response.json().then(data => {
+                        localStorage.setItem('logData', JSON.stringify(data));
+                    });
+                });
+            }
+    </script>
 
         @if(Session::has('success'))
             <script>

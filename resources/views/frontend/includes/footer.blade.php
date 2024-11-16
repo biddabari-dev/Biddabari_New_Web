@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="download-hint">
-                    <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
-                        শেখা শুরু করুন আজ থেকেই</p>
+                    <p>ডাউনলোড করুন বিদ্যাবাড়ি অ্যাপ,<br>
+                        শুরু করুন এখান থেকেই</p>
                 </div>
                 <div class="download-store-path">
                     <div class="app-store">

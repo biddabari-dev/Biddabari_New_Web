@@ -35,7 +35,7 @@ class FrontendViewController extends Controller
         $this->products = Product::whereStatus(1)->select('id','product_author_id', 'stock_amount','title','image','price', 'discount_amount', 'discount_type', 'discount_start_date', 'discount_end_date', 'slug')->latest()->paginate(8);
 
         $product_sliders = Advertisement::whereStatus(1)->whereContentType('book')->select('id', 'title', 'content_type', 'description','link','image')->take(6)->get();
-        
+
         foreach ($this->products as $product)
         {
             if (!empty($product->discount_start_date) && !empty($product->discount_end_date))
