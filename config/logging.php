@@ -2,7 +2,6 @@
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
-use Monolog\Logger;
 
 return [
 
@@ -17,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'hourly'),
+    'default' => env('LOG_CHANNEL', 'stack'),
 
     /*
     |--------------------------------------------------------------------------
@@ -50,20 +49,7 @@ return [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
-            'days' => 7,
-        ],
-
-        'hourly' => [
-            'driver' => 'custom',
-            'via' => function ($app) {
-                $hourlyLog = new Logger('hourly');
-                $hourlyLog->pushHandler(new StreamHandler(
-                    storage_path('logs/laravel-' . date('Y-m-d-H') . '.log'),
-                    Logger::DEBUG
-                ));
-                return $hourlyLog;
-            },
-            'level' => 'debug',
+            'days' => 1,
         ],
 
         'slack' => [
