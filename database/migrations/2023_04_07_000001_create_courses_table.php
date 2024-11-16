@@ -47,10 +47,7 @@ return new class extends Migration {
             $table->tinyInteger('total_written_exam')->nullable();
             $table->string('total_class')->nullable();
             $table->string('total_hours')->nullable();
-            $table
-                ->tinyInteger('is_featured')
-                ->default(0)
-                ->nullable();
+            $table->tinyInteger('is_featured')->default(0)->nullable();
             $table
                 ->tinyInteger('status')
                 ->default(1)

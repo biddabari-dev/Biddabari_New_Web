@@ -454,7 +454,7 @@
                                                 <div class="instructor-area mb-3">
                                                     <div class="instructor-img d-flex">
                                                         <a href="{{ route('front.instructor-details', ['id' => $teacher->id, 'slug' => str_replace(' ', '-', $teacher->name)]) }}">
-                                                            <img src="{{ !empty($teacher->image) ? asset($teacher->image) : asset('frontend/man.png') }}" alt="instructor"/>
+                                                            <img src="{{ !empty($teacher->image) ? static_asset($teacher->image) : asset('frontend/man.png') }}" alt="instructor"/>
                                                         </a>
                                                         <div class="instructor-text">
                                                             <h6>
@@ -551,7 +551,7 @@
                                                 <div class="instructor-area mb-3">
                                                     <div class="instructor-img d-flex">
                                                         <a href="{{ route('front.instructor-details', ['id' => $teacher->id, 'slug' => str_replace(' ', '-', $teacher->name)]) }}">
-                                                            <img src="{{ !empty($teacher->image) ? asset($teacher->image) : asset('frontend/man.png') }}" alt="instructor"/>
+                                                            <img src="{{ !empty($teacher->image) ? static_asset($teacher->image) : asset('frontend/man.png') }}" alt="instructor"/>
                                                         </a>
                                                         <div class="instructor-text">
                                                             <h6>{{ isset($teacher->first_name) ? $teacher->first_name . ' ' . $teacher->last_name : $teacher->user->name }}</h6>

@@ -160,6 +160,11 @@ img {
     margin-bottom: 30px;
 }
 
+.form-control::placeholder {
+    color: #9c9c9c;
+    opacity: 1;
+}
+
 .border-radius-5 {
     border-radius: 5px !important;
 }

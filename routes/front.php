@@ -110,7 +110,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/gallery', [FrontViewTwoController::class, 'GalleryImageView'])->name('all-gallery-images');
         Route::get('/gallery-images/{id}/{title?}', [FrontViewTwoController::class, 'GalleryImages'])->name('show-gallery-images');
 
-        Route::get('/product-details/{slug?}', [FrontendViewController::class, 'productDetails'])->name('product-details');
+        Route::get('/product-details/{slug}', [FrontendViewController::class, 'productDetails'])->name('product-details');
     });
 
     Route::get('/check-coupon', [BasicViewController::class, 'checkCoupon'])->name('check-coupon');

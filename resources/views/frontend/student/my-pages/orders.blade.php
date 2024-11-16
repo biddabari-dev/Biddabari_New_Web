@@ -15,7 +15,7 @@
     <section class="pb-3">
         <div class="">
             <div class="row custom_col_12">
-                <div class="section-title text-center ">
+                <div class="section-title text-center mb-2">
                     <h2>আমার অর্ডার সমূহ</h2>
                     <hr class="w-25 mx-auto bg-danger"/>
                 </div>

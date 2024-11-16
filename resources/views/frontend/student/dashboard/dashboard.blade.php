@@ -1,7 +1,7 @@
 @extends('frontend.student-master')
 
 @section('student-body')
-    <section class="pb-5">
+    <section class="py-lg-3">
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center mb-4">

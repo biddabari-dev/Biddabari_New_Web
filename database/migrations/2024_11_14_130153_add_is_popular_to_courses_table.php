@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('batch_exams', function (Blueprint $table) {
-            $table->string('admission_last_date')->nullable();
+        Schema::table('courses', function (Blueprint $table) {
+            $table->tinyInteger('is_popular')->default(0)->nullable();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('batch_exams', function (Blueprint $table) {
-            //
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropColumn('is_popular');
         });
     }
 };

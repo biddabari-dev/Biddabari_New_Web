@@ -50,6 +50,7 @@ class Course extends Model
         'total_file',
         'total_written_exam',
         'is_featured',
+        'is_popular',
         'slug',
         'status',
         'is_approved',
@@ -188,6 +189,7 @@ class Course extends Model
         self::$course->status                   = $request->status == 'on' ? 1 : 0;
         self::$course->is_paid                  = $request->is_paid == 'on' ? 1 : 0;
         self::$course->is_featured              = $request->is_featured == 'on' ? 1 : 0;
+        self::$course->is_popular              = $request->is_popular == 'on' ? 1 : 0;
         self::$course->show_home_slider         = $request->show_home_slider == 'on' ? 1 : 0;
         self::$course->save();
         self::$course->teachers()->sync($request->teachers_id);

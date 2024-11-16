@@ -83,7 +83,7 @@
                                 </p>
                             </div>
                             <div class="purchase-button">
-                                <a href="" type="button" class="btn btn_warning">এখনই কিনুন</a>
+                                <a href="{{ route('front.view-cart',[$product->id]) }}" type="button" class="btn btn_warning">এখনই কিনুন</a>
                             </div>
                         </div>
                     </div>
