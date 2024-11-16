@@ -22,12 +22,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">সকল <span>নোটিশ</span> সমূহ
+                        <br>
+                        <h2 class="fw-bold">প্রজ্ঞাপন / <span>নোটিশ!</span>
                         </h2>
-                        <p class="text-muted">
-                            প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                            চ্চতায়।
-                        </p>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -94,7 +92,7 @@
     </section>
 </main>
 <!-- Modal Structure -->
-<div id="imageModal" class="modal fade" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+<div id="imageModal" class="modal fade mt-5" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

@@ -111,7 +111,7 @@ class CheckoutController extends Controller
                         return response()->json(['message' => 'You Ordered the course successfully.'], 200);
                     }
 
-                    return redirect()->route('front.student.dashboard')->with('success', 'You Ordered the course successfully.');
+                    return redirect()->route('front.thankyou')->with('success', 'You Ordered the course successfully.');
                 }
 
 
@@ -275,7 +275,7 @@ class CheckoutController extends Controller
                     return response()->json(['message' => 'You Ordered the course successfully.'], 200);
                 }
 
-                return redirect()->route('front.student.dashboard')->with('success', 'You Ordered the course successfully.');
+                return redirect()->route('front.thankyou')->with('success', 'You Ordered the course successfully.');
             }
         } catch (\Exception $exception)
         {
@@ -369,7 +369,7 @@ class CheckoutController extends Controller
                             Log::error('SMS API request failed: ' . $e->getMessage());
                             $responseCode = null;
                         }
-                        return redirect()->route('front.student.dashboard')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
+                        return redirect()->route('front.thankyou')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
                     }
 
                     if (isset($responseCode) && !empty($responseCode))
@@ -388,7 +388,7 @@ class CheckoutController extends Controller
                     if (str()->contains(url()->current(), '/api/'))
                     {   ViewHelper::returEexceptionError('You Ordered the course successfully.');
                     }
-                    return redirect()->route('front.student.dashboard')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
+                    return redirect()->route('front.thankyou')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
                 } elseif ($userCreateAuth['processStatus'] == 'failed')
                 {
                     ViewHelper::returEexceptionError('Something went wrong during payment. Please try again.');
@@ -417,10 +417,6 @@ class CheckoutController extends Controller
             if (!$userCreateAuth['userStatus'])
             {
                 return redirect()->back()->with('error', 'We faced problem during creating your account in our system. Please try again.');
-            }
-            if ($userCreateAuth['message'] == 'failed')
-            {
-                return redirect()->route('front.student.dashboard')->with('error', 'Something went wrong during sending sms to your number. Please Contact with our support.');
             }
             if ($requestData->ordered_for == 'product')
             {
@@ -482,10 +478,10 @@ class CheckoutController extends Controller
                     Log::error('SMS API request failed: ' . $e->getMessage());
                     $responseCode = null;
                 }
-                return redirect()->route('front.student.dashboard')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
+                return redirect()->route('front.thankyou')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
             }
 
-            return redirect()->route('front.student.dashboard')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
+            return redirect()->route('front.thankyou')->with('success', 'You Ordered the '.$requestData->model_name.' successfully.');
         } elseif ($userCreateAuth['processStatus'] == 'failed')
         {
             return redirect()->back()->with('error', 'Something went wrong during payment. Please try again.');

@@ -24,8 +24,7 @@
 
     <!-- HELPER CSS -->
     <link href="{{ asset('/') }}backend/assets-old/css/helper.css" rel="stylesheet" />
-
-    <link rel="icon" type="image/png" href="{{ asset('/') }}frontend/assets-old/images/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('/') }}frontend/logo/favicon/favicon-32x32.png">
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/news-tinker/style.css">
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/custom-my-mod.css">
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/custom-new-style.css">

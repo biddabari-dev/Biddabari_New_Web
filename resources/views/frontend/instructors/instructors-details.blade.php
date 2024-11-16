@@ -157,7 +157,7 @@
                                                     <div class="col-md-6 col-lg-4 pb-4">
                                                         <div class="teacher-course-area">
                                                             <div class="teacher-course-img w-100">
-                                                                <img src="{{ asset(isset($latestCourse->banner) ? $latestCourse->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="" srcset="">
+                                                                <img src="{{ static_asset(isset($latestCourse->banner) ? $latestCourse->banner : 'frontend/assets/images/exam-page/bankjob-banner.jpg') }}" alt="" srcset="">
                                                             </div>
                                                             <div class="teacher-course-content">
                                                                 <h4>{{ Str::limit($latestCourse->title, 20) }}</h4>

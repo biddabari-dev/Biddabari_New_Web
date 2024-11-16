@@ -25,12 +25,8 @@ Biddabari - Free Service
         style="background-image: url('{{ asset('frontend') }}/assets/images/free-service/free-service-bg.jpg')">
         <div class="container">
             <div class="title-area text-center">
-                <h2 class="fw-bold">আমাদের <span class="">ফ্রি সার্ভিস</span></h2>
-                <p class="text-muted">
-                    প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                    চ্চতায়। আপনার জন্য <br />প্রয়োজনীয় সব ক্যাটাগরিই রয়েছে এখানে।
-                    বেছে নিন আপনার সবচেয়ে পছন্দের কোর্সটি।
-                </p>
+                <h2 class="fw-bold"><span class=""> ফ্রি </span>শিখুন!</h2>
+
             </div>
         </div>
         <div class="container">

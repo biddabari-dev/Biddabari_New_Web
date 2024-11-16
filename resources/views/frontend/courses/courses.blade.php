@@ -51,10 +51,7 @@ Biddabari - All Course
                     <div class="title-area text-center">
                         <h2 class="fw-bold">আমাদের <span>কোর্স</span>
                         </h2>
-                        <p class="text-muted">
-                            প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                            চ্চতায়।
-                        </p>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -71,7 +68,7 @@ Biddabari - All Course
                             </div>
                             <div class="my-course-category-content">
                                 <h3>{{ $courseCategory->name }} </h3>
-                                <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                <p>{!! $courseCategory->note !!}</p>
                             </div>
                         </div>
                         </a>
@@ -83,7 +80,7 @@ Biddabari - All Course
                             </div>
                             <div class="my-course-category-content">
                                 <h3>{{ $courseCategory->name }} </h3>
-                                <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
+                                <p>{!! $courseCategory->note !!}</p>
                             </div>
                         </div>
                         </a>
@@ -114,7 +111,7 @@ Biddabari - All Course
                     </svg>
                 </div>
                 <div class="see-more-button text-center mt-3">
-                    <button id="load-more" type="button" class="btn btn_warning">আরো দেখুন</button>
+                    <button id="load-more" type="button" class="btn btn_warning"> See More...</button>
                 </div>
             </div>
         </div>

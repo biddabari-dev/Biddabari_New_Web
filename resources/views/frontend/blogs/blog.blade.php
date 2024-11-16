@@ -9,12 +9,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="title-area text-center">
-                            <h2 class="fw-bold">আমাদের <span class="">ব্লগ সমূহ</span> </h2>
-                            <p class="text-muted">
-                                প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                                চ্চতায়। আপনার জন্য <br />প্রয়োজনীয় সব ক্যাটাগরিই রয়েছে এখানে।
-                                বেছে নিন আপনার সবচেয়ে পছন্দের কোর্সটি।
-                            </p>
+                            <h2 class="fw-bold">ক্যারিয়ার সংক্রান্ত <span class="">ব্লগিং!</span> </h2>
+
                         </div>
                     </div>
                 </div>
