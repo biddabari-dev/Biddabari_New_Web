@@ -16,6 +16,7 @@ use App\Models\Backend\ExamManagement\AssignmentFile;
 use App\Models\Backend\ExamManagement\Exam;
 use App\Models\Backend\ExamManagement\ExamCategory;
 use App\Models\Backend\ExamManagement\ExamResult;
+use App\Models\Backend\OrderManagement\ParentOrder;
 use App\Models\Backend\QuestionManagement\QuestionStore;
 use App\Models\Backend\QuestionManagement\QuestionTopic;
 use Illuminate\Http\Request;
@@ -269,18 +270,22 @@ class ExamController extends Controller
                 $courseSectionContent->select('id',  'course_section_id', 'exam_total_questions','exam_per_question_mark', 'written_total_questions', 'exam_negative_mark')->first();
             },
                 'user'])->get();
+
         } elseif ($reqForm == 'batch_exam') {
             $this->examResults = BatchExamResult::where(['batch_exam_section_content_id' => $contentId])->orderBy('result_mark', 'DESC')->orderBy('required_time', 'ASC')->with(['batchExamSectionContent' => function($batchExamSectionContent) {
                 $batchExamSectionContent->select('id', 'batch_exam_section_id', 'exam_total_questions','exam_per_question_mark', 'written_total_questions', 'exam_negative_mark')->first();
             },
                 'user'])->get();
+
         } elseif ($reqForm == 'course_class_exam')
         {
             $this->examResults = CourseClassExamResult::where(['course_section_content_id' => $contentId])->orderBy('result_mark', 'DESC')->orderBy('required_time', 'ASC')->with(['courseSectionContent' => function($courseSectionContent) {
                 $courseSectionContent->select('id', 'course_section_id','class_xm_mark', 'class_xm_duration_in_minutes')->first();
             },
                 'user'])->get();
+
         }
+
         return view('backend.exam-management.xm-ranking.index', [
             'examResults'   => $this->examResults,
             'req_form'       => $reqForm
@@ -293,21 +298,31 @@ class ExamController extends Controller
         {
             $content = CourseSectionContent::find($contentId);
             $baseType = $content->courseSection->course;
-            $this->enrolledUsers = Course::find($baseType->id)->students;
+            $students = [];
+            $students =  ParentOrder::where('parent_model_id', $baseType->id)->with('user')->get();
+            $this->enrolledUsers = $students;
+            //$this->enrolledUsers = Course::find($baseType->id)->students;
             $this->xmParticipateUsers = CourseExamResult::where(['course_section_content_id' => $contentId])->get(['id', 'user_id', 'course_section_content_id']);
         } elseif ($reqForm == 'batch_exam')
         {
             $content = BatchExamSectionContent::find($contentId);
             $baseType = $content->batchExamSection->batchExam;
-            $this->enrolledUsers = BatchExam::find($baseType->id)->students;
+            $students = [];
+            $students =  ParentOrder::where('parent_model_id', $baseType->id)->with('user')->get();
+            $this->enrolledUsers = $students;
+            //$this->enrolledUsers = BatchExam::find($baseType->id)->students;
             $this->xmParticipateUsers = BatchExamResult::where(['batch_exam_section_content_id' => $contentId])->get(['id', 'user_id', 'batch_exam_section_content_id']);
         } elseif ($reqForm == 'course_class_exam')
         {
             $content = CourseSectionContent::find($contentId);
             $baseType = $content->courseSection->course;
-            $this->enrolledUsers = Course::find($baseType->id)->students;
+            $students = [];
+            $students =  ParentOrder::where('parent_model_id', $baseType->id)->with('user')->get();
+            $this->enrolledUsers = $students;
+            //$this->enrolledUsers = Course::find($baseType->id)->students;
             $this->xmParticipateUsers = CourseClassExamResult::where(['course_section_content_id' => $contentId])->get(['id', 'user_id', 'course_section_content_id']);
         }
+
 
         foreach ($this->enrolledUsers as $enrolledUser)
         {
@@ -341,6 +356,8 @@ class ExamController extends Controller
         ];
         return view('backend.exam-management.xm-attendance.index', $data);
     }
+
+
 
 
 }
