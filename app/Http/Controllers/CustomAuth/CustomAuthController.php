@@ -305,6 +305,11 @@ class CustomAuthController extends Controller
 
     public function verifyPassResetOtp(Request $request)
     {
+        $request->validate([
+            'otp' => 'required|numeric',
+            'password' => 'required|string|min:6',
+        ]);
+
         if (isset($request->enc_otp))
         {
             if ($request->otp == base64_decode($request->enc_otp))

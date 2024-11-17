@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
-    <!-- META DATA --> 
+    <!-- META DATA -->
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
@@ -11,10 +11,10 @@
     <meta name="keywords" content="">
     <meta name="google" content="nositelinkssearchbox">
     <meta property="og:image"              content="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/additional-features-management/site-settings/logo-1717397688866.png" />
-    <meta property="og:image:width"        content="200"/> 
-    <meta property="og:image:height"       content="286"/> 
+    <meta property="og:image:width"        content="200"/>
+    <meta property="og:image:height"       content="286"/>
     <!-- TITLE -->
-    <title>BiddaBari - Forgot Password</title>
+    <title>Forgot Password - BiddaBari</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- FAVICON -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/') }}frontend/logo/favicon/apple-icon-57x57.png">
@@ -75,7 +75,7 @@
                     <form class="login100-form validate-form auth-div" id="authModalForm" action="{{ route('send-password-reset-otp') }}" method="post">
                         @csrf
 									<h1 class="login100-form-title">
-										Login
+                                        Forgot Password
                                     </h1>
                         <div>
                             <p style="text-align: justify">Forgot your password? No problem. Just let us know your <b>Mobile Number</b> and we will send you an OTP that will allow you to choose a new one.</p>
