@@ -31,7 +31,7 @@
             </div>
             <div class="notice-category-area">
                 <div class="row g-4">
-                    <div class="col-md-6 col-lg-4">
+                    {{-- <div class="col-md-6 col-lg-4">
                         <div class="my-notice-category">
                             <div class="my-notice-category-icon">
                                 <i class="fa-solid fa-circle-exclamation"></i>
@@ -66,7 +66,7 @@
                                 <p>প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

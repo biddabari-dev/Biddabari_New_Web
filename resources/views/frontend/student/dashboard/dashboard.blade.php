@@ -89,12 +89,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($orders as $order)
                                     @if ($order->ordered_for != 'product')
                                         <tr>
                                             <td class="custome_td">
-                                                {{ $order->ordered_for == 'course' ? $order->course->title : '' }}
-                                                {{ $order->ordered_for == 'batch_exam' ? $order->batchExam->title : '' }}
+                                                {{ $order->ordered_for == 'course' ? $order->course->title ?? '' : '' }}
+                                                {{ $order->ordered_for == 'batch_exam' ? $order->batchExam->title ?? '' : '' }}
                                             </td>
                                             <td>
                                                 {{ $order->ordered_for == 'course' ? 'Course' : '' }}

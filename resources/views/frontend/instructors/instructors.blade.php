@@ -13,10 +13,7 @@
                         <h1 class="fw-bold">Meet our top
                             <span class="">Instructor</span>
                         </h1>
-                        <p class="text-muted">
-                            প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                            চ্চতায়।
-                        </p>
+                        <br>
                     </div>
                 </div>
             </div>

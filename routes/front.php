@@ -98,7 +98,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/job-circular-details/{id}/{slug?}', [FrontendViewController::class, 'jobCircularDetail'])->name('job-circular-details');
         Route::get('/instructor', [FrontendViewController::class, 'instructors'])->name('instructors');
         Route::get('/instructor-details/{id}/{slug?}', [FrontendViewController::class, 'instructorDetails'])->name('instructor-details');
-
+ 
         //    basic page routes
         Route::get('/about-us', [BasicViewController::class, 'aboutUs'])->name('about-us');
         Route::get('/terms-and-conditions', [BasicViewController::class, 'termsConditions'])->name('terms-conditions');

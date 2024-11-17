@@ -1,6 +1,6 @@
 @extends('frontend.master')
 
-@section('title') {{ $seo->meta_keywords ?? ''}}@endsection
+@section('title') {{ $seo->meta_keywords ?? $product->title }}@endsection
 @section('meta-description') {{ $seo->meta_description ?? Str::limit(strip_tags($product->description), 155) }} @endsection
 @section('og-image'){{ $product->image }} @endsection
 
@@ -14,7 +14,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="book-image-area">
                             <div class="book-image d-flex">
-                                <img src="{{ static_asset(isset($product->image) ? $product->image : 'frontend/logo/biddabari-card-logo.jpg') }}" alt="package-image"
+                                <img style="height: auto;" src="{{ static_asset(isset($product->image) ? $product->image : 'frontend/logo/biddabari-card-logo.jpg') }}" alt="package-image"
                                     srcset="" />
                                 <div class="see-more-btn">
                                     <a href="javascript:void(0)" data-id="{{ $product->id }}" target="_blank" type="button" class="btn btn_warning show-pdf">একটু পরে দেখুন</a>
@@ -68,7 +68,6 @@
 
                             <div class="book-by">
                                 <p>সম্পাদনা : Biddabari</p>
-                                <p>পৃষ্ঠা : 870 (Opset white pages)</p>
                             </div>
                             <div class="book-description">
                                 <h4>Description</h4>

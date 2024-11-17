@@ -81,7 +81,7 @@ class FrontendViewController extends Controller
             $this->seos = Seo::where(['status' => 1, 'seo_for' => 'product', 'parent_model_id' => $this->product->id])->first();
         }
 
-        $latestProducts = Product::with('productAuthor')->where(['status' => 1])->select('id', 'title', 'image', 'status', 'slug', 'price','product_author_id','discount_amount','discount_type')->latest()->take(4)->get();
+        $latestProducts = Product::with('productAuthor')->where(['status' => 1])->select('id', 'product_author_id', 'title', 'image', 'featured_pdf', 'pdf', 'slug', 'description','price','discount_amount','discount_start_date','discount_end_date','about','specification','other_details' , 'stock_amount', 'is_featured', 'status')->latest()->take(4)->get();
 
         $this->data = [
             'product'   => $this->product,
@@ -273,7 +273,7 @@ class FrontendViewController extends Controller
     {
         $this->blogCategories = BlogCategory::whereStatus(1)->orderBy('order', 'ASC')->select('id', 'name', 'parent_id', 'image', 'slug')->get();
 
-        $this_month_blogs = Blog::with('user')->whereStatus(1)->where('is_featured', 1)->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))
+         $this_month_blogs = Blog::with('user')->whereStatus(1)->where('is_featured', 1)->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))
             ->with(['blogCategory' => function($blogCategory) {
                 $blogCategory->select('id', 'name', 'slug');
             }])->take(2) // Limit to 2 blogs
@@ -281,11 +281,11 @@ class FrontendViewController extends Controller
 
         $this->blogs = Blog::with('user')->whereStatus(1)->with(['blogCategory' => function($blogCategory){
                 $blogCategory->select('id', 'name', 'slug')->get();
-            }])->latest()->take(5)->get();
+            }])->latest()->paginate(10);
 
         $popular_blogs = Blog::with('user')->whereStatus(1)->orderBy('hit_count','DESC')->with(['blogCategory' => function($blogCategory){
                 $blogCategory->select('id', 'name', 'slug')->get();
-            }])->take(2)->get();
+            }])->take(3)->get();
 
         $this->data = [
             'blogCategories'    => $this->blogCategories,
