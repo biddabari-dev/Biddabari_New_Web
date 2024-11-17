@@ -73,19 +73,19 @@
                         <div class="social-media-icon">
                             <div class="facebook-icon">
                                 <a href="https://www.facebook.com/biddaabari" target="_blank"><i
-                                        class="fa-brands fa-square-facebook"></i></a>
+                                        class="fa-brands fa-facebook"></i></a>
                             </div>
                             <div class="youtube-icon">
                                 </a><a href="https://www.youtube.com/@biddabari" target="_blank"><i
-                                        class="fa-brands fa-square-youtube"></i></a>
+                                        class="fa-brands fa-youtube"></i></a>
                             </div>
                             <div class="instagram-icon">
                                 <a href="https://www.instagram.com/biddabari.insta" target="_blank"><i
-                                        class="fa-brands fa-square-instagram"></i></a>
+                                        class="fa-brands fa-instagram"></i></a>
                             </div>
                             <div class="linkedin-icon">
                                 </a><a href="https://www.linkedin.com/in/biddabari" target="_blank"><i
-                                        class="fa-brands fa-square-linkedin"></i></a>
+                                        class="fa-brands fa-linkedin"></i></a>
                             </div>
                         </div>
                     </div>

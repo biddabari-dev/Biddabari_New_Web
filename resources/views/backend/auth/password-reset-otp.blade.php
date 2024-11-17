@@ -6,12 +6,12 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Noa - Laravel Bootstrap 5 Admin & Dashboard Template">
-    <meta name="author" content="Spruko Technologies Private Limited">
-    <meta name="keywords" content="laravel admin template, bootstrap admin template, admin dashboard template, admin dashboard, admin template, admin, bootstrap 5, laravel admin, laravel admin dashboard template, laravel ui template, laravel admin panel, admin panel, laravel admin dashboard, laravel template, admin ui dashboard">
+    <meta name="description" content="Reset your password quickly and securely. Enter the OTP sent to your mobile, create a new password, and regain access to your account.">
+    <meta name="author" content="BiddaBari">
+
 
     <!-- TITLE -->
-    <title>BiddaBari - Admin Login</title>
+    <title>Reset Password - Securely Update Your Account</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- FAVICON -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/') }}frontend/logo/favicon/apple-icon-57x57.png">
@@ -77,7 +77,7 @@
 									<span class="login100-form-title">
 										Reset Password
 									</span>
-                        <div class="wrap-input100 validate-input " data-order="1" data-bs-validate = "OTP is required: 1234">
+                        {{--<div class="wrap-input100 validate-input " data-order="1" data-bs-validate = "OTP is required: 1234">
                             <input class="input100" id="" type="number" name="otp" placeholder="Enter OTP">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
@@ -89,10 +89,36 @@
                             <input class="input100" type="password" name="password" placeholder="New Password">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
-											<i class="fa-solid fa-lock" aria-hidden="true"></i>
-										</span>
+							<i class="fa-solid fa-lock" aria-hidden="true"></i></span>
                             @if($errors->has('password')) <span class="text-danger">{{ $errors->first('password') }}</span> @endif
+                        </div>--}}
+
+                        <div class="wrap-input100 validate-input " data-order="3" data-bs-validate = "OTP is required">
+                            <div class="position-relative d-flex align-items-center">
+                                <i class="fa-solid fa-message input-icon me-2"></i>
+                                <input type="number" name="otp" class="form-control icon-input @error('otp') is-invalid @enderror"
+                                       id="otp" placeholder="Enter OTP" style="flex: 1;">
+                            </div>
+                            @error('otp')
+                            <span class="invalid-feedback d-block">{{ $message }}</span>
+                            @enderror
                         </div>
+
+                        <div class="wrap-input100 validate-input " data-order="3" data-bs-validate = "Password is required">
+                            <div class="position-relative d-flex align-items-center">
+                                <i class="fa-solid fa-lock input-icon me-2"></i>
+                                <input type="password" name="password" class="form-control icon-input @error('password') is-invalid @enderror"
+                                       id="password" placeholder="New Password" style="flex: 1;">
+                                <span class="view-icon btn btn-sm border show-pass ms-2 bg-" style="padding: 7px;" onclick="togglePasswordVisibility()">
+                                                            👁️
+                                                        </span>
+                                {{-- <span id="viewPass" class="btn btn-sm border show-pass ms-2" style="padding: 7px;"><i class="fa-solid fa-eye"></i></span> --}}
+                            </div>
+                            @error('password')
+                            <span class="invalid-feedback d-block">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                         <div class="mt-3">
                             <input type="submit" class="btn btn-success float-end mb-3" value="Reset Password">
                         </div>
@@ -190,7 +216,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById("password");
+        const icon = document.querySelector(".view-icon");
 
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.textContent = "👀"; // Change icon to "hide" icon
+        } else {
+            passwordField.type = "password";
+            icon.textContent = "👁️"; // Change icon to "view" icon
+        }
+    }
+</script>
 <script>
     $.ajaxSetup({
         headers: {

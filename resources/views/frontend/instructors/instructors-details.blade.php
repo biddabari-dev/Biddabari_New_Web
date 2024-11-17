@@ -9,7 +9,7 @@
                 <div class="row g-4 align-items-end">
                     <div class="col-md-3">
                         <div class="teacher-image">
-                            <img src="{{ !empty($teacher->image) ? asset($teacher->image) : asset('frontend/man.png') }}" alt="" srcset="">
+                            <img src="{{ !empty($teacher->image) ? static_asset($teacher->image) : asset('frontend/man.png') }}" alt="" srcset="">
                         </div>
                     </div>
                     <div class="col-md-9">

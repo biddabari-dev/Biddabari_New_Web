@@ -15,8 +15,8 @@
         <link rel="icon" type="image/png" href="{{ asset('/') }}frontend/logo/favicon/favicon-32x32.png">
         <!-- for facebook -->
         <meta property="og:url" content="{{ request()->url() }}" />
-        <meta property="og:description" content="" />
-        <meta property="og:image" content="@yield('og-image')" />
+        <meta property="og:description" content="@yield('meta-description')" />
+        <meta property="og:image" content="{{ asset('/') }}frontend/logo/favicon/favicon-32x32.png" />
         <meta property="og:image:width" content="200" />
         <meta property="og:image:height" content="286" />
         <meta name="facebook-domain-verification" content="g7t7phde3zn27hgjb1iaxlm67f8hdv" />

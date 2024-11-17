@@ -1,8 +1,10 @@
 @extends('frontend.master')
+
+@section('title', 'Log in to Biddabari Online Learning Platform')
+
+@section('meta-description', 'Log in with your mobile number to access resources on Biddabaris online learning platform and start your learning journey today.')
+
 @section('meta-url'){{ request()->url() }}@endsection
-@section('title')
-Biddabari - Login
-@endsection
 
 @section('body')
 
@@ -23,7 +25,7 @@ Biddabari - Login
                             <div class="col-md-6">
                                 <div class="signup-form-area">
 
-                                    <h6>Login with mobile number</h6>
+                                    <h6>Log in with mobile number</h6>
                                     <div class="signup-form">
                                         <form action="{{ route('login') }}" method="POST">
                                             @csrf
@@ -56,13 +58,13 @@ Biddabari - Login
 
                                             <div class="mb-3 form-check">
                                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember_me">
-                                                <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
+                                                <label class="form-check-label" for="exampleCheck1">Keep me logged in</label>
                                             </div>
 
                                             <button type="submit" class="btn btn_warning">Submit</button>
 
                                             <div class="my-3 form-check">
-                                                <span><a href="{{ route('forgot-user-password') }}" class="text-brand">Forget Password?</a></span>
+                                                <span style="color: #aa076b;"><a href="{{ route('forgot-user-password') }}" class="text-brand">Forgotten password?</a></span>
                                             </div>
                                         </form>
 
