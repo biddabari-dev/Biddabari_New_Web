@@ -129,7 +129,7 @@
                                     <p>{!! Str::limit(strip_tags($recent_blog->body), 600) !!}</p>
                                 </div>
                                 <div class="blog-read-button">
-                                    <a href="{{ route('front.blog-details', ['slug' => $popularblog->slug]) }}" type="button" class="btn btn_warning">View
+                                    <a href="{{ route('front.blog-details', ['slug' => $recent_blog->slug]) }}" type="button" class="btn btn_warning">View
                                         Details</a>
                                 </div>
                             </div>

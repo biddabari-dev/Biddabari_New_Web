@@ -7,21 +7,25 @@ Biddabari - Free Service
 @section('body')
 <main>
 
-    <section id="Free-service-banner" class="background-res-free-banner background-ats py-2 py-mb-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
+    <section id="Free-service-banner" class="background-res-free-banner background-ats py-2 py-md-5"
+        style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/Background-banner.webp')">
         <div class="container">
-            @foreach($free_service_slider as $slider)
-            <div class="free-course-banner">
-                {{-- <div class="free-course-banner-image">
-                    <a href=""><img src="{{ asset('frontend') }}/assets/images/free-service/banner-1.webp" alt="Image 1"></a>
-                </div> --}}
-                <a href="{{ $slider->link }}">
-                    <img src="{{ $slider->image ? static_asset($slider->image) : asset('frontend/assets/images/exam-page/banner-1.webp') }}"
-                         alt="Image 1"
-                         style="border-radius: 20px;">
-                </a>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="free-course-banner">
+                        @foreach($free_service_slider as $slider)
+                            <div class="free-course-banner-image">
+                                <a href="{{ $slider->link }}">
+                                    <img src="{{ $slider->image ? static_asset($slider->image) : asset('frontend/assets/images/our-courses/banner-4.jpeg') }}"
+                                         alt="Image 1"
+                                         style="border-radius: 20px;">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-            @endforeach
         </div>
     </section>
 
