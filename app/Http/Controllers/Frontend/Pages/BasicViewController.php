@@ -48,7 +48,11 @@ class BasicViewController extends Controller
 
         $this->batchExams  = BatchExam::where(['status' => 1, 'is_master_exam' => 0, 'is_paid' => 1])->select('id', 'title', 'banner', 'slug')->take(6)->get();
         $this->courseCategories = CourseCategory::whereStatus(1)->where('parent_id', 0)->orderBy('order', 'ASC')->select('id', 'name', 'image', 'slug', 'icon', 'order', 'status','note')->take(8)->get();
-        $this->courses = Course::whereStatus(1)->where(['is_featured' => 1])->latest()->select('id', 'title', 'sub_title', 'price', 'banner', 'total_video', 'total_audio', 'total_pdf', 'total_exam', 'total_note', 'total_zip', 'total_live', 'total_link','total_file','total_written_exam', 'slug', 'discount_type', 'discount_amount', 'starting_date_time','admission_last_date','alt_text','banner_title')->take(12)->get();
+        $this->courses = Course::where('status', 1)
+            ->where('is_featured', 1)
+            ->select('id', 'title', 'sub_title', 'price', 'banner', 'total_video', 'total_audio', 'total_pdf', 'total_exam', 'total_note', 'total_zip', 'total_live', 'total_link', 'total_file', 'total_written_exam', 'slug', 'discount_type', 'discount_amount', 'starting_date_time', 'admission_last_date', 'alt_text', 'banner_title', 'discount_start_date', 'discount_end_date')
+            ->orderBy('id','DESC')
+            ->paginate(12);
         $this->products = Product::whereStatus(1)->latest()->select('id', 'title', 'image', 'slug', 'description','stock_amount','price', 'slug')->take(8)->get();
 //        $this->homeSliderCourses = Course::where('show_home_slider', 1)->select('id', 'slug', 'title', 'banner', 'description')->get();
         $this->homeSliderCourses = Advertisement::whereStatus(1)->whereContentType('course')->select('id', 'title', 'content_type', 'description','link','image')->take(6)->get();
@@ -59,7 +63,7 @@ class BasicViewController extends Controller
             'homeSliderCourses' => $this->homeSliderCourses,
             // 'batchExams'        => $this->batchExams,
             'numberCounters'    => NumberCounter::whereStatus(1)->select('id', 'label', 'icon_code', 'total_number','image')->get(),
-            'ourServices'       => OurService::whereStatus(1)->select('id', 'icon_code', 'image', 'title','content')->latest()->take(8)->get(),
+            'ourServices'       => OurService::whereStatus(1)->select('id', 'icon_code', 'image', 'title','content')->orderBy('position')->take(8)->get(),
             'ourTeams'          => OurTeam::whereStatus(1)->where(['content_show_type' => 'home_page'])->select('id', 'name', 'designation', 'image','content_show_type','video_link','video_file')->get(),
             'studentOpinions'   => StudentOpinion::whereStatus(1)->select('id', 'show_type', 'name', 'image','comment')->where('show_type','all_students')->inRandomOrder()->take(6)->get(),
             'poppup'            => PopupNotification::where('status', 1)->first(),
@@ -182,7 +186,7 @@ class BasicViewController extends Controller
     public function allCourses (Request $request)
     {
        // Fetch the required course categories and their first course
-        $this->courseCategories  = CourseCategory::whereStatus(1)->where('parent_id', 0)->orderBy('order', 'ASC')->select('id', 'name', 'image', 'slug', 'icon', 'order', 'status','note')->take(8)->get();
+        $this->courseCategories  = CourseCategory::whereStatus(1)->where('parent_id', 0)->orderBy('order', 'ASC')->select('id', 'name', 'image', 'slug', 'icon', 'order', 'status','note')->take(12)->get();
 
         // Fetch the featured courses directly without looping, using only necessary fields
         $courses = Course::where('status', 1)
@@ -461,9 +465,10 @@ class BasicViewController extends Controller
     public function freeCourses ()
     {
         $this->courseCategories = CourseCategory::where('parent_id', 0)->where('name', '!=', 'Free Course')->select('id', 'name', 'slug','second_image')->get();
-
+        $this->homeSliderCourses = Advertisement::whereStatus(1)->whereContentType('free_service')->select('id', 'title', 'content_type', 'description','link','image')->take(6)->get();
         $this->data = [
             'courseCategories'     => $this->courseCategories,
+            'free_service_slider'     => $this->homeSliderCourses,
         ];
         return view('frontend.free-service.free-service', $this->data);
     }

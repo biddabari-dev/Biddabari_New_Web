@@ -24,7 +24,7 @@
                         <div class="col-lg-12 col-md-12 col-xl-6">
                             <div class="d-flex flex-wrap align-items-center">
                                 <div class="profile-img-main rounded">
-                                    <img src="{{ !empty($teacher->image) ? asset($teacher->image) : 'https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png' }}"
+                                    <img src="{{ !empty($teacher->image) ? static_asset($teacher->image) : 'https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png' }}"
                                         alt="img" class="m-0 p-1 rounded hrem-6" style="height: 90px; width: 90px;" />
                                 </div>
                                 <div class="ms-4">
@@ -57,7 +57,7 @@
             <div class="tab-content">
                 <div class="tab-pane active show" id="profileMain">
                     <div class="card">
-                        <div class="card-body border-0 video-gallery">  
+                        <div class="card-body border-0 video-gallery">
                             <form class="form-horizontal" action="{{ route('teachers_profile.update', $teacher->id) }}"
                                 method="post" enctype="multipart/form-data">
                                 @csrf
@@ -157,7 +157,7 @@
                                                 <div class="col-md-6 mt-2">
                                                     @if(isset($teacher))
                                                         <div>
-                                                            <img src="{{ asset($teacher->image) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
+                                                            <img src="{{ static_asset($teacher->image) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
                                                         </div>
                                                     @endif
                                                 </div>
@@ -202,7 +202,7 @@
                                                 <div class="col-md-6 mt-2">
                                                     @if(isset($teacher))
                                                         <div>
-                                                            <img src="{{ asset($teacher->teacher_intro_banner) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
+                                                            <img src="{{ static_asset($teacher->teacher_intro_banner) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
                                                         </div>
                                                     @endif
                                                 </div>
@@ -260,7 +260,7 @@
                                                 <div class="col-md-6 mt-2">
                                                     @if(isset($teacher))
                                                         <div>
-                                                            <img src="{{ asset($teacher->demo_banner_1) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
+                                                            <img src="{{ static_asset($teacher->demo_banner_1) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
                                                         </div>
                                                     @endif
                                                 </div>
@@ -268,7 +268,7 @@
                                     </div>
                                 </div>
 
-                               
+
 
                                 {{-- <div class="form-group ">
                                     <div class="row row-sm">
@@ -307,7 +307,7 @@
                                                 <div class="col-md-6 mt-2">
                                                     @if(isset($teacher))
                                                         <div>
-                                                            <img src="{{ asset($teacher->demo_banner_2) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
+                                                            <img src="{{ static_asset($teacher->demo_banner_2) }}" id="courseImagePreview" style="height: 60px; width: 70px" />
                                                         </div>
                                                     @endif
                                                 </div>
@@ -315,7 +315,7 @@
                                     </div>
                                 </div>
 
-                               
+
                                 <p class="mb-4 text-17">Social Info</p>
                                 <div class="form-group ">
                                     <div class="row row-sm">
@@ -353,7 +353,7 @@
                                         </div>
                                     </div>
                                 </div>
-                              
+
                                 <p class="mb-4 text-17 ">About Yourself</p>
                                 <div class="form-group ">
                                     <div class="row row-sm">

@@ -15,10 +15,7 @@ Biddabari - All Course
                 <div class="title-area text-center">
                     <h2 class="fw-bold">{{ $result->name }} <span>কোর্স</span>
                     </h2>
-                    <p class="text-muted">
-                        প্রতিযোগিতামূলক এই জব-মার্কেটে নিজের ক্যারিয়ারকে নিয়ে যান অনন্য
-                        চ্চতায়।
-                    </p>
+                    <br>
                 </div>
             </div>
             @if(!empty($result->courseCategories))

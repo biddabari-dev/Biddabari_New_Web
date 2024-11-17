@@ -14,7 +14,7 @@ class OurServicesController extends Controller
     public function index()
     {
         return view('backend.additional-features-management.our-services.index', [
-            'services'    => OurService::latest()->get(),
+            'services'    => OurService::orderBy('position','ASC')->get(),
         ]);
         //
     }

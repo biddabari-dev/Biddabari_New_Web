@@ -43,7 +43,7 @@
                                 {{-- <td>{{ $product->email }}</td> --}}
                                 <td>{{ $product->mobile }}</td>
                                 <td>
-                                    <img src="{{asset($product->image)}}" alt="" style="height: 100px;width: 100px">
+                                    <img src="{{static_asset($product->image)}}" alt="" style="height: 100px;width: 100px">
                                 </td>
                                 {{-- <td>{{ $product->teacher_intro_video }}</td> --}}
                                 {{-- <td>

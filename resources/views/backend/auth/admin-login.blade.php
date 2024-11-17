@@ -23,7 +23,7 @@ Biddabari - Login
                             <div class="col-md-6">
                                 <div class="signup-form-area">
 
-                                    <h6>Sign in with mobile number</h6>
+                                    <h6>Login with mobile number</h6>
                                     <div class="signup-form">
                                         <form action="{{ route('login') }}" method="POST">
                                             @csrf
@@ -66,7 +66,7 @@ Biddabari - Login
                                             </div>
                                         </form>
 
-                                        <h6>You have no account ? <span> <a href="{{ route('custom-register') }}">Sign Up</a>
+                                        <h6>You have no account ? <span> <a href="{{ route('custom-register') }}">Registration</a>
                                             </span></h6>
                                     </div>
                                 </div>

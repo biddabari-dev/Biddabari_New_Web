@@ -15,8 +15,8 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Icon Code</th>
-                                <th>Image</th>
+                                {{-- <th>Icon Code</th> --}}
+                                <th>Icon Image</th>
                                 <th>Title</th>
                                 <th>Content</th>
                                 <th>Status</th>
@@ -27,8 +27,8 @@
                             @foreach($services as $service)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $service->icon_code }}</td>
-                                    <td><img src="{{ asset($service->image) }}" alt="" style="height: 60px"></td>
+                                    {{-- <td>{{ $service->icon_code }}</td> --}}
+                                    <td><img src="{{ static_asset($service->image) }}" alt="" style="height: 60px"></td>
                                     <td>{{ $service->title }}</td>
                                     <td>{!! $service->content !!}</td>
                                     <td>{{ $service->status == 1 ? 'Published' : 'Unpublished' }}</td>

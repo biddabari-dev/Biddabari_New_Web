@@ -11,7 +11,7 @@ class OurService extends Model
     use HasFactory;
 //    use Searchable;
 
-    protected $fillable = ['icon_code', 'image', 'title', 'content', 'status'];
+    protected $fillable = ['icon_code', 'image', 'title', 'content', 'status','position'];
 //    protected $searchableFields = ['*'];
 
     protected $table = 'our_services';
@@ -25,6 +25,7 @@ class OurService extends Model
             'image'                  => fileUpload($request->file('image'),'our-services/services', 'service-', isset($id) ? static::find($id)->image : '' ),
             'title'                  => $request->title,
             'content'                => $request->content,
+            'position'                => $request->position,
             'status'                 => $request->status == 'on' ? 1 : 0,
         ]);
     }

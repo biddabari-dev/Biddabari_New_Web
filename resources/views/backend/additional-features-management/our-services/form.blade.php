@@ -31,7 +31,7 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-sm-6 ">
-                                <label for="">Student Image</label>
+                                <label for="">Icon Image</label>
                                 <div class="">
                                     <input type="file" name="image" id="nothing" class="form-control" placeholder="Image" accept="image/*" />
                                     @if(isset($service))
@@ -60,7 +60,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-2">
+                        <div class="row mt-3">
+                            <label for="" class="col-md-3"> Position</label>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" name="position" value="{{ isset($service) ? $service->position : '' }}" placeholder="" title="ranking position" />
+                            </div>
+                        </div>
+                        <div class="row mt-3">
                             <input type="submit" class="col-md-4 mx-auto btn btn-yellow" value="{{ isset($service) ? 'Update' : 'Create' }}" />
                         </div>
                     </form>
