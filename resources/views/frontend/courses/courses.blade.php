@@ -1,8 +1,11 @@
 @extends('frontend.master')
-@section('meta-url'){{ request()->url() }}@endsection
-@section('title')
-Biddabari - All Course
-@endsection
+
+@section('title', 'বিদ্যাবাড়ির সকল কোর্সসমূহ - Biddabari')
+
+@section('meta-description', 'বিদ্যাবাড়ির সকল কোর্স যেমন- বিসিএস, ব্যাংক জব, শিক্ষক নিয়োগসহ সরকারি চাকরি প্রস্তুতি, রেকর্ডেড ও লাইভ ক্লাস ইত্যাদি আমাদের এই পেজে পাবেন।')
+
+@section('meta-keywords', 'বিদ্যাবাড়ি কোর্স, বিসিএস প্রস্তুতি, ব্যাংক জব, অনলাইন জব প্রিপারেশন, সরকারি চাকরি প্রস্তুতি, প্রাইমারি শিক্ষক নিয়োগ, সরকারি চাকরির খবর')
+
 
 @section('body')
 

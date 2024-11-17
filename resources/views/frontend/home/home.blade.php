@@ -1,8 +1,12 @@
 @extends('frontend.master')
 
-@section('title')
-    Biddabari - The First Job Study Online Platform in Bangladesh
-@endsection
+@section('title', 'Biddabari - The First Job Study Online Platform in Bangladesh')
+
+@section('meta-description', 'বিদ্যাবাড়ি - বিসিএস, ব্যাংক জব, শিক্ষক নিয়োগসহ চাকরি প্রস্তুতি, আইটি প্রশিক্ষণ, রেকর্ডেড ও লাইভ ক্লাস, এবং বইয়ের নির্ভরযোগ্য অনলাইন প্ল্যাটফর্ম।')
+
+@section('meta-keywords', 'বিদ্যাবাড়ি, Biddabari, বিসিএস প্রস্তুতি, ব্যাংক জব, অনলাইন জব প্রিপারেশন, সরকারি চাকরি প্রস্তুতি, প্রাইমারি শিক্ষক নিয়োগ, সরকারি চাকরির খবর')
+
+
 @push('style')
     <style>
         .text-content {

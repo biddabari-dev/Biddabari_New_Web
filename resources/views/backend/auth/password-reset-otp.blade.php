@@ -6,12 +6,12 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
+    <meta name="description" content="Reset your password quickly and securely. Enter the OTP sent to your mobile, create a new password, and regain access to your account.">
     <meta name="author" content="BiddaBari">
-    <meta name="keywords" content="">
+
 
     <!-- TITLE -->
-    <title>Reset Password - BiddaBari</title>
+    <title>Reset Password - Securely Update Your Account</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- FAVICON -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/') }}frontend/logo/favicon/apple-icon-57x57.png">

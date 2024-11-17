@@ -1,8 +1,10 @@
 @extends('frontend.master')
+
+@section('title', 'Registration for Biddabari Online Learning Platform')
+
+@section('meta-description', 'Create an account on Biddabari online learning platform. Registration with your name, mobile number, and password to start your learning journey today.')
+
 @section('meta-url'){{ request()->url() }}@endsection
-@section('title')
-Biddabari - User registration form
-@endsection
 
 @section('body')
 

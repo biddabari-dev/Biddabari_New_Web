@@ -7,14 +7,15 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="index">
-    <meta name="description" content="Forgot your Biddabari account password? Reset it quickly and securely. Follow our simple steps to regain access to your account.">
-    <meta name="keywords" content="">
+    <meta name="description" content="Forgot your password? No worries! Enter your mobile number, click 'Send OTP,' and receive a one-time password to reset your password and regain access.">
+    <meta property="og:description" content="Forgot your password? No worries! Enter your mobile number, click 'Send OTP,' and receive a one-time password to reset your password and regain access.">
+    {{--<meta name="keywords" content="">--}}
     <meta name="google" content="nositelinkssearchbox">
     <meta property="og:image"              content="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/additional-features-management/site-settings/logo-1717397688866.png" />
     <meta property="og:image:width"        content="200"/>
     <meta property="og:image:height"       content="286"/>
     <!-- TITLE -->
-    <title>Forgot Password - BiddaBari</title>
+    <title>Forgot Password - Reset Your Password Easily</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- FAVICON -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/') }}frontend/logo/favicon/apple-icon-57x57.png">
@@ -78,7 +79,7 @@
                                         Forgot Password
                                     </h1>
                         <div>
-                            <p style="text-align: justify">Forgot your password? No problem. Just let us know your <b>Mobile Number</b> and we will send you an OTP that will allow you to choose a new one.</p>
+                            <p style="text-align: justify">Forgot your password? No problem! Simply provide your <b>Mobile Number</b> and press the "Send OTP" button. We'll send you an OTP to help you set a new password.</p>
                         </div>
                         <div class="wrap-input100 validate-input " data-order="0" data-active="1" data-bs-validate="Valid email is required: ex@abc.xyz">
                             <input class="input100" type="text" name="mobile" placeholder="Enter Mobile Number">
