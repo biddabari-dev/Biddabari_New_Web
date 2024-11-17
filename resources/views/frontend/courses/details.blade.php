@@ -180,21 +180,18 @@
                                   @endif
 
                                   {{--<h6>কোর্সটি কিনুন </h6>--}}
-                                  <p><span class="fw-bold">Note : </span>all course have 30-days money-back guarantee
+                                  <p><span class="fw-bold">Note : </span>all course have 24 hours money-back guarantee
                                   </p>
                               </div>
                               <div class="course-includes-area">
                                   <div class="title">
                                       <h5>This Course includes :</h5>
                                   </div>
-                                  <p><i class="fa-regular fa-clock"></i> Lifetime access</p>
-                                  <p><i class="fa-solid fa-dollar-sign"></i> 30 Day money back guaranty</p>
-                                  <p><i class="fa-regular fa-file"></i> Free exercises file & downloadable resources
-                                  </p>
-                                  <p><i class="fa-solid fa-trophy"></i> Shareable certificate of completion</p>
-                                  <p><i class="fa-solid fa-tv"></i> Access on mobile , tablet and TV</p>
-                                  <p><i class="fa-regular fa-file"></i> English subtitles</p>
                                   <p><i class="fa-solid fa-globe"></i> 100% online course</p>
+                                  <p><i class="fa-solid fa-tv"></i> Access on mobile , tablet and Computer</p>
+                                  <p><i class="fa-solid fa-globe"></i> Provide exclusive recorded class</p>
+                                  <p><i class="fa-solid fa-globe"></i> Provide a well-structured lecture sheet in PDF format.</p>
+                                  <p><i class="fa-solid fa-dollar-sign"></i> 24 hours money back guarantee</p>
                               </div>
                               <br>
                               <div class="cart-contact">
@@ -791,21 +788,19 @@
                                 @endif
 
                                 {{--<h6>কোর্সটি কিনুন </h6>--}}
-                                <p><span class="fw-bold">Note : </span>all course have 30-days money-back guarantee
+                                <p><span class="fw-bold">Note : </span>all course have 24 hours money-back guarantee
                                 </p>
                             </div>
                             <div class="course-includes-area">
                                 <div class="title">
                                     <h5>This Course includes :</h5>
                                 </div>
-                                <p><i class="fa-regular fa-clock"></i> Lifetime access</p>
-                                <p><i class="fa-solid fa-dollar-sign"></i> 30 Day money back guaranty</p>
-                                <p><i class="fa-regular fa-file"></i> Free exercises file & downloadable resources
-                                </p>
-                                <p><i class="fa-solid fa-trophy"></i> Shareable certificate of completion</p>
-                                <p><i class="fa-solid fa-tv"></i> Access on mobile , tablet and TV</p>
-                                <p><i class="fa-regular fa-file"></i> English subtitles</p>
+                                {{-- <p><i class="fa-solid fa-trophy"></i> Shareable certificate of completion</p> --}}
                                 <p><i class="fa-solid fa-globe"></i> 100% online course</p>
+                                <p><i class="fa-solid fa-tv"></i> Access on mobile , tablet and Computer</p>
+                                <p><i class="fa-solid fa-globe"></i> Provide exclusive recorded class</p>
+                                <p><i class="fa-solid fa-globe"></i> Provide a well-structured lecture sheet in PDF format.</p>
+                                <p><i class="fa-solid fa-dollar-sign"></i> 24 hours money back guarantee</p>
                             </div>
                             <br>
                             <div class="cart-contact">
