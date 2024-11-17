@@ -21,7 +21,7 @@ Biddabari - User registration form
                             </div>
                             <div class="col-md-6">
                                 <div class="signup-form-area">
-                                    <h4 class="text-center">Sign up</h4>
+                                    <h4 class="text-center">Registration</h4>
                                     <div class="signup-form">
                                         <!-- Signup Form -->
                                         <form id="registerForm" action="{{ route('user-register') }}" method="POST">
@@ -83,7 +83,7 @@ Biddabari - User registration form
 
                                             <button type="button" id="submitBtn" class="btn btn_warning">Submit</button>
                                         </form>
-                                        <h6>Already have a account ? <span> <a href="{{ route('login') }}"> Sign In
+                                        <h6>Already have a account ? <span> <a href="{{ route('login') }}"> Login
                                                 </a></span></h6>
 
                                     </div>
