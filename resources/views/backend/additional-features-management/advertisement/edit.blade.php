@@ -23,6 +23,7 @@
                         <option value="course" {{ $advertisement->content_type == 'course' ? 'selected' : '' }}>Course</option>
                         <option value="exam" {{ $advertisement->content_type == 'exam' ? 'selected' : '' }}>Exam</option>
                         <option value="book" {{ $advertisement->content_type == 'book' ? 'selected' : '' }}>Book</option>
+                        <option value="free_service" {{ $advertisement->content_type == 'free_service' ? 'selected' : '' }}>Free Service</option>
                         <option value="external-link" {{ $advertisement->content_type == 'external-link' ? 'selected' : '' }}>External Link</option>
                     </select>
                     <span class="text-danger" id="content_type">{{ $errors->has('content_type') ? $errors->first('content_type') : '' }}</span>

@@ -20,6 +20,7 @@
                         <option value="course">Course</option>
                         <option value="exam">Exam</option>
                         <option value="book">Book</option>
+                        <option value="free_service">Free Service</option>
                         <option value="external-link">External Link</option>
                     </select>
                     <span class="text-danger" id="content_type">{{ $errors->has('content_type') ? $errors->first('content_type') : '' }}</span>

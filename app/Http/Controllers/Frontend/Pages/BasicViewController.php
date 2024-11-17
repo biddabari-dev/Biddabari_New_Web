@@ -465,9 +465,10 @@ class BasicViewController extends Controller
     public function freeCourses ()
     {
         $this->courseCategories = CourseCategory::where('parent_id', 0)->where('name', '!=', 'Free Course')->select('id', 'name', 'slug','second_image')->get();
-
+        $this->homeSliderCourses = Advertisement::whereStatus(1)->whereContentType('free_service')->select('id', 'title', 'content_type', 'description','link','image')->take(6)->get();
         $this->data = [
             'courseCategories'     => $this->courseCategories,
+            'free_service_slider'     => $this->homeSliderCourses,
         ];
         return view('frontend.free-service.free-service', $this->data);
     }

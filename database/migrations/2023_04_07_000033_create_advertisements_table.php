@@ -18,8 +18,9 @@ return new class extends Migration {
             $table
                 ->enum('content_type', [
                     'course',
-                    'ebook',
+                    'exam',
                     'book',
+                    'free_service',
                     'external-link',
                 ])
                 ->nullable();
