@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,500,500i,600,600i,700,700i|Open+Sans:400,400i,600,700&display=swap");
+
 /* ====================== Full Project Global CSS Start ============================ */
 body {
     font-family: "Noto Sans Bengali", sans-serif;
@@ -1917,13 +1919,13 @@ img {
 }
 
 #Home_category .home-category-area .my-home-category .my-home-category-content h3 {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
     margin-bottom: 2px;
 }
 
 #Home_category .home-category-area .my-home-category .my-home-category-content p {
-    font-size: 13px;
+    font-size: 14px;
     color: #777777;
     margin-bottom: 0;
 }
@@ -2187,8 +2189,8 @@ img {
 }
 
 #Our_story .our-story-event-area .event-area-content .event-content h3 {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
     margin: 15px 0;
 }
 
@@ -2428,8 +2430,9 @@ img {
 }
 
 #Student_review .student-review-area .student-review-content .review p {
-    font-size: 13px;
+    font-size: 14px;
     text-align: justify;
+    margin-bottom: 0;
 }
 
 /* .student-review-slider .student-review.slick-slide {

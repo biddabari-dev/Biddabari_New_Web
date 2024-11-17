@@ -442,9 +442,7 @@
             <div class="container">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">আমাদের <span class="">সেবা সমূহ</span>
-                        </h2>
-
+                        <h2 class="fw-bold">আমাদের <span class="">সেবা সমূহ</span></h2>
                     </div>
                     <div class="our-story-event-area py-4">
                         <div class="row g-3 g-lg-4">
