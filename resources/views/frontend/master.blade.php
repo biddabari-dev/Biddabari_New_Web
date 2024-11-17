@@ -53,6 +53,10 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+            rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css" />
@@ -63,7 +67,11 @@
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v={{ $rand }}"/>
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css?v={{ $rand }}"/>
+
+        <script src="{{ asset('frontend') }}/assets/js/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('frontend') }}/assets/vendors/slick/slick.min.js"></script>
         @stack('style')
+
     </head>
 
     <body>
@@ -75,10 +83,10 @@
         @include('frontend.includes.footer')
 
 
-        <script src="{{ asset('frontend') }}/assets/js/jquery-3.6.0.min.js"></script>
+        {{-- <script src="{{ asset('frontend') }}/assets/js/jquery-3.6.0.min.js"></script> --}}
         <script src="{{ asset('frontend') }}/assets/js/bootstrap.bundle.min.js"></script>
         <!-- slick slide -->
-        <script src="{{ asset('frontend') }}/assets/vendors/slick/slick.min.js"></script>
+
 
         <!-- main -->
         <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
