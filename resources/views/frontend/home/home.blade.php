@@ -559,28 +559,9 @@
                         <h2 class="fw-bold">আমাদের শিক্ষার্থীরা <span> যা বলছে...</span></h2>
                     </div>
                 </div>
+
                 <div class="student-review-area py-4">
-                    <div class="row gx-4">
-                        @foreach ($studentOpinions as $successStudentOpinion)
-                            <div class="col-md-6 col-lg-4">
-                                <div class="student-review-content">
-                                    <div class="student-image">
-                                        <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
-                                            alt="" srcset="" class="">
-                                    </div>
-                                    <div class="student-name mt-2">
-                                        <h4>{{ $successStudentOpinion->name ?? 'Student Name' }}</h4>
-                                    </div>
-                                    <div class="review">
-                                        <p>{!! $successStudentOpinion->comment !!}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                {{-- <div class="student-review-area py-4">
-                    <div class="row">
+
                         <div class="student-review-slider slider">
 
                             @foreach ($studentOpinions as $successStudentOpinion)
@@ -600,8 +581,8 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
-                </div> --}}
+                    
+                </div>
             </div>
         </section>
     </main>

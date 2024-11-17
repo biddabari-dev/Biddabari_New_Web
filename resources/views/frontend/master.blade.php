@@ -72,15 +72,19 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet">    
+            rel="stylesheet">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap" rel="stylesheet" />
-        
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css" />
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/slick/slick.css" />
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/slick/slick-theme.css" />
+
+        {{-- owl.carousel.min --}}
+        <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/owl.theme.default.min.css" />
         @php $rand = rand('0000','9999'); @endphp
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v={{ $rand }}" />
@@ -101,6 +105,8 @@
         <script src="{{ asset('frontend') }}/assets/js/bootstrap.bundle.min.js"></script>
         <!-- slick slide -->
         <script src="{{ asset('frontend') }}/assets/vendors/slick/slick.min.js"></script>
+
+        <script src="{{ asset('/') }}frontend/assets-old/js/owl.carousel.min.js" type="text/javascript"></script>
 
         <!-- main -->
         <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
