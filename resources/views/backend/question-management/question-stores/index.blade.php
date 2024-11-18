@@ -90,9 +90,9 @@
                                                         <br>
                                                         <div class="float-start">
                                                             @if($question->question_file_type == 'pdf' && $_GET['q-type'] == 'written')
-                                                                <span><a href="{{ asset($question->question_image) }}" download="" class="nav-link text-warning">PDF File</a></span>
+                                                                <span><a href="{{ static_asset($question->question_image) }}" download="" class="nav-link text-warning">PDF File</a></span>
                                                             @else
-                                                                <img src="{{ asset($question->question_image) }}" alt="" class="img-fluid" style="max-height: 60px" />
+                                                                <img src="{{ static_asset($question->question_image) }}" alt="" class="img-fluid" style="max-height: 60px" />
                                                             @endif
                                                         </div>
                                                     @endif
@@ -110,7 +110,7 @@
                                             <div class="card-body">
                                                 @if(isset($question->question_option_image))
                                                     <div>
-                                                        <img src="{{ asset($question->question_option_image) }}" alt="" class="img-fluid" style="max-height: 60px" />
+                                                        <img src="{{ static_asset($question->question_option_image) }}" alt="" class="img-fluid" style="max-height: 60px" />
                                                     </div>
                                                 @endif
                                                 <div>
