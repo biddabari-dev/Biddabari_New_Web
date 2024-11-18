@@ -51,24 +51,15 @@
                                 @endphp
                                 @if (!empty($item->categoryVideo->video_link))
                                     <div class="col-md-6 col-lg-4 p-2">
-                                        <div class="card video-container">
+                                        <div class="card video-container" >
                                             <div class="video-foreground">
                                                 <div class="plyr__video-embed" id="player">
                                                     <iframe
                                                         src="https://www.youtube.com/embed/{{ $videoId }}?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
-                                                        title="YouTube video player"
-                                                        allowfullscreen
-                                                        allowtransparency
-                                                        allow="autoplay; encrypted-media; picture-in-picture"
-                                                        referrerpolicy="strict-origin-when-cross-origin"
-                                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                                                </div>
-                                                <div
-                                                    onclick="showVideoModal('https://www.youtube.com/embed/{{ $videoId }}?autoplay=1')"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
+                                                        allowfullscreen allowtransparency allow="autoplay"></iframe>
                                                 </div>
                                                 <div class="content p-2">
-                                                    <h5><a href="#" class="text-black">{{ $item->categoryVideo->title }}</a></h5>
+                                                    <h5><a href="" class="text-black">{{ $item->categoryVideo->title }}</a></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,6 +114,22 @@
 @endpush
 @push('script')
     @include('plyr.plyr_scripts')
+<script>
+    function showVideoModal(videoId) {
+        // Update the iframe src in the modal with the videoId
+        let modalIframe = document.querySelector('#modalPlayer iframe');
+        modalIframe.src = `https://www.youtube.com/embed/${videoId}?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1&autoplay=1`;
+
+        // Show the modal
+        let videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+        videoModal.show();
+
+        // Stop the video when the modal is hidden
+        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+            modalIframe.src = "";
+        });
+    }
+</script>
 @endpush
 @push('style')
     <style>
@@ -174,22 +181,6 @@
             background-size: contain;
             z-index: 1;
         }
-        .modal-body {
-            position: relative;
-        }
-        .modal-body .btn-close {
-            position: absolute;
-            top: -20px !important;
-            right: 0px;
-            border-radius: 50%;
-            width: 26px;
-            height: 26px;
-            z-index: 1100;
-            background-color: #ffffff;
-            opacity: 0.5;
-            display: block !important;
-        }
-
     </style>
 @endpush
 @push('script')
