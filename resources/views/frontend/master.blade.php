@@ -85,7 +85,7 @@
         {{-- owl.carousel.min --}}
         <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/owl.carousel.min.css" />
         <link rel="stylesheet" href="{{ asset('/') }}frontend/assets-old/css/owl.theme.default.min.css" />
-        @php $rand = rand('0000','9999'); @endphp
+        @php $rand = rand(0,9999); @endphp
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v={{ $rand }}" />
         <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css?v={{ $rand }}" />
@@ -126,35 +126,37 @@
         @stack('script')
         <script>
             const cachedData = localStorage.getItem('logData');
-            if (cachedData) {
-                // Use cached data
-            } else {
-                fetch('/log?format=json&hasfast=true&authuser=0').then(response => {
-                    response.json().then(data => {
-                        localStorage.setItem('logData', JSON.stringify(data));
-                    });
-                });
+            if (!cachedData) {
+                fetch('/log?format=json&hasfast=true&authuser=0')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => localStorage.setItem('logData', JSON.stringify(data)))
+                    .catch(error => console.error('Fetch failed:', error));
             }
         </script>
 
         @if (Session::has('success'))
             <script>
-                toastr.success("{{ Session::get('success') }}");
+                toastr.success("{{ addslashes(Session::get('success')) }}");
             </script>
         @endif
         @if (Session::has('error'))
             <script>
-                toastr.error("{{ Session::get('error') }}");
+                toastr.error("{{ addslashes(Session::get('error')) }}");
             </script>
         @endif
         @if (Session::has('customError'))
             <script>
                 Swal.fire({
                     title: 'Error!',
-                    text: "{{ Session::get('customError') }}",
+                    text: "{{ addslashes(Session::get('customError')) }}",
                     icon: 'error',
                     confirmButtonText: 'Ok'
-                })
+                });
             </script>
         @endif
     </body>
