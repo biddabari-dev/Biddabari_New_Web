@@ -237,7 +237,7 @@ class BasicViewController extends Controller
     public function categoryCourses ($slug)
     {
         $this->courseCategory = CourseCategory::whereSlug($slug)->select('id','name', 'parent_id', 'image', 'icon', 'slug', 'status')->with(['courses' => function($course){
-            $course->whereStatus(1)->latest()->select('id','title','price','banner','discount_amount','discount_type', 'admission_last_date', 'slug','alt_text','banner_title')->get()->makeHidden('updated_at');
+            $course->whereStatus(1)->latest()->select('id','title','price','banner','discount_amount','discount_type', 'admission_last_date', 'slug','alt_text','banner_title','discount_start_date', 'discount_end_date')->get()->makeHidden('updated_at');
         },
             'courseCategories' => function($courseCategories){
                 $courseCategories->whereStatus(1)->orderBy('order','ASC')->select('id', 'parent_id','name', 'image', 'icon', 'slug', 'status')->get();
