@@ -25,7 +25,8 @@
                             <div class="col-md-6">
                                 <div class="signup-form-area">
 
-                                    <h6>Log in with mobile number</h6>
+                                    {{--<h6>Log in with mobile number</h6>--}}
+                                    <h1 class="text-center"><span class="text-brand"> Log In </span></h1>
                                     <div class="signup-form">
                                         <form action="{{ route('login') }}" method="POST">
                                             @csrf

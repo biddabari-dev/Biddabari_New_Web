@@ -23,7 +23,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="signup-form-area">
+{{--
                                     <h4 class="text-center">Registration</h4>
+--}}
+                                    <h1 class="text-center"><span class="text-brand"> Registration </span></h1>
                                     <div class="signup-form">
                                         <!-- Signup Form -->
                                         <form id="registerForm" action="{{ route('user-register') }}" method="POST">

@@ -28,7 +28,7 @@
                                 <div class="someText">
                                     <p>{{ $blog->sub_title }}</p>
                                 </div>
-                                <div class="blog-details-social-icon d-flex">
+                                {{--<div class="blog-details-social-icon d-flex">
                                     <div class="icon">
                                         <a href=""><i class="fa-brands fa-square-facebook"></i></a>
                                     </div>
@@ -41,7 +41,7 @@
                                     <div class="icon">
                                         <a href=""><i class="fa-brands fa-instagram"></i></a>
                                     </div>
-                                </div>
+                                </div>--}}
                             </div>
                             <div class="blog-slider-area py-4">
                                 <div class="blog-slide">
