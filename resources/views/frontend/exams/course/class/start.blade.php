@@ -21,29 +21,39 @@
     <div class="row">
         <div class="col-md-8 quiz-wizard mx-auto">
             <div class="card border-0">
-                <div class="card-header d-flex align-items-center position-sticky" style="top: 105px!important; z-index: 10;">
-                    <div>
-                        <div>
-                            <h2 class="quiz-name">Exam - {{ $exam->title }}</h2>
-                            <span class="course-name d-block">{{ $exam->exam_total_questions }} Questions</span>
+
+                <section id="Question-head">
+                    <div class="background-res-qus-paper py-5"
+                        style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/question-paper-bg.png')">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="exam-title">
+                                    <h3>Exam - {{ $exam->title }}</h3>
+                                    <p>{{ $exam->exam_total_questions }} Questions</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-5">
+                                <div class="exam-timer  d-none" id="quizDiv">
+                                    <div class="quiz-time">
+                                        <div class="flipTimer">
+                                            @if(isset($exam) && $exam->content_type == 'exam' ? $exam->exam_duration_in_minutes : $exam->written_exam_duration_in_minutes > 60)
+                                                <div class="hours"><span class="time-title text-white p-2 mb-1">Hours</span></div>
+                                            @endif
+                                            <div class="minutes"><span class="time-title text-white p-2 mb-1">Minutes</span></div>
+                                            <div class="seconds"><span class="time-title text-white p-2 mb-1">Seconds</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mt-5">
+                                    <a href="" class="btn btn-lg start-btn btn-warning bg-brand text-white" data-xm-type="{{ isset($exam) ? $exam->content_type : 'null' }}" >Start</a>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
-                    <div class="ms-auto">
-                        <a href="#" class="btn btn-lg start-btn btn-success">Start</a>
-                    </div>
-                    <div class="quiz-time d-none" id="quizDiv">
-
-                            <div class="flipTimer">
-                                @if(isset($exam) && $exam->content_type == 'exam' ? $exam->exam_duration_in_minutes : $exam->written_exam_duration_in_minutes > 60)
-                                    <div class="hours"><span class="time-title">Hours</span></div>
-                                @endif
-                                <div class="minutes"><span class="time-title">Minutes</span></div>
-                                <div class="seconds"><span class="time-title">Seconds</span></div>
-                            </div>
-                    </div>
-
-                </div>
+                </section>
                 <!-- $quiz->questions->take(100)->shuffle(50)->random(50); -->
                 <div class="card-body d-none" id="questionsCard">
                     <div class="row custom_start_exam_scroll">
@@ -75,9 +85,8 @@
                                                                 <span class="answer-title mx-0">{{ $questionOption->option_title }}</span>
                                                             </label>
                                                             <span class="ps-1 d-none cont" id="ansCheck{{ $questionOption->id }}">
-                                                                    <span class="check-ans" data-option-id="{{ $questionOption->id }}" style="cursor: pointer; color: black"><i class="fa-solid fa-check"></i></span>
-                                                                    <span class="text-danger cancel-ans" style="cursor: pointer; color: black"><i class="fa-solid fa-xmark"></i></span>
-                                                                </span>
+                                                                <span class="check-ans" data-option-id="{{ $questionOption->id }}" style="cursor: pointer; color: black"><i class="fa-solid fa-check"></i></span>
+                                                            </span>
                                                         </div>
                                                     @else
                                                         <div class="form-radio">
@@ -99,9 +108,8 @@
                             </form>
                         </div>
                     </div>
-
-                    <div class="col-md-12 text-center" style="border-radius: 25px">
-                        <a href="" class=" sticky-submit-btn btn btn-danger w-100 f-s-26">Submit</a>
+                    <div class="exam-submit-button">
+                        <a href="" type="submit" class="sticky-submit-btn f-s-26">Submit</a>
                     </div>
                 </div>
             </div>
@@ -120,23 +128,42 @@
 
 <link rel="stylesheet" href="{{ asset('/') }}backend/assets/plugins/clock-counter/flipTimer.css">
 <style>
+    .uploaded {
+        text-align: left;
+    }
     .now-active {
         /*display: block!important;*/
         /*background: #01a3a4!important;*/
         background: #ffe4d6!important;
         color: black!important;
     }
-    .que-ele-div { padding: 10px 2px 20px 25px; border-radius: 10px}
+    .now-confrim {
+        background: #0aa350 !important;
+        color: #FFFFFF !important;
+    }
+
+    .form-card { padding: 10px 2px 20px 25px; border-radius: 10px}
 
     .check-ans  {
-        border: 1px solid green;
-        padding: 4px 3px 0px 4px;
+        border: 3px solid green;
+        padding: 5px;
         border-radius: 10px;
     }
-    .cancel-ans  {
-        border: 1px solid red;
-        padding: 4px 3px 0px 4px;
-        border-radius: 10px;
+    .cont{
+        margin-top: 10px;
+    }
+    .check-ans :hover {
+        color: #ffffff !important;
+        padding: 5px;
+        background-color: #0aa350 !important;
+    }
+    .question-title span{
+        text-align: left !important;
+        font-weight: 600;
+        color: #000 !important;
+    }
+    .answer-label{
+        font-weight: 600;
     }
 </style>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -251,9 +278,10 @@
         $(document).on('click', '.check-ans', function () {
             $(this).parent().addClass('d-none');
             $($(this).parent().parent()).addClass('disabled-it');
+            $(this).closest('.cont').prev('.answer-label').addClass('now-confrim');
             var questionParentDivId = $($(this).parent().parent().parent().parent().parent()).attr('id');
             $(this).parent().parent().parent().parent().parent().css({
-                backgroundColor : '#8efaa4',
+                backgroundColor : 'rgb(234 255 238)',
                 // color           : 'white',
             });
             $('.asw'+$(this).attr('data-option-id')).prop( "checked", true );

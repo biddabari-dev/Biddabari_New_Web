@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,500,500i,600,600i,700,700i|Open+Sans:400,400i,600,700&display=swap");
+
 /* ====================== Full Project Global CSS Start ============================ */
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "Noto Sans Bengali", sans-serif;
     font-optical-sizing: auto;
-    /* font-weight: ;
-    font-style: ; */
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
 }
 
 a {
@@ -244,6 +246,7 @@ img {
     color: white;
     padding: 12px 25px;
 }
+
 #Header .login-button a img {
     width: 70px;
     height: 70px;
@@ -251,7 +254,7 @@ img {
 
 #Header .navbar-collapse ul li a {
     color: black;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     padding: 20px;
 }
@@ -674,7 +677,7 @@ img {
 .exam-package-area .package-exam-content .package-exam-title h2 a {
     color: #000;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 @media (max-width: 575.98px) {
@@ -1212,7 +1215,7 @@ img {
     background-color: #aa076b;
     color: white;
     width: 80%;
-    padding: 10px;
+    padding: 5px;
     font-size: 22px;
 }
 
@@ -1911,18 +1914,18 @@ img {
     padding: 0px 15px 0px 0px;
 }
 
-#Home_category .home-category-area .my-home-category .my-home-category-content {
-    /* margin: auto; */
-}
+/* #Home_category .home-category-area .my-home-category .my-home-category-content {
+    margin: auto;
+} */
 
 #Home_category .home-category-area .my-home-category .my-home-category-content h3 {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
     margin-bottom: 2px;
 }
 
 #Home_category .home-category-area .my-home-category .my-home-category-content p {
-    font-size: 13px;
+    font-size: 14px;
     color: #777777;
     margin-bottom: 0;
 }
@@ -2072,6 +2075,15 @@ img {
     padding: 15px;
 }
 
+.home-course-category-slider .home-course-category-item.slick-slide {
+    margin: 0 10px;
+}
+
+.home-course-category-slider .slick-prev:before,
+.home-course-category-slider .slick-next:before {
+    color: #aa076b;
+}
+
 #Home_Our_courses .home-course-category-area .my-course-category:hover {
     box-shadow: 5px 3px 15px -3px;
 }
@@ -2130,6 +2142,7 @@ img {
 }
 
 @media (max-width: 575.98px) {
+
     #Home_Our_courses .exam-package-area {
         border-radius: 10px;
     }
@@ -2178,8 +2191,8 @@ img {
 }
 
 #Our_story .our-story-event-area .event-area-content .event-content h3 {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
     margin: 15px 0;
 }
 
@@ -2381,7 +2394,12 @@ img {
     color: #aa076b;
 }
 
+.student-review-slider {
+    position: relative;
+}
+
 #Student_review .student-review-area .student-review-content {
+    position: relative;
     display: block;
     height: calc(100% - 50px);
     margin-bottom: 50px;
@@ -2404,7 +2422,7 @@ img {
 
 #Student_review .student-review-area .student-review-content .student-name h4 {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     color: #aa076b;
 }
 
@@ -2414,13 +2432,46 @@ img {
 }
 
 #Student_review .student-review-area .student-review-content .review p {
-    font-size: 13px;
+    font-size: 14px;
     text-align: justify;
+    margin-bottom: 0;
+}
+
+.student-review-slider .student-review.slick-slide {
+    padding-top: 50px;
+    display: flex;
+    height: 320px;
+    margin: 0 10px;
+}
+
+.student-review-slider .slick-prev:before,
+.student-review-slider .slick-next:before {
+    color: #aa076b;
+}
+
+.slick-dots li {
+    width: 10px;
 }
 
 @media (max-width: 575.98px) {
+
     #Student_review .title-area h2 {
         font-size: 24px;
+    }
+
+    #Student_review .student-review-area .student-review-content {
+        padding: 10px;
+        height: auto;
+        margin-bottom: 0px;
+    }
+
+    #Student_review .student-review-area .student-review-content .student-name h4 {
+        font-size: 14px;
+    }
+
+    .student-review-slider .student-review.slick-slide {
+        margin: 0 5px;
+        height: auto;
     }
 }
 
@@ -2456,7 +2507,7 @@ img {
 }
 
 #Our_courses .our-course-category-area .my-course-category:hover {
-    box-shadow: 5px 3px 15px -3px;
+    border-color: #aa076b;
 }
 
 #Our_courses .our-course-category-area .my-course-category .my-course-category-icon i {
@@ -2510,6 +2561,41 @@ img {
     background-color: #aa076b;
     color: white;
     transition: ease-in-out 0.8s;
+}
+
+@media (max-width: 575.98px) {
+    .home-course-category-slider .home-course-category-item.slick-slide {
+        margin: 0 5px;
+    }
+
+    #Home_Our_courses .home-course-category-area .my-course-category {
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-icon {
+        padding: 0px 15px 0px 0px;
+    }
+
+    #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-icon i {
+        font-size: 20px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-content h3 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 425px) {
+    #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-icon {
+        padding: 0px 5px 0px 0px;
+    }
+
+    #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-content h3 {
+        font-size: 12px;
+    }
 }
 
 /* ----------------- Our Courses Section End ---------------------------- */
@@ -3174,7 +3260,7 @@ img {
     background-repeat: no-repeat;
 }
 
-@media  (max-width: 991.98px) {
+@media (max-width: 991.98px) {
     #Get_in_touch .get-in-touch-form {
         padding: 20px;
     }
@@ -4193,9 +4279,11 @@ img {
     #Recently_posted .blog-recently-posted-area h2 {
         font-size: 20px;
     }
+
     #Recently_posted .blog-recently-posted-area .blog-recently-posted-content .blog-recently-posted-title h3 {
         font-size: 16px;
     }
+
     #Recently_posted .blog-recently-posted-area .blog-recently-posted-content .someText p {
         font-size: 13px;
     }
@@ -4888,11 +4976,12 @@ img {
         display: block;
         margin-bottom: 20px;
     }
+
     .course-cart-area {
         display: none;
     }
 
- }
+}
 
 /* =================================== Course Details Page End =========================================== */
 /* Neamat  */
@@ -4929,4 +5018,3 @@ img {
     color: #9c9c9c;
     opacity: 1;
 }
-

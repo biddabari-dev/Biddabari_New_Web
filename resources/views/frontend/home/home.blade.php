@@ -387,10 +387,10 @@
                     </div>
                 </div>
                 <div class="home-course-category-area">
-                    <div class="row g-4">
+                    <div class="home-course-category-slider slider">
 
                         @foreach ($courseCategories as $courseCategory)
-                            <div class="col-md-6 col-lg-3">
+                            <div class="home-course-category-item">
                                 @if ($courseCategory->id == 157)
                                     <a href="{{ route('front.free-courses') }}">
                                         <div class="my-course-category">
@@ -442,9 +442,7 @@
             <div class="container">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">আমাদের <span class="">সেবা সমূহ</span>
-                        </h2>
-
+                        <h2 class="fw-bold">আমাদের <span class="">সেবা সমূহ</span></h2>
                     </div>
                     <div class="our-story-event-area py-4">
                         <div class="row g-3 g-lg-4">
@@ -455,7 +453,7 @@
                                             <img src="{{ asset('frontend') }}/assets/images/home-page/service{{ ($key % 8) + 1 }}.webp" alt="" srcset="">
                                         </div>
                                         <div class="event-content">
-                                            <h3><strong> {{ $ourService->title ?? '' }} </strong></h3>
+                                            <h3>{{ $ourService->title ?? '' }}</h3>
                                             {{-- <p>{!! $ourService->content !!}</p> --}}
                                         </div>
                                     </div>
@@ -558,30 +556,32 @@
             <div class="container">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">আমাদের শিক্ষার্থীরা <span> যা বলছে...</span><br>
-
-                        </h2>
+                        <h2 class="fw-bold">আমাদের শিক্ষার্থীরা <span> যা বলছে...</span></h2>
                     </div>
                 </div>
+
                 <div class="student-review-area py-4">
-                    <div class="row gx-4">
-                        @foreach ($studentOpinions as $successStudentOpinion)
-                            <div class="col-md-6 col-lg-4">
-                                <div class="student-review-content">
-                                    <div class="student-image">
-                                        <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
-                                            alt="" srcset="" class="">
-                                    </div>
-                                    <div class="student-name mt-2">
-                                        <h4>{{ $successStudentOpinion->name ?? 'Student Name' }}</h4>
-                                    </div>
-                                    <div class="review">
-                                        <p>{!! $successStudentOpinion->comment !!}</p>
+
+                        <div class="student-review-slider slider">
+
+                            @foreach ($studentOpinions as $successStudentOpinion)
+                                <div class="student-review">
+                                    <div class="student-review-content">
+                                        <div class="student-image">
+                                            <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
+                                                alt="" srcset="" class="">
+                                        </div>
+                                        <div class="student-name mt-2">
+                                            <h4>{{ $successStudentOpinion->name ?? 'Student Name' }}</h4>
+                                        </div>
+                                        <div class="review">
+                                            <p>{!! $successStudentOpinion->comment !!}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
+                    
                 </div>
             </div>
         </section>
