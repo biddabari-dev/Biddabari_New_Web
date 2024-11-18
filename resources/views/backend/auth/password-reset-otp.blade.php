@@ -74,9 +74,9 @@
                         @csrf
                         <input type="hidden" name="mobile" value="{{ $_GET['mn'] ?? '' }}">
                         <input type="hidden" name="enc_otp" value="{{ $_GET['oc'] ?? '' }}">
-									<span class="login100-form-title">
-										Reset Password
-									</span>
+                        <h1 class="login100-form-title">
+                            Reset Password
+                        </h1>
                         {{--<div class="wrap-input100 validate-input " data-order="1" data-bs-validate = "OTP is required: 1234">
                             <input class="input100" id="" type="number" name="otp" placeholder="Enter OTP">
                             <span class="focus-input100"></span>

@@ -259,9 +259,9 @@ function fileUpload($fileObject, $directory, $nameString = null, $modelFileUrl =
 
         // Generate a unique file name if nameString is not provided
         $folderPath = 'backend/assets/uploaded-files/' . rtrim($directory, '/');
-        $nameString = $nameString ?? pathinfo($fileObject->getClientOriginalName(), PATHINFO_FILENAME);
+        $nameString = $nameString ?? pathinfo($fileObject->extension(), PATHINFO_FILENAME);
         $nameString = str_replace(' ', '-', $nameString);
-        $fileName = $nameString . '-' . time() . '-' . rand(10, 1000000000000000) . '.' . $fileObject->getClientOriginalExtension();
+        $fileName = $nameString . '-' . time() . '-' . rand(10, 1000000000000000) . '.' . $fileObject->extension();
         $s3FilePath = $folderPath . '/' . $fileName;
 
         // Generate a unique file name if nameString is not provided
