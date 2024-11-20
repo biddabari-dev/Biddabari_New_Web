@@ -131,7 +131,7 @@
                                     <li>
                                         <i class="fa-solid fa-location-dot"></i>
                                         <a href="{{ route('front.contact-us') }}">
-                                            1th,5th-7th Floor, Jashore
+                                            1st, 5th-7th Floor, Jashore
                                             Malik Shamiti Vobon, Gausul Azam Super Market, Nilkhet,
                                             Kataban Rd 1205 Dhaka, Dhaka Division, Bangladesh</a>
                                     </li>

@@ -1,4 +1,4 @@
-<div class="col-6 col-lg-3">
+<div class="col-6 col-lg-3 mt-4">
     <div class="exam-package-area">
         <div class="package-exam-image">
             <a href="{{ route('front.course-details', ['slug' => $course->slug]) }}"><img

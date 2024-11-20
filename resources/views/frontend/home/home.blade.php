@@ -134,11 +134,13 @@
                         <div class="main-banner-video">
                             <div class="ratio ratio-16x9"
                                 style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-                                <iframe id="videoIframe" src="https://www.youtube.com/embed/EGGWGLALnWU?si=9aTUs_YxqxlGsKaY"
+                                {{--<iframe id="videoIframe" src="https://www.youtube.com/embed/EGGWGLALnWU?si=9aTUs_YxqxlGsKaY"
                                     title="YouTube video" frameborder="0" allowfullscreen
-                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>--}}
+                                <img  class="img img-thumbnail" src="{{ asset('frontend') }}/assets/images/home-page/thumbnail_banner_1.jpg" alt="Home page thumbnail Banner-1"
+                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                                 <!-- Transparent overlay to trigger the click event -->
-                                <div onclick="showVideoModal('https://www.youtube.com/embed/EGGWGLALnWU?autoplay=1')"
+                                <div onclick="showVideoModal('https://www.youtube.com/embed/2jCk2UqQrNk?autoplay=1')"
                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
                                 </div>
                             </div>
@@ -149,12 +151,15 @@
                                     <div class="home-feature-video">
                                         <div class="ratio ratio-1x1"
                                             style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                            <iframe id="videoIframe"
+
+                                            {{--<iframe id="videoIframe"
                                                 src="https://www.youtube.com/embed/o8ENSjeWip4?si=9aTUs_YxqxlGsKaY"
                                                 title="YouTube video" frameborder="0" allowfullscreen
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>--}}
+                                            <img class="img img-thumbnail" src="{{ asset('frontend') }}/assets/images/home-page/thumbnail_banner_2.jpg" alt="Home page thumbnail Banner-1"
+                                                 style="position: absolute; top: 9%; left: 0; width: 100%; height: 76%;">
                                             <!-- Transparent overlay to trigger the click event -->
-                                            <div onclick="showVideoModal('https://www.youtube.com/embed/o8ENSjeWip4?autoplay=1')"
+                                            <div onclick="showVideoModal('https://www.youtube.com/embed/GdxZFFAFnLg?autoplay=1')"
                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
                                             </div>
                                         </div>
@@ -164,10 +169,12 @@
                                     <div class="home-feature-video">
                                         <div class="ratio ratio-1x1"
                                             style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                            <iframe id="videoIframe"
+                                            {{--<iframe id="videoIframe"
                                                 src="https://www.youtube.com/embed/TnCYR3kW_QU?si=9aTUs_YxqxlGsKaY"
                                                 title="YouTube video" frameborder="0" allowfullscreen
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>--}}
+                                            <img class="img img-thumbnail" src="{{ asset('frontend') }}/assets/images/home-page/thumbnail_banner_2.jpg" alt="Home page thumbnail Banner-1"
+                                                 style="position: absolute; top: 9%; left: 0; width: 100%; height: 76%;">
                                             <!-- Transparent overlay to trigger the click event -->
                                             <div onclick="showVideoModal('https://www.youtube.com/embed/TnCYR3kW_QU?autoplay=1')"
                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
@@ -179,10 +186,12 @@
                                     <div class="home-feature-video">
                                         <div class="ratio ratio-1x1"
                                             style="position: relative; width: 100%; height: 0; padding-bottom: 100%;">
-                                            <iframe id="videoIframe"
+                                            {{--<iframe id="videoIframe"
                                                 src="https://www.youtube.com/embed/DnpjPBACH6M?si=9aTUs_YxqxlGsKaY"
                                                 title="YouTube video" frameborder="0" allowfullscreen
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>--}}
+                                            <img class="img img-thumbnail" src="{{ asset('frontend') }}/assets/images/home-page/thumbnail_banner_2.jpg" alt="Home page thumbnail Banner-1"
+                                                 style="position: absolute; top: 9%; left: 0; width: 100%; height: 76%;">
                                             <!-- Transparent overlay to trigger the click event -->
                                             <div onclick="showVideoModal('https://www.youtube.com/embed/DnpjPBACH6M?autoplay=1')"
                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">

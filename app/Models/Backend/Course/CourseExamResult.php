@@ -57,7 +57,7 @@ class CourseExamResult extends Model
 
     public function courseSectionContent()
     {
-        return $this->belongsTo(CourseSectionContent::class);                       
+        return $this->belongsTo(CourseSectionContent::class);
     }
 
     public function user()

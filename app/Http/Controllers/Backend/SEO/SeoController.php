@@ -22,9 +22,10 @@ class SeoController extends Controller
     public function index()
     {
         return view('backend.seo.index',[
-            'seos'=>Seo::all()
+            'seos'=>Seo::orderby('id', 'DESC')->get()
         ]);
     }
+
 
     public function select_seofor(string $seofor)
     {

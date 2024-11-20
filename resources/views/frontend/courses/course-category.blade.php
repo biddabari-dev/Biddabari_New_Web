@@ -59,6 +59,7 @@ Biddabari - All Course
                         @endforeach
                     @endif
                 </div>
+                <br>
             </div>
         </div>
     </section>

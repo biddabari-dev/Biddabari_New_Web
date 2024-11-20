@@ -21,9 +21,10 @@ class BlogController extends Controller
         abort_if(Gate::denies('manage-blog'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('backend.blog-management.blogs.index', [
             'blogCategories'    => BlogCategory::whereStatus(1)->get(),
-            'blogs'             => Blog::all(),
+            'blogs'             => Blog::orderby('created_at', 'DESC')->get(),
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

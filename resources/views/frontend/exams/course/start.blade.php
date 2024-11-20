@@ -144,7 +144,7 @@
                                                 @if(isset($question->question_option_image))
                                                     <div class="row py-2">
                                                         <div class="col-12">
-                                                            <img src="{{ asset($question->question_option_image) }}" class="" alt="" style="max-height: 350px; max-width: 94%">
+                                                            <img src="{{ static_asset($question->question_option_image) }}" class="" alt="" style="max-height: 350px; max-width: 94%">
                                                         </div>
                                                     </div>
                                                 @endif
@@ -191,9 +191,9 @@
                                                 <h4 class="float-start fw-bold">{!! $question->question !!}</h4> -->
                                                 <div class="mt-3">
                                                     @if($question->question_file_type == 'pdf')
-                                                        <div id="pdf-container" data-pdf-url="{{ asset($question->question_image) }}"></div>
+                                                        <div id="pdf-container" data-pdf-url="{{ static_asset($question->question_image) }}"></div>
                                                     @else
-                                                        <img src="{{ asset($question->question_image) }}" alt="" style="max-height: 400px; width: 94%;">
+                                                        <img src="{{ static_asset($question->question_image) }}" alt="" style="max-height: 400px; width: 94%;">
                                                     @endif
                                                 </div>
                                             </div>

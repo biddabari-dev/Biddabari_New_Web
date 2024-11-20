@@ -17,7 +17,9 @@
                             <h3>{{ ($teacher->first_name) . ' ' . ($teacher->last_name) ?: 'No Name' }}</h3>
                             <p>{{ $teacher->subject ?? '' }}</p>
                             <div class="teacher-contact-button">
+{{--
                                 <a href="#" type="button" class="btn btn_warning">Contact Now</a>
+--}}
                             </div>
                         </div>
                     </div>
@@ -28,14 +30,14 @@
                         <div class="teachers-category">
                             <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="teacher-about-tab" data-bs-toggle="pill"
-                                       href="#teacher-about" role="tab" aria-controls="teacher-about"
-                                       aria-selected="true">About</a>
+                                    <a class="nav-link active" id="teacher-class-tab" data-bs-toggle="pill"
+                                       href="#teacher-class" role="tab" aria-controls="teacher-class"
+                                       aria-selected="false">্যারের ভিডিও ক্লাস দেখতে ক্লিক করুন</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="teacher-class-tab" data-bs-toggle="pill"
-                                       href="#teacher-class" role="tab" aria-controls="teacher-class"
-                                       aria-selected="false">Class</a>
+                                    <a class="nav-link" id="teacher-about-tab" data-bs-toggle="pill"
+                                       href="#teacher-about" role="tab" aria-controls="teacher-about"
+                                       aria-selected="true">স্যার সম্পর্কে  জানতে এখানে ক্লিক করুন</a>
                                 </li>
                             </ul>
                         </div>
@@ -43,7 +45,7 @@
 
                     <div class="col-lg-12">
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="teacher-about" role="tabpanel"
+                            <div class="tab-pane" id="teacher-about" role="tabpanel"
                                  aria-labelledby="teacher-about-tab">
                                 <div class="container">
                                     <div class="instructor-about-area">
@@ -60,7 +62,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane" id="teacher-class" role="tabpanel"
+                            <div class="tab-pane fade show active" id="teacher-class" role="tabpanel"
                                  aria-labelledby="teacher-class-tab">
                                 <div class="container">
                                     <div class="instructor-class-area">
@@ -191,59 +193,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="App_store" class="background-res background-ats py-5"
-                 style="background-image: url('{{ asset('frontend') }}/assets/images/exam-page/footer-background.png')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="style-2phone-image">
-                            <img src="{{ asset('frontend') }}/assets/images/exam-page/2-mobile.png" class="img-fluid" alt="" srcset="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="download-text">
-                            <h5>ডাউনলোড করুন</h5>
-                            <h2>বিদ্যাবাড়ি App</h2>
-                        </div>
-                        <div class="rattingandflowers-area">
-                            <div class="row">
-                                <div class="col-md-4 learner-count">
-                                    <h2>50+</h2>
-                                    <p>WorldWide Learners</p>
-                                </div>
-                                <div class="col-md-4 review-count">
-                                    <h2>4.7 <span> <i class="fas fa-star"></i></span></h2>
-                                    <p>Positive<br> Reviews</p>
-                                </div>
-                                <div class="col-md-4 courses-count">
-                                    <h2>180+</h2>
-                                    <p>Skill based Courses</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="download-hint">
-                            <p>ডাউনলোড করুন আমাদের মোবাইল অ্যাপ,<br>
-                                শেখা শুরু করুন আজ থেকেই</p>
-                        </div>
-                        <div class="download-store-path">
-                            <div class="app-store">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/app-store.png"
-                                         alt="App Store" srcset=""></a>
-                            </div>
-                            <div class="play-store">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/images/exam-page/google-play.png"
-                                         alt="Google Play Store" srcset=""></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </section>
 
     </main>

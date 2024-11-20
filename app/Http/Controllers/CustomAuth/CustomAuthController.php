@@ -58,9 +58,9 @@ class CustomAuthController extends Controller
         } else {
             // Handling failed login attempt
             if ($request->ajax()) {
-                return response()->json(['status' => 'error', 'message' => 'Credentials do not match our records!'], 401);
+                return response()->json(['status' => 'error', 'message' => 'Incorrect phone number or password!'], 401);
             } else {
-                return redirect()->back()->withErrors(['mobile' => 'Credentials do not match our records!'])->withInput();
+                return redirect()->back()->withErrors(['mobile' => 'Incorrect phone number or password!'])->withInput();
             }
         }
 

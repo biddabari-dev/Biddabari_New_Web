@@ -1,7 +1,8 @@
 @extends('frontend.master')
 
-@section('title') {{ $seo->meta_keywords ?? $product->title }}@endsection
-@section('meta-description') {{ $seo->meta_description ?? Str::limit(strip_tags($product->description), 155) }} @endsection
+@section('title'){{ $seo->meta_tags ?? $product->title }}@endsection
+@section('meta-description'){{ $seo->meta_description ?? Str::limit(strip_tags($product->description), 155) }}@endsection
+@section('meta-keywords'){{ $seo->meta_keywords ?? '' }}@endsection
 @section('og-image'){{ $product->image }} @endsection
 
 @section('body')
