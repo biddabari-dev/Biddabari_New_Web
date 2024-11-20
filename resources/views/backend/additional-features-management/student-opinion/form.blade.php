@@ -37,7 +37,7 @@
                                 <div class="mt-1">
                                     <input type="file" name="image" id="hijibiji" class="form-control" placeholder="Image" accept="image/*" />
                                     @if(isset($opinion))
-                                        <img src="{{ asset($opinion->image) }}" alt="" style="height: 80px">
+                                        <img src="{{ static_asset($opinion->image) }}" alt="" style="height: 80px">
                                     @endif
                                 </div>
                             </div>
@@ -45,14 +45,30 @@
                                 <img src="" id="imagePreview" alt="">
                             </div>
                         </div>
+
                         <div class="row mt-3">
+                            <div class="col-sm-6">
+                                <label for="">Student Comment</label>
+                                <div class="mt-1">
+                                    <input type="file" name="comment" id="commentInput" class="form-control" placeholder="Comment Image" accept="image/*" />
+                                    @if(isset($opinion))
+                                        <img src="{{ static_asset($opinion->comment) }}" alt="" style="height: 80px">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <img src="" id="commentPreview" alt="">
+                            </div>
+                        </div>
+
+                        {{--<div class="row mt-3">
                             <div class="col-md-12 mt-2">
                                 <label for="" class="col-md-4">Student Comment</label>
                                 <div class="col-md-12">
                                     <textarea type="text" name="comment" class="form-control" placeholder="Long Description" id="summernote" cols="30" rows="10">{{ isset($opinion) ? $opinion->comment : '' }}</textarea>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
                         <div class="row mt-3">
                             <label for="" class="col-md-3"> Student Opinion Status</label>
                             <div class="col-md-2">
@@ -85,18 +101,28 @@
 
     {{--    @include('backend.includes.assets.plugin-files.datatable')--}}
     {{--    @include('backend.includes.assets.plugin-files.date-time-picker')--}}
-    @include('backend.includes.assets.plugin-files.editor')
+    {{--@include('backend.includes.assets.plugin-files.editor')--}}
     <script>
         // $('textarea[data-editor="summernote"]').summernote({height:70,inheritPlaceholder: true})
     </script>
     <script>
         $(document).ready(function() {
-            $('#hijibiji').change(function() {
-                var idName = $(this).attr('name');
+            // Preview for Student Image
+            $('#hijibiji').change(function(event) {
                 var imgURL = URL.createObjectURL(event.target.files[0]);
                 $('#imagePreview').attr('src', imgURL).css({
-                    height: 150+'px',
-                    width: 150+'px',
+                    height: '150px',
+                    width: '150px',
+                    marginTop: '5px'
+                });
+            });
+
+            // Preview for Student Comment Image
+            $('#commentInput').change(function(event) {
+                var imgURL = URL.createObjectURL(event.target.files[0]);
+                $('#commentPreview').attr('src', imgURL).css({
+                    height: '150px',
+                    width: '150px',
                     marginTop: '5px'
                 });
             });

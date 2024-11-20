@@ -29,8 +29,8 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $opinion->show_type }}</td>
                                     <td>{{ $opinion->name }}</td>
-                                    <td><img src="{{ asset($opinion->image) }}" alt="" style="height: 60px"></td>
-                                    <td>{!! $opinion->comment !!}</td>
+                                    <td><img src="{{ static_asset($opinion->image) }}" alt="" style="height: 60px"></td>
+                                    <td><img src="{{ static_asset($opinion->comment) }}" alt="" style="height: 60px"></td>
                                     <td>{{ $opinion->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route('student-opinions.edit', $opinion->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

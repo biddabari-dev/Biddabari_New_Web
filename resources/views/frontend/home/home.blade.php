@@ -576,15 +576,18 @@
                             @foreach ($studentOpinions as $successStudentOpinion)
                                 <div class="student-review">
                                     <div class="student-review-content">
-                                        <div class="student-image">
-                                            <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
-                                                alt="" srcset="" class="">
-                                        </div>
+                                        @if(isset($successStudentOpinion) && isset($successStudentOpinion->image))
+                                            <div class="student-image">
+                                                <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}" alt="" class="">
+                                            </div>
+                                        @endif
                                         <div class="student-name mt-2">
                                             <h4>{{ $successStudentOpinion->name ?? 'Student Name' }}</h4>
                                         </div>
                                         <div class="review">
-                                            <p>{!! $successStudentOpinion->comment !!}</p>
+                                                {{--{!! $successStudentOpinion->comment !!}--}}
+                                            <img src="{{ static_asset($successStudentOpinion->comment ?? 'frontend/assets/images/testimonials/s-1.jpg') }}"
+                                                     alt="" srcset="" class="">
                                         </div>
                                     </div>
                                 </div>

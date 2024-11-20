@@ -13,6 +13,8 @@ class StudentOpinionController extends Controller
      */
     public function index()
     {
+        /*$data = StudentOpinion::latest()->get();
+        dd($data);*/
         return view('backend.additional-features-management.student-opinion.index', [
             'opinions'    => StudentOpinion::latest()->get(),
         ]);
