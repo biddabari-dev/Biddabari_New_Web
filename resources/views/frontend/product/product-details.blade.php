@@ -200,7 +200,7 @@
     </section>
 </main>
 
-<section id="App_store" class="background-res background-ats py-5"
+{{--<section id="App_store" class="background-res background-ats py-5"
 style="background-image: url('{{ asset('frontend')}}/assets/images/exam-page/footer-background.png')">
 <div class="container">
     <div class="row">
@@ -250,7 +250,7 @@ style="background-image: url('{{ asset('frontend')}}/assets/images/exam-page/foo
         </div>
     </div>
 </div>
-</section>
+</section>--}}
 {{-- Pdf Modal --}}
 <div style="margin-top:80px" class="modal fade show-pdf-modal" id="pdfModal" data-bs-backdrop="static"
 data-modal-parent="courseContentModal">
