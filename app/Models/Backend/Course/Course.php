@@ -196,6 +196,7 @@ class Course extends Model
         return self::$course;
     }
 
+
     public static function importCourseModel($data = null)
     {
         self::$course = new Course();

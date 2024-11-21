@@ -821,7 +821,7 @@ class CourseController extends Controller
 
     // This Function use for OBS fileUpload
 
-    /*public function fileUpload ($fileObject, $directory, $nameString = null, $modelFileUrl = null)
+   /* public function fileUpload ($fileObject, $directory, $nameString = null, $modelFileUrl = null)
     {
         // if ($fileObject)
         // {
@@ -903,11 +903,11 @@ class CourseController extends Controller
             $fileName = ($nameString ? $nameString . '-' : '') .
                 str_replace(' ', '-', pathinfo($fileObject->getClientOriginalName(), PATHINFO_FILENAME)) .
                 '_' . rand(100, 100000) . '.' . $fileObject->extension();
-            $fileDirectory = 'pdf/' . rtrim($directory, '/') . '/';
-
+            $fileDirectory = 'pdf/'.$directory;
 
             $s3FilePath = $fileDirectory . $fileName;
 
+dd('ok');
             // Configure AWS S3 client
             $s3Client = new S3Client([
                 'version' => 'latest',

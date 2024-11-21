@@ -57,7 +57,7 @@ Biddabari - The First Job Study Online Platform in Bangladesh
                                             <label for="paidTo">Your Name</label>
                                             <input type="text" id="paidTo" onkeydown="return /[a-zA-Z ]/i.test(event.key)" required name="name" class="form-control"
                                                    placeholder="Enter your name" value="{{ auth()->check() ? auth()->user()->name : '' }}" {{--{{ auth()->check() && !empty(auth()->user()->name) ? 'readonly' : '' }}--}}  />
-                                            @if(!auth()->check()) <span class="text-danger f-s-18 float-start">আপনার এই নাম এ কোর্সটি রেজিস্টার করা হবে।</span> @endif
+                                            @if(!auth()->check()) <span class="text-danger f-s-18 float-start">আপনার এই নামে কোর্সটি রেজিস্টার করা হবে।</span> @endif
                                             @error('paid_to')<span class="text-danger"></span>@enderror
                                         </div>
                                         <div class="col-md-6">
