@@ -2159,6 +2159,10 @@ img {
         padding: 5px 0;
         font-size: 12px;
     }
+
+    #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-content p {
+        display: none;
+    }
 }
 
 /* ----------------- Our Courses Section End ---------------------------- */
