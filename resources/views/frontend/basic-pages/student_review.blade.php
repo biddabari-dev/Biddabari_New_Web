@@ -17,7 +17,7 @@
             </div>
 
             <div id="Student_review">
-                <div class="student-review-area py-4">
+                <div class="student-review-area pb-4">
                     <div class="student-review-slider slider">
                         <div class="student-review">
                             <div class="student-review-content">
