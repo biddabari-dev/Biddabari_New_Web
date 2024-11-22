@@ -564,7 +564,7 @@
             <div class="container">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">আমাদের শিক্ষার্থীরা <span> যা বলছে...</span></h2>
+                        <h2 class="fw-bold">আমাদের শিক্ষার্থীরা  <span> যা বলছে...</span></h2>
                     </div>
                 </div>
 
