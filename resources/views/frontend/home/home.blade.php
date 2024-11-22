@@ -404,7 +404,7 @@
                                     <a href="{{ route('front.free-courses') }}">
                                         <div class="my-course-category">
                                             <div class="my-course-category-icon">
-                                                <i class="fa-solid fa-book-tanakh"></i>
+                                                <i class="fa-solid fa-book"></i>
                                             </div>
                                             <div class="my-course-category-content">
                                                 <h3>{{ $courseCategory->name }} </h3>
@@ -416,8 +416,7 @@
                                     <a href="{{ route('front.category-courses', ['slug' => $courseCategory->slug]) }}">
                                         <div class="my-course-category">
                                             <div class="my-course-category-icon">
-
-                                                <i class="fa-solid fa-book-tanakh"></i>
+                                                <i class="fa-solid fa-book"></i>
                                             </div>
                                             <div class="my-course-category-content">
                                                 <h3>{{ $courseCategory->name }} </h3>
