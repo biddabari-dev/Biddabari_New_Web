@@ -127,7 +127,7 @@ Biddabari - The First Job Study Online Platform in Bangladesh
                                 <label for="exampleInputNumber1" class="form-label">Mobile No.</label>
                                 <input type="text" pattern="^01[3-9]\d{8}$" title="Please enter a valid mobile number"  onkeypress="return isNumberKey(event)" id="phone" name="mobile" required class="form-control"
                                                    placeholder="Enter your mobile no" value="{{ auth()->check() ? auth()->user()->mobile : '' }}"/>
-                                @if(!auth()->check()) <div class="form-text text-danger">আপনার এই নামে কোর্সটি রেজিস্টার করা হবে</div> @endif
+                                @if(!auth()->check()) <div class="form-text text-danger">আপনার এই নম্বরে কোর্সটি রেজিস্টার করা হবে</div> @endif
                                 @error('mobile')<span class="text-danger"></span>@enderror
                             </div>
                             <div class="mb-3">

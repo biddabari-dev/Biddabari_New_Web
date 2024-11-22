@@ -592,4 +592,7 @@ class BasicViewController extends Controller
     public function thankyou(){
         return view('frontend.thank-you');
     }
+    public function studentReview(){
+        return view('frontend.basic-pages.student_review');
+    }
 }
