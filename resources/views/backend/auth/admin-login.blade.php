@@ -16,7 +16,7 @@
                 <div class="col-md-10 col-lg-8">
                     <div class="signup-area">
                         <div class="row g-4">
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-none d-md-block">
                                 <div class="signup-image-area text-center">
                                     <h4><strong> Welcome to <br><span class="text-brand"> Biddabari </span> Online Learning Platform </strong></h4>
                                     <img src="{{ asset('frontend') }}/assets/images/signup/Signup-Image.webp" alt="" srcset="" style="width: 80%">
@@ -64,13 +64,11 @@
 
                                             <button type="submit" class="btn btn_warning">Submit</button>
 
-                                            <div class="my-3 form-check">
-                                                <span style="color: #aa076b;"><a href="{{ route('forgot-user-password') }}" class="text-brand">Forgotten password?</a></span>
+                                            <div class="form-check d-flex justify-content-between align-items-center mt-3 ps-0">
+                                                <span style="color: #aa076b; text-align: left;"><a href="{{ route('forgot-user-password') }}" class="text-brand">Forgotten password?</a></span>
+                                                <h6 class="m-0"><span><a href="{{ route('custom-register') }}">Registration</a></span></h6>
                                             </div>
                                         </form>
-
-                                        <h6>You have no account ? <span> <a href="{{ route('custom-register') }}">Registration</a>
-                                            </span></h6>
                                     </div>
                                 </div>
                             </div>
