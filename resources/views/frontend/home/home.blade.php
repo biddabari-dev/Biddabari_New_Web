@@ -86,7 +86,7 @@
 
     <main>
         <section id="Home_main_banner" class="background-res background-ats py-3 py-lg-5"
-            style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/home-page-main-banner.jpg')">
+            style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/Background-banner.webp')">
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-md-12 col-lg-8">
