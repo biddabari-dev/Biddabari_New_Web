@@ -105,7 +105,7 @@ class StudentController extends Controller
 
     public function myCourses ()
     {
-        $this->courseOrders = ParentOrder::where(['user_id'=> auth()->id(), 'ordered_for' => 'course'])->where('status', '!=', 'canceled')->select('id', 'parent_model_id', 'user_id', 'status')->with('course:id,title,price,banner,slug,status')->get();
+        $this->courseOrders = ParentOrder::where(['user_id'=> auth()->id(), 'ordered_for' => 'course'])->where('status', '!=', 'canceled')->select('id', 'parent_model_id', 'user_id', 'status')->with('course:id,title,banner,slug,status')->get();
         $this->data = [
             'courseOrders'  => $this->courseOrders
         ];
