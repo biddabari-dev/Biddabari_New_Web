@@ -5,19 +5,19 @@ Biddabari - All Books
 @section('body')
 <main>
     <section id="Book_page_banner" class="background-res-book-banner background-ats py-2 py-md-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/free-service/free-service-banner-bg.png')">
+        style="background-image: url('{{ asset('frontend') }}/assets/images/home-page/Background-banner.webp')">
         <div class="container">
             <div class="book-banner">
-                <div class="book-banner-image">
+                {{--<div class="book-banner-image">
                     <a href=""><img src="{{ asset('frontend') }}/assets/images/book-page/book-banner.png" alt="Image 1"></a>
-                </div>
-                {{-- @foreach($product_sliders as $slider)
+                </div>--}}
+                 @foreach($product_sliders as $slider)
                 <a href="{{ $slider->link }}">
                     <img src="{{ $slider->image ? static_asset($slider->image) : asset('frontend/assets/images/book-page/book-banner.png') }}"
                             alt="Image 1"
                             style="border-radius: 20px;">
                 </a>
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
     </section>

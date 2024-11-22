@@ -168,7 +168,7 @@ Biddabari - User registration form
 
     // Initialize the timer on page load (if needed)
     document.addEventListener('DOMContentLoaded', () => {
-        startTimer(10);  // Initial 30 seconds before allowing resend
+        startTimer(120);  // Initial 30 seconds before allowing resend
     });
 
 $('#submitBtn').on('click', function(e) {
