@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section('title')
-    Biddabari - ভিডিও ক্লাস ও পরীক্ষা – একদম ফ্রি
+    Biddabari -  শিক্ষার্থীরা যা বলে
 @endsection
 
 @section('body')
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="col-12 mb-4">
                 <div class="section-title text-center">
-                    <h2 class="fw-bold"> চাকরির <span class="text-brand">বিজ্ঞাপন!</span> </h2>
+                    <h2 class="fw-bold">  শিক্ষার্থীরা  <span class="text-brand">যা বলে...</span> </h2>
                 </div>
             </div>
             <div id="Student_review">

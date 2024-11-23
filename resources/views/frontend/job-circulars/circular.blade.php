@@ -1,5 +1,7 @@
 @extends('frontend.master')
-
+@section('title')
+Biddabari - চাকরির বিজ্ঞাপন
+@endsection
 @section('body')
     <main>
 

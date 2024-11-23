@@ -575,7 +575,7 @@
                             @foreach ($studentOpinions as $successStudentOpinion)
                                 <div class="student-review">
                                     <div class="student-review-content">
-                                        @if(isset($successStudentOpinion) && isset($successStudentOpinion->image))
+                                        @if(!empty($successStudentOpinion->image))
                                             <div class="student-image">
                                                 <img src="{{ static_asset($successStudentOpinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}" alt="" class="">
                                             </div>
