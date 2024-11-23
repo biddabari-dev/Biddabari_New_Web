@@ -76,7 +76,17 @@ Biddabari - All Books
                                             </div>
                                             <a href="{{ route('front.view-cart',[$product->id]) }}" >
                                                 <div class="custom-btn btn-12">
-                                                    <span>ক্লিক করুন!</span><span> বইটি কিনুন</span>
+                                                    @if($product->stock_amount > 0)
+                                                        @php $stock = true; @endphp
+                                                        <button>
+                                                            <span>ক্লিক করুন!</span><span> বইটি কিনুন</span>
+                                                        </button>
+                                                    @else
+                                                        @php $stock = false; @endphp
+                                                        <button disabled style="cursor: not-allowed; !important;">
+                                                            <span>ক্লিক করুন!</span><span style="background-color: red; !important;"> স্টক আউট</span>
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </a>
                                         </div>

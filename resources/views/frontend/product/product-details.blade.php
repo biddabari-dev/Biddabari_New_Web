@@ -26,7 +26,10 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="book-details-description-area">
                             <div class="book-available">
+{{--
                             <h6>{{ $product->stock_amount > 0 ? 'In Stock' : 'Out Of Stock' }}</h6>
+--}}
+                            <h6>{!! $product->stock_amount > 0 ? '<span style="background-color: rgb(25 133 84);padding: 8px 15px;border-radius: 8px;">In Stock</span>' : '<span style="background-color: rgb(255 193 6);padding: 8px 15px;border-radius: 8px;">Out Of Stock</span>' !!}</h6>
                             </div>
                             <div class="book-title">
                                 <h2 class="fw-bold">{{ $product->title }}</h2>
@@ -83,7 +86,15 @@
                                 </p>
                             </div>
                             <div class="purchase-button">
-                                <a href="{{ route('front.view-cart',[$product->id]) }}" type="button" class="btn btn_warning">এখনই কিনুন</a>
+                                @if($product->stock_amount > 0)
+                                    @php $stock = true; @endphp
+                                    <a href="{{ route('front.view-cart',[$product->id]) }}" type="button" class="btn btn_warning">এখনই কিনুন</a>
+                                @else
+                                    @php $stock = false; @endphp
+                                    <button type="button" class="btn btn_warning" style="cursor: not-allowed; background-color: red; !important;">
+                                        স্টক আউট
+                                    </button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -103,7 +114,7 @@
                                                 <div class="related-book-content">
                                                     <div class="related-book-title d-flex justify-content-between">
                                                         <h6>{{ $latestProduct->title }}</h6>
-                                                        <p>{!! $product->stock_amount > 0 ? 'In Stock' : '<span class="text-warning"> Stock Out</span>' !!}</p>
+                                                        <p>{!! $latestProduct->stock_amount > 0 ? 'In Stock' : '<span class="text-warning"> Stock Out</span>' !!}</p>
                                                     </div>
                                                     <div class="related-book-owner">
                                                         <p>by <span>{{ $latestProduct->productAuthor->name }}</span></p>
@@ -183,7 +194,17 @@
                                                 </div>
                                                 <a href="{{ route('front.view-cart',[$product->id]) }}" >
                                                     <div class="custom-btn btn-12">
-                                                        <span>ক্লিক করুন!</span><span> বইটি কিনুন</span>
+                                                        @if($product->stock_amount > 0)
+                                                            @php $stock = true; @endphp
+                                                            <button>
+                                                                <span>ক্লিক করুন!</span><span> বইটি কিনুন</span>
+                                                            </button>
+                                                        @else
+                                                            @php $stock = false; @endphp
+                                                            <button disabled style="cursor: not-allowed; !important;">
+                                                                <span>ক্লিক করুন!</span><span style="background-color: red; !important;"> স্টক আউট</span>
+                                                            </button>
+                                                        @endif
                                                     </div>
                                                 </a>
                                             </div>
