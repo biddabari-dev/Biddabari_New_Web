@@ -134,7 +134,6 @@ class FrontExamController extends Controller
 
             $this->exam = CourseSectionContent::with('questionStores.questionOptions')->whereId($contentId)->first();
 
-           dd($this->exam);
             $this->data = [
                 'exam'   => $this->exam,
                 // 'exams'   => $this->exams
