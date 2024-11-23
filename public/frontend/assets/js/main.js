@@ -86,6 +86,8 @@
     });
 
     $(".home-course-category-slider").slick({
+        autoplay: true,
+        autoplaySpeed: 2000,
         dots: false,
         infinite: true,
         arrows: true,
