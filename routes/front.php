@@ -96,6 +96,8 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/remove-from-cart/{id}', [FrontendViewController::class, 'removeFromCart'])->name('remove-from-cart');
         Route::get('/job-circular', [FrontendViewController::class, 'allJobCirculars'])->name('all-job-circulars');
         Route::get('/job-circular-details/{id}/{slug?}', [FrontendViewController::class, 'jobCircularDetail'])->name('job-circular-details');
+        Route::get('/job-details/{id}', [BasicViewController::class, 'getJobDetails'])->name('job.details');
+
         Route::get('/instructor', [FrontendViewController::class, 'instructors'])->name('instructors');
         Route::get('/instructor-details/{id}/{slug?}', [FrontendViewController::class, 'instructorDetails'])->name('instructor-details');
 

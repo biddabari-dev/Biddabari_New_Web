@@ -595,4 +595,27 @@ class BasicViewController extends Controller
     public function studentReview(){
         return view('frontend.basic-pages.student_review');
     }
+
+    public function getJobDetails($id)
+{
+    $circular = Circular::find($id);
+
+    if ($circular) {
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'job_title' => $circular->job_title,
+                'created_at' => $circular->created_at,
+                'image' => $circular->image,
+                'static_asset_url' => static_asset($circular->image), // Generate the full URL
+            ]
+        ]);
+    } else {
+        return response()->json([
+            'success' => false,
+            'message' => 'Job circular not found!'
+        ]);
+    }
+}
+
 }
