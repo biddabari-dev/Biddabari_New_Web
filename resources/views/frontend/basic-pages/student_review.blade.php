@@ -64,6 +64,9 @@
                             <div class="col-md-6 col-lg-4 p-2">
                                 <div class="card video-container">
                                     <div class="video-foreground">
+                                        <div class="content p-2">
+                                            <h5 class="mt-2">{{ $student_opinion->name }}</h5>
+                                        </div>
                                         <div class="plyr__video-embed" id="player">
                                             <iframe
                                                 src="https://www.youtube.com/embed/{{ $videoId }}?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
@@ -74,9 +77,6 @@
                                         </div>
                                         <div onclick="showVideoModal('https://www.youtube.com/embed/{{ $videoId }}?autoplay=1')"
                                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
-                                        </div>
-                                        <div class="content p-2">
-                                            <h5><a href="#" class="text-black">{{ 'title' }}</a></h5>
                                         </div>
                                     </div>
                                 </div>
