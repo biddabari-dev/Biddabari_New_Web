@@ -15,7 +15,10 @@
                                 @if($content->content_type == 'video')
                                     @foreach($content->questionStoresForClassXm as $questionStore)
                                          <div class="col-md-6 mt-3 {{$questionStore->has_answered !=1 ? 'bg-warning' : ''}}" >
-                                            <h2>{!! strip_tags($questionStore->question) !!}</h2>
+                                            <h2>{!! $questionStore->question !!}</h2>
+                                             @if(!empty($questionStore->question_image))
+                                                 <img src="{{ $questionStore->question_image }}" class="fit-image" alt="" style="max-height: 350px" />
+                                             @endif
                                             @if($content->content_type == 'video')
                                                 <div class="mt-2">
                                                     <ul class="nav flex-column">
