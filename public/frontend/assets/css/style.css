@@ -4202,8 +4202,29 @@ img {
     margin-bottom: 0;
 }
 
+.blog-popular-posted-card .blog-feature-content .blog-feature-title {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 4px 0;
+    margin-bottom: 0;
+}
+
+.blog-popular-posted-card .blog-feature-content p {
+    font-size: 14px;
+    color: rgb(116, 115, 115);
+    margin-bottom: 0;
+}
 
 
+@media (max-width: 991.98px) {
+    .blog-popular-posted-card .blog-feature-content .blog-feature-title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .blog-popular-posted-card .blog-feature-content p {
+        font-size: 12px;
+        }
+}
 
 @media (max-width: 575.98px) {
 
