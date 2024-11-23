@@ -74,17 +74,17 @@
             </div>
             <div class="row mt-2">
                 <div class="col-md-6 mt-2">
-                    <label for="">Image <span class="text-red">(300 X 200 + WEBP)</span> </label>
-                    <input type="file" name="image" class="form-control" id="image" placeholder="Image" />
+                    <label for="">Thumbnail Image <span class="text-red">(300 X 200 + WEBP)</span> </label>
+                    <input type="file" name="thumbnail_image" class="form-control" id="thumbnail_image" placeholder="Image" />
                     <div>
-                        <img src="{{ !empty($circular->image) ? asset($circular->image) : '' }}" id="imagePreview"
+                        <img src="{{ !empty($circular->thumbnail_image) ? asset($circular->thumbnail_image) : '' }}" id="imagePreview"
                             alt="">
                     </div>
                 </div>
                 <div class="col-md-6 mt-2">
-                    <label for="">Circuler PDF</label>
-                    <input type="file" name="featured_pdf" class="form-control" value="{{ $circular->featured_pdf }}" placeholder="Featured PDF"
-                        accept="application/pdf" />
+                    <label for="">Circuler Image / PDF</label>
+                    <input type="file" name="image" class="form-control" value="{{ $circular->image }}" placeholder="Image / Pdf "
+                        />
                     {{-- <span
                         class="text-danger">{{ $errors->has('featured_pdf') ? $errors->first('featured_pdf') : '' }}</span>
                     <a href="" id="pdfPreview">download</a> --}}

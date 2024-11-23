@@ -592,4 +592,16 @@ class BasicViewController extends Controller
     public function thankyou(){
         return view('frontend.thank-you');
     }
+    public function studentReview(){
+        return view('frontend.basic-pages.student_review');
+    }
+
+    public function getJobDetails($id)
+    {
+        $circular = Circular::find($id);
+        $view = view('frontend.job-circulars.details_view', compact('circular'))->render();
+        return response()->json(['html' => $view]);
+
+    }
+
 }

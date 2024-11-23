@@ -2159,6 +2159,10 @@ img {
         padding: 5px 0;
         font-size: 12px;
     }
+
+    #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-content p {
+        display: none;
+    }
 }
 
 /* ----------------- Our Courses Section End ---------------------------- */
@@ -2440,8 +2444,9 @@ img {
 .student-review-slider .student-review.slick-slide {
     padding-top: 50px;
     display: flex;
-    height: 320px;
+    height: 350px;
     margin: 0 10px;
+    padding-bottom: 20px;
 }
 
 .student-review-slider .slick-prev:before,
@@ -4170,6 +4175,36 @@ img {
     background-color: #aa076b;
 }
 
+.blog-popular-posted-card .card-header {
+    background-color: #aa076b;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+
+.blog-popular-posted-card .card-body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 500px;
+}
+
+.blog-popular-posted-card .card-body>div {
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.blog-popular-posted-card .card-body>div:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+
+
+
 @media (max-width: 575.98px) {
 
     #Blog_feature .title-area h2 {
@@ -4293,6 +4328,10 @@ img {
 /* =================================== Blog Page End =========================================== */
 
 /* =================================== Blog Details Page Start =========================================== */
+#Blog_feature .blog-details-area h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
 #Blog_details .blog-details-area .blog-details-top-content .publish-date p {
     font-size: 14px;
     color: darkgray;
@@ -4471,6 +4510,12 @@ img {
     background-color: #aa076b;
     border: 1px solid #aa076b;
     color: white;
+}
+
+@media (max-width: 575.98px) {
+    #Blog_feature .blog-details-area h1 {
+        font-size: 20px;
+    }
 }
 
 

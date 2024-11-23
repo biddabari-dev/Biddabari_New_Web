@@ -196,10 +196,9 @@ $(document).on('click', '.submit-btn', function () {
     })
 })
 
-
-
-
 // store blog
+<<<<<<< HEAD
+=======
 // $(document).on('click', '.submit-btn', function () {
 //     event.preventDefault();
 //     var discountAmount = Number($('input[name="discount_amount"]').val());
@@ -256,6 +255,7 @@ $(document).on('click', '.submit-btn', function () {
 //     })
 // })
 
+>>>>>>> 931a6ceb0dfb33c2cdfdec8ee5b30375be051287
 
 
 

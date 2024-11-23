@@ -262,7 +262,7 @@
                             </a>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <a href="#Student_review" class="text-black">
+                            <a href="{{ route('front.student-review') }}" class="text-black">
                             <div class="my-home-category">
                                 <div class="my-home-category-icon">
                                     <!-- <i class="fa-solid fa-graduation-cap"></i> -->
@@ -564,7 +564,7 @@
             <div class="container">
                 <div class="row">
                     <div class="title-area text-center">
-                        <h2 class="fw-bold">আমাদের শিক্ষার্থীরা <span> যা বলছে...</span></h2>
+                        <h2 class="fw-bold">আমাদের শিক্ষার্থীরা  <span> যা বলছে...</span></h2>
                     </div>
                 </div>
 

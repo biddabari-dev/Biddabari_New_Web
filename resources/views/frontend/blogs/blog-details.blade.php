@@ -23,7 +23,7 @@
                                     <p>আপডেট: <br> <span>{{ date('d F Y',strtotime($blog->created_at)) }}</span></p>
                                 </div>
                                 <div class="blog-details-title">
-                                    <h2>{{ $blog->title }}</h2>
+                                    <h1>{{ $blog->title }}</h1>
                                 </div>
                                 <div class="someText">
                                     <p>{{ $blog->sub_title }}</p>

@@ -96,15 +96,18 @@ Route::middleware('previousUrlMiddleware')->group(function (){
         Route::get('/remove-from-cart/{id}', [FrontendViewController::class, 'removeFromCart'])->name('remove-from-cart');
         Route::get('/job-circular', [FrontendViewController::class, 'allJobCirculars'])->name('all-job-circulars');
         Route::get('/job-circular-details/{id}/{slug?}', [FrontendViewController::class, 'jobCircularDetail'])->name('job-circular-details');
+        Route::get('/job-details/{id}', [BasicViewController::class, 'getJobDetails'])->name('job.details');
+
         Route::get('/instructor', [FrontendViewController::class, 'instructors'])->name('instructors');
         Route::get('/instructor-details/{id}/{slug?}', [FrontendViewController::class, 'instructorDetails'])->name('instructor-details');
- 
+
         //    basic page routes
         Route::get('/about-us', [BasicViewController::class, 'aboutUs'])->name('about-us');
         Route::get('/terms-and-conditions', [BasicViewController::class, 'termsConditions'])->name('terms-conditions');
         Route::get('/privacy-policy', [BasicViewController::class, 'privacy'])->name('privacy-policy');
         Route::get('/refund-policy', [BasicViewController::class, 'refundPolicy'])->name('refund-policy');
         Route::get('/contact-us', [BasicViewController::class, 'contact'])->name('contact-us');
+        Route::get('/students-review', [BasicViewController::class, 'studentReview'])->name('student-review');
         Route::get('/guideline', [FrontViewTwoController::class, 'guideline'])->name('guideline');
         Route::get('/social-media', [FrontViewTwoController::class, 'socialMedia'])->name('social-media');
         Route::get('/gallery', [FrontViewTwoController::class, 'GalleryImageView'])->name('all-gallery-images');
