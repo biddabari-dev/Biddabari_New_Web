@@ -60,7 +60,7 @@
                                         <div class="fail-div">
                                             <div class="text-center">
                                                 <img src="{{ asset('/') }}backend/assets/images/xm-ressult/feeling.png" alt="" class="img-fluid" style="height: 150px" />
-                                                <h3 class="text-primary">Sorry.... You failed in the exam</h3>
+                                                <h3 class="text-danger">Sorry.... You failed in the exam</h3>
                                             </div>
                                         </div>
                                         @elseif($exam->exam_pass_mark < $examResult->result_mark)
@@ -68,7 +68,7 @@
                                             <div class="text-center">
     {{--                                            <img src="{{ asset('/') }}backend/assets/images/xm-ressult/download.png" alt="" class="img-fluid" style="height: 500px" />--}}
                                                 <img src="https://img.freepik.com/free-vector/employees-celebrating-business-success-with-huge-trophy_1150-37475.jpg" alt="" class="img-fluid" style="height: 150px" />
-                                                <h3 class="text-primary">Hurray.... You Passed in the exam</h3>
+                                                <h3 class="text-primary">Hurrah!!! You Passed in the exam</h3>
                                             </div>
                                         </div>
                                         @endif
