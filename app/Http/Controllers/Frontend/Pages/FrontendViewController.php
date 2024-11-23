@@ -338,8 +338,8 @@ class FrontendViewController extends Controller
     public function allJobCirculars()
     {
 
-        $this->jobCirculars = Circular::whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->get();
-        $latest_circular = Circular::whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->latest()->first();
+        $this->jobCirculars = Circular::whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'expire_date')->get();
+        $latest_circular = Circular::whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'expire_date','description')->latest()->first();
         // return $this->jobCirculars = CircularCategory::whereStatus(1)->select('id', 'title', 'image')->whereHas('circulars')->with(['circulars' => function($circulars){
         //     $circulars->whereStatus(1)->latest()->select('id', 'slug', 'image', 'circular_category_id', 'user_id', 'job_title', 'created_at')->get();
         // }])->get();

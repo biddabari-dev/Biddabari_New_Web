@@ -221,7 +221,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#image').change(function() {
+            $('#thumbnail_image').change(function() {
                 var imgURL = URL.createObjectURL(event.target.files[0]);
                 $('#imagePreview').attr('src', imgURL).css({
                     height: 150+'px',

@@ -597,25 +597,11 @@ class BasicViewController extends Controller
     }
 
     public function getJobDetails($id)
-{
-    $circular = Circular::find($id);
+    {
+        $circular = Circular::find($id);
+        $view = view('frontend.job-circulars.details_view', compact('circular'))->render();
+        return response()->json(['html' => $view]);
 
-    if ($circular) {
-        return response()->json([
-            'success' => true,
-            'data' => [
-                'job_title' => $circular->job_title,
-                'created_at' => $circular->created_at,
-                'image' => $circular->image,
-                'static_asset_url' => static_asset($circular->image), // Generate the full URL
-            ]
-        ]);
-    } else {
-        return response()->json([
-            'success' => false,
-            'message' => 'Job circular not found!'
-        ]);
     }
-}
 
 }
