@@ -65,7 +65,7 @@ class BasicViewController extends Controller
             'numberCounters'    => NumberCounter::whereStatus(1)->select('id', 'label', 'icon_code', 'total_number','image')->get(),
             'ourServices'       => OurService::whereStatus(1)->select('id', 'icon_code', 'image', 'title','content')->orderBy('position')->take(8)->get(),
             'ourTeams'          => OurTeam::whereStatus(1)->where(['content_show_type' => 'home_page'])->select('id', 'name', 'designation', 'image','content_show_type','video_link','video_file')->get(),
-            'studentOpinions'   => StudentOpinion::whereStatus(1)->select('id', 'show_type', 'name', 'image','comment')->where('show_type','running_student')->inRandomOrder()->take(6)->get(),
+            'studentOpinions'   => StudentOpinion::whereStatus(1)->select('id', 'show_type', 'name', 'image','comment')->where('show_type','image')->inRandomOrder()->take(6)->get(),
             'poppup'            => PopupNotification::where('status', 1)->first(),
         ];
         return ViewHelper::checkViewForApi($this->data, 'frontend.home.home');
@@ -593,7 +593,8 @@ class BasicViewController extends Controller
         return view('frontend.thank-you');
     }
     public function studentReview(){
-        return view('frontend.basic-pages.student_review');
+        $student_opinions = StudentOpinion::all();
+        return view('frontend.basic-pages.student_review',compact('student_opinions'));
     }
 
     public function getJobDetails($id)

@@ -20,9 +20,9 @@
                         <div class="row mt-3">
                             <div class="col-sm-6 select2-div">
                                     <label for="" class="applicable-form">Student Type</label>
-                                <select name="show_type" required class="form-control select2">
-                                    <option value="all_students" {{ isset($opinion) && $opinion->show_type == 'all_students' ? 'selected' : '' }}>Passed</option>
-                                    <option value="running_student" {{ isset($opinion) && $opinion->show_type == 'running_student' ? 'selected' : '' }}>Running</option>
+                                <select name="show_type" id="show_type" required class="form-control select2">
+                                    <option value="image" {{ isset($opinion) && $opinion->show_type == 'image' ? 'selected' : '' }}>Image </option>
+                                    <option value="video" {{ isset($opinion) && $opinion->show_type == 'video' ? 'selected' : '' }}>Video</option>
                                 </select>
                                 <span class="text-danger" id="">{{ $errors->has('student_category_id') ? $errors->first('student_category_id') : '' }}</span>
                             </div>
@@ -36,29 +36,40 @@
                                 <label for="">Student Image</label>
                                 <div class="mt-1">
                                     <input type="file" name="image" id="hijibiji" class="form-control" placeholder="Image" accept="image/*" />
-                                    @if(isset($opinion))
-                                        <img src="{{ static_asset($opinion->image) }}" alt="" style="height: 80px">
-                                    @endif
+
                                 </div>
                             </div>
                             <div class="col-md-6 mt-2">
                                 <img src="" id="imagePreview" alt="">
+                                @if(isset($opinion))
+                                    <img src="{{ static_asset($opinion->image) }}" alt="" style="height: 80px">
+                                @endif
                             </div>
                         </div>
 
-                        <div class="row mt-3">
+                        <div class="row mt-3 image-comment">
                             <div class="col-sm-6">
-                                <label for="">Student Comment</label>
+                                <label for="">Student Image Comment</label>
                                 <div class="mt-1">
                                     <input type="file" name="comment" id="commentInput" class="form-control" placeholder="Comment Image" accept="image/*" />
-                                    @if(isset($opinion))
-                                        <img src="{{ static_asset($opinion->comment) }}" alt="" style="height: 80px">
-                                    @endif
+
                                 </div>
                             </div>
                             <div class="col-md-6 mt-2">
                                 <img src="" id="commentPreview" alt="">
+                                @if(isset($opinion))
+                                    <img src="{{ static_asset($opinion->comment) }}" alt="" style="height: 80px">
+                                @endif
                             </div>
+                        </div>
+                        <div class="row mt-3 video-comment d-none">
+                            <div class="col-sm-6">
+                                <label for="">Student Video Comment <span class="text-danger"> (Youtube Link) </span> </label>
+                                <div class="mt-1">
+                                    <input type="text" name="video_link" id="video_link" class="form-control" placeholder="Enter youtube link" value="{{ isset($opinion->video_link) ? $opinion->video_link : ''}}" />
+                                </div>
+                            </div>
+
                         </div>
 
                         {{--<div class="row mt-3">
@@ -107,6 +118,16 @@
     </script>
     <script>
         $(document).ready(function() {
+            // default selected
+            let content_type = "{{ isset($opinion) ? $opinion->show_type : '' }}";
+            if(content_type == 'video'){
+                $(".video-comment").removeClass('d-none');
+                $(".image-comment").addClass('d-none');
+            }else{
+                $(".video-comment").addClass('d-none');
+                $(".image-comment").removeClass('d-none');
+            }
+
             // Preview for Student Image
             $('#hijibiji').change(function(event) {
                 var imgURL = URL.createObjectURL(event.target.files[0]);
@@ -126,6 +147,16 @@
                     marginTop: '5px'
                 });
             });
+            $("#show_type").on('change',function(){
+               let show_type = $(this).val();
+               if(show_type == 'video'){
+                    $(".video-comment").removeClass('d-none');
+                    $(".image-comment").addClass('d-none');
+               }else{
+                    $(".video-comment").addClass('d-none');
+                    $(".image-comment").removeClass('d-none');
+               }
+            })
         });
     </script>
 

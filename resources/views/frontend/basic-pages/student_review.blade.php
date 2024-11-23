@@ -10,82 +10,36 @@
         <div class="container">
             <div class="col-12 mb-4">
                 <div class="section-title text-center">
-                    <h2 class=""><span class="text-brand f-s-24" style="display:inline; margin:0; padding: 0;">
-                            শিক্ষার্থীরা যা বলে... </span> </h2>
-                    <hr class="w-25 mx-auto bg-danger" />
+                    <h2 class="fw-bold"> চাকরির <span class="text-brand">বিজ্ঞাপন!</span> </h2>
                 </div>
             </div>
-
             <div id="Student_review">
                 <div class="student-review-area pb-4">
                     <div class="student-review-slider slider">
-                        <div class="student-review">
+                        @foreach($student_opinions as $student_opinion)
+                        @if($student_opinion->show_type == 'image')
+                        <div class="student-review mb-4">
                             <div class="student-review-content">
+                                @if(!empty($student_opinion->image))
+                                    <div class="student-image">
+                                        <img src="{{ static_asset($student_opinion->image ?? 'frontend/assets/images/testimonials/s-1.jpg') }}" alt="" class="">
+                                    </div>
+                                @endif
                                 <div class="student-name mt-2">
-                                    <h4>Rubel Hasan</h4>
+                                    <h4>{{ $student_opinion->name }}</h4>
                                 </div>
+                                {{-- <div class="review">
+                                    <img src="{{ static_asset($student_opinion->comment) }}"
+                                        alt="" srcset="" style="width: 100%">
+                                </div> --}}
                                 <div class="review">
                                     <img src="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/student-opinion/opinions/-1732109133-473166410852112.jpg"
-                                        alt="" srcset="" class="">
+                                        alt="" srcset="" style="width: 100%">
                                 </div>
                             </div>
                         </div>
-                        <div class="student-review">
-                            <div class="student-review-content">
-                                <div class="student-name mt-2">
-                                    <h4>Rubel Hasan</h4>
-                                </div>
-                                <div class="review">
-
-                                    <img src="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/student-opinion/opinions/-1732109334-924704888138646.jpg"
-                                        alt="" srcset="" class="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="student-review">
-                            <div class="student-review-content">
-                                <div class="student-name mt-2">
-                                    <h4>Rubel Hasan</h4>
-                                </div>
-                                <div class="review">
-                                    <img src="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/student-opinion/opinions/-1732109133-473166410852112.jpg"
-                                        alt="" srcset="" class="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="student-review">
-                            <div class="student-review-content">
-                                <div class="student-name mt-2">
-                                    <h4>Rubel Hasan</h4>
-                                </div>
-                                <div class="review">
-                                    <img src="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/student-opinion/opinions/-1732109133-473166410852112.jpg"
-                                        alt="" srcset="" class="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="student-review">
-                            <div class="student-review-content">
-                                <div class="student-name mt-2">
-                                    <h4>Rubel Hasan</h4>
-                                </div>
-                                <div class="review">
-                                    <img src="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/student-opinion/opinions/-1732109133-473166410852112.jpg"
-                                        alt="" srcset="" class="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="student-review">
-                            <div class="student-review-content">
-                                <div class="student-name mt-2">
-                                    <h4>Rubel Hasan</h4>
-                                </div>
-                                <div class="review">
-                                    <img src="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/student-opinion/opinions/-1732109133-473166410852112.jpg"
-                                        alt="" srcset="" class="">
-                                </div>
-                            </div>
-                        </div>
+                        @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -94,19 +48,31 @@
                 <div class="tab-pane fade show active px-1" id="freeClass">
                     <div class="border-0 rounded-0">
                         <div class="row">
-
+                        @foreach($student_opinions as $student_opinion)
+                            @if($student_opinion->show_type == 'video')
+                            @php
+                                $url = $student_opinion->video_link ?? '';
+                                $videoId = '';
+                                if ($url) {
+                                    $urlComponents = parse_url($url);
+                                    if (isset($urlComponents['query'])) {
+                                        parse_str($urlComponents['query'], $query);
+                                        $videoId = $query['v'] ?? '';
+                                    }
+                                }
+                            @endphp
                             <div class="col-md-6 col-lg-4 p-2">
                                 <div class="card video-container">
                                     <div class="video-foreground">
                                         <div class="plyr__video-embed" id="player">
                                             <iframe
-                                                src="https://www.youtube.com/embed/{{ '8enSwB6mBEg' }}?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
+                                                src="https://www.youtube.com/embed/{{ $videoId }}?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
                                                 title="YouTube video player" allowfullscreen allowtransparency
                                                 allow="autoplay; encrypted-media; picture-in-picture"
                                                 referrerpolicy="strict-origin-when-cross-origin"
                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                                         </div>
-                                        <div onclick="showVideoModal('https://www.youtube.com/embed/{{ '8enSwB6mBEg' }}?autoplay=1')"
+                                        <div onclick="showVideoModal('https://www.youtube.com/embed/{{ $videoId }}?autoplay=1')"
                                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
                                         </div>
                                         <div class="content p-2">
@@ -115,6 +81,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                        @endforeach
                         </div>
                     </div>
                 </div>
