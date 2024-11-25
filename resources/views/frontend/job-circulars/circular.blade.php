@@ -1,5 +1,7 @@
 @extends('frontend.master')
-
+@section('title')
+Biddabari - চাকরির বিজ্ঞাপন
+@endsection
 @section('body')
     <main>
 
@@ -66,10 +68,10 @@
                                         $filePath = $circular->image;
                                         $extension = pathinfo($filePath, PATHINFO_EXTENSION);
                                         @endphp
-                                            <div class="card" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;">
-                                                <div class="row align-items-center p-2">
+                                            <div class="card pb-0" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;">
+                                                <div class="row align-items-lg-center p-2 gx-lg-3 gx-2">
                                                     <!-- Image Section -->
-                                                    <div class="col-sm-4 col-lg-3 mb-3 mb-lg-0">
+                                                    <div class="col-4 col-lg-3 mb-3 mb-lg-0">
                                                         <div class="blog-feature-img text-center text-lg-start">
                                                             <a href="javascript:void(0);" class="job-item" data-id="{{ $circular->id }}">
                                                                 <img
@@ -80,10 +82,10 @@
                                                         </div>
                                                     </div>
                                                     <!-- Content Section -->
-                                                    <div class="col-sm-8 col-lg-9">
+                                                    <div class="col-8 col-lg-9">
                                                         <a href="javascript:void(0);" class="job-item text-black" data-id="{{ $circular->id }}">
                                                             <div class="blog-feature-content">
-                                                                <h3 class="h5 blog-feature-title">{{ $circular->job_title }}</h3>
+                                                                <h3 class="blog-feature-title">{{ $circular->job_title }}</h3>
                                                                 <p class="mb-0"><span class="text-brand"> Deadline : </span> <i class="fa-regular fa-calendar-days text-brand"></i>
                                                                     {{ date('d M Y', strtotime($circular->expire_date)) }}
                                                                 </p>

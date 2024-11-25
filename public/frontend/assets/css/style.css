@@ -2073,6 +2073,7 @@ img {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 15px;
+    transition: ease-in-out 0.3s;
 }
 
 .home-course-category-slider .home-course-category-item.slick-slide {
@@ -2085,13 +2086,17 @@ img {
 }
 
 #Home_Our_courses .home-course-category-area .my-course-category:hover {
-    box-shadow: 5px 3px 15px -3px;
+    border-color: #aa076b;
 }
 
 #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-icon i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
     background-color: rgb(162 107 174 / 20%);
     font-size: 30px;
-    padding: 18px 12px;
     color: #86308b;
     border-radius: 10px;
 }
@@ -2444,7 +2449,7 @@ img {
 .student-review-slider .student-review.slick-slide {
     padding-top: 50px;
     display: flex;
-    height: 350px;
+    height: 100%;
     margin: 0 10px;
     padding-bottom: 20px;
 }
@@ -2584,7 +2589,8 @@ img {
 
     #Home_Our_courses .home-course-category-area .my-course-category .my-course-category-icon i {
         font-size: 20px;
-        padding: 5px;
+        height: 35px;
+        width: 35px;
         border-radius: 5px;
     }
 
@@ -4202,8 +4208,29 @@ img {
     margin-bottom: 0;
 }
 
+.blog-popular-posted-card .blog-feature-content .blog-feature-title {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 4px 0;
+    margin-bottom: 0;
+}
+
+.blog-popular-posted-card .blog-feature-content p {
+    font-size: 14px;
+    color: rgb(116, 115, 115);
+    margin-bottom: 0;
+}
 
 
+@media (max-width: 991.98px) {
+    .blog-popular-posted-card .blog-feature-content .blog-feature-title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .blog-popular-posted-card .blog-feature-content p {
+        font-size: 12px;
+        }
+}
 
 @media (max-width: 575.98px) {
 

@@ -10,7 +10,7 @@ class StudentOpinion extends Model
     use HasFactory;
 //    use Searchable;
 
-    protected $fillable = ['show_type', 'name', 'image', 'comment', 'status'];
+    protected $fillable = ['show_type', 'name', 'image', 'comment', 'status','video_link'];
 
 //    protected $searchableFields = ['*'];
 
@@ -23,8 +23,9 @@ class StudentOpinion extends Model
         static::updateOrCreate(['id' => $id],[
             'show_type'              => $request->show_type,
             'name'                   => $request->name,
+            'video_link'             => $request->video_link,
             'image'                  => fileUpload($request->file('image'),'student-opinion/opinions','', isset($id) ? static::find($id)->image : '' ),
-            'comment'                  => fileUpload($request->file('comment'),'student-opinion/opinions','', isset($id) ? static::find($id)->comment : '' ),
+            'comment'                => fileUpload($request->file('comment'),'student-opinion/opinions','', isset($id) ? static::find($id)->comment : '' ),
             'status'                 => $request->status == 'on' ? 1 : 0,
         ]);
     }

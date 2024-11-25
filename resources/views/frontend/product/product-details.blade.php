@@ -18,7 +18,7 @@
                                 <img style="height: auto;" src="{{ static_asset(isset($product->image) ? $product->image : 'frontend/logo/biddabari-card-logo.jpg') }}" alt="package-image"
                                     srcset="" />
                                 <div class="see-more-btn">
-                                    <a href="javascript:void(0)" data-id="{{ $product->id }}" target="_blank" type="button" class="btn btn_warning show-pdf">একটু পরে দেখুন</a>
+                                    <a href="javascript:void(0)" data-id="{{ $product->id }}" target="_blank" type="button" class="btn btn_warning show-pdf">একটু পড়ে দেখুন</a>
                                 </div>
                             </div>
                         </div>
