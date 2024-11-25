@@ -299,9 +299,9 @@ class FrontendViewController extends Controller
     public function categoryBlogs ($slug = null)
     {
 
-        $this->blogs = BlogCategory::with('blogs')->whereSlug($slug)->first();
+        $this->blogCategory = BlogCategory::with('blogs')->whereSlug($slug)->first();
         $this->data = [
-            'blogs'    => $this->blogs,
+            'blogCategory'    => $this->blogCategory,
         ];
         return ViewHelper::checkViewForApi($this->data, 'frontend.blogs.category-blogs');
     }

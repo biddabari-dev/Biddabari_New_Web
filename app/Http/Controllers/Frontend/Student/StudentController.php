@@ -10,6 +10,7 @@ use App\Models\Backend\BatchExamManagement\BatchExam;
 use App\Models\Backend\BatchExamManagement\BatchExamSectionContent;
 use App\Models\Backend\BatchExamManagement\BatchExamSubscription;
 use App\Models\Backend\Course\Course;
+use App\Models\Backend\Course\CourseClassExamResult;
 use App\Models\Backend\Course\CourseSection;
 use App\Models\Backend\Course\CourseSectionContent;
 use App\Models\Backend\ExamManagement\AssignmentFile;
@@ -28,6 +29,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class StudentController extends Controller
 {
@@ -54,7 +56,7 @@ class StudentController extends Controller
 //            return redirect()->route('dashboard')->with('success', 'You logged in successfully.');
 ////            return back()->with('error', 'You don\'t have permission to view this page.');
 //        }
-        $this->orders = ParentOrder::whereUserId(auth()->id())->latest()->get();
+        $this->orders = ParentOrder::whereUserId(auth()->id())->latest()->paginate(10);
         $totalEnrolledCourse = 0;
         $totalEnrolledExams = 0;
         $totalPurchasedProducts = 0;
@@ -105,7 +107,17 @@ class StudentController extends Controller
 
     public function myCourses ()
     {
-        $this->courseOrders = ParentOrder::where(['user_id'=> auth()->id(), 'ordered_for' => 'course'])->where('status', '!=', 'canceled')->select('id', 'parent_model_id', 'user_id', 'status')->with('course:id,title,banner,slug,status')->get();
+        // $this->courseOrders = ParentOrder::where(['user_id'=> auth()->id(), 'ordered_for' => 'course'])->where('status', '!=', 'canceled')->select('id', 'parent_model_id', 'user_id', 'status')->with('course:id,title,banner,slug,status')->get();
+        $this->courseOrders = Cache::remember("user_".auth()->id()."_course_orders", 600, function () {
+            return ParentOrder::where([
+                'user_id' => auth()->id(),
+                'ordered_for' => 'course',
+            ])
+            ->where('status', '!=', 'canceled')
+            ->select('id', 'parent_model_id', 'user_id', 'status')
+            ->with('course:id,title,banner,slug,status')
+            ->get();
+        });
         $this->data = [
             'courseOrders'  => $this->courseOrders
         ];
@@ -115,24 +127,49 @@ class StudentController extends Controller
 
     public function showCourseContents ($courseId)
     {
-        $this->course = Course::whereId($courseId)->select('id', 'title', 'slug', 'status')->with(['courseSections' => function($courseSections){
-            $courseSections->whereStatus(1)->orderBy('order', 'ASC')->where('available_at', '<=', currentDateTimeYmdHi())->select('id', 'course_id', 'title', 'available_at', 'is_paid')->with(['courseSectionContents' => function($courseSectionContents){
-                $courseSectionContents->where('available_at_timestamp', '<=', strtotime(currentDateTimeYmdHi()))->whereStatus(1)->orderBy('order', 'ASC')->get();
-            }])->get();
-        }])->first();
+    //    return $this->course = Course::whereId($courseId)->select('id', 'title', 'slug', 'status')->with(['courseSections' => function($courseSections){
+    //         $courseSections->whereStatus(1)->orderBy('order', 'ASC')->where('available_at', '<=', currentDateTimeYmdHi())->select('id', 'course_id', 'title', 'available_at', 'is_paid')->with(['courseSectionContents' => function($courseSectionContents){
+    //             $courseSectionContents->where('available_at_timestamp', '<=', strtotime(currentDateTimeYmdHi()))->whereStatus(1)->orderBy('order', 'ASC')->get();
+    //         }])->get();
+    //     }])->first();
 
-        foreach ($this->course->courseSections as $courseSection)
-        {
-            foreach ($courseSection->courseSectionContents as $courseSectionContent)
-            {
-                if ($courseSectionContent->has_class_xm == 1)
-                {
-                    $courseSectionContent->classXmStatus = ViewHelper::checkClassXmStatus($courseSectionContent);
-                } else {
-                    $courseSectionContent->classXmStatus = '0';
-                }
-            }
-        }
+        $currentTime = currentDateTimeYmdHi();
+        $cacheKey = "course_with_sections_{$courseId}_{$currentTime}";
+
+        $this->course = Cache::remember($cacheKey, 600, function () use ($courseId, $currentTime) {
+            return Course::whereId($courseId)
+                ->select('id', 'title', 'slug', 'status')
+                ->with([
+                    'courseSections' => function ($query) use ($currentTime) {
+                        $query->whereStatus(1)
+                            ->where('available_at', '<=', $currentTime)
+                            ->orderBy('order', 'ASC')
+                            ->select('id', 'course_id', 'title', 'available_at', 'is_paid')
+                            ->with([
+                                'courseSectionContents' => function ($subQuery) use ($currentTime) {
+                                    $subQuery->where('available_at_timestamp', '<=', strtotime($currentTime))
+                                        ->whereStatus(1)
+                                        ->orderBy('order', 'ASC')
+                                        ->select('id', 'course_section_id', 'title', 'available_at_timestamp', 'has_class_xm','content_type','video_vendor','video_link'); // Only required fields
+                                },
+                            ]);
+                    },
+                ])
+                ->first();
+        });
+
+        // foreach ($this->course->courseSections as $courseSection)
+        // {
+        //     foreach ($courseSection->courseSectionContents as $courseSectionContent)
+        //     {
+        //         if ($courseSectionContent->has_class_xm == 1)
+        //         {
+        //             $courseSectionContent->classXmStatus = ViewHelper::checkClassXmStatus($courseSectionContent);
+        //         } else {
+        //             $courseSectionContent->classXmStatus = '0';
+        //         }
+        //     }
+        // }
         $this->data = [
             'course'    => $this->course
         ];
@@ -451,6 +488,21 @@ class StudentController extends Controller
         }
 
 //        return response()->json(CourseSectionContent::find($request->content_id));
+    }
+
+    public function checkClassXmCom(Request $request){
+        $userExistClassXm = CourseClassExamResult::where(['course_section_content_id' => $request->content_id, 'user_id' => auth()->id()])->first();
+        if (isset($userExistClassXm))
+        {
+            if ($userExistClassXm->status == 'pass')
+            {
+                return '1';
+            } else {
+                return '0';
+            }
+        } else {
+            return '0';
+        }
     }
 
     public function getBatchExamTextTypeContent (Request $request)

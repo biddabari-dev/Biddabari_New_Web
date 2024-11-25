@@ -625,30 +625,46 @@
             })
         })
 
-        function checkHasClassXm(elementObject) {
-            var hasClassXm = elementObject.attr('data-has-class-xm');
-            var isClassXmComplete = elementObject.attr('data-complete-class-xm');
-            if (isClassXmComplete == 1) {
-                return true;
+function checkHasClassXm(elementObject, callback) {
+    var hasClassXm = elementObject.attr('data-has-class-xm');
+
+    $.ajax({
+        url: "{{ route('front.student.check-class-exam-complete') }}",
+        method: "GET",
+        data: {
+            content_id: elementObject.attr('data-content-id')
+        },
+        success: function (data) {
+            isClassXmComplete(data, callback);
+        }
+    });
+
+    function isClassXmComplete(data, callback) {
+        console.log('data......', data);
+
+        if (data == 1) {
+            callback(1); // Pass the result to the callback
+        } else {
+            if (hasClassXm == 0) {
+                callback(1);
             } else {
-                if (hasClassXm == 0) {
-                    return true;
-                } else {
-                    $.ajax({
-                        url: "{{ route('front.student.show-class-exam-ajax') }}",
-                        method: "GET",
-                        data: {
-                            content_id: elementObject.attr('data-content-id')
-                        },
-                        success: function(data) {
-                            // console.log(data);
-                            $('#printHere').html(data);
-                            $('#commonPrintModel').modal('show');
-                        }
-                    })
-                }
+                $.ajax({
+                    url: "{{ route('front.student.show-class-exam-ajax') }}",
+                    method: "GET",
+                    data: {
+                        content_id: elementObject.attr('data-content-id')
+                    },
+                    success: function (data) {
+                        $('#printHere').html(data);
+                        $('#commonPrintModel').modal('show');
+                        callback(0); // Pass 0 as the result
+                    }
+                });
             }
         }
+    }
+}
+
     </script>
 
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
@@ -693,75 +709,70 @@
         let player;
 
         $(document).on('click', '.show-video-modal', function() {
-            var status = checkHasClassXm($(this));
+            // var status = checkHasClassXm($(this));
             var has_exam = $(this).data('has-class-xm');
             var title = $(this).data('title');
-            //console.log('title...........', title);
-
+            var contentId = $(this).attr('data-content-id');
+            var videoVendor = $(this).attr('data-video-vendor');
+            var videoLink = $(this).attr('data-video-link');
             if (has_exam != 1) {
                 $('.see-answer').hide();
             }
+            checkHasClassXm($(this), function (status) {
 
-            if (status == true) {
-                var contentId = $(this).attr('data-content-id');
-                var videoVendor = $(this).attr('data-video-vendor');
-                var videoLink = $(this).attr('data-video-link');
-                // console.log('videoLink............', videoLink);
+                if (status == 1) {
+                    // Construct the correct embed URL based on the video vendor
+                    var embedUrl = (videoVendor == 'youtube') ?
+                        'https://www.youtube.com/embed/' + videoLink : videoLink;
 
-                // Construct the correct embed URL based on the video vendor
-                var embedUrl = (videoVendor == 'youtube') ?
-                    'https://www.youtube.com/embed/' + videoLink +
-                    '?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1' :
-                    videoLink;
-
-                // Update the src attribute dynamically
-                $('#play-now').attr('src', embedUrl);
-                if (videoVendor == 'youtube') {
-                    $('.see-answer').attr('href', '/student/show-course-class-exam-answers/' + contentId + '/' +
-                        title);
-                }
-
-                // Initialize Plyr player instance
-                if (player) {
-                    player.destroy(); // Destroy the previous instance to avoid conflicts
-                }
-                player = new Plyr('#player', {
-                    controls: [
-                        'play-large',
-                        'rewind',
-                        'play', // Play/Pause button
-                        'fast-forward',
-                        'progress',
-                        'current-time',
-                        'duration',
-                        'volume',
-                        'settings',
-                        'fullscreen',
-                    ],
-                    settings: ['quality', 'speed'],
-                    youtube: {
-                        controls: 0,
-                        noCookie: true,
-                        rel: 0,
-                        modestbranding: 1,
+                    // Update the src attribute dynamically
+                    $('#play-now').attr('src', embedUrl);
+                    if (videoVendor == 'youtube') {
+                        $('.see-answer').attr('href', '/student/show-course-class-exam-answers/' + contentId + '/' +
+                            title);
                     }
-                });
-                // Wait for the Plyr player to be ready and then access the YouTube player
-                player.on('ready', (event) => {
-                    const youtubePlayer = event.detail.plyr.embed; // Access the YouTube player object
 
-                    // Check if the YouTube player is ready and set the quality
-                    youtubePlayer.addEventListener('onReady', () => {
-                        youtubePlayer.setPlaybackQuality(
-                            'hd720'); // Set the desired quality (e.g., 'hd720', 'hd1080')
+                    // Initialize Plyr player instance
+                    if (player) {
+                        player.destroy(); // Destroy the previous instance to avoid conflicts
+                    }
+                    player = new Plyr('#player', {
+                        controls: [
+                            'play-large',
+                            'rewind',
+                            'play', // Play/Pause button
+                            'fast-forward',
+                            'progress',
+                            'current-time',
+                            'duration',
+                            'volume',
+                            'settings',
+                            'fullscreen',
+                        ],
+                        settings: ['quality', 'speed'],
+                        youtube: {
+                            controls: 0,
+                            noCookie: true,
+                            rel: 0,
+                            modestbranding: 1,
+                        }
                     });
-                });
+                    // Wait for the Plyr player to be ready and then access the YouTube player
+                    player.on('ready', (event) => {
+                        const youtubePlayer = event.detail.plyr.embed; // Access the YouTube player object
 
-                $('.video-modal').modal('show'); // Show the modal
-            } else {
-                return false;
-            }
+                        // Check if the YouTube player is ready and set the quality
+                        youtubePlayer.addEventListener('onReady', () => {
+                            youtubePlayer.setPlaybackQuality(
+                                'hd720'); // Set the desired quality (e.g., 'hd720', 'hd1080')
+                        });
+                    });
 
+                    $('.video-modal').modal('show'); // Show the modal
+                } else {
+                    return false;
+                }
+            });
             // Disable right-click, text selection, and developer tools when modal is open
             document.addEventListener('contextmenu', disableContextMenu);
             document.body.style.userSelect = 'none';
@@ -782,8 +793,9 @@
             document.addEventListener('MSFullscreenChange', function() {
                 handleOrientationChange();
             });
-
         });
+
+
 
         // Clear the src and destroy the player when the modal is hidden
         $('.video-modal').on('hidden.bs.modal', function() {
@@ -798,6 +810,7 @@
             document.removeEventListener('keydown', disableDeveloperTools);
 
         });
+
     </script>
 
     <script>
