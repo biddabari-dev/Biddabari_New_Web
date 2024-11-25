@@ -148,12 +148,29 @@ class FrontExamController extends Controller
     {
         if (ViewHelper::authCheck())
         {
-            $this->sectionContent = CourseSectionContent::whereId($contentId)->with('questionStoresForClassXm.questionOptions')->first();
-            //$this->sectionContent = CourseSectionContent::whereId($contentId)->with(['questionStoresForClassXm'])->first();
-            $existUserClassXm = CourseClassExamResult::where(['course_section_content_id' => $this->sectionContent->id, 'user_id' => ViewHelper::loggedUser()->id])->first();
-            if (isset($existUserClassXm))
-            {
-                return back()->with('error' , 'You already passed the class Exam.');
+//            $this->sectionContent = CourseSectionContent::whereId($contentId)->with('questionStoresForClassXm.questionOptions')->first();
+//            //$this->sectionContent = CourseSectionContent::whereId($contentId)->with(['questionStoresForClassXm'])->first();
+//            $existUserClassXm = CourseClassExamResult::where(['course_section_content_id' => $this->sectionContent->id, 'user_id' => ViewHelper::loggedUser()->id])->first();
+//            dd($this->sectionContent);
+//            if (isset($existUserClassXm))
+//            {
+//                return back()->with('error' , 'You already passed the class Exam.');
+//            }
+
+            $this->sectionContent = CourseSectionContent::whereId($contentId)
+                ->select('id', 'title', 'exam_total_questions', 'content_type', 'exam_duration_in_minutes', 'written_exam_duration_in_minutes', 'class_xm_duration_in_minutes')
+                ->with([
+                    'questionStoresForClassXm' => function ($query) {
+                        $query->select('id', 'question', 'question_image')
+                            ->with([
+                                'questionOptions:id,option_title,option_image,question_store_id'
+                            ]);
+                    }
+                ])
+                ->first();
+            $existUserClassXm = CourseClassExamResult::where(['course_section_content_id' => $this->sectionContent->id, 'user_id' => ViewHelper::loggedUser()->id])->exists();
+            if ($existUserClassXm) {
+                return back()->with('error', 'You already passed the class Exam.');
             }
             $this->data = [
                 'exam'   => $this->sectionContent
@@ -162,7 +179,9 @@ class FrontExamController extends Controller
         } else {
             return back()->with('error', 'Please Login First.');
         }
+
     }
+
 
     public function startBatchExam ($contentId)
     {

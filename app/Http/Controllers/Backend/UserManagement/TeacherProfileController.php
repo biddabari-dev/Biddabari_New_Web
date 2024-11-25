@@ -18,9 +18,10 @@ class TeacherProfileController extends Controller
     public function index()
     {
         abort_if(Gate::denies('teacher-profile'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('backend.role-management.user.teacher.teacher_profile', [
-            'teachers' => Teacher::oldest()->get()
-        ]);
+        $teachers = Teacher::select('id', 'user_id', 'first_name', 'last_name', 'subject', 'mobile', 'image')
+            ->orderBy('created_at', 'ASC')
+            ->get();
+        return view('backend.role-management.user.teacher.teacher_profile', compact('teachers'));
     }
 
     /**

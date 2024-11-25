@@ -400,7 +400,7 @@ class FrontendViewController extends Controller
 
     public function instructors ()
     {
-        $this->teachers = Teacher::whereStatus(1)->select('id','user_id', 'first_name', 'last_name', 'image', 'subject', 'status', 'github', 'twitter', 'linkedin', 'whatsapp', 'facebook', 'website')->paginate(12);
+        $this->teachers = Teacher::whereStatus(1)->select('id','user_id', 'first_name', 'last_name', 'image', 'subject', 'status', 'github', 'twitter', 'linkedin', 'whatsapp', 'facebook', 'website')->orderBy('created_at', 'ASC')->paginate(12);
         $this->data = [
             'teachers'  => $this->teachers
         ];
