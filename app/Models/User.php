@@ -359,6 +359,25 @@ class User extends Authenticatable
         return $this->hasMany(ParentOrder::class);
     }
 
+    public function hasValidBatchExam($batchExamId)
+    {
+        $parentOrders = $this->parentOrders()
+            ->where('ordered_for', 'batch_exam')
+            ->where('parent_model_id', $batchExamId)
+            ->get();
+
+        foreach ($parentOrders as $parentOrder) {
+            $validity = $parentOrder->hasValidity();
+            if ($validity === 'true') {
+                return 'true';
+            } elseif ($validity === 'pending') {
+                return 'pending';
+            }
+        }
+
+        return 'false';
+    }
+
     public function batchExamOrderChecker()
     {
         return $this->hasMany(ParentOrder::class, 'checked_by');

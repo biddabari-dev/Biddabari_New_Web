@@ -55,11 +55,11 @@
                             <h4 class="text-center">Courses</h4>
                             <div class="row mt-3">
                                 @foreach($courses as $course)
-                                    <div class="col-md-3" style="cursor: pointer">
+                                    <div class="col-md-3 mb-3" style="cursor: pointer">
                                         <div class="card copy-link" data-link="{{ route('front.course-details', ['id' => $course->id, 'slug' => $course->slug, 'rc' => $affiliateRegister->affiliate_code]) }}">
-                                            <img src="{{ asset($course->banner) }}" alt="course-1" style="height: 150px" class="card-img-top" />
-                                            <div class="card-body py-0">
-                                                <h3>{!! $course->title !!}</h3>
+                                            <img src="{{ $course->banner }}" alt="course-1" style="height: 150px" class="card-img-top" />
+                                            <div class="card-body py-2">
+                                                <p><strong> {!! $course->title !!} </strong></p>
                                             </div>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                 @foreach($batchExams as $batchExam)
                                     <div class="col-md-3" style="cursor: pointer">
                                         <div class="card copy-link" data-link="{{ route('front.all-exams', ['bxid' => $batchExam->id, 'slug' => $batchExam->slug, 'rc' => $affiliateRegister->affiliate_code]) }}">
-                                            <img src="{{ asset($batchExam->banner) }}" alt="course-1" style="height: 150px" class="card-img-top" />
+                                            <img src="{{ $batchExam->banner }}" alt="course-1" style="height: 150px" class="card-img-top" />
                                             <div class="card-body py-0">
                                                 <h3>{!! $batchExam->title !!}</h3>
                                             </div>

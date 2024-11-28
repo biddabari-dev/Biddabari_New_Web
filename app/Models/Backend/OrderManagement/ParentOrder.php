@@ -10,6 +10,7 @@ use App\Models\Backend\ProductManagement\Product;
 use App\Models\Backend\UserManagement\Student;
 use App\Models\Scopes\Searchable;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -261,6 +262,27 @@ class ParentOrder extends Model
         return $this->belongsTo(BatchExam::class, 'parent_model_id');
     }
 
+    public function hasValidity()
+    {
+        if (!$this->batchExamSubscription) {
+            return false; // No subscription available
+        }
+
+        // Calculate expiration date
+        $expireDate = $this->updated_at->addDays($this->batchExamSubscription->package_duration_in_days ?? 0);
+
+        if (Carbon::now()->lessThan($expireDate)) {
+            return $this->status === 'approved' ? 'true' : ($this->status === 'pending' ? 'pending' : 'false');
+        }
+
+        return 'false'; // Expired
+    }
+
+    public function batchExamSubscription()
+    {
+        return $this->belongsTo(BatchExamSubscription::class);
+    }
+
     public function product()
     {
         return $this->belongsTo(Product::class, 'parent_model_id');
@@ -271,12 +293,48 @@ class ParentOrder extends Model
         return $this->belongsTo(User::class, 'checked_by');
     }
 
-    public function batchExamSubscription()
-    {
-        return $this->belongsTo(BatchExamSubscription::class);
-    }
     public function orderRefferedBy()
     {
         return $this->belongsTo(User::class, 'referrer_id');
     }
+
+    public static function todayCourseOrder()
+    {
+        $todayStats = self::where('ordered_for', 'course')
+            ->whereDate('created_at', today())
+            ->whereStatus('approved')
+            ->selectRaw('
+                COUNT(*) as today_order_count,
+                SUM(total_amount) as today_order_amount,
+                SUM(paid_amount) as today_paid_amount
+            ')
+            ->first();
+
+        return [
+            'today_order_count' => $todayStats->today_order_count ?? 0,
+            'today_order_amount' => $todayStats->today_order_amount ?? 0,
+            'today_receive_amount' => $todayStats->today_paid_amount ?? 0,
+        ];
+    }
+
+    public static function currentMonthCourseOrder()
+    {
+        $currentMonthStats = self::where('ordered_for', 'course')
+            ->whereMonth('created_at', now()->month)
+            ->whereStatus('approved')
+            ->selectRaw('
+                COUNT(*) as month_order_count,
+                SUM(total_amount) as month_order_amount,
+                SUM(paid_amount) as month_paid_amount
+            ')
+            ->first();
+
+        return [
+            'month_order_count' => $currentMonthStats->month_order_count ?? 0,
+            'month_order_amount' => $currentMonthStats->month_order_amount ?? 0,
+            'month_receive_amount' => $currentMonthStats->month_paid_amount ?? 0,
+        ];
+    }
+
+
 }

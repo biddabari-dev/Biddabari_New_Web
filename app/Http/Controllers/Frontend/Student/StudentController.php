@@ -56,7 +56,7 @@ class StudentController extends Controller
 //            return redirect()->route('dashboard')->with('success', 'You logged in successfully.');
 ////            return back()->with('error', 'You don\'t have permission to view this page.');
 //        }
-        $this->orders = ParentOrder::whereUserId(auth()->id())->latest()->paginate(10);
+        $this->orders = ParentOrder::whereUserId(auth()->id())->latest()->get();
         $totalEnrolledCourse = 0;
         $totalEnrolledExams = 0;
         $totalPurchasedProducts = 0;
@@ -199,36 +199,60 @@ class StudentController extends Controller
         return ViewHelper::checkViewForApi($this->data, 'frontend.student.batch-exam.contents');
     }
 
+
     public function myExams ()
     {
-        $this->loggedUser = ViewHelper::loggedUser();
+
         // $this->exams   = ParentOrder::where(['ordered_for' => 'batch_exam', 'user_id' => $this->loggedUser->id])->where('status', '!=', 'canceled')->with([
         //     'batchExam' => function($batchExam) {
         //         $batchExam->whereStatus(1)->select('id', 'title', 'banner', 'slug', 'sub_title', 'is_paid', 'is_featured', 'is_approved', 'status', 'is_master_exam')->get();
         //     }
         // ])->select('id', 'user_id', 'parent_model_id', 'batch_exam_subscription_id', 'ordered_for', 'status')->get();
 
-        $this->exams = ParentOrder::where(['ordered_for' => 'batch_exam', 'user_id' => $this->loggedUser->id])
-            ->where('status', '!=', 'canceled')
-            ->with([
-                'batchExam' => function ($batchExam) {
-                    $batchExam->whereStatus(1)
-                        ->select('id', 'title', 'banner', 'slug', 'sub_title', 'is_paid', 'is_featured', 'is_approved', 'status', 'is_master_exam');
-                }
-            ])
+        // $this->exams = ParentOrder::with('hasValidity')->where(['ordered_for' => 'batch_exam', 'user_id' => $this->loggedUser->id])
+        //     ->where('status', '!=', 'canceled')
+        //     ->with([
+        //         'batchExam' => function ($batchExam) {
+        //             $batchExam->whereStatus(1)
+        //                 ->select('id', 'title', 'banner', 'slug', 'sub_title', 'is_paid', 'is_featured', 'is_approved', 'status', 'is_master_exam');
+        //         }
+        //     ])
+        //     ->select('id', 'user_id', 'parent_model_id', 'batch_exam_subscription_id', 'ordered_for', 'status')
+        //     ->get() // Make sure it's a collection
+        //     ->filter(function($exam) {
+        //         // Check if batchExam exists
+        //         return $exam->batchExam !== null;
+        //     });
+
+        $this->exams = ParentOrder::with([
+            'batchExam' => function ($query) {
+                $query->where('status', 1)
+                    ->select('id', 'title', 'banner', 'slug', 'sub_title', 'is_paid', 'is_featured', 'is_approved', 'status', 'is_master_exam');
+            },
+            'batchExamSubscription' // Load subscription for validity check
+        ])->where([
+            'ordered_for' => 'batch_exam',
+            'user_id' => auth()->id(),
+        ])->where('status', '!=', 'canceled')
             ->select('id', 'user_id', 'parent_model_id', 'batch_exam_subscription_id', 'ordered_for', 'status')
-            ->get() // Make sure it's a collection
-            ->filter(function($exam) {
-                // Check if batchExam exists
-                return $exam->batchExam !== null;
-            });
+            ->get();
+            // ->filter(function ($exam) {
+            //     return $exam->batchExam !== null; // Ensure batchExam exists
+            // });
+
+        // Add the validity status to each exam
+        $this->exams->each(function ($exam) {
+            $exam->has_validity = $exam->hasValidity(); // Call the model method
+        });
 
 
-        foreach ($this->exams as $exam)
-        {
-            $exam->has_validity = ViewHelper::checkIfBatchExamIsEnrollmentAndHasValidity($this->loggedUser, $exam->batchExam);
-            $exam->order_status = ViewHelper::checkUserBatchExamIsEnrollment($this->loggedUser, $exam->batchExam);
-        }
+
+        // foreach ($this->exams as $exam)
+        // {
+        //     $exam->has_validity = ViewHelper::checkIfBatchExamIsEnrollmentAndHasValidity($this->loggedUser, $exam->batchExam);
+        // $exam->order_status = ViewHelper::checkUserBatchExamIsEnrollment($this->loggedUser, $exam->batchExam);
+        // }
+
         $this->data = [
             'exams' => $this->exams
         ];
@@ -524,11 +548,11 @@ class StudentController extends Controller
         $batchExams = BatchExam::where(['status' => 1, 'is_paid' => 1])->get();
         foreach ($this->courses as $course)
         {
-            $course->banner = asset($course->banner);
+            $course->banner = static_asset($course->banner);
         }
         foreach ($batchExams as $batchExam)
         {
-            $batchExam->banner = asset($batchExam->banner);
+            $batchExam->banner = static_asset($batchExam->banner);
         }
         $this->data = [
             'affiliateRegister'  => $this->affiliateRegister,

@@ -7,15 +7,26 @@
                 <div class="section-title ">
                     <div class="card">
                         <div class="card-header">
-                            <h2 class="text-center"> {!! $content->title !!} Question Answers</h2>
+                            <h3 class="text-center"> {!! $content->title !!} Question Answers</h3>
+                            <div class="text-center exam-all-marks" >
+                                <p style="color: #21225f; font-weight:600;"> Your Position : <strong class="text-brand"> {{ $myPosition->position }} </strong><br>
+                                    Total Mark : {{ $myPosition->courseSectionContent->exam_total_questions * $myPosition->courseSectionContent->exam_per_question_mark }} <br>
+                                    Right  Answer : {{ $myPosition->total_right_ans }} <br>
+                                    Wrong  Answer : {{ $myPosition->total_wrong_ans }} <br>
+                                    Negative Mark : {{ $myPosition->courseSectionContent->exam_negative_mark * $myPosition->total_wrong_ans }} <br>
+                                    Obtained  Marks : {{ $myPosition->result_mark }} <i class="{{ $myPosition->status=='pass' ? 'text-success': 'text-danger' }} text-capitalize">({{  $myPosition->status }})</i> <br>
+                                    Duration : {{ \Carbon\CarbonInterval::seconds($myPosition->required_time)->cascade()->forHumans() }}
+                                </p>
+                            </div>
                             <hr class="w-25 mx-auto bg-danger"/>
                         </div>
+
                         <div class="card-body">
                             <div class="row ">
                                 @if($content->content_type == 'video')
                                     @foreach($content->questionStoresForClassXm as $questionStore)
                                          <div class="col-md-6 mt-3 {{$questionStore->has_answered !=1 ? 'bg-warning' : ''}}" >
-                                            <h2>{!! $questionStore->question !!}</h2>
+                                            <h3>{!! $questionStore->question !!}</h3>
                                              @if(!empty($questionStore->question_image))
                                                  <img src="{{ $questionStore->question_image }}" class="fit-image" alt="" style="max-height: 350px" />
                                              @endif
@@ -23,7 +34,7 @@
                                                 <div class="mt-2">
                                                     <ul class="nav flex-column">
                                                         @foreach($questionStore->questionOptions as $questionOption)
-                                                            <li class="f-s-20 border px-2 {{ $questionOption->is_correct == 1 ? 'correct-ans-bg' : '' }} {{ isset($questionOption->my_ans) && $questionOption->my_ans == 1 ? 'correct-ans-bg' : '' }} {{ isset($questionOption->my_ans) && $questionOption->my_ans == 0 ? 'bg-danger' : '' }}"><p class="{{ $questionOption->is_correct == 1 ? 'text-white' : '' }}"> {{ $loop->iteration }}. {{ $questionOption->option_title }}</p></li>
+                                                            <li class="f-s-20 border px-2 {{ $questionOption->is_correct == 1 ? 'correct-ans-bg' : '' }} {{ isset($questionOption->my_ans) && $questionOption->my_ans == 1 ? 'correct-ans-bg' : '' }} {{ isset($questionOption->my_ans) && $questionOption->my_ans == 0 ? 'bg-danger' : '' }}"><p class="{{ $questionOption->is_correct == 1 ? 'text-white' : '' }}">{{ $questionOption->option_title }}</p></li>
                                                         @endforeach
                                                     </ul>
                                                     @if($questionStore->has_all_wrong_ans == 1)
