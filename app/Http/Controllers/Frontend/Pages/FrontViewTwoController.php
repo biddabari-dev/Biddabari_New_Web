@@ -70,6 +70,39 @@ class FrontViewTwoController extends Controller
         }
     }
 
+
+/*
+    public function todayClasses()
+    {
+        if (auth()->check()) {
+            $userId = auth()->id();
+            $today = now()->format('Y-m-d');
+
+
+            $this->courseClassContents = ParentOrder::query()
+                ->where('user_id', $userId)
+                ->where('ordered_for', 'course')
+                ->where('status', 'approved')
+                ->join('courses', 'parent_orders.course_id', '=', 'courses.id')
+                ->join('course_sections', 'courses.id', '=', 'course_sections.course_id')
+                ->join('course_section_contents', 'course_sections.id', '=', 'course_section_contents.section_id')
+                ->whereDate('course_section_contents.available_at', $today)
+                ->whereNotIn('course_section_contents.content_type', ['exam', 'written_exam'])
+                ->select('course_section_contents.*')
+                ->get();
+
+            dd($this->courseClassContents);
+            $this->data = [
+                'courseClassContents' => $this->courseClassContents
+            ];
+
+            return ViewHelper::checkViewForApi($this->data, 'frontend.student.todays-section.today-class');
+        } else {
+            return back()->with('error', 'Please Login First');
+        }
+    }
+*/
+
     public function todayExams()
     {
         if (auth()->check())
