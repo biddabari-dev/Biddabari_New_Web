@@ -166,6 +166,7 @@ Route::middleware('previousUrlMiddleware')->group(function (){
             Route::post('profile-update', [StudentController::class, 'profileUpdate'])->name('profile-update');
             Route::get('get-text-type-content', [StudentController::class, 'getTextTypeContent'])->name('get-text-type-content');
             Route::get('show-class-exam-ajax', [StudentController::class, 'showClassXmAjax'])->name('show-class-exam-ajax');
+            Route::get('check-class-exam-complete', [StudentController::class, 'checkClassXmCom'])->name('check-class-exam-complete');
             Route::get('get-batch-exam-text-type-content', [StudentController::class, 'getBatchExamTextTypeContent'])->name('get-batch-exam-text-type-content');
 
             Route::post('change-password/{id}', [UserController::class, 'studentChangePassword'])->name('change-student-password');

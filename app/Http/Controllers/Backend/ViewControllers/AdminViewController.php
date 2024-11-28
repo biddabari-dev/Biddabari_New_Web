@@ -58,9 +58,11 @@ class AdminViewController extends Controller
         $this->data = [
             'totalStudents'     => Student::count(),
             'totalTeachers'     => Teacher::count(),
-            'totalCourses'     => Course::count(),
+            'totalCourses'     => Course::whereStatus(1)->count(),
             'totalIncome'       => $allOrders->sum('total_amount'),
             'totalOrder'        => $allOrders->count(),
+            'todayCourse' => ParentOrder::todayCourseOrder(),
+            'currentMonthCourseOrder' => ParentOrder::currentMonthCourseOrder(),
             'courseOrderAmount'    => $courseOrderAmount,
             'coursePaidOrderAmount'    => $coursePaidOrderAmount,
             'batchExamOrderAmount'    => $batchExamOrderAmount,

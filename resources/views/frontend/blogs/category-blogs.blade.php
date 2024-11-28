@@ -1,65 +1,59 @@
 @extends('frontend.master')
 
 @section('body')
+    <main>
 
-    <div class="inner-banner inner-banner-bg5">
-        <div class="container">
-            <div class="inner-title text-center">
-                <h3>Blog Category </h3>
-                <ul>
-                    <li>
-                        <a href="{{ route('front.home') }}">Home</a>
-                    </li>
-                    <li>{{ $blogCategory->name }} Blogs </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        <section id="Blog_feature" class="background-res background-ats py-5"
+            style="background-image: url('{{ asset('frontend') }}/assets/images/blog/blog-bg.png')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title-area text-center">
+                            <h2 class="fw-bold">{{ $blogCategory->name }} সংক্রান্ত <span class="">ব্লগিং!</span> </h2>
 
-
-    <div class="blog-widget-area pt-100 pb-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row justify-content-center">
-                        @forelse($blogs as $blog)
-                        <div class="col-md-4 col-sm-6">
-                            <div class="blog-card">
-                                <a href="{{ route('front.blog-details', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
-                                    <img src="{{ asset(isset($blog->image) ? $blog->image : 'frontend/logo/biddabari-card-logo.jpg') }}" alt="Blog" class="w-100 img-fluid" style="height: 280px" />
-                                </a>
-                                <div class="content">
-                                    <ul>
-                                        <li><i class="ri-calendar-todo-fill"></i> {{ $blog->created_at->format('M d, Y') }} </li>
-                                        <li><i class="ri-price-tag-3-fill"></i> <a href="{{ route('front.category-blogs', ['id' => $blog->blogCategory->id, 'slug' => $blog->blogCategory->slug]) }}">{{ $blog->blogCategory->name }}</a></li>
-                                    </ul>
-                                    <h3><a href="{{ route('front.blog-details', ['id' => $blog->id, 'slug' => $blog->slug]) }}">{{ $blog->title }}</a></h3>
-                                    <p>{!! str()->words($blog->body, 8) !!}</p>
-                                    <a href="{{ route('front.blog-details', ['id' => $blog->id, 'slug' => $blog->slug]) }}" class="read-btn">Read More</a>
-                                </div>
-                            </div>
                         </div>
-                        @empty
-                            <div class="col-md-12">
-                                <div class="card card-body">
-                                    <h2 class="text-center">No Blogs Published Yet.</h2>
-                                </div>
-                            </div>
-                        @endforelse
-
-                            @if($blogs->lastPage() > 1 )
-                                <div class="col-lg-12 col-md-12 text-center">
-                                    <div class="pagination-area">
-
-                                        {{ $blogs->links() }}
-                                    </div>
-                                </div>
-                            @endif
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
+        <section id="Recently_posted">
+            <div class="container py-4">
+                <div class="blog-recently-posted-area">
+                    @foreach($blogCategory->blogs as $blog)
+                    <div class="row g-4 py-lg-3">
+                        <div class="col-md-6 py-2">
+                            <div class="blog-recently-posted-content">
 
+                                <div class="blog-recently-posted-title">
+                                    <h3>{{ $blog->title }}</h3>
+                                </div>
+                                <div class="blog-datetimeby">
+                                    <p> {{ $blog->user->name }}</p>
+                                    <span>|</span>
+                                    <p><i class="fa-regular fa-calendar-days"></i> {{ date('d F Y', strtotime($blog->created_at)) }}</p>
+
+                                </div>
+                                <div class="someText">
+                                    <p>{!! Str::limit(strip_tags($blog->body), 800) !!}</p>
+                                </div>
+                                <div class="blog-read-button">
+                                    <a href="{{ route('front.blog-details', ['slug' => $blog->slug]) }}" type="button" class="btn btn_warning">View
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="blog-recently-posted-img">
+                                <img src="{{ static_asset(isset($blog->image) ? $blog->image : 'frontend/assets/images/blog/blog-img.jpg') }}" class="w-100"
+                                    alt="{{ $blog->title }}" srcset="">
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+    </main>
 @endsection

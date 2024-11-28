@@ -168,7 +168,7 @@
                         <div class="col-md-6 mb-3 pe-lg-5">
                             <div class="blog-feature-area ">
                                 @foreach($recentBlogs as $key=>$recentblog)
-                                    @if($key < 2)
+                                    @if($key < 3)
                                     <div class="feature-this-month-area mb-3">
                                         <div class="row">
                                             <div class="col-12 col-lg-5">
@@ -208,7 +208,7 @@
                         <div class="col-md-6 ps-lg-5">
                             <div class="blog-popular-posted-area">
                                 @foreach($recentBlogs as $key=>$recentblog)
-                                    @if($key >= 0)
+                                    @if($key >= 3 && $key < 8)
                                     <div class="popular-posted-area mb-4">
                                         <div class="row">
                                             <div class="col-12 col-lg-3">
