@@ -26,7 +26,7 @@
                                 <th>Pub. Date</th>
                                 <th>Exp. Date</th>
                                 <th>Created By</th>
-                                <th>Image</th>
+                                <th>Thumbnail Image</th>
                                 <th>Features</th>
                                 <th>Actions</th>
                             </tr>
@@ -46,7 +46,7 @@
                                         <td>{{ $circular->expire_date }}</td>
                                         <td>{{ $circular->user->name }}</td>
                                         <td>
-                                            <img src="{{ asset($circular->image) }}" alt="" style="height: 70px" />
+                                            <img src="{{ static_asset($circular->thumbnail_image) }}" alt="" style="height: 70px" />
                                         </td>
                                         <td>
                                             <span href="" class="badge badge-sm bg-primary">{{ $circular->is_featured == 1 ? 'Featured' : 'Not Featured' }}</span>
