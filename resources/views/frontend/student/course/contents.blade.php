@@ -949,7 +949,7 @@ function checkHasClassXm(elementObject, callback) {
                             .replace(/^\/+|\/+$/g, "")
                             .replace(/\/{2,}/g, "/");
 
-                        let baseUrl = 'https://biddabari.s3.ap-southeast-1.amazonaws.com/';
+                        let baseUrl = 'https://biddabaribucket.s3.ap-southeast-1.amazonaws.com/';
                         pdflink = baseUrl + path;
 
                         console.log(pdflink);

@@ -510,7 +510,7 @@ $(document).ready(function() {
             success: function(data) {
                 pdflink = data.featured_pdf;
                 if (pdflink) {
-                    pdflink ='https://biddabari.s3.ap-southeast-1.amazonaws.com/' +pdflink;
+                    pdflink ='https://biddabaribucket.s3.ap-southeast-1.amazonaws.com/' +pdflink;
                 } else {
                     pdflink = 'default-document.pdf'; // Fallback if no PDF is provided
                 }

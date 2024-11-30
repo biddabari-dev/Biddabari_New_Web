@@ -11,7 +11,7 @@
     <meta property="og:description" content="Forgot your password? No worries! Enter your mobile number, click 'Send OTP,' and receive a one-time password to reset your password and regain access.">
     {{--<meta name="keywords" content="">--}}
     <meta name="google" content="nositelinkssearchbox">
-    <meta property="og:image"              content="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/additional-features-management/site-settings/logo-1717397688866.png" />
+    <meta property="og:image"              content="https://biddabaribucket.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/additional-features-management/site-settings/logo-1717397688866.png" />
     <meta property="og:image:width"        content="200"/>
     <meta property="og:image:height"       content="286"/>
     <!-- TITLE -->

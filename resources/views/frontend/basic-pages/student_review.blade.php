@@ -33,7 +33,7 @@
                                         alt="" srcset="" style="width: 100%">
                                 </div> --}}
                                 <div class="review">
-                                    <img src="https://biddabari.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/student-opinion/opinions/-1732109133-473166410852112.jpg"
+                                    <img src="https://biddabaribucket.s3.ap-southeast-1.amazonaws.com/backend/assets/uploaded-files/student-opinion/opinions/-1732109133-473166410852112.jpg"
                                         alt="" srcset="" style="width: 100%">
                                 </div>
                             </div>
