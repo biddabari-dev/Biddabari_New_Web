@@ -65,9 +65,8 @@
                         </div>
                     </div>
                     <div class="footer-logo-text">
-                        <p>Biddabari" is such a different and unique online platform where you can rely
-                            yourself.
-                            You just keep your faith on Biddabari, believe it, it will do the rest.</p>
+                        <p>For thousands of job seekers across the country,
+                            <br>Biddabari is the biggest online job preparation platform, a sign of trustworthiness and hope. Set off on the adventure and enjoy unwavering hospitality.</p>
                     </div>
                     <div class="footer-social-media-area">
                         <div class="social-media-icon">
