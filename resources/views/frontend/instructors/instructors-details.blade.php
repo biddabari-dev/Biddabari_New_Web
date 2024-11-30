@@ -32,7 +32,7 @@
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" id="teacher-class-tab" data-bs-toggle="pill"
                                        href="#teacher-class" role="tab" aria-controls="teacher-class"
-                                       aria-selected="false">্যারের ভিডিও ক্লাস দেখতে ক্লিক করুন</a>
+                                       aria-selected="false">স্যারের ভিডিও ক্লাস দেখতে ক্লিক করুন</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="teacher-about-tab" data-bs-toggle="pill"
