@@ -133,6 +133,9 @@
         arrows: true, // Enable next/previous arrows
         autoplay: true, // Enable auto slide
         autoplaySpeed: 3000, // Set speed for auto slide (2 seconds)
+        // autoHeight
+                
+
         responsive: [
             {
                 breakpoint: 1024, // Adjust settings for screens less than 1024px
