@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 
-@section('meta-description') {{ $seo->meta_description ?? ''}}@endsection
+@section('meta-description'){{ $seo->meta_description ?? ''}}@endsection
 
 @section('meta-keywords'){{ $seo->meta_keywords ?? ''}}@endsection
 

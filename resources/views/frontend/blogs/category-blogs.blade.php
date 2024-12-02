@@ -2,7 +2,7 @@
 
 @section('title'){{ $seo->meta_tags ?? ''}}@endsection
 
-@section('meta-description') {{ $seo->meta_description ?? ''}}@endsection
+@section('meta-description'){{ $seo->meta_description ?? ''}}@endsection
 
 @section('meta-keywords'){{ $seo->meta_keywords ?? ''}}@endsection
 
@@ -27,7 +27,7 @@
         <section id="Recently_posted">
             <div class="container py-4">
                 <div class="blog-recently-posted-area">
-                    @foreach($blogCategory->blogs as $blog)
+                    @foreach($blogs as $blog)
                     <div class="row g-4 py-lg-3">
                         <div class="col-md-6 py-2">
                             <div class="blog-recently-posted-content">

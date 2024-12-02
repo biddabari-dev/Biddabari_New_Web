@@ -296,15 +296,45 @@ class FrontendViewController extends Controller
         return view('frontend.blogs.blog', $this->data);
     }
 
-    public function categoryBlogs ($slug = null)
-    {
+//    public function categoryBlogs ($slug = null)
+//    {
+//
+//        $this->blogCategory = BlogCategory::whereSlug($slug)->whereStatus(1)->first();
+//        $this->blogs = Blog::where('blog_category_id',$this->blogCategory->id)->get();
+//
+//        if (!$this->blogCategory) {
+//            return abort(404, 'Blog category not found');
+//        }
+//        $blogCategoryId = $this->blogCategory->id;
+//        $this->seos = Seo::where(['status' => 1, 'seo_for' => 'blog_category', 'parent_model_id' => $blogCategoryId])->first();
+//        $this->data = [
+//            'blogCategory'    => $this->blogCategory,
+//            'blogs'    => $this->blogs,
+//            'seo'    => $this->seos,
+//        ];
+//        return ViewHelper::checkViewForApi($this->data, 'frontend.blogs.category-blogs');
+//    }
 
-        $this->blogCategory = BlogCategory::with('blogs')->whereSlug($slug)->first();
+
+    public function categoryBlogs($slug = null)
+    {
+        $this->blogCategory = BlogCategory::whereSlug($slug)->whereStatus(1)->first();
+
+        if (!$this->blogCategory) {
+            return abort(404, 'Blog category not found');
+        }
+
+        $this->blogs = Blog::where('blog_category_id', $this->blogCategory->id)->orderBy('created_at', 'DESC')->get();
+        $this->seos = Seo::where(['status' => 1, 'seo_for' => 'blog_category', 'parent_model_id' => $this->blogCategory->id])->first();
         $this->data = [
-            'blogCategory'    => $this->blogCategory,
+            'blogCategory' => $this->blogCategory,
+            'blogs' => $this->blogs,
+            'seo' => $this->seos,
         ];
         return ViewHelper::checkViewForApi($this->data, 'frontend.blogs.category-blogs');
     }
+
+
 
     public function blogDetails ($slug)
     {
