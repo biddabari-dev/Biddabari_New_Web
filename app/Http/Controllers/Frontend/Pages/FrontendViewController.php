@@ -407,22 +407,45 @@ class FrontendViewController extends Controller
         return ViewHelper::checkViewForApi($this->data, 'frontend.instructors.instructors');
     }
 
-    public function newComment (Request $request)
+//    public function newComment (Request $request)
+//    {
+//
+//        $roleIds = auth()->user()->roles->pluck('id')->toArray();
+//
+//        if (!in_array(4, $roleIds)) {
+//            return ViewHelper::returEexceptionError('Only students can send messages.');
+//        }
+//
+//        $request->validate([
+//            'message' => 'required'
+//        ]);
+//        ContactMessage::createOrUpdateContactMessage($request);
+//        return ViewHelper::returnSuccessMessage('Comment submitted successfully.');
+////        return back()->with('success', 'Comment submitted successfully.');
+//    }
+
+    public function newComment(Request $request)
     {
 
-        $roleIds = auth()->user()->roles->pluck('id')->toArray();
+        $user = auth()->user();
 
+        if (!$user) {
+            return ViewHelper::returEexceptionError('You must be logged in to send messages.');
+        }
+
+        $roleIds = $user->roles()->pluck('id')->toArray();
         if (!in_array(4, $roleIds)) {
             return ViewHelper::returEexceptionError('Only students can send messages.');
         }
 
         $request->validate([
-            'message' => 'required'
+            'message' => 'required|string|max:255',
         ]);
+
         ContactMessage::createOrUpdateContactMessage($request);
         return ViewHelper::returnSuccessMessage('Comment submitted successfully.');
-//        return back()->with('success', 'Comment submitted successfully.');
     }
+
 
 
     public function instructorDetails($id, $slug = null)

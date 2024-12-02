@@ -1,5 +1,12 @@
 @extends('frontend.master')
 
+@section('title'){{ $seo->meta_tags ?? ''}}@endsection
+
+@section('meta-description') {{ $seo->meta_description ?? ''}}@endsection
+
+@section('meta-keywords'){{ $seo->meta_keywords ?? ''}}@endsection
+
+
 @section('body')
     <main>
 
@@ -9,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="title-area text-center">
-                            <h2 class="fw-bold">{{ $blogCategory->name }} সংক্রান্ত <span class="">ব্লগিং!</span> </h2>
+                            <h1 class="fw-bold">{{ $blogCategory->name }} সংক্রান্ত <span class="">ব্লগিং!</span> </h1>
 
                         </div>
                     </div>
@@ -26,7 +33,7 @@
                             <div class="blog-recently-posted-content">
 
                                 <div class="blog-recently-posted-title">
-                                    <h3>{{ $blog->title }}</h3>
+                                    <h2>{{ $blog->title }}</h2>
                                 </div>
                                 <div class="blog-datetimeby">
                                     <p> {{ $blog->user->name }}</p>

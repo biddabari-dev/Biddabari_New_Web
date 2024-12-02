@@ -4,13 +4,13 @@
 <main>
 
     <section id="About_us_banner" class="background-res background-opt py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/about-us/about-us-banner.png')">
+        style="background-image: url('{{ asset('frontend') }}/assets/images/about-us/about-us-banner.webp')">
         <div class="container">
             <div class="row">
                 <div class="title-area text-center">
-                    <h2 class="fw-bold text-white" style="font-size: 48px;!important;">আমাদের <span style="color: #aa076b;">সম্পর্কে</span></h2> <br>
-                    <p class="text-white" style="font-size: 20px;!important;">
-                        প্রতিযোগিতামূলক চাকরি পরীক্ষার প্রস্তুতির জন্য দেশের সর্বপ্রথম ও সর্ববৃহৎ অনলাইন প্লাটফর্ম <b style="color: #aa076b;">"বিদ্যাবাড়ি"</b>
+                    <h2 class="fw-bold text-white" style="font-size: 48px;!important;">আমাদের সম্পর্কে </h2> <br>
+                    <p class="text-white" style="line-height: 38px; font-size: 20px;!important;">
+                        প্রতিযোগিতামূলক চাকরি পরীক্ষার প্রস্তুতির জন্য <br> দেশের সর্বপ্রথম ও সর্ববৃহৎ অনলাইন প্লাটফর্ম <b> "বিদ্যাবাড়ি"</b>
                     </p>
 {{--                    <div class="title-area-button">--}}
 {{--                        <a href="" type="button" class="btn btn_warning">Our Course</a>--}}
@@ -86,7 +86,7 @@
             <div class="row gy-md-4 gy-lg-0 align-items-center">
                 <div class="col-md-6">
                     <div class="why-biddabari-img-area">
-                        <img src="{{ asset('frontend') }}/assets/images/about-us/why.jpg" class="img-fluid" alt="" srcset="">
+                        <img src="{{ asset('frontend') }}/assets/images/about-us/why.webp" class="img-fluid" alt="" srcset="">
                     </div>
                 </div>
                 <div class="col-md-6">

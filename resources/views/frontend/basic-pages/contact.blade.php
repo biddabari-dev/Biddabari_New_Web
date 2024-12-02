@@ -103,31 +103,31 @@
         </div>
     </section>
 
-    <section id="Find_us" class="background-res-find background-ats py-5"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/contact-us/cccc.png')">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-4">
-                    <div class="find-us-area py-5">
-                        <h3 class="text-white">Still Didn't Find us ?</h3>
-                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                            Provident
-                            deserunt repellat
-                            laborum eveniet vero atque, ea labore illum hic error!
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident deserunt
-                            repellat
-                            laborum eveniet vero atque, ea labore illum hic error!</p>
-                        <div class="find-us-button">
-                            <a href="" type="button" class="btn btn_warning text-white">Submit</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-8">
+{{--    <section id="Find_us" class="background-res-find background-ats py-5"--}}
+{{--        style="background-image: url('{{ asset('frontend') }}/assets/images/contact-us/cccc.png')">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12 col-lg-4">--}}
+{{--                    <div class="find-us-area py-5">--}}
+{{--                        <h3 class="text-white">Still Didn't Find us ?</h3>--}}
+{{--                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit.--}}
+{{--                            Provident--}}
+{{--                            deserunt repellat--}}
+{{--                            laborum eveniet vero atque, ea labore illum hic error!--}}
+{{--                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident deserunt--}}
+{{--                            repellat--}}
+{{--                            laborum eveniet vero atque, ea labore illum hic error!</p>--}}
+{{--                        <div class="find-us-button">--}}
+{{--                            <a href="" type="button" class="btn btn_warning text-white">Submit</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-12 col-lg-8">--}}
 
-                </div>
-            </div>
-        </div>
-    </section>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
 </main>
 

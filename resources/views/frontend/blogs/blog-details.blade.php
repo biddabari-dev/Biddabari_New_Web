@@ -144,7 +144,7 @@
                             </div>
                             <div class="tag-search-area py-4">
                                 <div class="teg-search-title">
-                                    <h4><span>Search</span> With Tags</h4>
+                                    <h4><span>Browse</span> By Categories</h4>
                                 </div>
                                 <div class="tag-area">
                                     <div class="tags pt-4">
